@@ -1,6 +1,6 @@
 /**
- * SAPA INKLUSI - Master SPA Application Controller with Auth Gateway
- * High-performance, Living UI, Zero-dependency Charting & Web Speech API
+ * SAPA INKLUSI - Master SPA Application Controller
+ * Silent & Responsive Interaction, Deep PRD Features, Chart.js & Web Speech API
  */
 
 // Global App State
@@ -10,45 +10,8 @@ let donutChartInstance = null;
 let radarChartInstance = null;
 let speechRec = null;
 let isRec = false;
-let audioCtx = null;
 
-// Sound Effects via Web Audio API
-function playSound(type = 'click') {
-    try {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        if (type === 'click') {
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
-            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.05);
-        } else if (type === 'success') {
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(440, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.12);
-            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.12);
-        }
-    } catch(e) {
-        // Audio policy ignore
-    }
-}
-
-// Toast Notification Manager
+// Toast Notification Manager (Silent & Clean)
 function showToast(message, type = 'info') {
     const container = document.getElementById('toastContainer');
     if (!container) return;
@@ -74,7 +37,6 @@ function showToast(message, type = 'info') {
     `;
 
     container.appendChild(toast);
-    playSound(type === 'success' ? 'success' : 'click');
 
     setTimeout(() => {
         toast.style.opacity = '0';
@@ -104,7 +66,6 @@ function checkAuthState() {
 }
 
 function autoFillDemo(email) {
-    playSound('click');
     const emailInput = document.getElementById('loginEmail');
     const passwordInput = document.getElementById('loginPassword');
     if (emailInput) emailInput.value = email;
@@ -142,11 +103,10 @@ function handleLoginSubmit(e) {
 
         checkAuthState();
         showToast(`Selamat datang, ${user.name}! (${user.roleLabel})`, "success");
-    }, 600);
+    }, 450);
 }
 
 function handleLogout() {
-    playSound('click');
     if (confirm("Apakah Anda yakin ingin keluar dari SAPA Inklusi?")) {
         window.store.logout();
         checkAuthState();
@@ -182,7 +142,6 @@ function updateUserProfileUI() {
 // SPA NAVIGATION ROUTER
 // ==========================================
 function navigateTo(viewId) {
-    playSound('click');
     activeView = viewId;
 
     // Update nav links
@@ -221,8 +180,49 @@ function navigateTo(viewId) {
 }
 
 // ==========================================
-// 1. DASHBOARD VIEW
+// 1. DASHBOARD VIEW & DYNAMIC FILTERS
 // ==========================================
+function applyDashboardFilter() {
+    const region = document.getElementById('filterDashRegion').value;
+    const level = document.getElementById('filterDashLevel').value;
+
+    let pibCount = 128;
+    let schoolCount = 46;
+    let assistCount = 92;
+    let studentCount = 214;
+
+    if (region !== 'ALL' || level !== 'ALL') {
+        pibCount = region === 'Sukamaju' ? 42 : (region === 'Cendekia' ? 36 : 28);
+        schoolCount = region === 'Sukamaju' ? 14 : (region === 'Cendekia' ? 12 : 10);
+        assistCount = Math.round(pibCount * 0.72);
+        studentCount = Math.round(schoolCount * 4.6);
+    }
+
+    setVal('kpiPIBVal', pibCount);
+    setVal('kpiSchoolVal', schoolCount);
+    setVal('kpiAssistVal', assistCount);
+    setVal('kpiStudentVal', studentCount);
+
+    showToast(`Filter diterapkan: ${region} • ${level}`, 'info');
+    renderDashboardCharts();
+}
+
+function resetDashboardFilter() {
+    document.getElementById('filterDashRegion').value = 'ALL';
+    document.getElementById('filterDashLevel').value = 'ALL';
+    setVal('kpiPIBVal', 128);
+    setVal('kpiSchoolVal', 46);
+    setVal('kpiAssistVal', 92);
+    setVal('kpiStudentVal', 214);
+    showToast('Filter di-reset ke seluruh wilayah.', 'info');
+    renderDashboardCharts();
+}
+
+function setVal(id, v) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = v;
+}
+
 function renderDashboardCharts() {
     if (typeof Chart === 'undefined') return;
 
@@ -296,7 +296,7 @@ function renderDashboardCharts() {
 }
 
 // ==========================================
-// 2. MICROCREDENTIAL VIEW
+// 2. MICROCREDENTIAL VIEW & LESSON PLAYER
 // ==========================================
 function renderModulesList() {
     const list = window.store ? window.store.state.modules : [];
@@ -320,13 +320,55 @@ function renderModulesList() {
                 <span class="text-[11px] text-[#8F95A0] font-medium flex items-center gap-1">
                     <span class="material-symbols-outlined text-sm">schedule</span> ${m.durationHours} Jam
                 </span>
-                <button onclick="takeQuizModal('${m.id}')" class="px-3 py-1.5 rounded-lg bg-[#F6F3ED] hover:bg-[#C85A32] hover:text-white text-[#1C2024] text-xs font-bold transition-colors">
-                    Ikuti Asesmen
-                </button>
+                <div class="flex gap-1.5">
+                    <button onclick="openModuleLessonModal('${m.id}')" class="px-2.5 py-1.5 rounded-lg bg-[#F6F3ED] hover:bg-[#EAE4D9] text-[#1C2024] text-xs font-bold transition-colors">
+                        Materi
+                    </button>
+                    <button onclick="takeQuizModal('${m.id}')" class="px-3 py-1.5 rounded-lg bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-colors">
+                        Asesmen
+                    </button>
+                </div>
             </div>
         `;
         container.appendChild(card);
     });
+}
+
+function openModuleLessonModal(modId) {
+    const m = window.store.state.modules.find(item => item.id === modId);
+    if (!m) return;
+
+    const modal = document.getElementById('lessonModal');
+    const titleEl = document.getElementById('lessonModalTitle');
+    const catEl = document.getElementById('lessonModalCat');
+    const contentEl = document.getElementById('lessonModalContent');
+
+    if (titleEl) titleEl.innerText = `Modul ${m.number}: ${m.title}`;
+    if (catEl) catEl.innerText = `${m.category} • Durasi: ${m.durationHours} Jam Pelatihan`;
+    if (contentEl) {
+        contentEl.innerHTML = `
+            <div class="prose text-xs text-[#1C2024] space-y-3 leading-relaxed">
+                <div class="p-3 bg-[#FDF3EE] rounded-xl border border-[#C85A32]/20 text-[#C85A32] font-medium">
+                    <strong>Tujuan Pembelajaran:</strong> ${m.description}
+                </div>
+                ${m.lessonContent || '<p>Materi pembelajaran interaktif siap dipelajari.</p>'}
+                <div class="p-3 bg-[#F6F3ED] rounded-xl border border-[#EAE4D9] mt-4">
+                    <h5 class="font-bold text-[#1C2024] mb-1">Studi Kasus Lapangan:</h5>
+                    <p class="text-[#656A73]">Bagaimana merancang instruksi diferensiasi jika ada 2 anak autisme di kelas reguler dengan 28 siswa lain?</p>
+                </div>
+            </div>
+        `;
+    }
+
+    const quizBtn = document.getElementById('lessonModalQuizBtn');
+    if (quizBtn) {
+        quizBtn.onclick = () => {
+            closeModal('lessonModal');
+            takeQuizModal(m.id);
+        };
+    }
+
+    if (modal) modal.classList.remove('hidden');
 }
 
 function takeQuizModal(modId) {
@@ -341,7 +383,7 @@ function takeQuizModal(modId) {
     
     content.innerHTML = `
         <div class="flex justify-between items-center mb-3">
-            <span class="text-xs font-bold text-[#C85A32]">Modul ${m.number} • Asesmen Kompetensi</span>
+            <span class="text-xs font-bold text-[#C85A32]">Modul ${m.number} • Asesmen Uji Kompetensi</span>
             <button onclick="closeModal('quizModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
         </div>
         <h3 class="font-bold text-base text-[#1C2024] mb-4">${m.title}</h3>
@@ -386,7 +428,6 @@ function openCertModal(userName = "Rina Maharani, S.Pd") {
     const nameEl = document.getElementById('certRecipientName');
     if (nameEl) nameEl.innerText = userName;
     if (modal) modal.classList.remove('hidden');
-    playSound('success');
 }
 
 // ==========================================
@@ -419,7 +460,6 @@ function initVoiceAI() {
 }
 
 function toggleVoice() {
-    playSound('click');
     if (!speechRec) {
         const text = prompt("Simulasi Suara (Browser belum aktif STT):", "Sederhanakan instruksi tugas matematika hari ini.");
         if (text) sendAiMessage(text);
@@ -494,14 +534,12 @@ function sendAiMessage(promptText) {
         `;
         feed.appendChild(aiDiv);
         feed.scrollTop = feed.scrollHeight;
-        playSound('click');
-    }, 400);
+    }, 350);
 }
 
 function speakSpeech(text) {
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        // Clean markdown symbols for cleaner voice
         const clean = text.replace(/[*#_]/g, '');
         const utt = new SpeechSynthesisUtterance(clean);
         utt.lang = 'id-ID';
@@ -590,7 +628,7 @@ function filterPib() {
 }
 
 // ==========================================
-// 5. SEKOLAH MITRA VIEW
+// 5. SEKOLAH MITRA & MATCHING VIEW
 // ==========================================
 function renderSchoolDirectory() {
     const list = window.store ? window.store.state.schools : [];
@@ -639,6 +677,12 @@ function selectSchoolDetail(schoolId) {
     document.getElementById('prevSchoolNeed').innerText = `Butuh ${s.requiredPIB} PIB (Ditugaskan: ${s.assignedPIB})`;
     document.getElementById('prevSchoolComps').innerText = s.requiredCompetencies.join(', ');
     document.getElementById('prevSchoolCoord').innerText = s.coordinatorName;
+
+    // Matching breakdown bars
+    const bd = s.matchingBreakdown || { jarak: 90, kompetensi: 90, jadwal: 90, pengalaman: 90 };
+    document.getElementById('breakdownJarak').innerText = `${bd.jarak}%`;
+    document.getElementById('breakdownKompetensi').innerText = `${bd.kompetensi}%`;
+    document.getElementById('breakdownJadwal').innerText = `${bd.jadwal}%`;
 }
 
 function openAssignModal(schoolId) {
@@ -683,7 +727,8 @@ function renderSessionsList() {
         const isDone = s.status === 'SELESAI';
         const isVerif = s.verificationStatus === 'TERVERIFIKASI';
         const tr = document.createElement('tr');
-        tr.className = "hover:bg-[#FBF9F5] transition-colors border-b border-[#F0ECE4]";
+        tr.className = "hover:bg-[#FBF9F5] transition-colors border-b border-[#F0ECE4] cursor-pointer";
+        tr.onclick = () => openSessionDetailModal(s.id);
         tr.innerHTML = `
             <td class="py-3 px-4 text-xs font-semibold text-[#1C2024]">${s.date}<br><span class="text-[10px] text-[#8F95A0]">${s.time}</span></td>
             <td class="py-3 px-4 text-xs font-bold text-[#1C2024]">${s.pibName}</td>
@@ -694,7 +739,7 @@ function renderSessionsList() {
                     ${s.status}
                 </span>
             </td>
-            <td class="py-3 px-4 text-center">
+            <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
                 ${isVerif ? `
                     <span class="inline-flex items-center gap-1 text-[10px] font-bold text-[#5B6E43] bg-[#5B6E43]/15 px-2.5 py-1 rounded-full">
                         <span class="material-symbols-outlined text-xs">verified</span> Terverifikasi
@@ -708,6 +753,32 @@ function renderSessionsList() {
         `;
         tbody.appendChild(tr);
     });
+}
+
+function openSessionDetailModal(sessionId) {
+    const s = window.store.state.sessions.find(item => item.id === sessionId);
+    if (!s) return;
+
+    const modal = document.getElementById('sessionDetailModal');
+    if (!modal) return;
+
+    document.getElementById('sessDetailId').innerText = `Log Sesi #${s.id} • ${s.date} (${s.time})`;
+    document.getElementById('sessDetailPIB').innerText = s.pibName;
+    document.getElementById('sessDetailSchool').innerText = `${s.schoolName} — ${s.className}`;
+    document.getElementById('sessDetailStudent').innerText = s.studentName;
+    document.getElementById('sessDetailActivity').innerText = s.activity;
+    document.getElementById('sessDetailNotes').innerText = s.notes;
+
+    const verifBadge = document.getElementById('sessDetailVerifBadge');
+    if (verifBadge) {
+        if (s.verificationStatus === 'TERVERIFIKASI') {
+            verifBadge.innerHTML = `<span class="bg-[#5B6E43]/15 text-[#5B6E43] px-3 py-1 rounded-full font-bold text-xs flex items-center gap-1"><span class="material-symbols-outlined text-sm">verified</span> Terverifikasi GPK</span>`;
+        } else {
+            verifBadge.innerHTML = `<button onclick="verifySessionAction('${s.id}'); closeModal('sessionDetailModal');" class="bg-[#C85A32] hover:bg-[#B04A25] text-white px-4 py-1.5 rounded-xl font-bold text-xs">Verifikasi Sesi Ini</button>`;
+        }
+    }
+
+    modal.classList.remove('hidden');
 }
 
 function verifySessionAction(sessionId) {
@@ -782,7 +853,6 @@ function renderOutcomeCharts() {
 // 8. MOBILE SIMULATOR CONTROLLER
 // ==========================================
 function switchMobileTab(tabName) {
-    playSound('click');
     document.querySelectorAll('.mobile-tab-pane').forEach(el => el.classList.add('hidden'));
     const target = document.getElementById(`mTab-${tabName}`);
     if (target) target.classList.remove('hidden');

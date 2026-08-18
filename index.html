@@ -329,7 +329,7 @@
             <main class="flex-1 p-8 max-w-7xl w-full mx-auto pb-24">
 
                 <!-- 1. DASHBOARD VIEW PANE -->
-                <section id="view-dashboard" class="view-pane active space-y-8">
+                <section id="view-dashboard" class="view-pane active space-y-6">
                     <!-- Heading -->
                     <div class="flex justify-between items-end">
                         <div>
@@ -344,6 +344,35 @@
                         </div>
                     </div>
 
+                    <!-- Interactive Filter Strip -->
+                    <div class="bg-white p-4 rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[11px] font-bold text-[#8F95A0]">Wilayah:</span>
+                                <select id="filterDashRegion" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs font-semibold text-[#1C2024] outline-none">
+                                    <option value="ALL">Semua Wilayah</option>
+                                    <option value="Sukamaju">Sukamaju</option>
+                                    <option value="Cendekia">Cendekia</option>
+                                    <option value="Harapan">Harapan</option>
+                                    <option value="Merdeka">Merdeka</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[11px] font-bold text-[#8F95A0]">Jenjang:</span>
+                                <select id="filterDashLevel" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs font-semibold text-[#1C2024] outline-none">
+                                    <option value="ALL">Semua Jenjang (SD, SMP, SMA)</option>
+                                    <option value="SD">Sekolah Dasar (SD)</option>
+                                    <option value="SMP">Sekolah Menengah Pertama (SMP)</option>
+                                    <option value="SMA">Sekolah Menengah Atas (SMA)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="resetDashboardFilter()" class="px-3.5 py-1.5 rounded-xl border border-[#EAE4D9] hover:bg-[#F6F3ED] text-xs font-semibold text-[#656A73]">Reset</button>
+                            <button onclick="applyDashboardFilter()" class="px-4 py-1.5 rounded-xl bg-[#C85A32] text-white text-xs font-bold shadow-sm">Terapkan Filter</button>
+                        </div>
+                    </div>
+
                     <!-- KPI Metric Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
                         <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm hover-elevate border-l-4 border-l-[#C85A32]">
@@ -353,7 +382,7 @@
                                     <span class="material-symbols-outlined text-base">diversity_3</span>
                                 </div>
                             </div>
-                            <div class="font-heading font-extrabold text-3xl text-[#1C2024]">128</div>
+                            <div id="kpiPIBVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">128</div>
                             <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block">↑ +12 bulan ini</span>
                         </div>
 
@@ -364,7 +393,7 @@
                                     <span class="material-symbols-outlined text-base">location_city</span>
                                 </div>
                             </div>
-                            <div class="font-heading font-extrabold text-3xl text-[#1C2024]">46</div>
+                            <div id="kpiSchoolVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">46</div>
                             <span class="text-[11px] text-[#656A73] font-medium mt-1 block">34 Terpenuhi • 12 Butuh PIB</span>
                         </div>
 
@@ -375,7 +404,7 @@
                                     <span class="material-symbols-outlined text-base">groups</span>
                                 </div>
                             </div>
-                            <div class="font-heading font-extrabold text-3xl text-[#1C2024]">92</div>
+                            <div id="kpiAssistVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">92</div>
                             <span class="text-[11px] text-[#C85A32] font-semibold mt-1 block">18 sedang berlangsung</span>
                         </div>
 
@@ -386,7 +415,7 @@
                                     <span class="material-symbols-outlined text-base">child_care</span>
                                 </div>
                             </div>
-                            <div class="font-heading font-extrabold text-3xl text-[#1C2024]">214</div>
+                            <div id="kpiStudentVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">214</div>
                             <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block">Rata-rata outcome 78%</span>
                         </div>
                     </div>
@@ -573,9 +602,14 @@
                             <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Direktori Pendamping Inklusi (PIB)</h2>
                             <p class="text-xs text-[#656A73]">Database kompetensi, sertifikasi nasional, dan status ketersediaan pendamping.</p>
                         </div>
-                        <button onclick="openModal('addPibModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-sm">person_add</span> Tambah PIB Baru
-                        </button>
+                        <div class="flex gap-2">
+                            <button onclick="window.store.exportToCSV('pib'); showToast('CSV Direktori PIB diunduh', 'success')" class="px-3.5 py-2 bg-white border border-[#EAE4D9] hover:bg-[#F6F3ED] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">download</span> Ekspor CSV
+                            </button>
+                            <button onclick="openModal('addPibModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">person_add</span> Tambah PIB Baru
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Filters Strip -->
@@ -659,6 +693,9 @@
                             <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Sekolah Mitra & Matching Engine</h2>
                             <p class="text-xs text-[#656A73]">Algoritma pencocokan 6 variabel (lokasi, kompetensi, jenjang, jadwal) untuk penempatan PIB optimal.</p>
                         </div>
+                        <button onclick="openModal('addSchoolModal')" class="px-4 py-2 bg-[#5B6E43] hover:bg-[#4C5D37] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm">add_business</span> Daftarkan Sekolah Mitra
+                        </button>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -678,7 +715,26 @@
                                 <span id="prevSchoolMatch" class="text-xs font-bold px-3 py-1 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">92% Match Score</span>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-3 text-xs pt-3 border-t border-[#F0ECE4]">
+                            <!-- Matching Breakdown Inspector -->
+                            <div class="p-3.5 bg-[#F6F3ED] rounded-xl border border-[#EAE4D9] space-y-2 text-xs">
+                                <span class="font-bold text-[#1C2024] block">Kalkulasi Bobot Algoritma Matching (PRD Section 4):</span>
+                                <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                                    <div class="bg-white p-2 rounded-lg border border-[#EAE4D9]">
+                                        <span class="text-[#8F95A0] block text-[9px]">Jarak (30%)</span>
+                                        <strong id="breakdownJarak" class="text-[#C85A32]">95%</strong>
+                                    </div>
+                                    <div class="bg-white p-2 rounded-lg border border-[#EAE4D9]">
+                                        <span class="text-[#8F95A0] block text-[9px]">Kompetensi (30%)</span>
+                                        <strong id="breakdownKompetensi" class="text-[#5B6E43]">92%</strong>
+                                    </div>
+                                    <div class="bg-white p-2 rounded-lg border border-[#EAE4D9]">
+                                        <span class="text-[#8F95A0] block text-[9px]">Jadwal (20%)</span>
+                                        <strong id="breakdownJadwal" class="text-[#E29547]">90%</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 text-xs pt-2 border-t border-[#F0ECE4]">
                                 <div>
                                     <span class="text-[#8F95A0] text-[10px] block">Kebutuhan PIB</span>
                                     <span id="prevSchoolNeed" class="font-bold text-[#1C2024]">Butuh 2 PIB (Ditugaskan: 1)</span>
@@ -711,6 +767,9 @@
                             <p class="text-xs text-[#656A73]">Pencatatan sesi harian, modifikasi instruksi, dan verifikasi 1-klik oleh GPK Koordinator.</p>
                         </div>
                         <div class="flex gap-2">
+                            <button onclick="window.store.exportToCSV('sessions'); showToast('CSV Log Sesi diunduh', 'success')" class="px-3.5 py-2 bg-white border border-[#EAE4D9] hover:bg-[#F6F3ED] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">download</span> Ekspor CSV
+                            </button>
                             <button onclick="verifyAllAction()" class="px-4 py-2 bg-white border border-[#5B6E43] text-[#5B6E43] hover:bg-[#5B6E43] hover:text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-sm">done_all</span> Verifikasi Semua Tertunda
                             </button>
@@ -982,6 +1041,74 @@
 
     <!-- ================= MODALS ================= -->
 
+    <!-- Modal: Lesson Player Materi Modul -->
+    <div id="lessonModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl border border-[#EAE4D9] max-h-[85vh] flex flex-col justify-between">
+            <div class="flex justify-between items-start pb-3 border-b border-[#F0ECE4]">
+                <div>
+                    <span id="lessonModalCat" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">Fondasi</span>
+                    <h3 id="lessonModalTitle" class="font-heading font-extrabold text-lg text-[#1C2024] mt-1">Modul 1: Dasar Pendidikan Inklusif</h3>
+                </div>
+                <button onclick="closeModal('lessonModal')" class="text-[#8F95A0] hover:text-[#1C2024]">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div id="lessonModalContent" class="flex-1 overflow-y-auto py-4">
+                <!-- Injected content -->
+            </div>
+
+            <div class="pt-3 border-t border-[#F0ECE4] flex justify-between items-center">
+                <button onclick="closeModal('lessonModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] text-xs font-bold text-[#656A73]">Tutup</button>
+                <button id="lessonModalQuizBtn" class="px-5 py-2 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                    <span>Lanjut ke Asesmen Uji Kompetensi</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Detail Log Sesi Pendampingan -->
+    <div id="sessionDetailModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9]">
+            <div class="flex justify-between items-start mb-4 pb-3 border-b border-[#F0ECE4]">
+                <div>
+                    <span id="sessDetailId" class="text-[11px] font-bold text-[#C85A32]">Log Sesi #SES-01</span>
+                    <h3 class="font-bold text-base text-[#1C2024] mt-0.5">Detail Log Aktivitas Pendampingan</h3>
+                </div>
+                <button onclick="closeModal('sessionDetailModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div class="grid grid-cols-2 gap-3 p-3 bg-[#F6F3ED] rounded-2xl">
+                    <div>
+                        <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">PIB Bertugas</span>
+                        <strong id="sessDetailPIB" class="text-[#1C2024]">Rina Maharani, S.Pd</strong>
+                    </div>
+                    <div>
+                        <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Sekolah & Kelas</span>
+                        <strong id="sessDetailSchool" class="text-[#1C2024]">SDN Harapan 1 — Kelas 4A</strong>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Siswa Didampingi</span>
+                    <p id="sessDetailStudent" class="text-xs font-bold text-[#1C2024]">Ananda Fikri (Autism Spectrum)</p>
+                </div>
+                <div>
+                    <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Materi & Aktivitas</span>
+                    <p id="sessDetailActivity" class="text-xs text-[#1C2024]">Matematika Pecahan Adaptif</p>
+                </div>
+                <div class="p-3 bg-white border border-[#EAE4D9] rounded-xl">
+                    <span class="text-[#8F95A0] text-[10px] block uppercase font-bold mb-1">Catatan Modifikasi & Kemandirian Siswa</span>
+                    <p id="sessDetailNotes" class="text-xs text-[#656A73] leading-relaxed">Instruksi disederhanakan dengan kartu pecahan visual. Siswa mampu menyelesaikan 2 soal mandiri tanpa tantrum.</p>
+                </div>
+            </div>
+            <div class="mt-5 pt-3 border-t border-[#F0ECE4] flex justify-between items-center">
+                <div id="sessDetailVerifBadge"></div>
+                <button onclick="closeModal('sessionDetailModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold text-xs">Tutup</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal: Asesmen Quiz -->
     <div id="quizModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
         <div id="quizModalContent" class="bg-white rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9]">
@@ -1060,6 +1187,59 @@
                 <div class="pt-3 flex justify-end gap-2">
                     <button type="button" onclick="closeModal('addPibModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold">Batal</button>
                     <button type="submit" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Daftarkan Sekolah Mitra Baru -->
+    <div id="addSchoolModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9]">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-base text-[#1C2024]">Daftarkan Sekolah Mitra Baru</h3>
+                <button onclick="closeModal('addSchoolModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form onsubmit="event.preventDefault(); const s=window.store.addSchool({name:this.schName.value, region:this.schRegion.value, level:this.schLevel.value, requiredPIB:parseInt(this.schReqPIB.value), studentsCount:parseInt(this.schStudents.value), requiredCompetencies:[this.schComps.value], coordinatorName:this.schCoord.value, address:this.schAddr.value, schedule:'Senin - Jumat'}); closeModal('addSchoolModal'); showToast('Sekolah ' + s.name + ' berhasil didaftarkan!', 'success'); renderSchoolDirectory();" class="space-y-3 text-xs">
+                <div>
+                    <label class="font-bold text-[#1C2024] block mb-1">Nama Satuan Pendidikan</label>
+                    <input name="schName" type="text" required placeholder="Contoh: SMAN 2 Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="font-bold text-[#1C2024] block mb-1">Wilayah</label>
+                        <input name="schRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    </div>
+                    <div>
+                        <label class="font-bold text-[#1C2024] block mb-1">Jenjang</label>
+                        <select name="schLevel" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="font-bold text-[#1C2024] block mb-1">Kebutuhan PIB</label>
+                        <input name="schReqPIB" type="number" value="2" min="1" max="10" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    </div>
+                    <div>
+                        <label class="font-bold text-[#1C2024] block mb-1">Jumlah Siswa Inklusi</label>
+                        <input name="schStudents" type="number" value="8" min="1" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="font-bold text-[#1C2024] block mb-1">Spesialisasi Dibutuhkan</label>
+                    <input name="schComps" type="text" required placeholder="Autism Spectrum, ADHD, Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                </div>
+                <div>
+                    <label class="font-bold text-[#1C2024] block mb-1">Koordinator Sekolah & Alamat</label>
+                    <input name="schCoord" type="text" required placeholder="Nama Koordinator" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none mb-1.5">
+                    <input name="schAddr" type="text" required placeholder="Alamat lengkap sekolah" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                </div>
+                <div class="pt-3 flex justify-end gap-2">
+                    <button type="button" onclick="closeModal('addSchoolModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold">Batal</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-[#5B6E43] text-white font-bold">Simpan Sekolah</button>
                 </div>
             </form>
         </div>
