@@ -18,13 +18,201 @@
     <!-- Custom Living Aesthetic CSS -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body class="bg-[#FBF9F5] text-[#1C2024] antialiased min-h-screen flex flex-col">
+<body class="bg-[#FBF9F5] text-[#1C2024] antialiased min-h-screen flex flex-col selection:bg-[#C85A32] selection:text-white">
 
     <!-- Toast Notification Container -->
     <div id="toastContainer"></div>
 
-    <div class="flex flex-1">
-        <!-- ================= SIDEBAR NAVIGATION ================= -->
+    <!-- ========================================================================= -->
+    <!-- 0. LOGIN GATEWAY (PORTAL AUTENTIKASI UTAMA)                               -->
+    <!-- ========================================================================= -->
+    <section id="loginGate" class="min-h-screen w-full flex items-center justify-center p-4 md:p-8 bg-[#FBF9F5] relative overflow-hidden">
+        
+        <!-- Ambient Decorative Circles -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#C85A32]/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#5B6E43]/10 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl border border-[#EAE4D9] shadow-2xl overflow-hidden relative z-10">
+            
+            <!-- Left: Login Form & Demo Roles -->
+            <div class="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between space-y-6">
+                <div>
+                    <!-- Brand -->
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C85A32] to-[#E29547] flex items-center justify-center text-white shadow-md">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1 class="font-heading font-extrabold text-lg text-[#C85A32] tracking-tight leading-none">SAPA Inklusi</h1>
+                            <span class="text-[10px] text-[#8F95A0] font-semibold tracking-wider uppercase">Portal Layanan Pendidikan Inklusif</span>
+                        </div>
+                    </div>
+
+                    <h2 class="font-heading font-extrabold text-2xl text-[#1C2024]">Selamat Datang Kembali</h2>
+                    <p class="text-xs text-[#656A73] mt-1">Masuk untuk mengelola pendampingan, kurikulum kompetensi, dan evaluasi hasil belajar.</p>
+                </div>
+
+                <!-- 1-Click Role Fill Selection -->
+                <div>
+                    <label class="text-[11px] font-bold text-[#8F95A0] uppercase tracking-wider block mb-2">Pilih Akun Demo Cepat (1-Klik):</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div onclick="autoFillDemo('gpk@sapa.id')" data-email="gpk@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#C85A32] bg-[#FDF3EE] cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">GPK</span>
+                            <div class="overflow-hidden">
+                                <span class="font-bold text-[#1C2024] block truncate">Dr. Sari Wulandari</span>
+                                <span class="text-[10px] text-[#656A73] block truncate">GPK Koordinator</span>
+                            </div>
+                        </div>
+
+                        <div onclick="autoFillDemo('sekolah@sapa.id')" data-email="sekolah@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#EAE4D9] bg-white cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-[#5B6E43] text-white flex items-center justify-center font-bold text-xs shrink-0">SCH</span>
+                            <div class="overflow-hidden">
+                                <span class="font-bold text-[#1C2024] block truncate">Ibu Nurhayati</span>
+                                <span class="text-[10px] text-[#656A73] block truncate">SDN Harapan 1</span>
+                            </div>
+                        </div>
+
+                        <div onclick="autoFillDemo('dinas@sapa.id')" data-email="dinas@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#EAE4D9] bg-white cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-[#E29547] text-white flex items-center justify-center font-bold text-xs shrink-0">DIS</span>
+                            <div class="overflow-hidden">
+                                <span class="font-bold text-[#1C2024] block truncate">Drs. Hendra Kusuma</span>
+                                <span class="text-[10px] text-[#656A73] block truncate">Dinas Pendidikan</span>
+                            </div>
+                        </div>
+
+                        <div onclick="autoFillDemo('pib@sapa.id')" data-email="pib@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#EAE4D9] bg-white cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">PIB</span>
+                            <div class="overflow-hidden">
+                                <span class="font-bold text-[#1C2024] block truncate">Rina Maharani</span>
+                                <span class="text-[10px] text-[#656A73] block truncate">Pendamping Inklusi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Login -->
+                <form onsubmit="handleLoginSubmit(event)" class="space-y-3.5 text-xs">
+                    <div>
+                        <label class="font-bold text-[#1C2024] block mb-1">Email / NIP / ID SAPA</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#8F95A0] text-base">person</span>
+                            <input id="loginEmail" type="text" required value="gpk@sapa.id" placeholder="nama@sapa.id atau NIP..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-[#1C2024] block mb-1">Kata Sandi</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#8F95A0] text-base">lock</span>
+                            <input id="loginPassword" type="password" required value="password123" placeholder="••••••••" class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
+                            <button type="button" onclick="const p=document.getElementById('loginPassword'); p.type=p.type==='password'?'text':'password';" class="absolute right-3 top-2.5 text-[#8F95A0] hover:text-[#1C2024]">
+                                <span class="material-symbols-outlined text-base">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs pt-1">
+                        <label class="flex items-center gap-2 cursor-pointer text-[#656A73]">
+                            <input type="checkbox" checked class="rounded text-[#C85A32] focus:ring-[#C85A32]">
+                            <span>Ingat saya di perangkat ini</span>
+                        </label>
+                        <a href="javascript:void(0)" onclick="showToast('Fitur reset sandi telah dikirim ke email terdaftar.', 'info')" class="text-[#C85A32] font-semibold hover:underline">Lupa sandi?</a>
+                    </div>
+
+                    <div class="space-y-2 pt-2">
+                        <button type="submit" id="loginSubmitBtn" class="w-full py-3 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2">
+                            <span>Masuk ke Platform</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+
+                        <button type="button" onclick="autoFillDemo('gpk@sapa.id'); handleLoginSubmit(event);" class="w-full py-2.5 rounded-xl border border-[#EAE4D9] hover:bg-[#F6F3ED] text-[#1C2024] font-semibold text-xs transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-base text-[#5B6E43]">verified_user</span>
+                            <span>Masuk dengan Akun Belajar.id / SSO</span>
+                        </button>
+                    </div>
+                </form>
+
+                <p class="text-[11px] text-[#8F95A0] text-center">
+                    Dengan masuk, Anda menyetujui <span class="text-[#C85A32]">Prinsip Tata Kelola Privasi Data Anak</span> SAPA Inklusi.
+                </p>
+            </div>
+
+            <!-- Right: Value Proposition Showcase & Highlights -->
+            <div class="lg:col-span-5 bg-gradient-to-br from-[#2D2A26] to-[#1C2024] p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-[#C85A32]/20 blur-2xl"></div>
+                <div class="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-[#5B6E43]/20 blur-2xl"></div>
+
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-white/90 text-[10px] font-bold tracking-wider uppercase border border-white/10">
+                        Ekosistem Inklusif v1.0
+                    </span>
+                    <h3 class="font-heading font-extrabold text-2xl text-white mt-4 leading-tight">
+                        Menghubungkan Kompetensi, Pendampingan, & Outcome Anak
+                    </h3>
+                    <p class="text-xs text-white/70 mt-2 leading-relaxed">
+                        SAPA Inklusi mengintegrasikan alur kerja profesional bagi seluruh pemangku kepentingan pendidikan inklusif di Indonesia.
+                    </p>
+                </div>
+
+                <!-- 4 Core Pillars -->
+                <div class="space-y-3 my-6">
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                        <div class="w-8 h-8 rounded-xl bg-[#C85A32] flex items-center justify-center text-white shrink-0">
+                            <span class="material-symbols-outlined text-sm">school</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-white">Microcredential PIB</h4>
+                            <p class="text-[10px] text-white/60">8 modul terstandar (40-60 Jam) bersertifikasi resmi.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                        <div class="w-8 h-8 rounded-xl bg-[#5B6E43] flex items-center justify-center text-white shrink-0">
+                            <span class="material-symbols-outlined text-sm">smart_toy</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-white">Asisten AI Kelas Adaptif</h4>
+                            <p class="text-[10px] text-white/60">Speech-to-Text & penyederhanaan instruksi instan.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                        <div class="w-8 h-8 rounded-xl bg-[#E29547] flex items-center justify-center text-white shrink-0">
+                            <span class="material-symbols-outlined text-sm">location_city</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-white">Matching Penugasan Sekolah</h4>
+                            <p class="text-[10px] text-white/60">Pencocokan lokasi, jadwal, & spesialisasi kebutuhan anak.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                        <div class="w-8 h-8 rounded-xl bg-[#5B6E43] flex items-center justify-center text-white shrink-0">
+                            <span class="material-symbols-outlined text-sm">insights</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-white">Evaluasi Longitudinal Outcome</h4>
+                            <p class="text-[10px] text-white/60">Pemantauan 4 pilar kemandirian belajar non-medis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Quote -->
+                <div class="pt-4 border-t border-white/10 text-[11px] text-white/70 italic">
+                    "Setiap anak berhak mendapatkan dukungan belajar yang adaptif dan bermartabat."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN PLATFORM WRAPPER (TERBUKA SETELAH LOGIN)                            -->
+    <!-- ========================================================================= -->
+    <div id="mainAppWrapper" class="flex flex-1 hidden">
+        
+        <!-- SIDEBAR NAVIGATION -->
         <aside class="w-64 fixed left-0 top-0 h-screen bg-[#F6F3ED] border-r border-[#EAE4D9] flex flex-col justify-between py-6 px-4 z-40">
             <div>
                 <!-- Brand Emblem -->
@@ -84,23 +272,28 @@
                     <span>Pengaturan & Hak Akses</span>
                 </a>
 
-                <!-- User Profile Badge -->
-                <div class="pt-3 flex items-center gap-3 px-2">
-                    <div class="w-9 h-9 rounded-full bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs">
-                        SW
+                <!-- User Profile Badge & Logout -->
+                <div class="pt-3 flex items-center justify-between px-2">
+                    <div class="flex items-center gap-2.5 overflow-hidden">
+                        <div id="sidebarUserAvatar" class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                            SW
+                        </div>
+                        <div class="overflow-hidden">
+                            <p id="sidebarUserName" class="font-bold text-xs text-[#1C2024] truncate">Dr. Sari Wulandari</p>
+                            <p id="sidebarUserRole" class="text-[10px] text-[#8F95A0] truncate">GPK Koordinator</p>
+                        </div>
                     </div>
-                    <div class="overflow-hidden">
-                        <p class="font-bold text-xs text-[#1C2024] truncate">Dr. Sari Wulandari</p>
-                        <p class="text-[10px] text-[#8F95A0] truncate">GPK Koordinator</p>
-                    </div>
+                    <button onclick="handleLogout()" title="Keluar / Logout" class="text-[#8F95A0] hover:text-[#BA1A1A] transition-colors p-1 rounded-lg hover:bg-white">
+                        <span class="material-symbols-outlined text-base">logout</span>
+                    </button>
                 </div>
             </div>
         </aside>
 
-        <!-- ================= MAIN CONTENT WRAPPER ================= -->
+        <!-- MAIN CONTENT AREA -->
         <div class="ml-64 flex-1 flex flex-col min-h-screen">
             
-            <!-- Top App Bar -->
+            <!-- Top Header -->
             <header class="sticky top-0 z-30 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#EAE4D9] h-16 flex items-center justify-between px-8">
                 <!-- Search Box -->
                 <div class="flex items-center gap-2 bg-[#F6F3ED] px-4 py-2 rounded-full border border-[#EAE4D9] w-72 focus-within:border-[#C85A32] focus-within:bg-white transition-all">
@@ -112,7 +305,7 @@
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2 bg-[#F6F3ED] p-1 rounded-xl border border-[#EAE4D9]">
                         <span class="text-[10px] font-bold text-[#8F95A0] px-2">Peran:</span>
-                        <select onchange="window.store.setRole(this.value); showToast('Peran aktif dialihkan ke: ' + this.value, 'info')" class="bg-transparent text-xs font-bold text-[#C85A32] outline-none cursor-pointer pr-2">
+                        <select id="topRoleSelector" onchange="window.store.setRole(this.value); updateUserProfileUI(); showToast('Peran aktif dialihkan ke: ' + this.value, 'info')" class="bg-transparent text-xs font-bold text-[#C85A32] outline-none cursor-pointer pr-2">
                             <option value="GPK_KOORDINATOR">GPK Koordinator</option>
                             <option value="SEKOLAH_MITRA">Sekolah Mitra</option>
                             <option value="DINAS_PENDIDIKAN">Dinas Pendidikan</option>

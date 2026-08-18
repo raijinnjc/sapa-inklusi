@@ -5,8 +5,53 @@
 
 const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V2';
 
+const DEMO_ACCOUNTS = {
+    'gpk@sapa.id': {
+        role: 'GPK_KOORDINATOR',
+        roleLabel: 'GPK Koordinator',
+        name: 'Dr. Sari Wulandari, M.Pd',
+        email: 'gpk@sapa.id',
+        nip: '19820415 200604 2 008',
+        avatarInitials: 'SW',
+        avatarColor: '#C85A32',
+        institution: 'Pusat Layanan Inklusif Wilayah'
+    },
+    'sekolah@sapa.id': {
+        role: 'SEKOLAH_MITRA',
+        roleLabel: 'Koordinator Sekolah Mitra',
+        name: 'Ibu Nurhayati, S.Pd',
+        email: 'sekolah@sapa.id',
+        nip: '19880112 201101 2 004',
+        avatarInitials: 'NH',
+        avatarColor: '#5B6E43',
+        institution: 'SDN Harapan 1 Sukamaju'
+    },
+    'dinas@sapa.id': {
+        role: 'DINAS_PENDIDIKAN',
+        roleLabel: 'Pengawas Dinas Pendidikan',
+        name: 'Drs. Hendra Kusuma, M.Si',
+        email: 'dinas@sapa.id',
+        nip: '19750918 199903 1 002',
+        avatarInitials: 'HK',
+        avatarColor: '#E29547',
+        institution: 'Dinas Pendidikan Jawa Barat'
+    },
+    'pib@sapa.id': {
+        role: 'PIB',
+        roleLabel: 'Pendamping Inklusi Bersertifikat',
+        name: 'Rina Maharani, S.Pd',
+        email: 'pib@sapa.id',
+        nip: 'PIB-2026-089',
+        avatarInitials: 'RM',
+        avatarColor: '#C85A32',
+        institution: 'Ikatan Pendamping Inklusi'
+    }
+};
+
 const INITIAL_STATE = {
-    userRole: 'GPK_KOORDINATOR', // GPK_KOORDINATOR | SEKOLAH_MITRA | DINAS_PENDIDIKAN | PIB
+    isLoggedIn: false,
+    currentUser: null,
+    userRole: 'GPK_KOORDINATOR',
     userName: 'Dr. Sari Wulandari, M.Pd',
     userRoleLabel: 'GPK Koordinator',
     
@@ -379,13 +424,53 @@ class SapaStore {
         this.save();
     }
 
+    // Authentication Logic
+    login(email) {
+        const acc = DEMO_ACCOUNTS[email] || {
+            role: 'GPK_KOORDINATOR',
+            roleLabel: 'GPK Koordinator',
+            name: email.split('@')[0].toUpperCase(),
+            email: email,
+            nip: '19850101 201001 1 001',
+            avatarInitials: email.slice(0, 2).toUpperCase(),
+            avatarColor: '#C85A32',
+            institution: 'SAPA Inklusi Mitra'
+        };
+
+        this.state.isLoggedIn = true;
+        this.state.currentUser = acc;
+        this.state.userRole = acc.role;
+        this.state.userRoleLabel = acc.roleLabel;
+        this.state.userName = acc.name;
+        this.save();
+        return acc;
+    }
+
+    logout() {
+        this.state.isLoggedIn = false;
+        this.state.currentUser = null;
+        this.save();
+    }
+
     // Role
     setRole(roleKey) {
         this.state.userRole = roleKey;
-        if (roleKey === 'GPK_KOORDINATOR') this.state.userRoleLabel = 'GPK Koordinator';
-        if (roleKey === 'SEKOLAH_MITRA') this.state.userRoleLabel = 'Koordinator Sekolah';
-        if (roleKey === 'DINAS_PENDIDIKAN') this.state.userRoleLabel = 'Pengawas Dinas';
-        if (roleKey === 'PIB') this.state.userRoleLabel = 'Pendamping PIB';
+        if (roleKey === 'GPK_KOORDINATOR') {
+            this.state.userRoleLabel = 'GPK Koordinator';
+            this.state.userName = 'Dr. Sari Wulandari, M.Pd';
+        }
+        if (roleKey === 'SEKOLAH_MITRA') {
+            this.state.userRoleLabel = 'Koordinator Sekolah';
+            this.state.userName = 'Ibu Nurhayati, S.Pd';
+        }
+        if (roleKey === 'DINAS_PENDIDIKAN') {
+            this.state.userRoleLabel = 'Pengawas Dinas';
+            this.state.userName = 'Drs. Hendra Kusuma, M.Si';
+        }
+        if (roleKey === 'PIB') {
+            this.state.userRoleLabel = 'Pendamping PIB';
+            this.state.userName = 'Rina Maharani, S.Pd';
+        }
         this.save();
     }
 
@@ -507,3 +592,4 @@ class SapaStore {
 }
 
 window.store = new SapaStore();
+window.DEMO_ACCOUNTS = DEMO_ACCOUNTS;

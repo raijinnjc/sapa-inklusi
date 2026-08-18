@@ -1,5 +1,5 @@
 /**
- * SAPA INKLUSI - Master SPA Application Controller
+ * SAPA INKLUSI - Master SPA Application Controller with Auth Gateway
  * High-performance, Living UI, Zero-dependency Charting & Web Speech API
  */
 
@@ -84,7 +84,103 @@ function showToast(message, type = 'info') {
     }, 3200);
 }
 
-// SPA Navigation Router
+// ==========================================
+// AUTHENTICATION CONTROLLER
+// ==========================================
+function checkAuthState() {
+    const isLogged = window.store ? window.store.state.isLoggedIn : false;
+    const loginGate = document.getElementById('loginGate');
+    const mainApp = document.getElementById('mainAppWrapper');
+
+    if (isLogged) {
+        if (loginGate) loginGate.classList.add('hidden');
+        if (mainApp) mainApp.classList.remove('hidden');
+        updateUserProfileUI();
+        navigateTo(activeView || 'dashboard');
+    } else {
+        if (loginGate) loginGate.classList.remove('hidden');
+        if (mainApp) mainApp.classList.add('hidden');
+    }
+}
+
+function autoFillDemo(email) {
+    playSound('click');
+    const emailInput = document.getElementById('loginEmail');
+    const passwordInput = document.getElementById('loginPassword');
+    if (emailInput) emailInput.value = email;
+    if (passwordInput) passwordInput.value = 'password123';
+
+    // Highlight selected demo card
+    document.querySelectorAll('.demo-role-card').forEach(c => {
+        if (c.getAttribute('data-email') === email) {
+            c.classList.add('border-[#C85A32]', 'bg-[#FDF3EE]');
+            c.classList.remove('border-[#EAE4D9]', 'bg-white');
+        } else {
+            c.classList.remove('border-[#C85A32]', 'bg-[#FDF3EE]');
+            c.classList.add('border-[#EAE4D9]', 'bg-white');
+        }
+    });
+}
+
+function handleLoginSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim() || 'gpk@sapa.id';
+    
+    // Simulate auth loading
+    const btn = document.getElementById('loginSubmitBtn');
+    if (btn) {
+        btn.innerHTML = `<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span> Memverifikasi Kredensial...`;
+        btn.disabled = true;
+    }
+
+    setTimeout(() => {
+        const user = window.store.login(email);
+        if (btn) {
+            btn.innerHTML = `<span>Masuk ke Platform</span> <span class="material-symbols-outlined text-sm">arrow_forward</span>`;
+            btn.disabled = false;
+        }
+
+        checkAuthState();
+        showToast(`Selamat datang, ${user.name}! (${user.roleLabel})`, "success");
+    }, 600);
+}
+
+function handleLogout() {
+    playSound('click');
+    if (confirm("Apakah Anda yakin ingin keluar dari SAPA Inklusi?")) {
+        window.store.logout();
+        checkAuthState();
+        showToast("Anda telah berhasil keluar.", "info");
+    }
+}
+
+function updateUserProfileUI() {
+    const user = window.store.state.currentUser || {
+        name: window.store.state.userName,
+        roleLabel: window.store.state.userRoleLabel,
+        avatarInitials: 'SW',
+        avatarColor: '#C85A32'
+    };
+
+    const sideName = document.getElementById('sidebarUserName');
+    if (sideName) sideName.innerText = user.name;
+    const sideRole = document.getElementById('sidebarUserRole');
+    if (sideRole) sideRole.innerText = user.roleLabel;
+    const sideAvatar = document.getElementById('sidebarUserAvatar');
+    if (sideAvatar) {
+        sideAvatar.innerText = user.avatarInitials || 'SW';
+        sideAvatar.style.backgroundColor = user.avatarColor || '#C85A32';
+    }
+
+    const roleSelector = document.getElementById('topRoleSelector');
+    if (roleSelector) {
+        roleSelector.value = window.store.state.userRole;
+    }
+}
+
+// ==========================================
+// SPA NAVIGATION ROUTER
+// ==========================================
 function navigateTo(viewId) {
     playSound('click');
     activeView = viewId;
@@ -279,7 +375,7 @@ function submitQuiz(modId, correctIdx) {
     if (parseInt(selected.value) === correctIdx) {
         closeModal('quizModal');
         showToast("Selamat! Anda lulus asesmen dengan nilai 100.", "success");
-        openCertModal("Rina Maharani, S.Pd");
+        openCertModal(window.store.state.userName || "Rina Maharani, S.Pd");
     } else {
         showToast("Jawaban kurang tepat. Pelajari materi kembali dan coba lagi.", "error");
     }
@@ -732,5 +828,5 @@ function copyText(txt) {
 // Global Initialization
 window.addEventListener('DOMContentLoaded', () => {
     initVoiceAI();
-    navigateTo('dashboard');
+    checkAuthState();
 });
