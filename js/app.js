@@ -1,17 +1,36 @@
 /**
- * SAPA INKLUSI - Master SPA Application Controller
- * Silent & Responsive Interaction, Deep PRD Features, Chart.js & Web Speech API
+ * SAPA INKLUSI - Apple & Vercel-grade Master SPA Controller
+ * Spotlight Mouse Physics, Command Menu (⌘K), Token Streaming AI, Tabular Interpolated Counters
  */
 
-// Global App State
+// Global State
 let activeView = 'dashboard';
 let outcomeChartInstance = null;
 let donutChartInstance = null;
 let radarChartInstance = null;
 let speechRec = null;
 let isRec = false;
+let isDarkMode = false;
 
-// Toast Notification Manager (Silent & Clean)
+// ==========================================
+// SPOTLIGHT CURSOR PHYSICS (Vercel Signature)
+// ==========================================
+function initSpotlightPhysics() {
+    document.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+}
+
+// ==========================================
+// TOAST NOTIFICATIONS
+// ==========================================
 function showToast(message, type = 'info') {
     const container = document.getElementById('toastContainer');
     if (!container) return;
@@ -23,14 +42,14 @@ function showToast(message, type = 'info') {
         'error': 'error'
     };
     const colorMap = {
-        'success': 'bg-[#2E6F40] text-white',
-        'info': 'bg-[#C85A32] text-white',
-        'warning': 'bg-[#E29547] text-white',
-        'error': 'bg-[#BA1A1A] text-white'
+        'success': 'bg-[#2E6F40] text-white border border-[#2E6F40]',
+        'info': 'bg-[#C85A32] text-white border border-[#C85A32]',
+        'warning': 'bg-[#E29547] text-white border border-[#E29547]',
+        'error': 'bg-[#BA1A1A] text-white border border-[#BA1A1A]'
     };
 
     const toast = document.createElement('div');
-    toast.className = `toast-msg flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-xs font-semibold ${colorMap[type] || colorMap.info}`;
+    toast.className = `toast-msg flex items-center gap-2.5 px-4 py-2.5 rounded-2xl shadow-xl text-xs font-semibold ${colorMap[type] || colorMap.info} glass-panel`;
     toast.innerHTML = `
         <span class="material-symbols-outlined text-base">${iconMap[type] || 'info'}</span>
         <span>${message}</span>
@@ -40,10 +59,186 @@ function showToast(message, type = 'info') {
 
     setTimeout(() => {
         toast.style.opacity = '0';
-        toast.style.transform = 'translateY(10px)';
-        toast.style.transition = 'all 0.3s ease';
-        setTimeout(() => toast.remove(), 300);
-    }, 3200);
+        toast.style.transform = 'translateY(12px)';
+        toast.style.transition = 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(() => toast.remove(), 250);
+    }, 3000);
+}
+
+// ==========================================
+// ANIMATED COUNTER (Tabular Interpolation)
+// ==========================================
+function animateCounter(id, target, duration = 800, isDecimal = false) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease Out Quart
+        const ease = 1 - Math.pow(1 - progress, 4);
+        const current = start + (target - start) * ease;
+
+        if (isDecimal) {
+            el.innerText = current.toFixed(1) + '%';
+        } else {
+            el.innerText = Math.round(current);
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            if (isDecimal) el.innerText = target + '%';
+            else el.innerText = target;
+        }
+    }
+    requestAnimationFrame(update);
+}
+
+function triggerAllCounters() {
+    animateCounter('kpiPIBVal', 128, 700);
+    animateCounter('kpiSchoolVal', 46, 650);
+    animateCounter('kpiAssistVal', 92, 750);
+    animateCounter('kpiStudentVal', 214, 850);
+    animateCounter('kpiNorthStarVal', 73.9, 900, true);
+}
+
+// ==========================================
+// COMMAND PALETTE MENU (⌘K / Ctrl + K)
+// ==========================================
+const COMMAND_ACTIONS = [
+    { title: "Dashboard Pemantauan", category: "Navigasi", icon: "space_dashboard", action: () => navigateTo('dashboard') },
+    { title: "Kurikulum Microcredential (8 Modul)", category: "Navigasi", icon: "school", action: () => navigateTo('microcredential') },
+    { title: "Asisten AI Kelas & Voice", category: "Navigasi", icon: "smart_toy", action: () => navigateTo('asisten-ai') },
+    { title: "Direktori Pendamping Inklusi (PIB)", category: "Navigasi", icon: "diversity_3", action: () => navigateTo('pib') },
+    { title: "Sekolah Mitra & Matching Engine", category: "Navigasi", icon: "location_city", action: () => navigateTo('sekolah') },
+    { title: "Monitoring Pendampingan Harian", category: "Navigasi", icon: "fact_check", action: () => navigateTo('pendampingan') },
+    { title: "Laporan & Evaluasi Outcome", category: "Navigasi", icon: "insights", action: () => navigateTo('laporan') },
+    { title: "Buka Simulator Mobile PIB", category: "Aksi Cepat", icon: "phone_iphone", action: () => navigateTo('simulator') },
+    { title: "Catat Sesi Pendampingan Baru", category: "Aksi Cepat", icon: "add", action: () => openModal('addSessionModal') },
+    { title: "Daftarkan Sekolah Mitra Baru", category: "Aksi Cepat", icon: "add_business", action: () => openModal('addSchoolModal') },
+    { title: "Tambah Pendamping Inklusi Baru", category: "Aksi Cepat", icon: "person_add", action: () => openModal('addPibModal') },
+    { title: "Ekspor Seluruh Log Sesi ke CSV", category: "Data", icon: "download", action: () => { window.store.exportToCSV('sessions'); showToast("CSV Sesi diunduh", "success"); } },
+    { title: "Ganti Tema Gelap / Terang (Dark Mode)", category: "Tampilan", icon: "dark_mode", action: () => toggleTheme() },
+    { title: "Keluar dari Akun (Logout)", category: "Sesi", icon: "logout", action: () => handleLogout() }
+];
+
+function initCommandPalette() {
+    window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            toggleCommandMenu();
+        }
+        if (e.key === 'Escape') {
+            closeCommandMenu();
+        }
+    });
+}
+
+function toggleCommandMenu() {
+    const modal = document.getElementById('commandMenuModal');
+    if (!modal) return;
+    if (modal.classList.contains('hidden')) {
+        openCommandMenu();
+    } else {
+        closeCommandMenu();
+    }
+}
+
+function openCommandMenu() {
+    const modal = document.getElementById('commandMenuModal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    const input = document.getElementById('cmdInput');
+    if (input) {
+        input.value = '';
+        input.focus();
+    }
+    renderCommandItems(COMMAND_ACTIONS);
+}
+
+function closeCommandMenu() {
+    const modal = document.getElementById('commandMenuModal');
+    if (modal) modal.classList.add('hidden');
+}
+
+function filterCommandItems() {
+    const query = document.getElementById('cmdInput').value.toLowerCase().trim();
+    if (!query) {
+        renderCommandItems(COMMAND_ACTIONS);
+        return;
+    }
+    const filtered = COMMAND_ACTIONS.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.category.toLowerCase().includes(query)
+    );
+    renderCommandItems(filtered);
+}
+
+function renderCommandItems(items) {
+    const list = document.getElementById('cmdItemsList');
+    if (!list) return;
+    list.innerHTML = '';
+
+    if (items.length === 0) {
+        list.innerHTML = `<div class="p-6 text-center text-xs text-[#8F95A0]">Tidak ada hasil untuk perintah ini.</div>`;
+        return;
+    }
+
+    items.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = `cmd-item flex items-center justify-between p-3 rounded-xl cursor-pointer text-xs font-medium text-[#1C2024] dark:text-[#F2F4F8] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20] ${index === 0 ? 'bg-[#F6F3ED]/80 dark:bg-[#181B20]/80 text-[#C85A32]' : ''}`;
+        div.onclick = () => {
+            closeCommandMenu();
+            item.action();
+        };
+        div.innerHTML = `
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-base text-[#8F95A0]">${item.icon}</span>
+                <span>${item.title}</span>
+            </div>
+            <span class="text-[10px] text-[#8F95A0] uppercase tracking-wider font-bold">${item.category}</span>
+        `;
+        list.appendChild(div);
+    });
+}
+
+// ==========================================
+// DARK / LIGHT THEME TOGGLE
+// ==========================================
+function initTheme() {
+    const saved = localStorage.getItem('SAPA_THEME');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+}
+
+function toggleTheme() {
+    setTheme(!isDarkMode);
+    showToast(`Tema dialihkan ke mode ${isDarkMode ? 'Gelap (OLED)' : 'Terang'}`, 'info');
+}
+
+function setTheme(dark) {
+    isDarkMode = dark;
+    const root = document.documentElement;
+    const icon = document.getElementById('themeToggleIcon');
+    if (dark) {
+        root.classList.add('dark');
+        localStorage.setItem('SAPA_THEME', 'dark');
+        if (icon) icon.innerText = 'light_mode';
+    } else {
+        root.classList.remove('dark');
+        localStorage.setItem('SAPA_THEME', 'light');
+        if (icon) icon.innerText = 'dark_mode';
+    }
+    if (outcomeChartInstance || donutChartInstance || radarChartInstance) {
+        renderDashboardCharts();
+        renderOutcomeCharts();
+    }
 }
 
 // ==========================================
@@ -74,11 +269,11 @@ function autoFillDemo(email) {
     // Highlight selected demo card
     document.querySelectorAll('.demo-role-card').forEach(c => {
         if (c.getAttribute('data-email') === email) {
-            c.classList.add('border-[#C85A32]', 'bg-[#FDF3EE]');
-            c.classList.remove('border-[#EAE4D9]', 'bg-white');
+            c.classList.add('border-[#C85A32]', 'bg-[#FDF3EE]', 'dark:bg-[#241A16]');
+            c.classList.remove('border-[#EAE4D9]', 'bg-white', 'dark:bg-[#121418]');
         } else {
-            c.classList.remove('border-[#C85A32]', 'bg-[#FDF3EE]');
-            c.classList.add('border-[#EAE4D9]', 'bg-white');
+            c.classList.remove('border-[#C85A32]', 'bg-[#FDF3EE]', 'dark:bg-[#241A16]');
+            c.classList.add('border-[#EAE4D9]', 'bg-white', 'dark:bg-[#121418]');
         }
     });
 }
@@ -148,11 +343,11 @@ function navigateTo(viewId) {
     document.querySelectorAll('.nav-item').forEach(el => {
         const target = el.getAttribute('data-view');
         if (target === viewId) {
-            el.className = "nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold bg-[#C85A32]/10 text-[#C85A32] transition-all";
+            el.className = "nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold bg-[#C85A32]/10 text-[#C85A32] dark:text-[#E07A5F] transition-all";
             const icon = el.querySelector('.material-symbols-outlined');
             if (icon) icon.classList.add('fill');
         } else {
-            el.className = "nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED] transition-all";
+            el.className = "nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] dark:hover:text-[#E07A5F] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20] transition-all";
             const icon = el.querySelector('.material-symbols-outlined');
             if (icon) icon.classList.remove('fill');
         }
@@ -169,7 +364,10 @@ function navigateTo(viewId) {
     }
 
     // Trigger sub-renderers
-    if (viewId === 'dashboard') renderDashboardCharts();
+    if (viewId === 'dashboard') {
+        renderDashboardCharts();
+        triggerAllCounters();
+    }
     if (viewId === 'microcredential') renderModulesList();
     if (viewId === 'pib') renderPIBDirectory();
     if (viewId === 'sekolah') renderSchoolDirectory();
@@ -198,10 +396,10 @@ function applyDashboardFilter() {
         studentCount = Math.round(schoolCount * 4.6);
     }
 
-    setVal('kpiPIBVal', pibCount);
-    setVal('kpiSchoolVal', schoolCount);
-    setVal('kpiAssistVal', assistCount);
-    setVal('kpiStudentVal', studentCount);
+    animateCounter('kpiPIBVal', pibCount, 500);
+    animateCounter('kpiSchoolVal', schoolCount, 500);
+    animateCounter('kpiAssistVal', assistCount, 500);
+    animateCounter('kpiStudentVal', studentCount, 500);
 
     showToast(`Filter diterapkan: ${region} • ${level}`, 'info');
     renderDashboardCharts();
@@ -210,21 +408,17 @@ function applyDashboardFilter() {
 function resetDashboardFilter() {
     document.getElementById('filterDashRegion').value = 'ALL';
     document.getElementById('filterDashLevel').value = 'ALL';
-    setVal('kpiPIBVal', 128);
-    setVal('kpiSchoolVal', 46);
-    setVal('kpiAssistVal', 92);
-    setVal('kpiStudentVal', 214);
+    triggerAllCounters();
     showToast('Filter di-reset ke seluruh wilayah.', 'info');
     renderDashboardCharts();
 }
 
-function setVal(id, v) {
-    const el = document.getElementById(id);
-    if (el) el.innerText = v;
-}
-
 function renderDashboardCharts() {
     if (typeof Chart === 'undefined') return;
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const gridColor = isDark ? '#23272F' : '#F0ECE4';
+    const textColor = isDark ? '#9BA1AD' : '#656A73';
 
     // Longitudinal Monthly Bar Chart
     const ctxBar = document.getElementById('chartGrowth');
@@ -250,15 +444,15 @@ function renderDashboardCharts() {
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: '#1C2024',
+                        backgroundColor: isDark ? '#1C2027' : '#1C2024',
                         padding: 10,
                         titleFont: { family: 'Plus Jakarta Sans', size: 12 },
                         bodyFont: { family: 'Plus Jakarta Sans', size: 12 }
                     }
                 },
                 scales: {
-                    y: { grid: { color: '#F0ECE4' }, ticks: { color: '#8F95A0', font: { size: 10 } } },
-                    x: { grid: { display: false }, ticks: { color: '#656A73', font: { size: 11, weight: '600' } } }
+                    y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 10 } } },
+                    x: { grid: { display: false }, ticks: { color: textColor, font: { size: 11, weight: '600' } } }
                 }
             }
         });
@@ -282,11 +476,11 @@ function renderDashboardCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '72%',
+                cutout: '74%',
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: '#1C2024',
+                        backgroundColor: isDark ? '#1C2027' : '#1C2024',
                         padding: 10
                     }
                 }
@@ -306,22 +500,22 @@ function renderModulesList() {
 
     list.forEach(m => {
         const card = document.createElement('div');
-        card.className = "bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm hover-elevate flex flex-col justify-between";
+        card.className = "spotlight-card p-5 flex flex-col justify-between";
         card.innerHTML = `
-            <div>
+            <div class="relative z-10">
                 <div class="flex justify-between items-start mb-3">
                     <span class="w-7 h-7 rounded-lg bg-[#C85A32]/10 text-[#C85A32] font-bold text-xs flex items-center justify-center">${m.number}</span>
                     <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#5B6E43]/15 text-[#5B6E43]">${m.category}</span>
                 </div>
-                <h3 class="font-bold text-sm text-[#1C2024] mb-1.5 leading-snug">${m.title}</h3>
-                <p class="text-xs text-[#656A73] line-clamp-2 leading-relaxed mb-4">${m.description}</p>
+                <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] mb-1.5 leading-snug">${m.title}</h3>
+                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] line-clamp-2 leading-relaxed mb-4">${m.description}</p>
             </div>
-            <div class="pt-3 border-t border-[#F0ECE4] flex items-center justify-between">
+            <div class="pt-3 border-t border-[#F0ECE4] dark:border-[#23272F] flex items-center justify-between relative z-10">
                 <span class="text-[11px] text-[#8F95A0] font-medium flex items-center gap-1">
                     <span class="material-symbols-outlined text-sm">schedule</span> ${m.durationHours} Jam
                 </span>
                 <div class="flex gap-1.5">
-                    <button onclick="openModuleLessonModal('${m.id}')" class="px-2.5 py-1.5 rounded-lg bg-[#F6F3ED] hover:bg-[#EAE4D9] text-[#1C2024] text-xs font-bold transition-colors">
+                    <button onclick="openModuleLessonModal('${m.id}')" class="px-2.5 py-1.5 rounded-lg bg-[#F6F3ED] dark:bg-[#1C2027] hover:bg-[#EAE4D9] dark:hover:bg-[#282E38] text-[#1C2024] dark:text-[#F2F4F8] text-xs font-bold transition-colors">
                         Materi
                     </button>
                     <button onclick="takeQuizModal('${m.id}')" class="px-3 py-1.5 rounded-lg bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-colors">
@@ -347,14 +541,14 @@ function openModuleLessonModal(modId) {
     if (catEl) catEl.innerText = `${m.category} • Durasi: ${m.durationHours} Jam Pelatihan`;
     if (contentEl) {
         contentEl.innerHTML = `
-            <div class="prose text-xs text-[#1C2024] space-y-3 leading-relaxed">
-                <div class="p-3 bg-[#FDF3EE] rounded-xl border border-[#C85A32]/20 text-[#C85A32] font-medium">
+            <div class="prose text-xs text-[#1C2024] dark:text-[#F2F4F8] space-y-3 leading-relaxed">
+                <div class="p-3 bg-[#FDF3EE] dark:bg-[#241A16] rounded-xl border border-[#C85A32]/20 text-[#C85A32] dark:text-[#E07A5F] font-medium">
                     <strong>Tujuan Pembelajaran:</strong> ${m.description}
                 </div>
                 ${m.lessonContent || '<p>Materi pembelajaran interaktif siap dipelajari.</p>'}
-                <div class="p-3 bg-[#F6F3ED] rounded-xl border border-[#EAE4D9] mt-4">
-                    <h5 class="font-bold text-[#1C2024] mb-1">Studi Kasus Lapangan:</h5>
-                    <p class="text-[#656A73]">Bagaimana merancang instruksi diferensiasi jika ada 2 anak autisme di kelas reguler dengan 28 siswa lain?</p>
+                <div class="p-3 bg-[#F6F3ED] dark:bg-[#181B20] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] mt-4">
+                    <h5 class="font-bold text-[#1C2024] dark:text-[#F2F4F8] mb-1">Studi Kasus Lapangan:</h5>
+                    <p class="text-[#656A73] dark:text-[#9BA1AD]">Bagaimana merancang instruksi diferensiasi jika ada 2 anak autisme di kelas reguler dengan 28 siswa lain?</p>
                 </div>
             </div>
         `;
@@ -383,15 +577,15 @@ function takeQuizModal(modId) {
     
     content.innerHTML = `
         <div class="flex justify-between items-center mb-3">
-            <span class="text-xs font-bold text-[#C85A32]">Modul ${m.number} • Asesmen Uji Kompetensi</span>
+            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F]">Modul ${m.number} • Asesmen Uji Kompetensi</span>
             <button onclick="closeModal('quizModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
         </div>
-        <h3 class="font-bold text-base text-[#1C2024] mb-4">${m.title}</h3>
-        <div class="p-4 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] mb-4 text-xs font-medium text-[#1C2024]">
+        <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8] mb-4">${m.title}</h3>
+        <div class="p-4 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] mb-4 text-xs font-medium text-[#1C2024] dark:text-[#F2F4F8]">
             <p class="font-bold mb-3">${q.q}</p>
             <div class="space-y-2">
                 ${q.a.map((opt, idx) => `
-                    <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-[#EAE4D9] cursor-pointer hover:border-[#C85A32]">
+                    <label class="flex items-center gap-2 p-2.5 rounded-lg bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] cursor-pointer hover:border-[#C85A32]">
                         <input type="radio" name="quizAns" value="${idx}" class="text-[#C85A32] focus:ring-[#C85A32]">
                         <span>${opt}</span>
                     </label>
@@ -399,7 +593,7 @@ function takeQuizModal(modId) {
             </div>
         </div>
         <div class="flex justify-end gap-2">
-            <button onclick="closeModal('quizModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] text-xs font-bold">Batal</button>
+            <button onclick="closeModal('quizModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] text-xs font-bold">Batal</button>
             <button onclick="submitQuiz('${m.id}', ${q.correct})" class="px-5 py-2 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold">Kirim Jawaban</button>
         </div>
     `;
@@ -431,7 +625,7 @@ function openCertModal(userName = "Rina Maharani, S.Pd") {
 }
 
 // ==========================================
-// 3. ASISTEN AI KELAS VIEW
+// 3. ASISTEN AI KELAS (TOKEN STREAMING)
 // ==========================================
 function initVoiceAI() {
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
@@ -501,7 +695,7 @@ function sendAiMessage(promptText) {
     const feed = document.getElementById('aiChatFeed');
     if (!feed) return;
 
-    // User message
+    // User Message Bubble
     const userDiv = document.createElement('div');
     userDiv.className = "flex items-start gap-3 max-w-[85%] ml-auto justify-end";
     userDiv.innerHTML = `
@@ -513,28 +707,46 @@ function sendAiMessage(promptText) {
     feed.appendChild(userDiv);
     feed.scrollTop = feed.scrollHeight;
 
-    // AI Response
-    setTimeout(() => {
-        const resp = window.store.generateAI(promptText);
-        const aiDiv = document.createElement('div');
-        aiDiv.className = "flex items-start gap-3 max-w-[85%]";
-        aiDiv.innerHTML = `
-            <div class="w-7 h-7 rounded-full bg-[#C85A32] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
-            <div class="bg-white p-4 rounded-2xl rounded-tl-sm border border-[#EAE4D9] text-xs text-[#1C2024] leading-relaxed shadow-sm space-y-2">
-                <div class="whitespace-pre-line">${markedText(resp)}</div>
-                <div class="pt-2 border-t border-[#F0ECE4] flex gap-3">
-                    <button onclick="speakSpeech(\`${escapeJs(resp)}\`)" class="text-[#C85A32] hover:text-[#B04A25] font-bold flex items-center gap-1 text-[11px]">
-                        <span class="material-symbols-outlined text-sm">volume_up</span> Putar Suara (TTS)
-                    </button>
-                    <button onclick="copyText(\`${escapeJs(resp)}\`)" class="text-[#656A73] hover:text-[#1C2024] flex items-center gap-1 text-[11px]">
-                        <span class="material-symbols-outlined text-sm">content_copy</span> Salin
-                    </button>
-                </div>
+    // AI Response Stream Container
+    const fullResponse = window.store.generateAI(promptText);
+    const aiDiv = document.createElement('div');
+    aiDiv.className = "flex items-start gap-3 max-w-[85%]";
+    aiDiv.innerHTML = `
+        <div class="w-7 h-7 rounded-full bg-[#C85A32] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
+        <div class="bg-white dark:bg-[#121418] p-4 rounded-2xl rounded-tl-sm border border-[#EAE4D9] dark:border-[#23272F] text-xs text-[#1C2024] dark:text-[#F2F4F8] leading-relaxed shadow-sm space-y-2">
+            <div id="streamingResponseTarget" class="streaming-cursor whitespace-pre-line"></div>
+            <div id="streamingResponseActions" class="pt-2 border-t border-[#F0ECE4] dark:border-[#23272F] flex gap-3 hidden">
+                <button onclick="speakSpeech(\`${escapeJs(fullResponse)}\`)" class="text-[#C85A32] hover:text-[#B04A25] font-bold flex items-center gap-1 text-[11px]">
+                    <span class="material-symbols-outlined text-sm">volume_up</span> Putar Suara (TTS)
+                </button>
+                <button onclick="copyText(\`${escapeJs(fullResponse)}\`)" class="text-[#656A73] dark:text-[#9BA1AD] hover:text-[#1C2024] flex items-center gap-1 text-[11px]">
+                    <span class="material-symbols-outlined text-sm">content_copy</span> Salin
+                </button>
             </div>
-        `;
-        feed.appendChild(aiDiv);
-        feed.scrollTop = feed.scrollHeight;
-    }, 350);
+        </div>
+    `;
+    feed.appendChild(aiDiv);
+    feed.scrollTop = feed.scrollHeight;
+
+    // Stream Token by Token (ChatGPT / Vercel style)
+    const target = aiDiv.querySelector('#streamingResponseTarget');
+    const actions = aiDiv.querySelector('#streamingResponseActions');
+    const words = fullResponse.split(' ');
+    let currentIdx = 0;
+    let accumulated = '';
+
+    const streamInterval = setInterval(() => {
+        if (currentIdx < words.length) {
+            accumulated += (currentIdx === 0 ? '' : ' ') + words[currentIdx];
+            target.innerHTML = markedText(accumulated);
+            feed.scrollTop = feed.scrollHeight;
+            currentIdx++;
+        } else {
+            clearInterval(streamInterval);
+            target.classList.remove('streaming-cursor');
+            if (actions) actions.classList.remove('hidden');
+        }
+    }, 28);
 }
 
 function speakSpeech(text) {
@@ -562,19 +774,19 @@ function renderPIBDirectory() {
     list.forEach((p, idx) => {
         const isCert = p.status === 'BERSERTIFIKAT';
         const tr = document.createElement('tr');
-        tr.className = `hover:bg-[#FBF9F5] transition-colors cursor-pointer border-b border-[#F0ECE4] ${idx === 0 ? 'bg-[#FDF3EE]/50' : ''}`;
+        tr.className = `hover:bg-[#FBF9F5] dark:hover:bg-[#181B20] transition-colors cursor-pointer border-b border-[#F0ECE4] dark:border-[#23272F] ${idx === 0 ? 'bg-[#FDF3EE]/40 dark:bg-[#241A16]/40' : ''}`;
         tr.onclick = () => selectPibDrawer(p.id);
         tr.innerHTML = `
             <td class="py-3.5 px-4">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs" style="background-color: ${p.bgColor}">${p.initials}</div>
                     <div>
-                        <div class="font-bold text-xs text-[#1C2024]">${p.name}</div>
+                        <div class="font-bold text-xs text-[#1C2024] dark:text-[#F2F4F8]">${p.name}</div>
                         <div class="text-[10px] text-[#8F95A0]">${p.email}</div>
                     </div>
                 </div>
             </td>
-            <td class="py-3.5 px-4 text-xs text-[#656A73]">${p.region}</td>
+            <td class="py-3.5 px-4 text-xs text-[#656A73] dark:text-[#9BA1AD]">${p.region}</td>
             <td class="py-3.5 px-4">
                 <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${isCert ? 'bg-[#5B6E43]/15 text-[#5B6E43]' : 'bg-[#C85A32]/10 text-[#C85A32]'}">
                     <span class="material-symbols-outlined text-xs">${isCert ? 'verified' : 'hourglass_top'}</span>
@@ -582,9 +794,9 @@ function renderPIBDirectory() {
                 </span>
             </td>
             <td class="py-3.5 px-4">
-                <span class="text-[11px] px-2 py-0.5 rounded bg-[#F6F3ED] text-[#1C2024] font-medium">${p.competencies[0]}</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#1C2027] text-[#1C2024] dark:text-[#F2F4F8] font-medium">${p.competencies[0]}</span>
             </td>
-            <td class="py-3.5 px-4 text-xs font-semibold text-[#1C2024]">${p.assignedSchool}</td>
+            <td class="py-3.5 px-4 text-xs font-semibold text-[#1C2024] dark:text-[#F2F4F8]">${p.assignedSchool}</td>
             <td class="py-3.5 px-4">
                 <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${p.availability === 'TERSEDIA' ? 'bg-[#5B6E43]/15 text-[#5B6E43]' : 'bg-[#8F95A0]/20 text-[#656A73]'}">
                     <span class="w-1.5 h-1.5 rounded-full ${p.availability === 'TERSEDIA' ? 'bg-[#5B6E43]' : 'bg-[#656A73]'}"></span>
@@ -609,7 +821,7 @@ function selectPibDrawer(id) {
     document.getElementById('drawerRating').innerText = `⭐ ${p.rating} (${p.sessionsCompleted} sesi)`;
 
     const comps = document.getElementById('drawerComps');
-    comps.innerHTML = p.competencies.map(c => `<span class="px-2 py-0.5 rounded bg-[#F6F3ED] text-xs font-medium">${c}</span>`).join('');
+    comps.innerHTML = p.competencies.map(c => `<span class="px-2 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#1C2027] text-xs font-medium">${c}</span>`).join('');
 }
 
 function filterPib() {
@@ -639,26 +851,26 @@ function renderSchoolDirectory() {
     list.forEach(s => {
         const isNeed = s.status === 'BUTUH_PENDAMPING';
         const row = document.createElement('div');
-        row.className = "p-4 rounded-xl border border-[#EAE4D9] bg-white hover-elevate cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center gap-3";
+        row.className = "spotlight-card p-4 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center gap-3";
         row.onclick = () => selectSchoolDetail(s.id);
         row.innerHTML = `
-            <div>
+            <div class="relative z-10">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="font-bold text-sm text-[#1C2024]">${s.name}</span>
+                    <span class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">${s.name}</span>
                     <span class="text-[10px] font-bold px-2 py-0.5 rounded ${s.level === 'SD' ? 'bg-[#C85A32]/10 text-[#C85A32]' : 'bg-[#5B6E43]/10 text-[#5B6E43]'}">${s.level}</span>
                     <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${isNeed ? 'bg-[#BA1A1A]/10 text-[#BA1A1A]' : 'bg-[#5B6E43]/15 text-[#5B6E43]'}">${isNeed ? 'Butuh PIB' : 'Terpenuhi'}</span>
                 </div>
-                <p class="text-xs text-[#656A73] flex items-center gap-2">
+                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] flex items-center gap-2">
                     <span>${s.region} • ${s.distanceKm} km</span>
                     <span>• Siswa: ${s.studentsCount} anak</span>
                 </p>
             </div>
-            <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+            <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end relative z-10">
                 <div class="text-right">
-                    <span class="text-xs font-bold text-[#C85A32] block">${s.matchingScore}% Match</span>
+                    <span class="text-xs font-bold text-[#C85A32] block tabular-nums">${s.matchingScore}% Match</span>
                     <span class="text-[10px] text-[#8F95A0]">Tugas: ${s.assignedPIB}/${s.requiredPIB} PIB</span>
                 </div>
-                <button onclick="event.stopPropagation(); openAssignModal('${s.id}')" class="px-3.5 py-1.5 rounded-lg bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-colors">
+                <button onclick="event.stopPropagation(); openAssignModal('${s.id}')" class="px-3.5 py-1.5 rounded-lg bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-colors shadow-sm">
                     Tugaskan
                 </button>
             </div>
@@ -727,13 +939,13 @@ function renderSessionsList() {
         const isDone = s.status === 'SELESAI';
         const isVerif = s.verificationStatus === 'TERVERIFIKASI';
         const tr = document.createElement('tr');
-        tr.className = "hover:bg-[#FBF9F5] transition-colors border-b border-[#F0ECE4] cursor-pointer";
+        tr.className = "hover:bg-[#FBF9F5] dark:hover:bg-[#181B20] transition-colors border-b border-[#F0ECE4] dark:border-[#23272F] cursor-pointer";
         tr.onclick = () => openSessionDetailModal(s.id);
         tr.innerHTML = `
-            <td class="py-3 px-4 text-xs font-semibold text-[#1C2024]">${s.date}<br><span class="text-[10px] text-[#8F95A0]">${s.time}</span></td>
-            <td class="py-3 px-4 text-xs font-bold text-[#1C2024]">${s.pibName}</td>
-            <td class="py-3 px-4 text-xs text-[#656A73]">${s.schoolName}<br><span class="text-[10px] font-medium text-[#1C2024]">${s.className} (${s.studentName})</span></td>
-            <td class="py-3 px-4 text-xs text-[#1C2024] max-w-[220px] truncate" title="${s.notes}">${s.activity}</td>
+            <td class="py-3 px-4 text-xs font-semibold text-[#1C2024] dark:text-[#F2F4F8]">${s.date}<br><span class="text-[10px] text-[#8F95A0]">${s.time}</span></td>
+            <td class="py-3 px-4 text-xs font-bold text-[#1C2024] dark:text-[#F2F4F8]">${s.pibName}</td>
+            <td class="py-3 px-4 text-xs text-[#656A73] dark:text-[#9BA1AD]">${s.schoolName}<br><span class="text-[10px] font-medium text-[#1C2024] dark:text-[#F2F4F8]">${s.className} (${s.studentName})</span></td>
+            <td class="py-3 px-4 text-xs text-[#1C2024] dark:text-[#F2F4F8] max-w-[220px] truncate" title="${s.notes}">${s.activity}</td>
             <td class="py-3 px-4">
                 <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${isDone ? 'bg-[#5B6E43]/15 text-[#5B6E43]' : 'bg-[#C85A32]/10 text-[#C85A32]'}">
                     ${s.status}
@@ -745,7 +957,7 @@ function renderSessionsList() {
                         <span class="material-symbols-outlined text-xs">verified</span> Terverifikasi
                     </span>
                 ` : `
-                    <button onclick="verifySessionAction('${s.id}')" class="px-3 py-1 rounded-lg bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-colors">
+                    <button onclick="verifySessionAction('${s.id}')" class="px-3 py-1 rounded-lg bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-colors shadow-sm">
                         Setujui
                     </button>
                 `}
@@ -774,7 +986,7 @@ function openSessionDetailModal(sessionId) {
         if (s.verificationStatus === 'TERVERIFIKASI') {
             verifBadge.innerHTML = `<span class="bg-[#5B6E43]/15 text-[#5B6E43] px-3 py-1 rounded-full font-bold text-xs flex items-center gap-1"><span class="material-symbols-outlined text-sm">verified</span> Terverifikasi GPK</span>`;
         } else {
-            verifBadge.innerHTML = `<button onclick="verifySessionAction('${s.id}'); closeModal('sessionDetailModal');" class="bg-[#C85A32] hover:bg-[#B04A25] text-white px-4 py-1.5 rounded-xl font-bold text-xs">Verifikasi Sesi Ini</button>`;
+            verifBadge.innerHTML = `<button onclick="verifySessionAction('${s.id}'); closeModal('sessionDetailModal');" class="bg-[#C85A32] hover:bg-[#B04A25] text-white px-4 py-1.5 rounded-xl font-bold text-xs shadow-sm">Verifikasi Sesi Ini</button>`;
         }
     }
 
@@ -803,6 +1015,10 @@ function verifyAllAction() {
 // ==========================================
 function renderOutcomeCharts() {
     if (typeof Chart === 'undefined') return;
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const gridColor = isDark ? '#23272F' : '#F0ECE4';
+    const pointLabelColor = isDark ? '#F2F4F8' : '#1C2024';
 
     // Outcome Radar Chart (4 core indicators)
     const ctxRadar = document.getElementById('chartOutcomeRadar');
@@ -837,9 +1053,9 @@ function renderOutcomeCharts() {
                 },
                 scales: {
                     r: {
-                        angleLines: { color: '#EAE4D9' },
-                        grid: { color: '#F0ECE4' },
-                        pointLabels: { font: { size: 11, weight: 'bold' }, color: '#1C2024' },
+                        angleLines: { color: gridColor },
+                        grid: { color: gridColor },
+                        pointLabels: { font: { size: 11, weight: 'bold' }, color: pointLabelColor },
                         suggestedMin: 40,
                         suggestedMax: 100
                     }
@@ -874,6 +1090,11 @@ function closeModal(id) {
     if (m) m.classList.add('hidden');
 }
 
+function openModal(id) {
+    const m = document.getElementById(id);
+    if (m) m.classList.remove('hidden');
+}
+
 function escapeHtml(text) {
     const d = document.createElement('div');
     d.textContent = text;
@@ -897,6 +1118,9 @@ function copyText(txt) {
 
 // Global Initialization
 window.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initSpotlightPhysics();
+    initCommandPalette();
     initVoiceAI();
     checkAuthState();
 });

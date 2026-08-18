@@ -11,14 +11,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
     
-    <!-- Tailwind CSS CDN & Chart.js -->
+    <!-- Tailwind CSS CDN (with class dark mode) & Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Custom Living Aesthetic CSS -->
+    <!-- Custom Apple & Vercel-grade Aesthetic CSS -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body class="bg-[#FBF9F5] text-[#1C2024] antialiased min-h-screen flex flex-col selection:bg-[#C85A32] selection:text-white">
+<body class="bg-[#FBF9F5] dark:bg-[#0A0B0D] text-[#1C2024] dark:text-[#F2F4F8] antialiased min-h-screen flex flex-col selection:bg-[#C85A32] selection:text-white">
 
     <!-- Toast Notification Container -->
     <div id="toastContainer"></div>
@@ -26,13 +31,13 @@
     <!-- ========================================================================= -->
     <!-- 0. LOGIN GATEWAY (PORTAL AUTENTIKASI UTAMA)                               -->
     <!-- ========================================================================= -->
-    <section id="loginGate" class="min-h-screen w-full flex items-center justify-center p-4 md:p-8 bg-[#FBF9F5] relative overflow-hidden">
+    <section id="loginGate" class="min-h-screen w-full flex items-center justify-center p-4 md:p-8 bg-[#FBF9F5] dark:bg-[#0A0B0D] relative overflow-hidden">
         
         <!-- Ambient Decorative Circles -->
         <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#C85A32]/10 blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#5B6E43]/10 blur-3xl pointer-events-none"></div>
 
-        <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl border border-[#EAE4D9] shadow-2xl overflow-hidden relative z-10">
+        <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-[#121418] rounded-3xl border border-[#EAE4D9] dark:border-[#23272F] shadow-2xl overflow-hidden relative z-10">
             
             <!-- Left: Login Form & Demo Roles -->
             <div class="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between space-y-6">
@@ -45,48 +50,48 @@
                             </svg>
                         </div>
                         <div>
-                            <h1 class="font-heading font-extrabold text-lg text-[#C85A32] tracking-tight leading-none">SAPA Inklusi</h1>
+                            <h1 class="font-heading font-extrabold text-lg text-[#C85A32] dark:text-[#E07A5F] tracking-tight leading-none">SAPA Inklusi</h1>
                             <span class="text-[10px] text-[#8F95A0] font-semibold tracking-wider uppercase">Portal Layanan Pendidikan Inklusif</span>
                         </div>
                     </div>
 
-                    <h2 class="font-heading font-extrabold text-2xl text-[#1C2024]">Selamat Datang Kembali</h2>
-                    <p class="text-xs text-[#656A73] mt-1">Masuk untuk mengelola pendampingan, kurikulum kompetensi, dan evaluasi hasil belajar.</p>
+                    <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8]">Selamat Datang Kembali</h2>
+                    <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] mt-1">Masuk untuk mengelola pendampingan, kurikulum kompetensi, dan evaluasi hasil belajar.</p>
                 </div>
 
                 <!-- 1-Click Role Fill Selection -->
                 <div>
                     <label class="text-[11px] font-bold text-[#8F95A0] uppercase tracking-wider block mb-2">Pilih Akun Demo Cepat (1-Klik):</label>
                     <div class="grid grid-cols-2 gap-2 text-xs">
-                        <div onclick="autoFillDemo('gpk@sapa.id')" data-email="gpk@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#C85A32] bg-[#FDF3EE] cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                        <div onclick="autoFillDemo('gpk@sapa.id')" data-email="gpk@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#C85A32] bg-[#FDF3EE] dark:bg-[#241A16] cursor-pointer flex items-center gap-2">
                             <span class="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">GPK</span>
                             <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] block truncate">Dr. Sari Wulandari</span>
-                                <span class="text-[10px] text-[#656A73] block truncate">GPK Koordinator</span>
+                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Dr. Sari Wulandari</span>
+                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">GPK Koordinator</span>
                             </div>
                         </div>
 
-                        <div onclick="autoFillDemo('sekolah@sapa.id')" data-email="sekolah@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#EAE4D9] bg-white cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                        <div onclick="autoFillDemo('sekolah@sapa.id')" data-email="sekolah@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#121418] cursor-pointer flex items-center gap-2">
                             <span class="w-7 h-7 rounded-lg bg-[#5B6E43] text-white flex items-center justify-center font-bold text-xs shrink-0">SCH</span>
                             <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] block truncate">Ibu Nurhayati</span>
-                                <span class="text-[10px] text-[#656A73] block truncate">SDN Harapan 1</span>
+                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Ibu Nurhayati</span>
+                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">SDN Harapan 1</span>
                             </div>
                         </div>
 
-                        <div onclick="autoFillDemo('dinas@sapa.id')" data-email="dinas@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#EAE4D9] bg-white cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                        <div onclick="autoFillDemo('dinas@sapa.id')" data-email="dinas@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#121418] cursor-pointer flex items-center gap-2">
                             <span class="w-7 h-7 rounded-lg bg-[#E29547] text-white flex items-center justify-center font-bold text-xs shrink-0">DIS</span>
                             <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] block truncate">Drs. Hendra Kusuma</span>
-                                <span class="text-[10px] text-[#656A73] block truncate">Dinas Pendidikan</span>
+                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Drs. Hendra Kusuma</span>
+                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">Dinas Pendidikan</span>
                             </div>
                         </div>
 
-                        <div onclick="autoFillDemo('pib@sapa.id')" data-email="pib@sapa.id" class="demo-role-card p-2.5 rounded-xl border border-[#EAE4D9] bg-white cursor-pointer hover-elevate transition-all flex items-center gap-2">
+                        <div onclick="autoFillDemo('pib@sapa.id')" data-email="pib@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#121418] cursor-pointer flex items-center gap-2">
                             <span class="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">PIB</span>
                             <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] block truncate">Rina Maharani</span>
-                                <span class="text-[10px] text-[#656A73] block truncate">Pendamping Inklusi</span>
+                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Rina Maharani</span>
+                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">Pendamping Inklusi</span>
                             </div>
                         </div>
                     </div>
@@ -95,18 +100,18 @@
                 <!-- Form Login -->
                 <form onsubmit="handleLoginSubmit(event)" class="space-y-3.5 text-xs">
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Email / NIP / ID SAPA</label>
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Email / NIP / ID SAPA</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#8F95A0] text-base">person</span>
-                            <input id="loginEmail" type="text" required value="gpk@sapa.id" placeholder="nama@sapa.id atau NIP..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
+                            <input id="loginEmail" type="text" required value="gpk@sapa.id" placeholder="nama@sapa.id atau NIP..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
                         </div>
                     </div>
 
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Kata Sandi</label>
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kata Sandi</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#8F95A0] text-base">lock</span>
-                            <input id="loginPassword" type="password" required value="password123" placeholder="••••••••" class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
+                            <input id="loginPassword" type="password" required value="password123" placeholder="••••••••" class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
                             <button type="button" onclick="const p=document.getElementById('loginPassword'); p.type=p.type==='password'?'text':'password';" class="absolute right-3 top-2.5 text-[#8F95A0] hover:text-[#1C2024]">
                                 <span class="material-symbols-outlined text-base">visibility</span>
                             </button>
@@ -114,11 +119,11 @@
                     </div>
 
                     <div class="flex items-center justify-between text-xs pt-1">
-                        <label class="flex items-center gap-2 cursor-pointer text-[#656A73]">
+                        <label class="flex items-center gap-2 cursor-pointer text-[#656A73] dark:text-[#9BA1AD]">
                             <input type="checkbox" checked class="rounded text-[#C85A32] focus:ring-[#C85A32]">
                             <span>Ingat saya di perangkat ini</span>
                         </label>
-                        <a href="javascript:void(0)" onclick="showToast('Fitur reset sandi telah dikirim ke email terdaftar.', 'info')" class="text-[#C85A32] font-semibold hover:underline">Lupa sandi?</a>
+                        <a href="javascript:void(0)" onclick="showToast('Fitur reset sandi telah dikirim ke email terdaftar.', 'info')" class="text-[#C85A32] dark:text-[#E07A5F] font-semibold hover:underline">Lupa sandi?</a>
                     </div>
 
                     <div class="space-y-2 pt-2">
@@ -127,7 +132,7 @@
                             <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </button>
 
-                        <button type="button" onclick="autoFillDemo('gpk@sapa.id'); handleLoginSubmit(event);" class="w-full py-2.5 rounded-xl border border-[#EAE4D9] hover:bg-[#F6F3ED] text-[#1C2024] font-semibold text-xs transition-all flex items-center justify-center gap-2">
+                        <button type="button" onclick="autoFillDemo('gpk@sapa.id'); handleLoginSubmit(event);" class="w-full py-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20] text-[#1C2024] dark:text-[#F2F4F8] font-semibold text-xs transition-all flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined text-base text-[#5B6E43]">verified_user</span>
                             <span>Masuk dengan Akun Belajar.id / SSO</span>
                         </button>
@@ -213,7 +218,7 @@
     <div id="mainAppWrapper" class="flex flex-1 hidden">
         
         <!-- SIDEBAR NAVIGATION -->
-        <aside class="w-64 fixed left-0 top-0 h-screen bg-[#F6F3ED] border-r border-[#EAE4D9] flex flex-col justify-between py-6 px-4 z-40">
+        <aside class="w-64 fixed left-0 top-0 h-screen bg-[#F6F3ED] dark:bg-[#121418] border-r border-[#EAE4D9] dark:border-[#23272F] flex flex-col justify-between py-6 px-4 z-40 transition-colors">
             <div>
                 <!-- Brand Emblem -->
                 <div class="flex items-center gap-3 px-3 mb-8 cursor-pointer" onclick="navigateTo('dashboard')">
@@ -223,38 +228,38 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="font-heading font-extrabold text-base text-[#C85A32] tracking-tight leading-none">SAPA Inklusi</h1>
+                        <h1 class="font-heading font-extrabold text-base text-[#C85A32] dark:text-[#E07A5F] tracking-tight leading-none">SAPA Inklusi</h1>
                         <span class="text-[10px] text-[#8F95A0] font-semibold tracking-wider uppercase">Inclusive Education</span>
                     </div>
                 </div>
 
                 <!-- Navigation List -->
                 <nav class="space-y-1 text-xs">
-                    <a href="javascript:void(0)" onclick="navigateTo('dashboard')" data-view="dashboard" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold bg-[#C85A32]/10 text-[#C85A32]">
+                    <a href="javascript:void(0)" onclick="navigateTo('dashboard')" data-view="dashboard" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold bg-[#C85A32]/10 text-[#C85A32] dark:text-[#E07A5F]">
                         <span class="material-symbols-outlined text-lg fill">space_dashboard</span>
                         <span>Dashboard Pemantauan</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('microcredential')" data-view="microcredential" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                    <a href="javascript:void(0)" onclick="navigateTo('microcredential')" data-view="microcredential" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-lg">school</span>
                         <span>Microcredential (8 Modul)</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('asisten-ai')" data-view="asisten-ai" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                    <a href="javascript:void(0)" onclick="navigateTo('asisten-ai')" data-view="asisten-ai" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-lg">smart_toy</span>
                         <span>Asisten AI Kelas</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('pib')" data-view="pib" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                    <a href="javascript:void(0)" onclick="navigateTo('pib')" data-view="pib" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-lg">diversity_3</span>
                         <span>Direktori PIB</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('sekolah')" data-view="sekolah" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                    <a href="javascript:void(0)" onclick="navigateTo('sekolah')" data-view="sekolah" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-lg">location_city</span>
                         <span>Sekolah Mitra & Matching</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('pendampingan')" data-view="pendampingan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                    <a href="javascript:void(0)" onclick="navigateTo('pendampingan')" data-view="pendampingan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-lg">fact_check</span>
                         <span>Monitoring Pendampingan</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('laporan')" data-view="laporan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                    <a href="javascript:void(0)" onclick="navigateTo('laporan')" data-view="laporan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-lg">insights</span>
                         <span>Laporan & Outcome</span>
                     </a>
@@ -262,12 +267,12 @@
             </div>
 
             <!-- Bottom Navigation Items -->
-            <div class="space-y-1 pt-4 border-t border-[#EAE4D9] text-xs">
-                <a href="javascript:void(0)" onclick="navigateTo('simulator')" data-view="simulator" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+            <div class="space-y-1 pt-4 border-t border-[#EAE4D9] dark:border-[#23272F] text-xs">
+                <a href="javascript:void(0)" onclick="navigateTo('simulator')" data-view="simulator" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                     <span class="material-symbols-outlined text-lg">phone_iphone</span>
                     <span>Simulator Mobile PIB</span>
                 </a>
-                <a href="javascript:void(0)" onclick="navigateTo('pengaturan')" data-view="pengaturan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] hover:text-[#C85A32] hover:bg-[#F6F3ED]">
+                <a href="javascript:void(0)" onclick="navigateTo('pengaturan')" data-view="pengaturan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
                     <span class="material-symbols-outlined text-lg">settings</span>
                     <span>Pengaturan & Hak Akses</span>
                 </a>
@@ -275,15 +280,15 @@
                 <!-- User Profile Badge & Logout -->
                 <div class="pt-3 flex items-center justify-between px-2">
                     <div class="flex items-center gap-2.5 overflow-hidden">
-                        <div id="sidebarUserAvatar" class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        <div id="sidebarUserAvatar" class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
                             SW
                         </div>
                         <div class="overflow-hidden">
-                            <p id="sidebarUserName" class="font-bold text-xs text-[#1C2024] truncate">Dr. Sari Wulandari</p>
+                            <p id="sidebarUserName" class="font-bold text-xs text-[#1C2024] dark:text-[#F2F4F8] truncate">Dr. Sari Wulandari</p>
                             <p id="sidebarUserRole" class="text-[10px] text-[#8F95A0] truncate">GPK Koordinator</p>
                         </div>
                     </div>
-                    <button onclick="handleLogout()" title="Keluar / Logout" class="text-[#8F95A0] hover:text-[#BA1A1A] transition-colors p-1 rounded-lg hover:bg-white">
+                    <button onclick="handleLogout()" title="Keluar / Logout" class="text-[#8F95A0] hover:text-[#BA1A1A] transition-colors p-1.5 rounded-lg hover:bg-white dark:hover:bg-[#181B20]">
                         <span class="material-symbols-outlined text-base">logout</span>
                     </button>
                 </div>
@@ -293,34 +298,40 @@
         <!-- MAIN CONTENT AREA -->
         <div class="ml-64 flex-1 flex flex-col min-h-screen">
             
-            <!-- Top Header -->
-            <header class="sticky top-0 z-30 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#EAE4D9] h-16 flex items-center justify-between px-8">
-                <!-- Search Box -->
-                <div class="flex items-center gap-2 bg-[#F6F3ED] px-4 py-2 rounded-full border border-[#EAE4D9] w-72 focus-within:border-[#C85A32] focus-within:bg-white transition-all">
-                    <span class="material-symbols-outlined text-[#8F95A0] text-sm">search</span>
-                    <input type="text" placeholder="Cari PIB, sekolah, modul..." class="bg-transparent border-none text-xs text-[#1C2024] outline-none w-full placeholder:text-[#8F95A0]">
-                </div>
+            <!-- Top Header with Command Palette Shortcut & Theme Switcher -->
+            <header class="sticky top-0 z-30 bg-[#FBF9F5]/85 dark:bg-[#0A0B0D]/85 backdrop-blur-md border-b border-[#EAE4D9] dark:border-[#23272F] h-16 flex items-center justify-between px-8 transition-colors">
+                
+                <!-- Command Palette Search Trigger (⌘K) -->
+                <button onclick="openCommandMenu()" class="flex items-center justify-between gap-3 bg-[#F6F3ED] dark:bg-[#181B20] hover:bg-white dark:hover:bg-[#20242B] px-4 py-2 rounded-2xl border border-[#EAE4D9] dark:border-[#23272F] w-80 text-left transition-all shadow-sm group">
+                    <div class="flex items-center gap-2 text-xs text-[#8F95A0]">
+                        <span class="material-symbols-outlined text-sm">search</span>
+                        <span>Cari atau ketik perintah...</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <kbd class="px-1.5 py-0.5 rounded bg-white dark:bg-[#282E38] border border-[#EAE4D9] dark:border-[#383E4C] text-[10px] font-mono text-[#8F95A0]">⌘K</kbd>
+                    </div>
+                </button>
 
-                <!-- Right Actions & Role Simulation -->
-                <div class="flex items-center gap-4">
-                    <div class="flex items-center gap-2 bg-[#F6F3ED] p-1 rounded-xl border border-[#EAE4D9]">
+                <!-- Right Actions, Role Simulation & Dark Mode Toggle -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 bg-[#F6F3ED] dark:bg-[#181B20] p-1 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
                         <span class="text-[10px] font-bold text-[#8F95A0] px-2">Peran:</span>
-                        <select id="topRoleSelector" onchange="window.store.setRole(this.value); updateUserProfileUI(); showToast('Peran aktif dialihkan ke: ' + this.value, 'info')" class="bg-transparent text-xs font-bold text-[#C85A32] outline-none cursor-pointer pr-2">
-                            <option value="GPK_KOORDINATOR">GPK Koordinator</option>
-                            <option value="SEKOLAH_MITRA">Sekolah Mitra</option>
-                            <option value="DINAS_PENDIDIKAN">Dinas Pendidikan</option>
-                            <option value="PIB">Pendamping PIB</option>
+                        <select id="topRoleSelector" onchange="window.store.setRole(this.value); updateUserProfileUI(); showToast('Peran aktif dialihkan ke: ' + this.value, 'info')" class="bg-transparent text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] outline-none cursor-pointer pr-2">
+                            <option value="GPK_KOORDINATOR" class="dark:bg-[#181B20]">GPK Koordinator</option>
+                            <option value="SEKOLAH_MITRA" class="dark:bg-[#181B20]">Sekolah Mitra</option>
+                            <option value="DINAS_PENDIDIKAN" class="dark:bg-[#181B20]">Dinas Pendidikan</option>
+                            <option value="PIB" class="dark:bg-[#181B20]">Pendamping PIB</option>
                         </select>
                     </div>
 
-                    <button onclick="navigateTo('simulator')" class="px-3.5 py-1.5 rounded-full bg-[#C85A32]/10 hover:bg-[#C85A32] hover:text-white text-[#C85A32] text-xs font-bold transition-all flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-sm">phone_iphone</span>
-                        <span>Mode Mobile PIB</span>
+                    <!-- Dark Mode Toggle Button -->
+                    <button onclick="toggleTheme()" title="Ganti Tema (Gelap/Terang)" class="w-9 h-9 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] hover:bg-[#EAE4D9] dark:hover:bg-[#282E38] border border-[#EAE4D9] dark:border-[#23272F] flex items-center justify-center text-[#656A73] dark:text-[#F2F4F8] transition-colors">
+                        <span id="themeToggleIcon" class="material-symbols-outlined text-lg">dark_mode</span>
                     </button>
 
-                    <button onclick="showToast('Sistem sinkronisasi online & aktif.', 'success')" class="w-8 h-8 rounded-full bg-[#F6F3ED] hover:bg-[#EAE4D9] flex items-center justify-center text-[#656A73] transition-colors relative">
-                        <span class="material-symbols-outlined text-base">notifications</span>
-                        <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#C85A32]"></span>
+                    <button onclick="navigateTo('simulator')" class="px-3.5 py-1.5 rounded-full bg-[#C85A32]/10 hover:bg-[#C85A32] hover:text-white text-[#C85A32] dark:text-[#E07A5F] text-xs font-bold transition-all flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">phone_iphone</span>
+                        <span>Mode Mobile PIB</span>
                     </button>
                 </div>
             </header>
@@ -333,9 +344,9 @@
                     <!-- Heading -->
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Ringkasan Ekosistem Inklusif</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Dashboard Pemantauan Nasional</h2>
-                            <p class="text-xs text-[#656A73]">Pemantauan real-time ketersediaan PIB, penempatan sekolah, dan capaian outcome pembelajaran.</p>
+                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Ringkasan Ekosistem Inklusif</span>
+                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Dashboard Pemantauan Nasional</h2>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Pemantauan real-time ketersediaan PIB, penempatan sekolah, dan capaian outcome pembelajaran.</p>
                         </div>
                         <div class="flex gap-2">
                             <button onclick="openModal('addSessionModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
@@ -345,11 +356,11 @@
                     </div>
 
                     <!-- Interactive Filter Strip -->
-                    <div class="bg-white p-4 rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-wrap items-center justify-between gap-3">
-                        <div class="flex flex-wrap items-center gap-3">
+                    <div class="spotlight-card p-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap items-center gap-3 relative z-10">
                             <div class="flex items-center gap-2">
                                 <span class="text-[11px] font-bold text-[#8F95A0]">Wilayah:</span>
-                                <select id="filterDashRegion" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs font-semibold text-[#1C2024] outline-none">
+                                <select id="filterDashRegion" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-semibold text-[#1C2024] dark:text-[#F2F4F8] outline-none">
                                     <option value="ALL">Semua Wilayah</option>
                                     <option value="Sukamaju">Sukamaju</option>
                                     <option value="Cendekia">Cendekia</option>
@@ -359,7 +370,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <span class="text-[11px] font-bold text-[#8F95A0]">Jenjang:</span>
-                                <select id="filterDashLevel" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs font-semibold text-[#1C2024] outline-none">
+                                <select id="filterDashLevel" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-semibold text-[#1C2024] dark:text-[#F2F4F8] outline-none">
                                     <option value="ALL">Semua Jenjang (SD, SMP, SMA)</option>
                                     <option value="SD">Sekolah Dasar (SD)</option>
                                     <option value="SMP">Sekolah Menengah Pertama (SMP)</option>
@@ -367,97 +378,97 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="flex gap-2">
-                            <button onclick="resetDashboardFilter()" class="px-3.5 py-1.5 rounded-xl border border-[#EAE4D9] hover:bg-[#F6F3ED] text-xs font-semibold text-[#656A73]">Reset</button>
+                        <div class="flex gap-2 relative z-10">
+                            <button onclick="resetDashboardFilter()" class="px-3.5 py-1.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20] text-xs font-semibold text-[#656A73] dark:text-[#9BA1AD]">Reset</button>
                             <button onclick="applyDashboardFilter()" class="px-4 py-1.5 rounded-xl bg-[#C85A32] text-white text-xs font-bold shadow-sm">Terapkan Filter</button>
                         </div>
                     </div>
 
-                    <!-- KPI Metric Cards -->
+                    <!-- KPI Metric Cards with Spotlight Effect & Tabular Count-Up -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm hover-elevate border-l-4 border-l-[#C85A32]">
-                            <div class="flex justify-between items-start mb-2">
+                        <div class="spotlight-card p-5 border-l-4 border-l-[#C85A32]">
+                            <div class="flex justify-between items-start mb-2 relative z-10">
                                 <span class="text-xs font-bold text-[#8F95A0]">PIB Terdaftar</span>
                                 <div class="w-8 h-8 rounded-lg bg-[#C85A32]/10 flex items-center justify-center text-[#C85A32]">
                                     <span class="material-symbols-outlined text-base">diversity_3</span>
                                 </div>
                             </div>
-                            <div id="kpiPIBVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">128</div>
-                            <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block">↑ +12 bulan ini</span>
+                            <div id="kpiPIBVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">128</div>
+                            <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block relative z-10">↑ +12 bulan ini</span>
                         </div>
 
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm hover-elevate border-l-4 border-l-[#5B6E43]">
-                            <div class="flex justify-between items-start mb-2">
+                        <div class="spotlight-card p-5 border-l-4 border-l-[#5B6E43]">
+                            <div class="flex justify-between items-start mb-2 relative z-10">
                                 <span class="text-xs font-bold text-[#8F95A0]">Sekolah Mitra</span>
                                 <div class="w-8 h-8 rounded-lg bg-[#5B6E43]/10 flex items-center justify-center text-[#5B6E43]">
                                     <span class="material-symbols-outlined text-base">location_city</span>
                                 </div>
                             </div>
-                            <div id="kpiSchoolVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">46</div>
-                            <span class="text-[11px] text-[#656A73] font-medium mt-1 block">34 Terpenuhi • 12 Butuh PIB</span>
+                            <div id="kpiSchoolVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">46</div>
+                            <span class="text-[11px] text-[#656A73] dark:text-[#9BA1AD] font-medium mt-1 block relative z-10">34 Terpenuhi • 12 Butuh PIB</span>
                         </div>
 
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm hover-elevate border-l-4 border-l-[#E29547]">
-                            <div class="flex justify-between items-start mb-2">
+                        <div class="spotlight-card p-5 border-l-4 border-l-[#E29547]">
+                            <div class="flex justify-between items-start mb-2 relative z-10">
                                 <span class="text-xs font-bold text-[#8F95A0]">Pendampingan Aktif</span>
                                 <div class="w-8 h-8 rounded-lg bg-[#E29547]/10 flex items-center justify-center text-[#E29547]">
                                     <span class="material-symbols-outlined text-base">groups</span>
                                 </div>
                             </div>
-                            <div id="kpiAssistVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">92</div>
-                            <span class="text-[11px] text-[#C85A32] font-semibold mt-1 block">18 sedang berlangsung</span>
+                            <div id="kpiAssistVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">92</div>
+                            <span class="text-[11px] text-[#C85A32] font-semibold mt-1 block relative z-10">18 sedang berlangsung</span>
                         </div>
 
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm hover-elevate border-l-4 border-l-[#5B6E43]">
-                            <div class="flex justify-between items-start mb-2">
+                        <div class="spotlight-card p-5 border-l-4 border-l-[#5B6E43]">
+                            <div class="flex justify-between items-start mb-2 relative z-10">
                                 <span class="text-xs font-bold text-[#8F95A0]">Anak Didampingi</span>
                                 <div class="w-8 h-8 rounded-lg bg-[#5B6E43]/10 flex items-center justify-center text-[#5B6E43]">
                                     <span class="material-symbols-outlined text-base">child_care</span>
                                 </div>
                             </div>
-                            <div id="kpiStudentVal" class="font-heading font-extrabold text-3xl text-[#1C2024]">214</div>
-                            <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block">Rata-rata outcome 78%</span>
+                            <div id="kpiStudentVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">214</div>
+                            <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block relative z-10">Rata-rata outcome 78%</span>
                         </div>
                     </div>
 
                     <!-- Charts Grid -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <!-- Longitudinal Growth -->
-                        <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-col justify-between">
-                            <div class="flex justify-between items-center mb-4">
+                        <div class="lg:col-span-2 spotlight-card p-6 flex flex-col justify-between">
+                            <div class="flex justify-between items-center mb-4 relative z-10">
                                 <div>
-                                    <h3 class="font-bold text-base text-[#1C2024]">Pertumbuhan PIB Bersertifikat</h3>
+                                    <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Pertumbuhan PIB Bersertifikat</h3>
                                     <p class="text-xs text-[#8F95A0]">Jumlah kumulatif lulusan Microcredential (Januari - Agustus 2026)</p>
                                 </div>
                                 <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">+204% YTD</span>
                             </div>
-                            <div class="h-64 w-full">
+                            <div class="h-64 w-full relative z-10">
                                 <canvas id="chartGrowth"></canvas>
                             </div>
                         </div>
 
                         <!-- School Needs Donut -->
-                        <div class="bg-white p-6 rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-col justify-between">
-                            <div>
-                                <h3 class="font-bold text-base text-[#1C2024]">Status Kebutuhan Sekolah</h3>
+                        <div class="spotlight-card p-6 flex flex-col justify-between">
+                            <div class="relative z-10">
+                                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Status Kebutuhan Sekolah</h3>
                                 <p class="text-xs text-[#8F95A0]">Pemenuhan kuota PIB di sekolah mitra</p>
                             </div>
-                            <div class="h-44 my-4 relative flex items-center justify-center">
+                            <div class="h-44 my-4 relative flex items-center justify-center relative z-10">
                                 <canvas id="chartNeeds"></canvas>
                                 <div class="absolute text-center pointer-events-none">
-                                    <span class="font-heading font-bold text-xl text-[#1C2024]">46</span>
+                                    <span class="font-heading font-bold text-xl text-[#1C2024] dark:text-[#F2F4F8]">46</span>
                                     <span class="text-[10px] text-[#8F95A0] block">Sekolah</span>
                                 </div>
                             </div>
-                            <div class="space-y-2 text-xs pt-2 border-t border-[#F0ECE4]">
+                            <div class="space-y-2 text-xs pt-2 border-t border-[#F0ECE4] dark:border-[#23272F] relative z-10">
                                 <div class="flex justify-between">
-                                    <span class="flex items-center gap-1.5 text-[#656A73]">
+                                    <span class="flex items-center gap-1.5 text-[#656A73] dark:text-[#9BA1AD]">
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#5B6E43]"></span> Terpenuhi
                                     </span>
-                                    <span class="font-bold text-[#1C2024]">34 Sekolah (74%)</span>
+                                    <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">34 Sekolah (74%)</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="flex items-center gap-1.5 text-[#656A73]">
+                                    <span class="flex items-center gap-1.5 text-[#656A73] dark:text-[#9BA1AD]">
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#C85A32]"></span> Butuh Tambahan PIB
                                     </span>
                                     <span class="font-bold text-[#C85A32]">12 Sekolah (26%)</span>
@@ -471,12 +482,12 @@
                 <section id="view-microcredential" class="view-pane space-y-6">
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Kurikulum Terstandarisasi PRD</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Microcredential PIB (8 Modul)</h2>
-                            <p class="text-xs text-[#656A73]">Total durasi 40-60 Jam pelatihan terstruktur untuk sertifikasi kompetensi pendamping inklusi.</p>
+                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Kurikulum Terstandarisasi PRD</span>
+                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Microcredential PIB (8 Modul)</h2>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Total durasi 40-60 Jam pelatihan terstruktur untuk sertifikasi kompetensi pendamping inklusi.</p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="openCertModal('Rina Maharani, S.Pd')" class="px-4 py-2 rounded-xl bg-[#5B6E43] hover:bg-[#4C5D37] text-white text-xs font-bold transition-all flex items-center gap-1.5">
+                            <button onclick="openCertModal('Rina Maharani, S.Pd')" class="px-4 py-2 rounded-xl bg-[#5B6E43] hover:bg-[#4C5D37] text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
                                 <span class="material-symbols-outlined text-sm">workspace_premium</span> Pratinjau Sertifikat Resmi
                             </button>
                         </div>
@@ -491,24 +502,24 @@
                 <!-- 3. ASISTEN AI KELAS VIEW PANE -->
                 <section id="view-asisten-ai" class="view-pane space-y-6">
                     <div>
-                        <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Dukungan Pembelajaran Adaptif</span>
-                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Asisten AI Kelas & Voice Interaction</h2>
-                        <p class="text-xs text-[#656A73]">Speech-to-Text & Text-to-Speech untuk membantu PIB menyederhanakan instruksi dan menghasilkan scaffolding belajar.</p>
+                        <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Dukungan Pembelajaran Adaptif</span>
+                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Asisten AI Kelas & Voice Interaction</h2>
+                        <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Speech-to-Text & Text-to-Speech untuk membantu PIB menyederhanakan instruksi dan menghasilkan scaffolding belajar.</p>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <!-- Chat Feed & Interaction -->
-                        <div class="lg:col-span-2 bg-white rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-col h-[600px] overflow-hidden">
+                        <div class="lg:col-span-2 spotlight-card flex flex-col h-[600px] overflow-hidden">
                             <!-- Header -->
-                            <div class="p-4 border-b border-[#EAE4D9] bg-[#F6F3ED] flex justify-between items-center">
+                            <div class="p-4 border-b border-[#EAE4D9] dark:border-[#23272F] bg-[#F6F3ED] dark:bg-[#181B20] flex justify-between items-center relative z-10">
                                 <div class="flex items-center gap-2.5">
-                                    <div class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center shadow-sm">
                                         <span class="material-symbols-outlined text-sm">smart_toy</span>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-xs text-[#1C2024]">Sesi Asisten AI Kelas</h3>
+                                        <h3 class="font-bold text-xs text-[#1C2024] dark:text-[#F2F4F8]">Sesi Asisten AI Kelas</h3>
                                         <span class="text-[10px] text-[#5B6E43] font-semibold flex items-center gap-1">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-[#5B6E43] animate-pulse"></span> Mode Respons Adaptif
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#5B6E43] animate-pulse"></span> Streaming Token Aktif
                                         </span>
                                     </div>
                                 </div>
@@ -518,18 +529,18 @@
                             </div>
 
                             <!-- Messages Container -->
-                            <div id="aiChatFeed" class="flex-1 p-5 overflow-y-auto space-y-4 text-xs font-medium">
+                            <div id="aiChatFeed" class="flex-1 p-5 overflow-y-auto space-y-4 text-xs font-medium relative z-10">
                                 <div class="flex items-start gap-3 max-w-[85%]">
                                     <div class="w-7 h-7 rounded-full bg-[#C85A32] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
-                                    <div class="bg-[#F6F3ED] p-4 rounded-2xl rounded-tl-sm border border-[#EAE4D9] text-xs text-[#1C2024] leading-relaxed shadow-sm">
+                                    <div class="bg-[#F6F3ED] dark:bg-[#181B20] p-4 rounded-2xl rounded-tl-sm border border-[#EAE4D9] dark:border-[#23272F] text-xs text-[#1C2024] dark:text-[#F2F4F8] leading-relaxed shadow-sm">
                                         <p>Halo! Saya <strong>Asisten AI Kelas SAPA Inklusi</strong>. Anda dapat berbicara melalui mikrofon atau mengetik instruksi yang ingin disederhanakan bagi peserta didik.</p>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Audio Wave Visualizer Bar -->
-                            <div id="waveVisualizer" class="h-10 bg-[#FDF3EE] border-t border-[#EAE4D9] flex items-center justify-center gap-1.5 hidden">
-                                <span class="text-[11px] font-bold text-[#C85A32] mr-3">Mendengarkan suara guru...</span>
+                            <div id="waveVisualizer" class="h-10 bg-[#FDF3EE] dark:bg-[#241A16] border-t border-[#EAE4D9] dark:border-[#23272F] flex items-center justify-center gap-1.5 hidden relative z-10">
+                                <span class="text-[11px] font-bold text-[#C85A32] dark:text-[#E07A5F] mr-3">Mendengarkan suara guru...</span>
                                 <div class="wave-bar"></div>
                                 <div class="wave-bar"></div>
                                 <div class="wave-bar"></div>
@@ -539,24 +550,24 @@
                             </div>
 
                             <!-- Input Form & Quick Chips -->
-                            <div class="p-4 bg-[#F6F3ED] border-t border-[#EAE4D9] space-y-3">
+                            <div class="p-4 bg-[#F6F3ED] dark:bg-[#181B20] border-t border-[#EAE4D9] dark:border-[#23272F] space-y-3 relative z-10">
                                 <div class="flex flex-wrap gap-1.5">
-                                    <button onclick="sendAiMessage('Sederhanakan instruksi membaca bab 3 halaman 45 untuk siswa autisme.')" class="px-3 py-1 rounded-full bg-white border border-[#EAE4D9] hover:border-[#C85A32] text-[11px] text-[#656A73] hover:text-[#C85A32] transition-colors">
+                                    <button onclick="sendAiMessage('Sederhanakan instruksi membaca bab 3 halaman 45 untuk siswa autisme.')" class="px-3 py-1 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[11px] text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] transition-colors">
                                         ⚡ Sederhanakan Instruksi
                                     </button>
-                                    <button onclick="sendAiMessage('Alternatif aktivitas sensori untuk siswa ADHD saat pembelajaran matematika.')" class="px-3 py-1 rounded-full bg-white border border-[#EAE4D9] hover:border-[#C85A32] text-[11px] text-[#656A73] hover:text-[#C85A32] transition-colors">
+                                    <button onclick="sendAiMessage('Alternatif aktivitas sensori untuk siswa ADHD saat pembelajaran matematika.')" class="px-3 py-1 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[11px] text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] transition-colors">
                                         💡 Alternatif Sensori ADHD
                                     </button>
-                                    <button onclick="sendAiMessage('Protokol de-eskalasi saat anak mengalami sensory overload.')" class="px-3 py-1 rounded-full bg-white border border-[#EAE4D9] hover:border-[#C85A32] text-[11px] text-[#656A73] hover:text-[#C85A32] transition-colors">
+                                    <button onclick="sendAiMessage('Protokol de-eskalasi saat anak mengalami sensory overload.')" class="px-3 py-1 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[11px] text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] transition-colors">
                                         🧩 De-eskalasi Emosi
                                     </button>
                                 </div>
 
                                 <form onsubmit="handleAiSubmit(event)" class="flex items-center gap-2">
-                                    <button type="button" id="micButton" onclick="toggleVoice()" class="w-10 h-10 rounded-full bg-white border border-[#EAE4D9] hover:border-[#C85A32] text-[#C85A32] flex items-center justify-center transition-all shadow-sm">
+                                    <button type="button" id="micButton" onclick="toggleVoice()" class="w-10 h-10 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[#C85A32] flex items-center justify-center transition-all shadow-sm">
                                         <span class="material-symbols-outlined text-lg">mic</span>
                                     </button>
-                                    <input id="aiInput" type="text" placeholder="Ketik atau ucapkan instruksi kelas..." class="flex-1 bg-white border border-[#EAE4D9] focus:border-[#C85A32] rounded-xl px-4 py-2.5 text-xs text-[#1C2024] outline-none">
+                                    <input id="aiInput" type="text" placeholder="Ketik atau ucapkan instruksi kelas..." class="flex-1 bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] focus:border-[#C85A32] rounded-xl px-4 py-2.5 text-xs text-[#1C2024] dark:text-[#F2F4F8] outline-none">
                                     <button type="submit" class="px-5 py-2.5 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl transition-all shadow-sm flex items-center gap-1">
                                         <span>Kirim</span>
                                         <span class="material-symbols-outlined text-sm">send</span>
@@ -567,26 +578,26 @@
 
                         <!-- AI Guidance Cards -->
                         <div class="space-y-5">
-                            <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                                <h3 class="font-bold text-sm text-[#1C2024] mb-3 flex items-center gap-2">
+                            <div class="spotlight-card p-5">
+                                <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] mb-3 flex items-center gap-2 relative z-10">
                                     <span class="material-symbols-outlined text-[#C85A32]">verified_user</span>
                                     Batasan Etis & Operasional AI
                                 </h3>
-                                <p class="text-xs text-[#656A73] leading-relaxed">
+                                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] leading-relaxed relative z-10">
                                     Asisten AI berfungsi sebagai <em>scaffolding copilot</em> untuk pendamping. AI tidak menegakkan diagnosis medis atau menggantikan keputusan profesional guru dan GPK Koordinator.
                                 </p>
                             </div>
 
-                            <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                                <h3 class="font-bold text-sm text-[#1C2024] mb-3">Panduan Format Prompt</h3>
-                                <div class="space-y-3 text-xs">
-                                    <div class="p-2.5 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9]">
-                                        <span class="font-bold text-[#1C2024] block">1. Chunking Tugas</span>
-                                        <span class="text-[#656A73]">Memecah instruksi multi-step menjadi 2-3 langkah visual pendek.</span>
+                            <div class="spotlight-card p-5">
+                                <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] mb-3 relative z-10">Panduan Format Prompt</h3>
+                                <div class="space-y-3 text-xs relative z-10">
+                                    <div class="p-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F]">
+                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block">1. Chunking Tugas</span>
+                                        <span class="text-[#656A73] dark:text-[#9BA1AD]">Memecah instruksi multi-step menjadi 2-3 langkah visual pendek.</span>
                                     </div>
-                                    <div class="p-2.5 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9]">
-                                        <span class="font-bold text-[#1C2024] block">2. Diferensiasi Konten</span>
-                                        <span class="text-[#656A73]">Menyesuaikan tingkat kesulitan teks tanpa mereduksi inti tujuan kurikulum.</span>
+                                    <div class="p-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F]">
+                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block">2. Diferensiasi Konten</span>
+                                        <span class="text-[#656A73] dark:text-[#9BA1AD]">Menyesuaikan tingkat kesulitan teks tanpa mereduksi inti tujuan kurikulum.</span>
                                     </div>
                                 </div>
                             </div>
@@ -598,12 +609,12 @@
                 <section id="view-pib" class="view-pane space-y-6">
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Sumber Daya Manusia Terlatih</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Direktori Pendamping Inklusi (PIB)</h2>
-                            <p class="text-xs text-[#656A73]">Database kompetensi, sertifikasi nasional, dan status ketersediaan pendamping.</p>
+                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Sumber Daya Manusia Terlatih</span>
+                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Direktori Pendamping Inklusi (PIB)</h2>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Database kompetensi, sertifikasi nasional, dan status ketersediaan pendamping.</p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="window.store.exportToCSV('pib'); showToast('CSV Direktori PIB diunduh', 'success')" class="px-3.5 py-2 bg-white border border-[#EAE4D9] hover:bg-[#F6F3ED] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+                            <button onclick="window.store.exportToCSV('pib'); showToast('CSV Direktori PIB diunduh', 'success')" class="px-3.5 py-2 bg-white dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#20242B] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
                                 <span class="material-symbols-outlined text-sm">download</span> Ekspor CSV
                             </button>
                             <button onclick="openModal('addPibModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
@@ -613,20 +624,20 @@
                     </div>
 
                     <!-- Filters Strip -->
-                    <div class="p-4 bg-white rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-wrap items-center justify-between gap-4">
-                        <div class="flex flex-wrap items-center gap-3 flex-1">
+                    <div class="spotlight-card p-4 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-wrap items-center gap-3 flex-1 relative z-10">
                             <div class="relative w-72">
                                 <span class="material-symbols-outlined text-[#8F95A0] absolute left-3 top-2.5 text-sm">search</span>
-                                <input id="searchPib" oninput="filterPib()" type="text" placeholder="Cari nama, email, kompetensi..." class="w-full pl-9 pr-3 py-2 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs outline-none">
+                                <input id="searchPib" oninput="filterPib()" type="text" placeholder="Cari nama, email, kompetensi..." class="w-full pl-9 pr-3 py-2 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs outline-none">
                             </div>
-                            <select id="filterPibRegion" onchange="filterPib()" class="py-2 px-3 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs font-medium text-[#1C2024] outline-none">
+                            <select id="filterPibRegion" onchange="filterPib()" class="py-2 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-medium text-[#1C2024] dark:text-[#F2F4F8] outline-none">
                                 <option value="ALL">Semua Wilayah</option>
                                 <option value="Sukamaju">Sukamaju</option>
                                 <option value="Cendekia">Cendekia</option>
                                 <option value="Harapan">Harapan</option>
                                 <option value="Merdeka">Merdeka</option>
                             </select>
-                            <select id="filterPibCert" onchange="filterPib()" class="py-2 px-3 rounded-xl bg-[#F6F3ED] border border-[#EAE4D9] text-xs font-medium text-[#1C2024] outline-none">
+                            <select id="filterPibCert" onchange="filterPib()" class="py-2 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-medium text-[#1C2024] dark:text-[#F2F4F8] outline-none">
                                 <option value="ALL">Semua Sertifikasi</option>
                                 <option value="BERSERTIFIKAT">Bersertifikat</option>
                                 <option value="DALAM_PROGRES">Dalam Progres</option>
@@ -636,11 +647,11 @@
 
                     <!-- Table & Side Drawer Grid -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <div class="lg:col-span-8 bg-white rounded-2xl border border-[#EAE4D9] shadow-sm overflow-hidden">
-                            <div class="overflow-x-auto">
+                        <div class="lg:col-span-8 spotlight-card overflow-hidden">
+                            <div class="overflow-x-auto relative z-10">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
-                                        <tr class="bg-[#F6F3ED] border-b border-[#EAE4D9] text-[11px] font-bold text-[#8F95A0] uppercase">
+                                        <tr class="bg-[#F6F3ED] dark:bg-[#181B20] border-b border-[#EAE4D9] dark:border-[#23272F] text-[11px] font-bold text-[#8F95A0] uppercase">
                                             <th class="py-3 px-4">Nama PIB</th>
                                             <th class="py-3 px-4">Wilayah</th>
                                             <th class="py-3 px-4">Sertifikasi</th>
@@ -649,7 +660,7 @@
                                             <th class="py-3 px-4">Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="pibTableBody" class="text-xs divide-y divide-[#F0ECE4]">
+                                    <tbody id="pibTableBody" class="text-xs divide-y divide-[#F0ECE4] dark:divide-[#23272F]">
                                         <!-- Dynamically populated -->
                                     </tbody>
                                 </table>
@@ -657,27 +668,27 @@
                         </div>
 
                         <!-- Side Drawer -->
-                        <div class="lg:col-span-4 bg-white rounded-2xl border border-[#EAE4D9] shadow-sm p-6 space-y-4">
-                            <div class="text-center pb-4 border-b border-[#F0ECE4]">
+                        <div class="lg:col-span-4 spotlight-card p-6 space-y-4">
+                            <div class="text-center pb-4 border-b border-[#F0ECE4] dark:border-[#23272F] relative z-10">
                                 <div id="drawerAvatar" class="w-16 h-16 rounded-full bg-[#C85A32] text-white font-bold text-xl flex items-center justify-center mx-auto mb-2 shadow-sm">
                                     RM
                                 </div>
-                                <h3 id="drawerName" class="font-bold text-sm text-[#1C2024]">Rina Maharani, S.Pd</h3>
+                                <h3 id="drawerName" class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Rina Maharani, S.Pd</h3>
                                 <p id="drawerIdRegion" class="text-xs text-[#8F95A0]">Sukamaju • PIB-001</p>
                                 <div id="drawerRating" class="mt-2 text-xs font-bold text-[#E29547]">⭐ 4.9 (48 sesi)</div>
                             </div>
 
-                            <div class="space-y-3 text-xs">
+                            <div class="space-y-3 text-xs relative z-10">
                                 <div>
                                     <span class="text-[#8F95A0] block text-[10px] uppercase font-bold">Sekolah Penugasan</span>
-                                    <span id="drawerSchool" class="font-bold text-[#1C2024]">SDN Harapan 1</span>
-                                    <span id="drawerStudents" class="text-[#656A73] block">2 Siswa didampingi</span>
+                                    <span id="drawerSchool" class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">SDN Harapan 1</span>
+                                    <span id="drawerStudents" class="text-[#656A73] dark:text-[#9BA1AD] block">2 Siswa didampingi</span>
                                 </div>
                                 <div>
                                     <span class="text-[#8F95A0] block text-[10px] uppercase font-bold mb-1">Keahlian & Kompetensi</span>
                                     <div id="drawerComps" class="flex flex-wrap gap-1">
-                                        <span class="px-2 py-0.5 rounded bg-[#F6F3ED] text-xs font-medium">Autism Spectrum</span>
-                                        <span class="px-2 py-0.5 rounded bg-[#F6F3ED] text-xs font-medium">Komunikasi Inklusif</span>
+                                        <span class="px-2 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#1C2027] text-xs font-medium">Autism Spectrum</span>
+                                        <span class="px-2 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#1C2027] text-xs font-medium">Komunikasi Inklusif</span>
                                     </div>
                                 </div>
                             </div>
@@ -689,9 +700,9 @@
                 <section id="view-sekolah" class="view-pane space-y-6">
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Distribusi & Penempatan</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Sekolah Mitra & Matching Engine</h2>
-                            <p class="text-xs text-[#656A73]">Algoritma pencocokan 6 variabel (lokasi, kompetensi, jenjang, jadwal) untuk penempatan PIB optimal.</p>
+                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Distribusi & Penempatan</span>
+                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Sekolah Mitra & Matching Engine</h2>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Algoritma pencocokan 6 variabel (lokasi, kompetensi, jenjang, jadwal) untuk penempatan PIB optimal.</p>
                         </div>
                         <button onclick="openModal('addSchoolModal')" class="px-4 py-2 bg-[#5B6E43] hover:bg-[#4C5D37] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
                             <span class="material-symbols-outlined text-sm">add_business</span> Daftarkan Sekolah Mitra
@@ -705,52 +716,52 @@
                         </div>
 
                         <!-- Interactive School Detail & Matching Card -->
-                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-[#EAE4D9] shadow-sm space-y-5">
-                            <div class="flex justify-between items-start">
+                        <div class="lg:col-span-5 spotlight-card p-6 space-y-5">
+                            <div class="flex justify-between items-start relative z-10">
                                 <div>
-                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#C85A32]/10 text-[#C85A32]">Target Penempatan</span>
-                                    <h3 id="prevSchoolName" class="font-heading font-bold text-lg text-[#1C2024] mt-1">SDN Harapan 1</h3>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#C85A32]/10 text-[#C85A32] dark:text-[#E07A5F]">Target Penempatan</span>
+                                    <h3 id="prevSchoolName" class="font-heading font-bold text-lg text-[#1C2024] dark:text-[#F2F4F8] mt-1">SDN Harapan 1</h3>
                                     <p id="prevSchoolLoc" class="text-xs text-[#8F95A0]">Sukamaju (1.8 km) • Jl. Pendidikan No. 12</p>
                                 </div>
                                 <span id="prevSchoolMatch" class="text-xs font-bold px-3 py-1 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">92% Match Score</span>
                             </div>
 
                             <!-- Matching Breakdown Inspector -->
-                            <div class="p-3.5 bg-[#F6F3ED] rounded-xl border border-[#EAE4D9] space-y-2 text-xs">
-                                <span class="font-bold text-[#1C2024] block">Kalkulasi Bobot Algoritma Matching (PRD Section 4):</span>
+                            <div class="p-3.5 bg-[#F6F3ED] dark:bg-[#181B20] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] space-y-2 text-xs relative z-10">
+                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block">Kalkulasi Bobot Algoritma Matching (PRD Section 4):</span>
                                 <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
-                                    <div class="bg-white p-2 rounded-lg border border-[#EAE4D9]">
+                                    <div class="bg-white dark:bg-[#121418] p-2 rounded-lg border border-[#EAE4D9] dark:border-[#23272F]">
                                         <span class="text-[#8F95A0] block text-[9px]">Jarak (30%)</span>
-                                        <strong id="breakdownJarak" class="text-[#C85A32]">95%</strong>
+                                        <strong id="breakdownJarak" class="text-[#C85A32] dark:text-[#E07A5F]">95%</strong>
                                     </div>
-                                    <div class="bg-white p-2 rounded-lg border border-[#EAE4D9]">
+                                    <div class="bg-white dark:bg-[#121418] p-2 rounded-lg border border-[#EAE4D9] dark:border-[#23272F]">
                                         <span class="text-[#8F95A0] block text-[9px]">Kompetensi (30%)</span>
                                         <strong id="breakdownKompetensi" class="text-[#5B6E43]">92%</strong>
                                     </div>
-                                    <div class="bg-white p-2 rounded-lg border border-[#EAE4D9]">
+                                    <div class="bg-white dark:bg-[#121418] p-2 rounded-lg border border-[#EAE4D9] dark:border-[#23272F]">
                                         <span class="text-[#8F95A0] block text-[9px]">Jadwal (20%)</span>
                                         <strong id="breakdownJadwal" class="text-[#E29547]">90%</strong>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-3 text-xs pt-2 border-t border-[#F0ECE4]">
+                            <div class="grid grid-cols-2 gap-3 text-xs pt-2 border-t border-[#F0ECE4] dark:border-[#23272F] relative z-10">
                                 <div>
                                     <span class="text-[#8F95A0] text-[10px] block">Kebutuhan PIB</span>
-                                    <span id="prevSchoolNeed" class="font-bold text-[#1C2024]">Butuh 2 PIB (Ditugaskan: 1)</span>
+                                    <span id="prevSchoolNeed" class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Butuh 2 PIB (Ditugaskan: 1)</span>
                                 </div>
                                 <div>
                                     <span class="text-[#8F95A0] text-[10px] block">Koordinator Sekolah</span>
-                                    <span id="prevSchoolCoord" class="font-bold text-[#1C2024]">Ibu Nurhayati, S.Pd</span>
+                                    <span id="prevSchoolCoord" class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Ibu Nurhayati, S.Pd</span>
                                 </div>
                                 <div class="col-span-2">
                                     <span class="text-[#8F95A0] text-[10px] block">Kompetensi Utama Dibutuhkan</span>
-                                    <span id="prevSchoolComps" class="font-bold text-[#C85A32]">Autism Spectrum, Komunikasi Inklusif</span>
+                                    <span id="prevSchoolComps" class="font-bold text-[#C85A32] dark:text-[#E07A5F]">Autism Spectrum, Komunikasi Inklusif</span>
                                 </div>
                             </div>
 
                             <!-- Assignment Button -->
-                            <button onclick="openAssignModal('SCH-001')" class="w-full py-2.5 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5">
+                            <button onclick="openAssignModal('SCH-001')" class="w-full py-2.5 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 relative z-10">
                                 <span class="material-symbols-outlined text-sm">person_add</span>
                                 Tugaskan PIB ke Sekolah Ini
                             </button>
@@ -762,15 +773,15 @@
                 <section id="view-pendampingan" class="view-pane space-y-6">
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Log & Validasi Lapangan</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Monitoring Pendampingan Harian</h2>
-                            <p class="text-xs text-[#656A73]">Pencatatan sesi harian, modifikasi instruksi, dan verifikasi 1-klik oleh GPK Koordinator.</p>
+                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Log & Validasi Lapangan</span>
+                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Monitoring Pendampingan Harian</h2>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Pencatatan sesi harian, modifikasi instruksi, dan verifikasi 1-klik oleh GPK Koordinator.</p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="window.store.exportToCSV('sessions'); showToast('CSV Log Sesi diunduh', 'success')" class="px-3.5 py-2 bg-white border border-[#EAE4D9] hover:bg-[#F6F3ED] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+                            <button onclick="window.store.exportToCSV('sessions'); showToast('CSV Log Sesi diunduh', 'success')" class="px-3.5 py-2 bg-white dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#20242B] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
                                 <span class="material-symbols-outlined text-sm">download</span> Ekspor CSV
                             </button>
-                            <button onclick="verifyAllAction()" class="px-4 py-2 bg-white border border-[#5B6E43] text-[#5B6E43] hover:bg-[#5B6E43] hover:text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
+                            <button onclick="verifyAllAction()" class="px-4 py-2 bg-white dark:bg-[#181B20] border border-[#5B6E43] text-[#5B6E43] hover:bg-[#5B6E43] hover:text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-sm">done_all</span> Verifikasi Semua Tertunda
                             </button>
                             <button onclick="openModal('addSessionModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
@@ -779,11 +790,11 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-[#EAE4D9] shadow-sm overflow-hidden">
-                        <div class="overflow-x-auto">
+                    <div class="spotlight-card overflow-hidden">
+                        <div class="overflow-x-auto relative z-10">
                             <table class="w-full text-left border-collapse">
                                 <thead>
-                                    <tr class="bg-[#F6F3ED] border-b border-[#EAE4D9] text-[11px] font-bold text-[#8F95A0] uppercase">
+                                    <tr class="bg-[#F6F3ED] dark:bg-[#181B20] border-b border-[#EAE4D9] dark:border-[#23272F] text-[11px] font-bold text-[#8F95A0] uppercase">
                                         <th class="py-3 px-4">Tanggal / Jam</th>
                                         <th class="py-3 px-4">PIB Bertugas</th>
                                         <th class="py-3 px-4">Sekolah & Siswa</th>
@@ -792,7 +803,7 @@
                                         <th class="py-3 px-4 text-center">Verifikasi GPK</th>
                                     </tr>
                                 </thead>
-                                <tbody id="sessionsTableBody" class="text-xs divide-y divide-[#F0ECE4]">
+                                <tbody id="sessionsTableBody" class="text-xs divide-y divide-[#F0ECE4] dark:divide-[#23272F]">
                                     <!-- Populated dynamically -->
                                 </tbody>
                             </table>
@@ -804,9 +815,9 @@
                 <section id="view-laporan" class="view-pane space-y-6">
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Evaluasi Longitudinal</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Laporan & Outcome Perkembangan</h2>
-                            <p class="text-xs text-[#656A73]">4 Indikator Inti: Komunikasi, Partisipasi Kelas, Kemandirian, dan Interaksi Sosial.</p>
+                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Evaluasi Longitudinal</span>
+                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Laporan & Outcome Perkembangan</h2>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">4 Indikator Inti: Komunikasi, Partisipasi Kelas, Kemandirian, dan Interaksi Sosial.</p>
                         </div>
                         <button onclick="window.print()" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
                             <span class="material-symbols-outlined text-sm">print</span> Cetak Laporan Resmi PDF
@@ -815,59 +826,59 @@
 
                     <!-- 4 Indicators Overview -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                            <span class="text-xs font-bold text-[#8F95A0] block">Komunikasi Inklusif</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] mt-1 block">78%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43]">↑ +16% vs baseline</span>
+                        <div class="spotlight-card p-5">
+                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Komunikasi Inklusif</span>
+                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">78%</span>
+                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +16% vs baseline</span>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                            <span class="text-xs font-bold text-[#8F95A0] block">Partisipasi Kelas</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] mt-1 block">82%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43]">↑ +19% vs baseline</span>
+                        <div class="spotlight-card p-5">
+                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Partisipasi Kelas</span>
+                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">82%</span>
+                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +19% vs baseline</span>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                            <span class="text-xs font-bold text-[#8F95A0] block">Kemandirian Belajar</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] mt-1 block">75%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43]">↑ +14% vs baseline</span>
+                        <div class="spotlight-card p-5">
+                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Kemandirian Belajar</span>
+                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">75%</span>
+                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +14% vs baseline</span>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                            <span class="text-xs font-bold text-[#8F95A0] block">Interaksi Sosial</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] mt-1 block">80%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43]">↑ +18% vs baseline</span>
+                        <div class="spotlight-card p-5">
+                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Interaksi Sosial</span>
+                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">80%</span>
+                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +18% vs baseline</span>
                         </div>
                     </div>
 
                     <!-- Radar Chart & North Star Metric -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-[#EAE4D9] shadow-sm">
-                            <h3 class="font-bold text-base text-[#1C2024] mb-1">Radar Evaluasi 4 Dimensi Outcome</h3>
-                            <p class="text-xs text-[#8F95A0] mb-4">Perbandingan capaian agregat terhadap baseline awal</p>
-                            <div class="h-64">
+                        <div class="lg:col-span-7 spotlight-card p-6">
+                            <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8] mb-1 relative z-10">Radar Evaluasi 4 Dimensi Outcome</h3>
+                            <p class="text-xs text-[#8F95A0] mb-4 relative z-10">Perbandingan capaian agregat terhadap baseline awal</p>
+                            <div class="h-64 relative z-10">
                                 <canvas id="chartOutcomeRadar"></canvas>
                             </div>
                         </div>
 
-                        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-[#EAE4D9] shadow-sm flex flex-col justify-between">
-                            <div>
+                        <div class="lg:col-span-5 spotlight-card p-6 flex flex-col justify-between">
+                            <div class="relative z-10">
                                 <div class="flex items-center gap-1.5 text-[#5B6E43] mb-2">
                                     <span class="material-symbols-outlined text-sm fill">stars</span>
                                     <span class="text-[11px] font-bold uppercase tracking-wider">North Star Metric</span>
                                 </div>
-                                <h3 class="font-heading font-bold text-lg text-[#1C2024] leading-snug">Sekolah Mitra Berpendamping Aktif Konsisten</h3>
-                                <p class="text-xs text-[#656A73] mt-1">Rasio sekolah mitra dengan pendamping tersertifikasi aktif dan log aktivitas terverifikasi minimal 4 sesi/bulan.</p>
+                                <h3 class="font-heading font-bold text-lg text-[#1C2024] dark:text-[#F2F4F8] leading-snug">Sekolah Mitra Berpendamping Aktif Konsisten</h3>
+                                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] mt-1">Rasio sekolah mitra dengan pendamping tersertifikasi aktif dan log aktivitas terverifikasi minimal 4 sesi/bulan.</p>
                             </div>
 
-                            <div class="my-6 pt-4 border-t border-[#F0ECE4]">
+                            <div class="my-6 pt-4 border-t border-[#F0ECE4] dark:border-[#23272F] relative z-10">
                                 <div class="flex justify-between items-baseline mb-2">
-                                    <span class="font-heading font-extrabold text-4xl text-[#5B6E43]">73.9%</span>
+                                    <span id="kpiNorthStarVal" class="font-heading font-extrabold text-4xl text-[#5B6E43] tabular-nums">73.9%</span>
                                     <span class="text-xs text-[#8F95A0] font-semibold">34 / 46 Sekolah Mitra</span>
                                 </div>
-                                <div class="w-full h-3 rounded-full bg-[#F6F3ED] overflow-hidden">
+                                <div class="w-full h-3 rounded-full bg-[#F6F3ED] dark:bg-[#181B20] overflow-hidden">
                                     <div class="h-full bg-[#5B6E43] rounded-full" style="width: 73.9%;"></div>
                                 </div>
                             </div>
 
-                            <button onclick="showToast('Rekapitulasi data outcome dinas pendidikan berhasil diunduh.', 'success')" class="w-full py-2.5 rounded-xl bg-[#F6F3ED] hover:bg-[#C85A32] hover:text-white text-[#1C2024] text-xs font-bold transition-all flex items-center justify-center gap-2">
+                            <button onclick="showToast('Rekapitulasi data outcome dinas pendidikan berhasil diunduh.', 'success')" class="w-full py-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] hover:bg-[#C85A32] hover:text-white text-[#1C2024] dark:text-[#F2F4F8] text-xs font-bold transition-all flex items-center justify-center gap-2 relative z-10">
                                 <span class="material-symbols-outlined text-sm">download</span> Unduh Ringkasan Agregat Wilayah
                             </button>
                         </div>
@@ -877,9 +888,9 @@
                 <!-- 8. MOBILE SIMULATOR VIEW PANE -->
                 <section id="view-simulator" class="view-pane flex flex-col items-center justify-center space-y-6">
                     <div class="text-center max-w-lg">
-                        <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Antarmuka PIB Lapangan</span>
-                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Simulator Mobile Application</h2>
-                        <p class="text-xs text-[#656A73]">Simulasi interaktif aplikasi mobile yang digunakan oleh Pendamping Inklusi Bersertifikat (PIB).</p>
+                        <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Antarmuka PIB Lapangan</span>
+                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Simulator Mobile Application</h2>
+                        <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Simulasi interaktif aplikasi mobile yang digunakan oleh Pendamping Inklusi Bersertifikat (PIB).</p>
                     </div>
 
                     <!-- Phone Frame -->
@@ -891,14 +902,14 @@
                         </div>
 
                         <!-- Screen Content -->
-                        <div class="phone-mockup-screen bg-[#FBF9F5]">
+                        <div class="phone-mockup-screen bg-[#FBF9F5] dark:bg-[#0A0B0D]">
                             
                             <!-- Tab 1: Beranda Mobile -->
                             <div id="mTab-beranda" class="mobile-tab-pane p-5 space-y-4">
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <p class="text-[11px] text-[#8F95A0]">Selamat Pagi,</p>
-                                        <h4 class="font-bold text-sm text-[#1C2024]">Rina Maharani, S.Pd</h4>
+                                        <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Rina Maharani, S.Pd</h4>
                                     </div>
                                     <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">PIB Aktif</span>
                                 </div>
@@ -914,35 +925,35 @@
                                 </div>
 
                                 <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                                    <div class="bg-white p-2.5 rounded-xl border border-[#EAE4D9]">
+                                    <div class="bg-white dark:bg-[#121418] p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
                                         <span class="text-[#8F95A0] text-[10px] block">Sesi Selesai</span>
-                                        <span class="font-bold text-[#5B6E43] text-sm">48</span>
+                                        <span class="font-bold text-[#5B6E43] text-sm tabular-nums">48</span>
                                     </div>
-                                    <div class="bg-white p-2.5 rounded-xl border border-[#EAE4D9]">
+                                    <div class="bg-white dark:bg-[#121418] p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
                                         <span class="text-[#8F95A0] text-[10px] block">Modul Lulus</span>
-                                        <span class="font-bold text-[#C85A32] text-sm">8/8</span>
+                                        <span class="font-bold text-[#C85A32] text-sm tabular-nums">8/8</span>
                                     </div>
-                                    <div class="bg-white p-2.5 rounded-xl border border-[#EAE4D9]">
+                                    <div class="bg-white dark:bg-[#121418] p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
                                         <span class="text-[#8F95A0] text-[10px] block">Sertifikat</span>
-                                        <span class="font-bold text-[#1C2024] text-sm">Resmi</span>
+                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] text-sm">Resmi</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Tab 2: Micro Mobile -->
                             <div id="mTab-micro" class="mobile-tab-pane p-5 space-y-3 hidden">
-                                <h4 class="font-bold text-sm text-[#1C2024]">Microcredential PIB</h4>
+                                <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Microcredential PIB</h4>
                                 <div class="space-y-2 text-xs">
-                                    <div class="p-3 bg-white rounded-xl border border-[#EAE4D9] flex justify-between items-center">
+                                    <div class="p-3 bg-white dark:bg-[#121418] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] flex justify-between items-center">
                                         <div>
-                                            <p class="font-bold text-[#1C2024]">Modul 1: Dasar Inklusif</p>
+                                            <p class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Modul 1: Dasar Inklusif</p>
                                             <p class="text-[10px] text-[#8F95A0]">6 Jam • Lulus (100)</p>
                                         </div>
                                         <span class="text-[10px] font-bold text-[#5B6E43]">Selesai</span>
                                     </div>
-                                    <div class="p-3 bg-white rounded-xl border border-[#EAE4D9] flex justify-between items-center">
+                                    <div class="p-3 bg-white dark:bg-[#121418] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] flex justify-between items-center">
                                         <div>
-                                            <p class="font-bold text-[#1C2024]">Modul 6: Asisten AI Kelas</p>
+                                            <p class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Modul 6: Asisten AI Kelas</p>
                                             <p class="text-[10px] text-[#8F95A0]">8 Jam • Lulus (95)</p>
                                         </div>
                                         <span class="text-[10px] font-bold text-[#5B6E43]">Selesai</span>
@@ -952,9 +963,9 @@
 
                             <!-- Tab 3: Asisten AI Mobile -->
                             <div id="mTab-asisten" class="mobile-tab-pane p-5 space-y-3 hidden">
-                                <h4 class="font-bold text-sm text-[#1C2024]">Asisten AI Kelas</h4>
-                                <div class="p-3 bg-white rounded-xl border border-[#EAE4D9] text-xs space-y-2">
-                                    <p class="text-[#656A73]"><strong>Instruksi Asli:</strong> "Kerjakan soal pecahan nomor 1-5 di halaman 24."</p>
+                                <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Asisten AI Kelas</h4>
+                                <div class="p-3 bg-white dark:bg-[#121418] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] text-xs space-y-2">
+                                    <p class="text-[#656A73] dark:text-[#9BA1AD]"><strong>Instruksi Asli:</strong> "Kerjakan soal pecahan nomor 1-5 di halaman 24."</p>
                                     <div class="p-2.5 rounded-lg bg-[#5B6E43]/10 text-[#5B6E43]">
                                         <span class="font-bold block mb-1">⚡ Langkah Adaptif:</span>
                                         <p>1. Buka hal 24.<br>2. Kerjakan 2 soal bergambar.<br>3. Beri stiker bintang.</p>
@@ -969,11 +980,11 @@
 
                             <!-- Tab 4: Sekolah Mobile -->
                             <div id="mTab-sekolah" class="mobile-tab-pane p-5 space-y-3 hidden">
-                                <h4 class="font-bold text-sm text-[#1C2024]">Sekolah Mitra Terdekat</h4>
-                                <div class="p-3.5 bg-white rounded-xl border-2 border-[#C85A32] text-xs space-y-2">
+                                <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Sekolah Mitra Terdekat</h4>
+                                <div class="p-3.5 bg-white dark:bg-[#121418] rounded-xl border-2 border-[#C85A32] text-xs space-y-2">
                                     <div class="flex justify-between">
-                                        <span class="font-bold text-[#1C2024]">SDN Harapan 1</span>
-                                        <span class="text-[10px] font-bold text-[#C85A32]">92% Cocok</span>
+                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">SDN Harapan 1</span>
+                                        <span class="text-[10px] font-bold text-[#C85A32] dark:text-[#E07A5F]">92% Cocok</span>
                                     </div>
                                     <p class="text-[11px] text-[#8F95A0]">Sukamaju (1.8 km) • Butuh 2 PIB</p>
                                     <button onclick="showToast('Permohonan diajukan ke GPK Koordinator', 'success')" class="w-full py-1.5 rounded-lg bg-[#C85A32] text-white font-bold text-xs">
@@ -984,7 +995,7 @@
                         </div>
 
                         <!-- Mobile Bottom Navigation -->
-                        <div class="h-[68px] bg-white border-t border-[#EAE4D9] grid grid-cols-4 items-center px-2">
+                        <div class="h-[68px] bg-white dark:bg-[#121418] border-t border-[#EAE4D9] dark:border-[#23272F] grid grid-cols-4 items-center px-2">
                             <button onclick="switchMobileTab('beranda')" data-tab="beranda" class="mob-nav-btn flex flex-col items-center text-[#C85A32] font-bold">
                                 <span class="material-symbols-outlined text-lg">home</span>
                                 <span class="text-[9px]">Beranda</span>
@@ -1008,27 +1019,27 @@
                 <!-- 9. PENGATURAN VIEW PANE -->
                 <section id="view-pengaturan" class="view-pane space-y-6">
                     <div>
-                        <span class="text-xs font-bold text-[#C85A32] uppercase tracking-wider">Tata Kelola & Keamanan</span>
-                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] mt-0.5">Pengaturan & Manajemen Akses</h2>
-                        <p class="text-xs text-[#656A73]">Konfigurasi kontrol akses berbasis peran (RBAC) dan tata kelola data inklusif.</p>
+                        <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Tata Kelola & Keamanan</span>
+                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Pengaturan & Manajemen Akses</h2>
+                        <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Konfigurasi kontrol akses berbasis peran (RBAC) dan tata kelola data inklusif.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm space-y-2">
-                            <span class="material-symbols-outlined text-[#C85A32] text-2xl">privacy_tip</span>
-                            <h3 class="font-bold text-sm text-[#1C2024]">Minimisasi Data Anak</h3>
-                            <p class="text-xs text-[#656A73]">Hanya mencatat kemajuan aktivitas pembelajaran. Tidak merekam data medis yang berisiko privasi.</p>
+                        <div class="spotlight-card p-5 space-y-2">
+                            <span class="material-symbols-outlined text-[#C85A32] text-2xl relative z-10">privacy_tip</span>
+                            <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] relative z-10">Minimisasi Data Anak</h3>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] relative z-10">Hanya mencatat kemajuan aktivitas pembelajaran. Tidak merekam data medis yang berisiko privasi.</p>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm space-y-2">
-                            <span class="material-symbols-outlined text-[#5B6E43] text-2xl">shield</span>
-                            <h3 class="font-bold text-sm text-[#1C2024]">Agregasi Laporan Publik</h3>
-                            <p class="text-xs text-[#656A73]">Laporan tingkat wilayah disajikan dalam format agregat untuk melindungi identitas anak berkebutuhan khusus.</p>
+                        <div class="spotlight-card p-5 space-y-2">
+                            <span class="material-symbols-outlined text-[#5B6E43] text-2xl relative z-10">shield</span>
+                            <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] relative z-10">Agregasi Laporan Publik</h3>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] relative z-10">Laporan tingkat wilayah disajikan dalam format agregat untuk melindungi identitas anak berkebutuhan khusus.</p>
                         </div>
-                        <div class="bg-white p-5 rounded-2xl border border-[#EAE4D9] shadow-sm space-y-2">
-                            <span class="material-symbols-outlined text-[#E29547] text-2xl">restart_alt</span>
-                            <h3 class="font-bold text-sm text-[#1C2024]">Reset Data State</h3>
-                            <p class="text-xs text-[#656A73]">Kembalikan seluruh data ke konfigurasi default PRD.</p>
-                            <button onclick="if(confirm('Kembalikan data ke awal?')){window.store.reset(); location.reload();}" class="mt-2 px-3 py-1.5 rounded-lg bg-[#BA1A1A]/10 text-[#BA1A1A] hover:bg-[#BA1A1A] hover:text-white text-xs font-bold transition-colors">
+                        <div class="spotlight-card p-5 space-y-2">
+                            <span class="material-symbols-outlined text-[#E29547] text-2xl relative z-10">restart_alt</span>
+                            <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] relative z-10">Reset Data State</h3>
+                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] relative z-10">Kembalikan seluruh data ke konfigurasi default PRD.</p>
+                            <button onclick="if(confirm('Kembalikan data ke awal?')){window.store.reset(); location.reload();}" class="mt-2 px-3 py-1.5 rounded-lg bg-[#BA1A1A]/10 text-[#BA1A1A] hover:bg-[#BA1A1A] hover:text-white text-xs font-bold transition-colors relative z-10">
                                 Reset Database
                             </button>
                         </div>
@@ -1039,15 +1050,33 @@
         </div>
     </div>
 
+    <!-- ================= UNIVERSAL COMMAND PALETTE (⌘K) ================= -->
+    <div id="commandMenuModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-start justify-center pt-24 p-4 hidden" onclick="if(event.target===this) closeCommandMenu()">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl w-full max-w-xl shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] overflow-hidden glass-panel">
+            <div class="p-4 border-b border-[#EAE4D9] dark:border-[#23272F] flex items-center gap-3">
+                <span class="material-symbols-outlined text-[#8F95A0]">search</span>
+                <input id="cmdInput" oninput="filterCommandItems()" type="text" placeholder="Ketik perintah atau cari..." class="bg-transparent border-none text-sm text-[#1C2024] dark:text-[#F2F4F8] outline-none w-full placeholder:text-[#8F95A0]">
+                <kbd class="px-1.5 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#181B20] text-[10px] text-[#8F95A0] font-mono">ESC</kbd>
+            </div>
+            <div id="cmdItemsList" class="max-h-80 overflow-y-auto p-2 space-y-1">
+                <!-- Populated dynamically -->
+            </div>
+            <div class="p-3 bg-[#F6F3ED] dark:bg-[#181B20] border-t border-[#EAE4D9] dark:border-[#23272F] flex justify-between items-center text-[10px] text-[#8F95A0]">
+                <span>Gunakan panah untuk navigasi</span>
+                <span>Tekan <kbd class="font-mono font-bold">↵ ENTER</kbd> untuk memilih</span>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= MODALS ================= -->
 
     <!-- Modal: Lesson Player Materi Modul -->
-    <div id="lessonModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl border border-[#EAE4D9] max-h-[85vh] flex flex-col justify-between">
-            <div class="flex justify-between items-start pb-3 border-b border-[#F0ECE4]">
+    <div id="lessonModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] max-h-[85vh] flex flex-col justify-between glass-panel">
+            <div class="flex justify-between items-start pb-3 border-b border-[#F0ECE4] dark:border-[#23272F]">
                 <div>
                     <span id="lessonModalCat" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">Fondasi</span>
-                    <h3 id="lessonModalTitle" class="font-heading font-extrabold text-lg text-[#1C2024] mt-1">Modul 1: Dasar Pendidikan Inklusif</h3>
+                    <h3 id="lessonModalTitle" class="font-heading font-extrabold text-lg text-[#1C2024] dark:text-[#F2F4F8] mt-1">Modul 1: Dasar Pendidikan Inklusif</h3>
                 </div>
                 <button onclick="closeModal('lessonModal')" class="text-[#8F95A0] hover:text-[#1C2024]">
                     <span class="material-symbols-outlined">close</span>
@@ -1058,8 +1087,8 @@
                 <!-- Injected content -->
             </div>
 
-            <div class="pt-3 border-t border-[#F0ECE4] flex justify-between items-center">
-                <button onclick="closeModal('lessonModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] text-xs font-bold text-[#656A73]">Tutup</button>
+            <div class="pt-3 border-t border-[#F0ECE4] dark:border-[#23272F] flex justify-between items-center">
+                <button onclick="closeModal('lessonModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] text-xs font-bold text-[#656A73] dark:text-[#9BA1AD]">Tutup</button>
                 <button id="lessonModalQuizBtn" class="px-5 py-2 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
                     <span>Lanjut ke Asesmen Uji Kompetensi</span>
                     <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -1069,56 +1098,56 @@
     </div>
 
     <!-- Modal: Detail Log Sesi Pendampingan -->
-    <div id="sessionDetailModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9]">
-            <div class="flex justify-between items-start mb-4 pb-3 border-b border-[#F0ECE4]">
+    <div id="sessionDetailModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
+            <div class="flex justify-between items-start mb-4 pb-3 border-b border-[#F0ECE4] dark:border-[#23272F]">
                 <div>
-                    <span id="sessDetailId" class="text-[11px] font-bold text-[#C85A32]">Log Sesi #SES-01</span>
-                    <h3 class="font-bold text-base text-[#1C2024] mt-0.5">Detail Log Aktivitas Pendampingan</h3>
+                    <span id="sessDetailId" class="text-[11px] font-bold text-[#C85A32] dark:text-[#E07A5F]">Log Sesi #SES-01</span>
+                    <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Detail Log Aktivitas Pendampingan</h3>
                 </div>
                 <button onclick="closeModal('sessionDetailModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
             </div>
             <div class="space-y-3 text-xs">
-                <div class="grid grid-cols-2 gap-3 p-3 bg-[#F6F3ED] rounded-2xl">
+                <div class="grid grid-cols-2 gap-3 p-3 bg-[#F6F3ED] dark:bg-[#181B20] rounded-2xl">
                     <div>
                         <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">PIB Bertugas</span>
-                        <strong id="sessDetailPIB" class="text-[#1C2024]">Rina Maharani, S.Pd</strong>
+                        <strong id="sessDetailPIB" class="text-[#1C2024] dark:text-[#F2F4F8]">Rina Maharani, S.Pd</strong>
                     </div>
                     <div>
                         <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Sekolah & Kelas</span>
-                        <strong id="sessDetailSchool" class="text-[#1C2024]">SDN Harapan 1 — Kelas 4A</strong>
+                        <strong id="sessDetailSchool" class="text-[#1C2024] dark:text-[#F2F4F8]">SDN Harapan 1 — Kelas 4A</strong>
                     </div>
                 </div>
                 <div>
                     <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Siswa Didampingi</span>
-                    <p id="sessDetailStudent" class="text-xs font-bold text-[#1C2024]">Ananda Fikri (Autism Spectrum)</p>
+                    <p id="sessDetailStudent" class="text-xs font-bold text-[#1C2024] dark:text-[#F2F4F8]">Ananda Fikri (Autism Spectrum)</p>
                 </div>
                 <div>
                     <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Materi & Aktivitas</span>
-                    <p id="sessDetailActivity" class="text-xs text-[#1C2024]">Matematika Pecahan Adaptif</p>
+                    <p id="sessDetailActivity" class="text-xs text-[#1C2024] dark:text-[#F2F4F8]">Matematika Pecahan Adaptif</p>
                 </div>
-                <div class="p-3 bg-white border border-[#EAE4D9] rounded-xl">
+                <div class="p-3 bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] rounded-xl">
                     <span class="text-[#8F95A0] text-[10px] block uppercase font-bold mb-1">Catatan Modifikasi & Kemandirian Siswa</span>
-                    <p id="sessDetailNotes" class="text-xs text-[#656A73] leading-relaxed">Instruksi disederhanakan dengan kartu pecahan visual. Siswa mampu menyelesaikan 2 soal mandiri tanpa tantrum.</p>
+                    <p id="sessDetailNotes" class="text-xs text-[#656A73] dark:text-[#9BA1AD] leading-relaxed">Instruksi disederhanakan dengan kartu pecahan visual. Siswa mampu menyelesaikan 2 soal mandiri tanpa tantrum.</p>
                 </div>
             </div>
-            <div class="mt-5 pt-3 border-t border-[#F0ECE4] flex justify-between items-center">
+            <div class="mt-5 pt-3 border-t border-[#F0ECE4] dark:border-[#23272F] flex justify-between items-center">
                 <div id="sessDetailVerifBadge"></div>
-                <button onclick="closeModal('sessionDetailModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold text-xs">Tutup</button>
+                <button onclick="closeModal('sessionDetailModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold text-xs">Tutup</button>
             </div>
         </div>
     </div>
 
     <!-- Modal: Asesmen Quiz -->
-    <div id="quizModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div id="quizModalContent" class="bg-white rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9]">
+    <div id="quizModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div id="quizModalContent" class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
             <!-- Injected by js/app.js -->
         </div>
     </div>
 
     <!-- Modal: Sertifikat Digital Resmi -->
-    <div id="certModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-8 w-full max-w-xl shadow-2xl border-4 border-[#C85A32]/20 relative">
+    <div id="certModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-8 w-full max-w-xl shadow-2xl border-4 border-[#C85A32]/20 relative glass-panel">
             <button onclick="closeModal('certModal')" class="absolute top-4 right-4 text-[#8F95A0] hover:text-[#1C2024]">
                 <span class="material-symbols-outlined">close</span>
             </button>
@@ -1128,16 +1157,16 @@
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
                     </svg>
                 </div>
-                <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#C85A32] block">Kementerian Pendidikan • Program Inklusi Nasional</span>
-                <h3 class="font-heading font-extrabold text-xl text-[#1C2024]">SERTIFIKASI RESMI PENDAMPING INKLUSI</h3>
-                <p class="text-xs text-[#656A73]">Diberikan kepada:</p>
-                <h4 id="certRecipientName" class="font-heading font-extrabold text-lg text-[#C85A32]">Rina Maharani, S.Pd</h4>
-                <p class="text-xs text-[#656A73] max-w-md mx-auto leading-relaxed">
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#C85A32] dark:text-[#E07A5F] block">Kementerian Pendidikan • Program Inklusi Nasional</span>
+                <h3 class="font-heading font-extrabold text-xl text-[#1C2024] dark:text-[#F2F4F8]">SERTIFIKASI RESMI PENDAMPING INKLUSI</h3>
+                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Diberikan kepada:</p>
+                <h4 id="certRecipientName" class="font-heading font-extrabold text-lg text-[#C85A32] dark:text-[#E07A5F]">Rina Maharani, S.Pd</h4>
+                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] max-w-md mx-auto leading-relaxed">
                     Telah menyelesaikan program kompetensi <strong>Pendamping Inklusi Bersertifikat (PIB)</strong> 8 Modul (60 Jam Pelatihan) dengan predikat <strong>Sangat Memuaskan (Nilai: 96/100)</strong>.
                 </p>
-                <div class="pt-4 flex justify-between items-end border-t border-[#EAE4D9] text-xs">
+                <div class="pt-4 flex justify-between items-end border-t border-[#EAE4D9] dark:border-[#23272F] text-xs">
                     <div class="text-left">
-                        <p class="font-bold text-[#1C2024]">Dr. Sari Wulandari, M.Pd</p>
+                        <p class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Dr. Sari Wulandari, M.Pd</p>
                         <p class="text-[10px] text-[#8F95A0]">GPK Koordinator Wilayah</p>
                     </div>
                     <div class="text-right">
@@ -1155,37 +1184,37 @@
     </div>
 
     <!-- Modal: Tambah PIB -->
-    <div id="addPibModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9]">
+    <div id="addPibModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base text-[#1C2024]">Tambah Pendamping Inklusi (PIB)</h3>
+                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Tambah Pendamping Inklusi (PIB)</h3>
                 <button onclick="closeModal('addPibModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
             </div>
             <form onsubmit="event.preventDefault(); const p=window.store.addPIB({name:this.pName.value, region:this.pRegion.value, phone:this.pPhone.value, email:this.pEmail.value, competencies:[this.pComp.value]}); closeModal('addPibModal'); showToast('PIB ' + p.name + ' berhasil ditambahkan!', 'success'); renderPIBDirectory();" class="space-y-3 text-xs">
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Nama Lengkap & Gelar</label>
-                    <input name="pName" type="text" required placeholder="Contoh: Fatimah Zahra, S.Pd" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Nama Lengkap & Gelar</label>
+                    <input name="pName" type="text" required placeholder="Contoh: Fatimah Zahra, S.Pd" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Wilayah</label>
-                        <input name="pRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Wilayah</label>
+                        <input name="pRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">No. WhatsApp</label>
-                        <input name="pPhone" type="text" placeholder="+62 812-xxx" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">No. WhatsApp</label>
+                        <input name="pPhone" type="text" placeholder="+62 812-xxx" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Email</label>
-                    <input name="pEmail" type="email" placeholder="nama@pib.id" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Email</label>
+                    <input name="pEmail" type="email" placeholder="nama@pib.id" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Kompetensi Spesialis</label>
-                    <input name="pComp" type="text" required placeholder="Autism Spectrum / Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kompetensi Spesialis</label>
+                    <input name="pComp" type="text" required placeholder="Autism Spectrum / Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div class="pt-3 flex justify-end gap-2">
-                    <button type="button" onclick="closeModal('addPibModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold">Batal</button>
+                    <button type="button" onclick="closeModal('addPibModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
                     <button type="submit" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Simpan</button>
                 </div>
             </form>
@@ -1193,25 +1222,25 @@
     </div>
 
     <!-- Modal: Daftarkan Sekolah Mitra Baru -->
-    <div id="addSchoolModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9]">
+    <div id="addSchoolModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base text-[#1C2024]">Daftarkan Sekolah Mitra Baru</h3>
+                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Daftarkan Sekolah Mitra Baru</h3>
                 <button onclick="closeModal('addSchoolModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
             </div>
             <form onsubmit="event.preventDefault(); const s=window.store.addSchool({name:this.schName.value, region:this.schRegion.value, level:this.schLevel.value, requiredPIB:parseInt(this.schReqPIB.value), studentsCount:parseInt(this.schStudents.value), requiredCompetencies:[this.schComps.value], coordinatorName:this.schCoord.value, address:this.schAddr.value, schedule:'Senin - Jumat'}); closeModal('addSchoolModal'); showToast('Sekolah ' + s.name + ' berhasil didaftarkan!', 'success'); renderSchoolDirectory();" class="space-y-3 text-xs">
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Nama Satuan Pendidikan</label>
-                    <input name="schName" type="text" required placeholder="Contoh: SMAN 2 Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Nama Satuan Pendidikan</label>
+                    <input name="schName" type="text" required placeholder="Contoh: SMAN 2 Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Wilayah</label>
-                        <input name="schRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Wilayah</label>
+                        <input name="schRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Jenjang</label>
-                        <select name="schLevel" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Jenjang</label>
+                        <select name="schLevel" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                             <option value="SD">SD</option>
                             <option value="SMP">SMP</option>
                             <option value="SMA">SMA</option>
@@ -1220,25 +1249,25 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Kebutuhan PIB</label>
-                        <input name="schReqPIB" type="number" value="2" min="1" max="10" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kebutuhan PIB</label>
+                        <input name="schReqPIB" type="number" value="2" min="1" max="10" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Jumlah Siswa Inklusi</label>
-                        <input name="schStudents" type="number" value="8" min="1" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Jumlah Siswa Inklusi</label>
+                        <input name="schStudents" type="number" value="8" min="1" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Spesialisasi Dibutuhkan</label>
-                    <input name="schComps" type="text" required placeholder="Autism Spectrum, ADHD, Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Spesialisasi Dibutuhkan</label>
+                    <input name="schComps" type="text" required placeholder="Autism Spectrum, ADHD, Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Koordinator Sekolah & Alamat</label>
-                    <input name="schCoord" type="text" required placeholder="Nama Koordinator" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none mb-1.5">
-                    <input name="schAddr" type="text" required placeholder="Alamat lengkap sekolah" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Koordinator Sekolah & Alamat</label>
+                    <input name="schCoord" type="text" required placeholder="Nama Koordinator" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none mb-1.5">
+                    <input name="schAddr" type="text" required placeholder="Alamat lengkap sekolah" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div class="pt-3 flex justify-end gap-2">
-                    <button type="button" onclick="closeModal('addSchoolModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold">Batal</button>
+                    <button type="button" onclick="closeModal('addSchoolModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
                     <button type="submit" class="px-5 py-2 rounded-xl bg-[#5B6E43] text-white font-bold">Simpan Sekolah</button>
                 </div>
             </form>
@@ -1246,17 +1275,17 @@
     </div>
 
     <!-- Modal: Penugasan PIB ke Sekolah -->
-    <div id="assignModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9]">
+    <div id="assignModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
             <div class="flex justify-between items-center mb-3">
-                <h3 class="font-bold text-base text-[#1C2024]">Penugasan PIB ke Sekolah Mitra</h3>
+                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Penugasan PIB ke Sekolah Mitra</h3>
                 <button onclick="closeModal('assignModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
             </div>
-            <p class="text-xs text-[#656A73] mb-3">Target Sekolah: <strong id="assignTargetSchoolName" class="text-[#1C2024]"></strong></p>
+            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] mb-3">Target Sekolah: <strong id="assignTargetSchoolName" class="text-[#1C2024] dark:text-[#F2F4F8]"></strong></p>
             <div class="space-y-3 text-xs">
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Pilih PIB Tersedia</label>
-                    <select id="assignPibSelect" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Pilih PIB Tersedia</label>
+                    <select id="assignPibSelect" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                         <!-- Populated dynamically -->
                     </select>
                 </div>
@@ -1265,7 +1294,7 @@
                     <p class="text-[11px]">Jarak tempuh &lt; 3 km dan kompetensi pendamping sesuai kebutuhan kelas inklusi.</p>
                 </div>
                 <div class="pt-2 flex justify-end gap-2">
-                    <button onclick="closeModal('assignModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold">Batal</button>
+                    <button onclick="closeModal('assignModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
                     <button onclick="handleAssignConfirm()" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Konfirmasi Penugasan</button>
                 </div>
             </div>
@@ -1273,41 +1302,41 @@
     </div>
 
     <!-- Modal: Catat Sesi Baru -->
-    <div id="addSessionModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9]">
+    <div id="addSessionModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base text-[#1C2024]">Catat Sesi Pendampingan Baru</h3>
+                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Catat Sesi Pendampingan Baru</h3>
                 <button onclick="closeModal('addSessionModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
             </div>
             <form onsubmit="event.preventDefault(); window.store.addSession({pibName:this.sPib.value, schoolName:this.sSchool.value, className:this.sClass.value, studentName:this.sStudent.value, activity:this.sActivity.value, notes:this.sNotes.value, time:'08:00 - 10:00'}); closeModal('addSessionModal'); showToast('Sesi pendampingan baru dicatat!', 'success'); renderSessionsList();" class="space-y-3 text-xs">
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">PIB Bertugas</label>
-                    <input name="sPib" type="text" required value="Rina Maharani, S.Pd" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">PIB Bertugas</label>
+                    <input name="sPib" type="text" required value="Rina Maharani, S.Pd" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Sekolah</label>
-                        <input name="sSchool" type="text" required value="SDN Harapan 1" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Sekolah</label>
+                        <input name="sSchool" type="text" required value="SDN Harapan 1" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                     <div>
-                        <label class="font-bold text-[#1C2024] block mb-1">Kelas</label>
-                        <input name="sClass" type="text" required value="Kelas 4A" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kelas</label>
+                        <input name="sClass" type="text" required value="Kelas 4A" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                     </div>
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Nama Siswa Didampingi</label>
-                    <input name="sStudent" type="text" required placeholder="Ananda Fikri (Autism Spectrum)" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Nama Siswa Didampingi</label>
+                    <input name="sStudent" type="text" required placeholder="Ananda Fikri (Autism Spectrum)" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Materi / Aktivitas Pokok</label>
-                    <input name="sActivity" type="text" required placeholder="Matematika Pecahan Adaptif" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none">
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Materi / Aktivitas Pokok</label>
+                    <input name="sActivity" type="text" required placeholder="Matematika Pecahan Adaptif" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
                 </div>
                 <div>
-                    <label class="font-bold text-[#1C2024] block mb-1">Catatan Modifikasi & Observasi</label>
-                    <textarea name="sNotes" rows="2" placeholder="Siswa menggunakan kartu visual..." class="w-full p-2.5 rounded-xl border border-[#EAE4D9] text-xs outline-none"></textarea>
+                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Catatan Modifikasi & Observasi</label>
+                    <textarea name="sNotes" rows="2" placeholder="Siswa menggunakan kartu visual..." class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none"></textarea>
                 </div>
                 <div class="pt-2 flex justify-end gap-2">
-                    <button type="button" onclick="closeModal('addSessionModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] font-bold">Batal</button>
+                    <button type="button" onclick="closeModal('addSessionModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
                     <button type="submit" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Simpan & Ajukan</button>
                 </div>
             </form>
@@ -1317,11 +1346,5 @@
     <!-- Scripts -->
     <script src="js/store.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        function openModal(id) {
-            const m = document.getElementById(id);
-            if (m) m.classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>

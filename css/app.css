@@ -1,6 +1,6 @@
 /**
- * SAPA INKLUSI - Core Living Design System
- * Aesthetic: Warm Inclusive Education (Terracotta Earth, Muted Olive, Warm Cream, Charcoal)
+ * SAPA INKLUSI - Apple & Vercel-grade Design Engineering System
+ * Precision Kerning, Spotlight Glow Physics, Glassmorphism & Tabular Numerals
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@500;600;700;800&display=swap');
@@ -9,14 +9,9 @@
     --primary: #C85A32;
     --primary-hover: #B04A25;
     --primary-light: #FDF3EE;
-    --primary-surface: #F9ECE6;
     
     --secondary: #5B6E43;
     --secondary-hover: #4C5D37;
-    --secondary-light: #F1F5EB;
-    
-    --accent-amber: #E29547;
-    --accent-sand: #EFE9E1;
     
     --bg-main: #FBF9F5;
     --bg-card: #FFFFFF;
@@ -28,21 +23,58 @@
     --text-muted: #656A73;
     --text-subtle: #8F95A0;
     
-    --shadow-subtle: 0 2px 10px rgba(44, 38, 34, 0.04);
-    --shadow-card: 0 4px 20px rgba(44, 38, 34, 0.06);
-    --shadow-elevated: 0 12px 32px rgba(44, 38, 34, 0.09);
-    --shadow-primary: 0 6px 18px rgba(200, 90, 50, 0.22);
+    --spotlight-color: rgba(200, 90, 50, 0.08);
+}
+
+/* Dark Theme Variables (OLED Midnight Studio) */
+html.dark {
+    --primary: #E07A5F;
+    --primary-hover: #F28E73;
+    --primary-light: #241A16;
+    
+    --secondary: #7E9560;
+    --secondary-hover: #92AA72;
+    
+    --bg-main: #0A0B0D;
+    --bg-card: #121418;
+    --bg-card-subtle: #181B20;
+    --border-color: #23272F;
+    --border-subtle: #1C2027;
+    
+    --text-main: #F2F4F8;
+    --text-muted: #9BA1AD;
+    --text-subtle: #636A78;
+    
+    --spotlight-color: rgba(224, 122, 95, 0.12);
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-main);
     color: var(--text-main);
     overflow-x: hidden;
+    letter-spacing: -0.011em;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, .font-heading {
+h1, h2, h3, h4, .font-heading {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+.material-symbols-outlined.fill, .icon-fill {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 /* Custom Scrollbar */
@@ -57,24 +89,51 @@ h1, h2, h3, .font-heading {
     background: #D9D2C5;
     border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-    background: #B8B0A0;
+html.dark ::-webkit-scrollbar-thumb {
+    background: #2E3440;
 }
 
-/* Material Symbols */
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    vertical-align: middle;
-}
-.material-symbols-outlined.fill, .icon-fill {
-    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+/* Signature Vercel Spotlight Card Effect */
+.spotlight-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
-/* Living Animations & Transitions */
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: inherit;
+    background: radial-gradient(400px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), var(--spotlight-color), transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+.spotlight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+    border-color: #D6CCC0;
+}
+html.dark .spotlight-card:hover {
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
+    border-color: #383E4C;
+}
+
+/* Living SPA View Panes */
 .view-pane {
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     display: none;
 }
 .view-pane.active {
@@ -83,7 +142,7 @@ h1, h2, h3, .font-heading {
     transform: translateY(0);
 }
 
-/* Voice Audio Wave Visualizer Animation */
+/* Audio Wave Visualizer */
 @keyframes wave-bar {
     0%, 100% { height: 6px; }
     50% { height: 28px; }
@@ -102,49 +161,75 @@ h1, h2, h3, .font-heading {
 .wave-bar:nth-child(5) { animation-delay: 0.3s; }
 .wave-bar:nth-child(6) { animation-delay: 0.5s; }
 
-/* Micro-Pulse & Glow */
-@keyframes pulse-ring {
-    0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.18); opacity: 0.25; }
-    100% { transform: scale(0.95); opacity: 0.8; }
+/* Mic Pulse Effect */
+@keyframes pulse-glow {
+    0% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(200, 90, 50, 0.5); }
+    70% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(200, 90, 50, 0); }
+    100% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(200, 90, 50, 0); }
 }
 .mic-pulsing {
-    animation: pulse-ring 1.8s infinite ease-in-out;
+    animation: pulse-glow 1.8s infinite ease-in-out;
 }
 
-/* Card Hover Elevate */
-.hover-elevate {
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+/* Glassmorphism Refraction (Apple Style) */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(234, 228, 217, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
 }
-.hover-elevate:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-elevated);
-    border-color: #DBCFBE;
+html.dark .glass-panel {
+    background: rgba(18, 20, 24, 0.82);
+    border: 1px solid rgba(35, 39, 47, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Mobile Simulator Phone Styling */
+/* AI Typing Cursor */
+.streaming-cursor::after {
+    content: '▋';
+    display: inline-block;
+    color: var(--primary);
+    animation: blink 0.9s infinite step-start;
+    margin-left: 2px;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Command Menu (Cmd + K) */
+#commandMenuModal {
+    transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cmd-item {
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+.cmd-item.selected, .cmd-item:hover {
+    background-color: var(--bg-card-subtle);
+    color: var(--primary);
+}
+
+/* Phone Mockup Frame */
 .phone-mockup {
     width: 380px;
     height: 760px;
-    border-radius: 46px;
+    border-radius: 48px;
     box-shadow: 0 25px 65px -15px rgba(30, 20, 15, 0.35), 0 0 0 12px #262321, 0 0 0 14px #423E3B;
     overflow: hidden;
     position: relative;
-    background: #FBF9F5;
+    background: var(--bg-main);
 }
-
 .phone-mockup-screen {
     height: calc(100% - 68px);
     overflow-y: auto;
     padding-top: 36px;
-    -ms-overflow-style: none;
     scrollbar-width: none;
 }
 .phone-mockup-screen::-webkit-scrollbar {
     display: none;
 }
 
-/* Toast Notifications */
+/* Toast */
 #toastContainer {
     position: fixed;
     bottom: 24px;
@@ -157,16 +242,16 @@ h1, h2, h3, .font-heading {
 }
 .toast-msg {
     pointer-events: auto;
-    animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: toast-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes toast-in {
-    from { opacity: 0; transform: translateY(16px) scale(0.95); }
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Print Clean Mode */
+/* Print Clean */
 @media print {
-    aside, header, #toastContainer, .no-print, button {
+    aside, header, #toastContainer, #commandMenuModal, button, .no-print {
         display: none !important;
     }
     main {
