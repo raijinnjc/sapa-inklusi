@@ -4,82 +4,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Asisten AI Kelas - SAPA Inklusi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#9a461b",
-                        "primary-container": "#e88252",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#5e2100",
-                        "secondary": "#546430",
-                        "secondary-container": "#d4e7a6",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#586834",
-                        "tertiary": "#5f5e5b",
-                        "tertiary-container": "#9f9d99",
-                        "background": "#fbf9f8",
-                        "surface": "#fbf9f8",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container": "#f0eded",
-                        "surface-container-high": "#eae8e7",
-                        "surface-container-highest": "#e4e2e1",
-                        "surface-dim": "#dcd9d9",
-                        "on-surface": "#1b1c1c",
-                        "on-surface-variant": "#55433b",
-                        "outline": "#88726a",
-                        "outline-variant": "#dbc1b7",
-                        "error": "#ba1a1a",
-                        "error-container": "#ffdad6"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "container-max": "1200px",
-                        "margin-desktop": "40px",
-                        "stack-sm": "8px",
-                        "stack-md": "16px",
-                        "stack-lg": "32px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "caption": ["Plus Jakarta Sans"]
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-fill { font-variation-settings: 'FILL' 1; }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.15); opacity: 0.3; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-        .mic-pulsing {
-            animation: pulse-ring 1.8s infinite ease-in-out;
-        }
-    </style>
     <script src="js/dataStore.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/aiAssistant.js"></script>
 </head>
 <body class="bg-background text-on-surface font-body-md w-full min-h-screen flex">
     <!-- Sidebar Navigation -->
@@ -164,7 +94,6 @@
 
     <!-- Main Chat & Voice Interface -->
     <main class="ml-64 pt-20 px-margin-desktop w-full max-w-container-max mx-auto pb-12 flex flex-col gap-6">
-        <!-- Constraint Banner (PRD Section 9) -->
         <div class="bg-secondary-container/15 border border-secondary/30 rounded-xl p-4 flex items-start gap-3 mt-2">
             <span class="material-symbols-outlined text-secondary text-xl mt-0.5">verified_user</span>
             <div>
@@ -173,11 +102,8 @@
             </div>
         </div>
 
-        <!-- Chat & Voice Studio Container -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <!-- Left: Chat Feed (8 Cols) -->
             <div class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.03)] border border-outline-variant/30 flex flex-col h-[580px]">
-                <!-- Chat Header -->
                 <div class="p-4 border-b border-outline-variant/20 bg-surface/50 flex justify-between items-center">
                     <div class="flex items-center gap-2">
                         <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -193,9 +119,7 @@
                     </button>
                 </div>
 
-                <!-- Messages List -->
                 <div id="chatFeed" class="flex-1 overflow-y-auto p-4 space-y-4 font-body-md text-sm">
-                    <!-- Default AI Greeting -->
                     <div class="flex items-start gap-3 max-w-[85%]">
                         <div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">AI</div>
                         <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 text-on-surface">
@@ -209,9 +133,7 @@
                     </div>
                 </div>
 
-                <!-- Input Area & Voice Bar -->
                 <div class="p-4 border-t border-outline-variant/20 bg-surface/30">
-                    <!-- Quick Prompt Chips (PRD Section 9) -->
                     <div class="flex flex-wrap gap-2 mb-3">
                         <button onclick="sendQuickPrompt('Sederhanakan instruksi ini agar lebih mudah dipahami siswa: Baca teks halaman 30 lalu jawab pertanyaan 1 sampai 5.')" class="bg-surface border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary text-xs px-3 py-1 rounded-full transition-colors">
                             ⚡ Sederhanakan Instruksi
@@ -224,7 +146,6 @@
                         </button>
                     </div>
 
-                    <!-- Input Box -->
                     <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
                         <button type="button" id="micBtn" onclick="toggleVoiceRecording()" title="Bicara melalui Mikrofon (Speech-to-Text)" class="p-3 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all flex items-center justify-center">
                             <span class="material-symbols-outlined text-xl" id="micIcon">mic</span>
@@ -241,9 +162,7 @@
                 </div>
             </div>
 
-            <!-- Right: Prompt Reference & Quick Guide (4 Cols) -->
             <div class="lg:col-span-4 space-y-6">
-                <!-- User Flow Guide Box -->
                 <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/30 shadow-[0px_4px_20px_rgba(51,51,51,0.03)]">
                     <h3 class="font-label-md font-bold text-on-surface text-sm mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary text-lg">timeline</span>
@@ -269,7 +188,6 @@
                     </div>
                 </div>
 
-                <!-- Example Templates Card -->
                 <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/30 shadow-[0px_4px_20px_rgba(51,51,51,0.03)]">
                     <h3 class="font-label-md font-bold text-on-surface text-sm mb-3">Contoh Perintah Efektif</h3>
                     <div class="space-y-2 text-xs">
@@ -290,157 +208,5 @@
             </div>
         </div>
     </main>
-
-    <script>
-        let isRecording = false;
-        let recognition = null;
-
-        // Check Web Speech Recognition API support
-        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.lang = 'id-ID';
-            recognition.continuous = false;
-            recognition.interimResults = false;
-
-            recognition.onresult = function(event) {
-                const transcript = event.results[0][0].transcript;
-                document.getElementById('chatInput').value = transcript;
-                stopRecordingUI();
-                sendChatMessage(transcript);
-            };
-
-            recognition.onerror = function(event) {
-                console.warn('Speech Recognition Error:', event.error);
-                stopRecordingUI();
-            };
-
-            recognition.onend = function() {
-                stopRecordingUI();
-            };
-        }
-
-        function toggleVoiceRecording() {
-            if (!recognition) {
-                // Fallback simulation for unsupported browsers
-                const simText = prompt("Browser Anda belum mengizinkan Web Speech API langsung. Ketik simulasi suara Anda:", "Sederhanakan instruksi tugas menulis hari ini.");
-                if (simText) {
-                    sendChatMessage(simText);
-                }
-                return;
-            }
-
-            if (!isRecording) {
-                try {
-                    recognition.start();
-                    isRecording = true;
-                    document.getElementById('micBtn').classList.add('bg-primary', 'text-on-primary', 'mic-pulsing');
-                    document.getElementById('voiceStatus').classList.remove('hidden');
-                } catch(e) {
-                    console.error(e);
-                }
-            } else {
-                recognition.stop();
-                stopRecordingUI();
-            }
-        }
-
-        function stopRecordingUI() {
-            isRecording = false;
-            document.getElementById('micBtn').classList.remove('bg-primary', 'text-on-primary', 'mic-pulsing');
-            document.getElementById('voiceStatus').classList.add('hidden');
-        }
-
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'id-ID';
-                utterance.rate = 0.95;
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Text-to-Speech tidak didukung pada browser ini.");
-            }
-        }
-
-        function handleChatSubmit(e) {
-            e.preventDefault();
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (!message) return;
-            input.value = '';
-            sendChatMessage(message);
-        }
-
-        function sendQuickPrompt(promptText) {
-            sendChatMessage(promptText);
-        }
-
-        function sendChatMessage(text) {
-            const feed = document.getElementById('chatFeed');
-
-            // Append User Message
-            const userMsgHtml = `
-                <div class="flex items-start gap-3 max-w-[85%] ml-auto justify-end">
-                    <div class="bg-primary text-on-primary p-4 rounded-2xl rounded-tr-sm shadow-sm">
-                        <p>${escapeHtml(text)}</p>
-                    </div>
-                    <div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">PIB</div>
-                </div>
-            `;
-            feed.insertAdjacentHTML('beforeend', userMsgHtml);
-            feed.scrollTop = feed.scrollHeight;
-
-            // Generate AI Response from DataStore
-            setTimeout(() => {
-                const aiResponse = window.sapaStore ? window.sapaStore.generateAIResponse(text) : "Respon adaptif disiapkan untuk panduan inklusif.";
-                const aiMsgHtml = `
-                    <div class="flex items-start gap-3 max-w-[85%]">
-                        <div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">AI</div>
-                        <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 text-on-surface">
-                            <p class="whitespace-pre-line">${escapeHtml(aiResponse)}</p>
-                            <div class="mt-3 flex gap-3 pt-2 border-t border-outline-variant/20">
-                                <button onclick="speakText(\`${escapeJsString(aiResponse)}\`)" class="text-primary hover:text-primary-container text-xs font-bold flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-sm">volume_up</span> Putar Suara (TTS)
-                                </button>
-                                <button onclick="copyToClip(\`${escapeJsString(aiResponse)}\`)" class="text-on-surface-variant hover:text-on-surface text-xs flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-sm">content_copy</span> Salin
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                feed.insertAdjacentHTML('beforeend', aiMsgHtml);
-                feed.scrollTop = feed.scrollHeight;
-            }, 600);
-        }
-
-        function clearChat() {
-            const feed = document.getElementById('chatFeed');
-            feed.innerHTML = `
-                <div class="flex items-start gap-3 max-w-[85%]">
-                    <div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">AI</div>
-                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 text-on-surface">
-                        <p>Obrolan telah dibersihkan. Silakan ajukan pertanyaan atau instruksi baru untuk didampingi.</p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function copyToClip(text) {
-            navigator.clipboard.writeText(text);
-            alert("Teks berhasil disalin ke clipboard!");
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function escapeJsString(str) {
-            return str.replace(/`/g, '\\`').replace(/\\/g, '\\\\').replace(/\$/g, '\\$');
-        }
-    </script>
 </body>
 </html>

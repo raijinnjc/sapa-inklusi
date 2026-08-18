@@ -4,74 +4,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Dashboard Pemantauan - SAPA Inklusi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#9a461b",
-                        "primary-container": "#e88252",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#5e2100",
-                        "secondary": "#546430",
-                        "secondary-container": "#d4e7a6",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#586834",
-                        "tertiary": "#5f5e5b",
-                        "tertiary-container": "#9f9d99",
-                        "background": "#fbf9f8",
-                        "surface": "#fbf9f8",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container": "#f0eded",
-                        "surface-container-high": "#eae8e7",
-                        "surface-container-highest": "#e4e2e1",
-                        "surface-dim": "#dcd9d9",
-                        "on-surface": "#1b1c1c",
-                        "on-surface-variant": "#55433b",
-                        "outline": "#88726a",
-                        "outline-variant": "#dbc1b7",
-                        "error": "#ba1a1a",
-                        "error-container": "#ffdad6"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "container-max": "1200px",
-                        "margin-desktop": "40px",
-                        "stack-sm": "8px",
-                        "stack-md": "16px",
-                        "stack-lg": "32px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "caption": ["Plus Jakarta Sans"]
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-fill { font-variation-settings: 'FILL' 1; }
-    </style>
     <script src="js/dataStore.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body class="bg-surface text-on-surface font-body-md w-full min-h-screen flex">
     <!-- Sidebar Navigation -->
@@ -84,7 +21,6 @@
             </div>
         </div>
         <div class="flex flex-col gap-1 px-4 h-full overflow-y-auto pb-6">
-            <!-- Active: Beranda / Pemantauan -->
             <a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container/20 rounded-xl" href="index.html">
                 <span class="material-symbols-outlined icon-fill">monitoring</span>
                 <span class="font-label-md text-label-md">Dashboard Pemantauan</span>
@@ -149,7 +85,6 @@
 
     <!-- Main Content Area -->
     <main class="ml-64 pt-24 px-margin-desktop w-full max-w-container-max mx-auto pb-16 flex flex-col gap-stack-lg">
-        <!-- Title & Subtitle -->
         <section class="flex flex-col gap-unit">
             <h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Dashboard Pemantauan</h1>
             <p class="font-body-md text-body-md text-on-surface-variant">Pantau layanan pendampingan inklusif, penempatan PIB, dan distribusi kebutuhan sekolah secara real time.</p>
@@ -159,7 +94,7 @@
         <section class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/30 flex flex-wrap gap-4 items-end">
             <div class="flex flex-col gap-1 w-48">
                 <label class="font-label-md text-label-md text-on-surface-variant">Wilayah</label>
-                <select id="filterWilayah" onchange="applyFilters()" class="bg-surface border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md text-sm focus:ring-primary focus:border-primary w-full outline-none">
+                <select id="filterWilayah" onchange="applyDashboardFilters()" class="bg-surface border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md text-sm focus:ring-primary focus:border-primary w-full outline-none">
                     <option value="ALL">Semua Wilayah</option>
                     <option value="Sukamaju">Sukamaju</option>
                     <option value="Cendekia">Cendekia</option>
@@ -186,14 +121,13 @@
                 </select>
             </div>
             <div class="flex gap-3 ml-auto">
-                <button onclick="resetFilters()" class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Reset</button>
-                <button onclick="applyFilters()" class="px-6 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-on-primary-container transition-colors shadow-sm">Terapkan Filter</button>
+                <button onclick="resetDashboardFilters()" class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Reset</button>
+                <button onclick="applyDashboardFilters()" class="px-6 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-on-primary-container transition-colors shadow-sm">Terapkan Filter</button>
             </div>
         </section>
 
-        <!-- 4 Key Performance Indicator (KPI) Cards -->
+        <!-- 4 KPI Cards -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-            <!-- KPI 1 -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-primary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
                 <div class="flex justify-between items-start">
                     <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -209,7 +143,6 @@
                 </div>
             </div>
 
-            <!-- KPI 2 -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-secondary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
                 <div class="flex justify-between items-start">
                     <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
@@ -225,7 +158,6 @@
                 </div>
             </div>
 
-            <!-- KPI 3 -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-primary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
                 <div class="flex justify-between items-start">
                     <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -239,7 +171,6 @@
                 </div>
             </div>
 
-            <!-- KPI 4 -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-secondary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
                 <div class="flex justify-between items-start">
                     <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
@@ -256,9 +187,8 @@
             </div>
         </section>
 
-        <!-- Charts Grid (2 Cols: Bar Chart + Donut Chart) -->
+        <!-- Charts Grid -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-            <!-- Bar Chart: Monthly Growth -->
             <div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/20 flex flex-col">
                 <div class="flex justify-between items-center mb-6">
                     <div>
@@ -281,7 +211,6 @@
                 </div>
             </div>
 
-            <!-- Donut Chart: School Needs Ratio -->
             <div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/20 flex flex-col justify-between">
                 <div>
                     <h2 class="font-headline-md text-headline-md text-on-surface font-bold mb-1">Status Kebutuhan Sekolah</h2>
@@ -314,27 +243,5 @@
             </div>
         </section>
     </main>
-
-    <script>
-        function applyFilters() {
-            const val = document.getElementById('filterWilayah').value;
-            if (val !== 'ALL') {
-                document.getElementById('kpiPIB').innerText = "42";
-                document.getElementById('kpiSchools').innerText = "14";
-                document.getElementById('kpiAssistance').innerText = "28";
-                document.getElementById('kpiStudents').innerText = "64";
-            } else {
-                resetFilters();
-            }
-        }
-
-        function resetFilters() {
-            document.getElementById('filterWilayah').value = 'ALL';
-            document.getElementById('kpiPIB').innerText = "128";
-            document.getElementById('kpiSchools').innerText = "46";
-            document.getElementById('kpiAssistance').innerText = "92";
-            document.getElementById('kpiStudents').innerText = "214";
-        }
-    </script>
 </body>
 </html>

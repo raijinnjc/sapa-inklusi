@@ -4,74 +4,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Laporan & Outcome - SAPA Inklusi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#9a461b",
-                        "primary-container": "#e88252",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#5e2100",
-                        "secondary": "#546430",
-                        "secondary-container": "#d4e7a6",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#586834",
-                        "tertiary": "#5f5e5b",
-                        "tertiary-container": "#9f9d99",
-                        "background": "#fbf9f8",
-                        "surface": "#fbf9f8",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container": "#f0eded",
-                        "surface-container-high": "#eae8e7",
-                        "surface-container-highest": "#e4e2e1",
-                        "surface-dim": "#dcd9d9",
-                        "on-surface": "#1b1c1c",
-                        "on-surface-variant": "#55433b",
-                        "outline": "#88726a",
-                        "outline-variant": "#dbc1b7",
-                        "error": "#ba1a1a",
-                        "error-container": "#ffdad6"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "container-max": "1200px",
-                        "margin-desktop": "40px",
-                        "stack-sm": "8px",
-                        "stack-md": "16px",
-                        "stack-lg": "32px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "caption": ["Plus Jakarta Sans"]
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-fill { font-variation-settings: 'FILL' 1; }
-    </style>
     <script src="js/dataStore.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body class="bg-background text-on-surface font-body-md w-full min-h-screen flex">
     <!-- Sidebar Navigation -->
@@ -112,7 +49,6 @@
                 <span class="material-symbols-outlined">monitoring</span>
                 <span class="font-label-md text-label-md">Pemantauan</span>
             </a>
-            <!-- Active State: Laporan -->
             <a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container/20 rounded-xl" href="laporan.html">
                 <span class="material-symbols-outlined icon-fill">assessment</span>
                 <span class="font-label-md text-label-md">Laporan & Outcome</span>
@@ -149,13 +85,12 @@
 
     <!-- Main Content Area -->
     <main class="ml-64 pt-24 px-margin-desktop w-full max-w-container-max mx-auto pb-16 flex flex-col gap-stack-lg">
-        <!-- Page Title -->
         <section class="flex flex-col gap-1">
             <h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Laporan & Evaluasi Outcome</h1>
             <p class="font-body-md text-body-md text-on-surface-variant">Monitoring perkembangan outcome pembelajaran inklusif dan efektivitas pendampingan PIB secara longitudinal.</p>
         </section>
 
-        <!-- Notice Alert Box (PRD Constraint Note) -->
+        <!-- Constraint Notice Box -->
         <div class="bg-secondary-container/20 border border-secondary/30 rounded-xl p-4 flex items-start gap-3">
             <span class="material-symbols-outlined text-secondary text-2xl mt-0.5">info</span>
             <div>
@@ -166,7 +101,6 @@
 
         <!-- 4 Outcome Core Indicators Summary Cards -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-            <!-- Outcome 1: Komunikasi -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-primary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-2">
                     <span class="font-caption text-caption text-on-surface-variant font-bold uppercase tracking-wider">Komunikasi</span>
@@ -182,7 +116,6 @@
                 </div>
             </div>
 
-            <!-- Outcome 2: Partisipasi Kelas -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-secondary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-2">
                     <span class="font-caption text-caption text-on-surface-variant font-bold uppercase tracking-wider">Partisipasi Kelas</span>
@@ -198,7 +131,6 @@
                 </div>
             </div>
 
-            <!-- Outcome 3: Kemandirian -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-primary-container shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-2">
                     <span class="font-caption text-caption text-on-surface-variant font-bold uppercase tracking-wider">Kemandirian</span>
@@ -214,7 +146,6 @@
                 </div>
             </div>
 
-            <!-- Outcome 4: Interaksi Sosial -->
             <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-tertiary-container shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-2">
                     <span class="font-caption text-caption text-on-surface-variant font-bold uppercase tracking-wider">Interaksi Sosial</span>
@@ -233,7 +164,6 @@
 
         <!-- Longitudinal Trend Chart & North Star Metric -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-            <!-- Left Chart: Longitudinal Outcome Trends Jan-Jun -->
             <div class="lg:col-span-8 bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/20 flex flex-col">
                 <div class="flex justify-between items-center mb-6">
                     <div>
@@ -245,48 +175,41 @@
                     </span>
                 </div>
 
-                <!-- Longitudinal Bars -->
                 <div class="w-full h-72 flex items-end justify-between gap-4 pt-10 pb-4 border-b border-l border-outline-variant/30 px-4 relative">
                     <div class="absolute w-full border-t border-dashed border-outline-variant/20 top-12 left-0"><span class="text-[10px] text-on-surface-variant absolute -top-3 left-1">80%</span></div>
                     <div class="absolute w-full border-t border-dashed border-outline-variant/20 top-28 left-0"><span class="text-[10px] text-on-surface-variant absolute -top-3 left-1">60%</span></div>
                     <div class="absolute w-full border-t border-dashed border-outline-variant/20 top-44 left-0"><span class="text-[10px] text-on-surface-variant absolute -top-3 left-1">40%</span></div>
 
-                    <!-- Jan: 62% -->
                     <div class="w-full flex flex-col items-center gap-2 group relative">
                         <span class="font-label-md text-xs font-bold text-primary">62%</span>
                         <div class="w-full max-w-[48px] bg-primary/40 group-hover:bg-primary/60 rounded-t-md transition-all duration-300" style="height: 120px;"></div>
                         <span class="font-caption text-caption text-on-surface-variant">Jan</span>
                     </div>
 
-                    <!-- Feb: 65% -->
                     <div class="w-full flex flex-col items-center gap-2 group relative">
                         <span class="font-label-md text-xs font-bold text-primary">65%</span>
                         <div class="w-full max-w-[48px] bg-primary/50 group-hover:bg-primary/70 rounded-t-md transition-all duration-300" style="height: 135px;"></div>
                         <span class="font-caption text-caption text-on-surface-variant">Feb</span>
                     </div>
 
-                    <!-- Mar: 69% -->
                     <div class="w-full flex flex-col items-center gap-2 group relative">
                         <span class="font-label-md text-xs font-bold text-primary">69%</span>
                         <div class="w-full max-w-[48px] bg-primary/60 group-hover:bg-primary/80 rounded-t-md transition-all duration-300" style="height: 155px;"></div>
                         <span class="font-caption text-caption text-on-surface-variant">Mar</span>
                     </div>
 
-                    <!-- Apr: 72% -->
                     <div class="w-full flex flex-col items-center gap-2 group relative">
                         <span class="font-label-md text-xs font-bold text-primary">72%</span>
                         <div class="w-full max-w-[48px] bg-primary/70 group-hover:bg-primary/90 rounded-t-md transition-all duration-300" style="height: 175px;"></div>
                         <span class="font-caption text-caption text-on-surface-variant">Apr</span>
                     </div>
 
-                    <!-- Mei: 76% -->
                     <div class="w-full flex flex-col items-center gap-2 group relative">
                         <span class="font-label-md text-xs font-bold text-primary">76%</span>
                         <div class="w-full max-w-[48px] bg-primary/85 group-hover:bg-primary rounded-t-md transition-all duration-300" style="height: 195px;"></div>
                         <span class="font-caption text-caption text-on-surface-variant">Mei</span>
                     </div>
 
-                    <!-- Jun: 79% -->
                     <div class="w-full flex flex-col items-center gap-2 group relative">
                         <span class="font-label-md text-xs font-bold text-secondary">79%</span>
                         <div class="w-full max-w-[48px] bg-secondary group-hover:bg-secondary/90 rounded-t-md transition-all duration-300 shadow-sm" style="height: 215px;"></div>
@@ -295,7 +218,7 @@
                 </div>
             </div>
 
-            <!-- Right: North Star Metric Card -->
+            <!-- North Star Metric Card -->
             <div class="lg:col-span-4 flex flex-col gap-gutter">
                 <div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border-t-4 border-secondary border border-outline-variant/20 flex flex-col justify-between">
                     <div>

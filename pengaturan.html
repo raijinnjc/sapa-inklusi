@@ -4,74 +4,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Pengaturan & Hak Akses - SAPA Inklusi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#9a461b",
-                        "primary-container": "#e88252",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#5e2100",
-                        "secondary": "#546430",
-                        "secondary-container": "#d4e7a6",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#586834",
-                        "tertiary": "#5f5e5b",
-                        "tertiary-container": "#9f9d99",
-                        "background": "#fbf9f8",
-                        "surface": "#fbf9f8",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container": "#f0eded",
-                        "surface-container-high": "#eae8e7",
-                        "surface-container-highest": "#e4e2e1",
-                        "surface-dim": "#dcd9d9",
-                        "on-surface": "#1b1c1c",
-                        "on-surface-variant": "#55433b",
-                        "outline": "#88726a",
-                        "outline-variant": "#dbc1b7",
-                        "error": "#ba1a1a",
-                        "error-container": "#ffdad6"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "container-max": "1200px",
-                        "margin-desktop": "40px",
-                        "stack-sm": "8px",
-                        "stack-md": "16px",
-                        "stack-lg": "32px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "caption": ["Plus Jakarta Sans"]
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-fill { font-variation-settings: 'FILL' 1; }
-    </style>
     <script src="js/dataStore.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body class="bg-background text-on-surface font-body-md w-full min-h-screen flex">
     <!-- Sidebar Navigation -->
@@ -116,7 +53,6 @@
                 <span class="material-symbols-outlined">assessment</span>
                 <span class="font-label-md text-label-md">Laporan & Outcome</span>
             </a>
-            <!-- Active: Pengaturan -->
             <a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container/20 rounded-xl mt-auto" href="pengaturan.html">
                 <span class="material-symbols-outlined icon-fill">settings</span>
                 <span class="font-label-md text-label-md">Pengaturan</span>
@@ -137,7 +73,7 @@
     <header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-30 h-16 bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 flex justify-between items-center px-margin-desktop">
         <h2 class="font-headline-md text-lg font-bold text-on-surface">Pengaturan Sistem & Hak Akses</h2>
         <div class="flex items-center gap-3">
-            <button onclick="resetData()" class="bg-surface-container hover:bg-error/10 text-error font-label-md text-xs px-3.5 py-2 rounded-full border border-error/30 flex items-center gap-1.5 transition-colors">
+            <button onclick="resetAllData()" class="bg-surface-container hover:bg-error/10 text-error font-label-md text-xs px-3.5 py-2 rounded-full border border-error/30 flex items-center gap-1.5 transition-colors">
                 <span class="material-symbols-outlined text-sm">restart_alt</span>
                 Reset Data Default
             </button>
@@ -146,7 +82,7 @@
 
     <!-- Main Content -->
     <main class="ml-64 pt-24 px-margin-desktop w-full max-w-container-max mx-auto pb-16 flex flex-col gap-stack-lg">
-        <!-- Role-Based Access Control (RBAC) Switcher (PRD Section 19) -->
+        <!-- RBAC Switcher -->
         <section class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.03)] border border-outline-variant/30">
             <h3 class="font-headline-md text-base font-bold text-on-surface mb-2 flex items-center gap-2">
                 <span class="material-symbols-outlined text-primary">admin_panel_settings</span>
@@ -183,7 +119,7 @@
             </div>
         </section>
 
-        <!-- Privacy & Data Governance Principles (PRD Section 20) -->
+        <!-- Privacy & Data Governance -->
         <section class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.03)] border border-outline-variant/30">
             <h3 class="font-headline-md text-base font-bold text-on-surface mb-3 flex items-center gap-2">
                 <span class="material-symbols-outlined text-secondary">security</span>
@@ -205,28 +141,16 @@
             </div>
         </section>
 
-        <!-- System Information & North Star Reference -->
+        <!-- System Information -->
         <section class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.03)] border border-outline-variant/30 flex justify-between items-center">
             <div>
                 <h4 class="font-bold text-sm text-on-surface">Platform Status: Production Ready v1.0</h4>
                 <p class="text-xs text-on-surface-variant mt-0.5">SAPA Inklusi — Ekosistem Kompetensi, Pendampingan, Matching, & Monitoring Outcome.</p>
             </div>
             <span class="bg-secondary-container/30 text-secondary text-xs font-bold px-3 py-1.5 rounded-full border border-secondary/30">
-                Active Version 1.0
+                Modular Architecture
             </span>
         </section>
     </main>
-
-    <script>
-        function resetData() {
-            if (confirm("Apakah Anda yakin ingin mengembalikan seluruh data ke pengaturan bawaan PRD?")) {
-                if (window.sapaStore) {
-                    window.sapaStore.resetToDefault();
-                    alert("Data berhasil di-reset ke data bawaan PRD!");
-                    location.reload();
-                }
-            }
-        }
-    </script>
 </body>
 </html>

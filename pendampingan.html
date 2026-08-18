@@ -4,74 +4,12 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Monitoring Pendampingan - SAPA Inklusi</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#9a461b",
-                        "primary-container": "#e88252",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#5e2100",
-                        "secondary": "#546430",
-                        "secondary-container": "#d4e7a6",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#586834",
-                        "tertiary": "#5f5e5b",
-                        "tertiary-container": "#9f9d99",
-                        "background": "#fbf9f8",
-                        "surface": "#fbf9f8",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container": "#f0eded",
-                        "surface-container-high": "#eae8e7",
-                        "surface-container-highest": "#e4e2e1",
-                        "surface-dim": "#dcd9d9",
-                        "on-surface": "#1b1c1c",
-                        "on-surface-variant": "#55433b",
-                        "outline": "#88726a",
-                        "outline-variant": "#dbc1b7",
-                        "error": "#ba1a1a",
-                        "error-container": "#ffdad6"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "container-max": "1200px",
-                        "margin-desktop": "40px",
-                        "stack-sm": "8px",
-                        "stack-md": "16px",
-                        "stack-lg": "32px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "caption": ["Plus Jakarta Sans"]
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .icon-fill { font-variation-settings: 'FILL' 1; }
-    </style>
     <script src="js/dataStore.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/monitoring.js"></script>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
     <!-- SideNavBar -->
@@ -104,7 +42,6 @@
                 <span class="material-symbols-outlined">location_city</span>
                 <span class="font-label-md text-label-md">Sekolah Mitra</span>
             </a>
-            <!-- Active State: Pendampingan -->
             <a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container/20 rounded-xl" href="pendampingan.html">
                 <span class="material-symbols-outlined icon-fill">groups</span>
                 <span class="font-label-md text-label-md">Pendampingan</span>
@@ -135,7 +72,6 @@
 
     <!-- Main Content Canvas -->
     <main class="md:ml-64 min-h-screen flex flex-col">
-        <!-- Top App Bar -->
         <header class="sticky top-0 z-40 w-full bg-surface/80 backdrop-blur-md flex justify-between items-center px-4 md:px-margin-desktop py-4 border-b border-outline-variant/20 shadow-sm">
             <div class="flex flex-col">
                 <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Monitoring Pendampingan</h2>
@@ -153,9 +89,7 @@
             </div>
         </header>
 
-        <!-- Page Content -->
         <div class="flex-1 p-4 md:p-margin-desktop space-y-stack-lg max-w-container-max mx-auto w-full pb-16">
-            <!-- 4 KPI Cards -->
             <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border-t-4 border-tertiary-container">
                     <div class="flex justify-between items-start mb-1">
@@ -187,11 +121,8 @@
                 </div>
             </section>
 
-            <!-- Main Split Layout (Left: Timeline & Table / Right: Rate & Verification) -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                <!-- Left Column (8 Cols) -->
                 <div class="lg:col-span-8 space-y-6">
-                    <!-- Today's Activity Timeline (PRD Section 12) -->
                     <section class="bg-surface-container-lowest rounded-xl shadow-sm p-5 border border-outline-variant/20">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="font-bold text-base text-on-surface">Aktivitas Pendampingan Hari Ini</h3>
@@ -235,7 +166,6 @@
                         </div>
                     </section>
 
-                    <!-- Main Data Table & Verification Status -->
                     <section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden">
                         <div class="p-4 border-b border-outline-variant/30 flex justify-between items-center bg-surface/50">
                             <h3 class="font-bold text-sm text-on-surface">Tabel Log Sesi & Verifikasi</h3>
@@ -257,16 +187,14 @@
                                     </tr>
                                 </thead>
                                 <tbody id="sessionTableBody" class="font-body-md text-xs text-on-surface divide-y divide-outline-variant/20">
-                                    <!-- Populated dynamically -->
+                                    <!-- Rendered by js/monitoring.js -->
                                 </tbody>
                             </table>
                         </div>
                     </section>
                 </div>
 
-                <!-- Right Column (4 Cols): Rate & Verification Queue -->
                 <div class="lg:col-span-4 space-y-6">
-                    <!-- Completion Rate Card -->
                     <section class="bg-surface-container-lowest rounded-xl shadow-sm p-5 border border-outline-variant/20">
                         <h3 class="font-bold text-sm text-on-surface mb-1">Tingkat Penyelesaian Sesi</h3>
                         <p class="text-xs text-on-surface-variant mb-3">Minggu ini (14-18 Ags)</p>
@@ -279,7 +207,6 @@
                         </div>
                     </section>
 
-                    <!-- Needs Verification Card (PRD GPK Workflow) -->
                     <section class="bg-primary/5 rounded-xl shadow-sm p-5 border border-primary/20">
                         <div class="flex items-start gap-2.5 mb-3">
                             <span class="material-symbols-outlined text-primary text-xl">fact_check</span>
@@ -294,7 +221,6 @@
                         </button>
                     </section>
 
-                    <!-- Weekly Bar Chart -->
                     <section class="bg-surface-container-lowest rounded-xl shadow-sm p-5 border border-outline-variant/20">
                         <h3 class="font-bold text-sm text-on-surface mb-4">Aktivitas Mingguan (Sesi)</h3>
                         <div class="flex items-end justify-between h-36 gap-2 px-2 pb-5 border-b border-outline-variant/20 relative">
@@ -360,110 +286,5 @@
             </form>
         </div>
     </div>
-
-    <script>
-        function renderSessionTable() {
-            const sessions = window.sapaStore ? window.sapaStore.getSessions() : [];
-            const tbody = document.getElementById('sessionTableBody');
-            tbody.innerHTML = '';
-
-            sessions.forEach(s => {
-                const isOngoing = s.status === 'BERLANGSUNG';
-                const isVerified = s.verificationStatus === 'TERVERIFIKASI';
-                const row = `
-                    <tr class="hover:bg-surface/50 transition-colors">
-                        <td class="py-3 px-4 whitespace-nowrap font-medium">${s.date.slice(5)}, ${s.time.split(' - ')[0]}</td>
-                        <td class="py-3 px-4 font-bold text-on-surface">${s.pibName}</td>
-                        <td class="py-3 px-4">
-                            <div class="leading-tight">${s.schoolName}<br/><span class="text-[10px] text-on-surface-variant">${s.className} (${s.studentName || ''})</span></div>
-                        </td>
-                        <td class="py-3 px-4 text-on-surface-variant max-w-[200px] truncate" title="${s.notes || ''}">${s.activity}</td>
-                        <td class="py-3 px-4">
-                            <span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-md font-bold ${isOngoing ? 'bg-primary-container/15 text-primary' : 'bg-secondary/15 text-secondary'}">
-                                ${s.status}
-                            </span>
-                        </td>
-                        <td class="py-3 px-4 text-center">
-                            ${isVerified ? `
-                                <span class="inline-flex items-center gap-1 text-[10px] text-secondary font-bold bg-secondary-container/30 px-2.5 py-1 rounded-full">
-                                    <span class="material-symbols-outlined text-xs">verified</span> Terverifikasi
-                                </span>
-                            ` : `
-                                <button onclick="verifySingleSession('${s.id}')" class="bg-primary hover:bg-primary-container text-on-primary text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-                                    Setujui Sesi
-                                </button>
-                            `}
-                        </td>
-                    </tr>
-                `;
-                tbody.insertAdjacentHTML('beforeend', row);
-            });
-        }
-
-        function verifySingleSession(sessionId) {
-            if (window.sapaStore) {
-                window.sapaStore.verifySession(sessionId, true);
-                alert("Sesi pendampingan berhasil diverifikasi oleh GPK Koordinator!");
-                renderSessionTable();
-            }
-        }
-
-        function verifyAllPendingSessions() {
-            if (window.sapaStore) {
-                const sessions = window.sapaStore.getSessions();
-                sessions.forEach(s => {
-                    if (s.verificationStatus === 'MENUNGGU_VERIFIKASI') {
-                        window.sapaStore.verifySession(s.id, true);
-                    }
-                });
-                alert("Seluruh sesi yang tertunda telah diverifikasi!");
-                renderSessionTable();
-            }
-        }
-
-        function filterSessions() {
-            const q = document.getElementById('sessionSearchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('#sessionTableBody tr');
-            rows.forEach(r => {
-                r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none';
-            });
-        }
-
-        function openAddSessionModal() {
-            document.getElementById('addSessionModal').classList.remove('hidden');
-        }
-
-        function closeAddSessionModal() {
-            document.getElementById('addSessionModal').classList.add('hidden');
-        }
-
-        function handleAddSessionSubmit(e) {
-            e.preventDefault();
-            const pibName = document.getElementById('newSessionPIB').value;
-            const schoolName = document.getElementById('newSessionSchool').value;
-            const studentName = document.getElementById('newSessionStudent').value;
-            const activity = document.getElementById('newSessionActivity').value;
-
-            if (window.sapaStore) {
-                window.sapaStore.addSession({
-                    date: new Date().toISOString().slice(0, 10),
-                    time: "08:00 - 10:00",
-                    pibName,
-                    schoolName,
-                    className: "Kelas Reguler",
-                    studentName,
-                    activity,
-                    notes: activity
-                });
-                alert("Sesi pendampingan baru berhasil dicatat!");
-                closeAddSessionModal();
-                renderSessionTable();
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderSessionTable();
-        });
-    </script>
 </body>
 </html>
