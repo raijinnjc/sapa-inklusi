@@ -1,14 +1,14 @@
 /**
  * =========================================================================
- * SAPA INKLUSI — APPLE DESIGN SYSTEM WITH SAPA BRAND IDENTITY
+ * SAPA INKLUSI — PURE APPLE DESIGN SYSTEM & HIGH-PERFORMANCE MICRO-PHYSICS
  * =========================================================================
- * - Brand Color Harmony: Inclusion Emerald (#2A9D8F / #00875A),
- *   Warm Inklusi Terracotta (#E76F51), Sky Link (#2997FF), Action Blue (#0066CC)
+ * - Brand Color Harmony: Authentic SAPA Terracotta (#DF6E3D),
+ *   Inklusi Olive Green (#8E9F6A), Sky Cyan (#48CAE4), Charcoal (#1D1D1F)
  * - Alternating Edge-to-Edge Full-Bleed Tiles (White / Parchment / Near-Black)
  * - SF Pro Display & Text Typography Hierarchy (56px/40px/34px/28px/21px/17px/14px/12px)
- * - Single Product Shadow (3px 5px 30px rgba(0,0,0,0.22))
+ * - GPU Accelerated Fluid Physics (cubic-bezier(0.16, 1, 0.3, 1))
  * - Fixed 44px Global Nav + 52px Frosted Subnav
- * - System Micro-Physics: transform: scale(0.95) on active press
+ * - System Micro-Physics: transform: scale(0.975) on active press
  */
 
 :root {
@@ -64,6 +64,12 @@
 
     /* Elevation: Single System Product Drop Shadow */
     --shadow-product: 3px 5px 30px 0 rgba(0, 0, 0, 0.22);
+    --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
+
+    /* Apple Fluid Ease Physics Curve */
+    --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ========================================================================= */
@@ -80,6 +86,7 @@
 html {
     scroll-behavior: smooth;
     background-color: var(--color-canvas-parchment);
+    text-size-adjust: 100%;
 }
 
 body {
@@ -98,7 +105,7 @@ body {
 }
 
 /* ========================================================================= */
-/* TYPOGRAPHY SCALE                                                          */
+/* TYPOGRAPHY SCALE (Strict Apple Editorial Standard)                        */
 /* ========================================================================= */
 .typo-hero-display {
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -220,14 +227,16 @@ body {
     color: var(--color-on-dark);
     height: 44px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    will-change: transform;
 }
 
 .component-sub-nav-frosted {
-    background-color: rgba(245, 245, 247, 0.80);
+    background-color: rgba(245, 245, 247, 0.82);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     height: 52px;
+    will-change: transform;
 }
 
 /* Sub-nav Pill Filter */
@@ -238,19 +247,26 @@ body {
     font-weight: 400;
     color: var(--color-ink);
     text-decoration: none;
-    transition: all 0.15s ease;
+    transition: all 0.2s var(--ease-apple);
     border: none;
     background: transparent;
     cursor: pointer;
+    will-change: background-color, transform;
 }
-.subnav-pill.active, .subnav-pill:hover {
+.subnav-pill:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.subnav-pill:active {
+    transform: scale(0.96);
+}
+.subnav-pill.active {
     background-color: var(--color-ink);
     color: var(--color-canvas);
     font-weight: 600;
 }
 
 /* ========================================================================= */
-/* BUTTON GRAMMAR                                                            */
+/* BUTTON GRAMMAR (Micro-Physics & Spring Clicks)                            */
 /* ========================================================================= */
 .button-primary {
     background-color: var(--color-primary);
@@ -269,13 +285,16 @@ body {
     justify-content: center;
     gap: 6px;
     text-decoration: none;
-    transition: background-color 0.15s ease, transform 0.1s ease;
+    transition: background-color 0.18s var(--ease-apple), transform 0.12s var(--ease-apple), box-shadow 0.18s var(--ease-apple);
+    will-change: transform, background-color;
 }
 .button-primary:hover {
     background-color: var(--color-primary-focus);
+    box-shadow: 0 4px 14px rgba(223, 110, 61, 0.28);
 }
 .button-primary:active {
-    transform: scale(0.95);
+    transform: scale(0.965);
+    box-shadow: none;
 }
 .button-primary:focus-visible {
     outline: 2px solid var(--color-primary-focus);
@@ -298,13 +317,14 @@ body {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: background-color 0.15s ease, transform 0.1s ease;
+    transition: background-color 0.18s var(--ease-apple), transform 0.12s var(--ease-apple);
+    will-change: transform, background-color;
 }
 .button-secondary-pill:hover {
-    background-color: rgba(42, 157, 143, 0.06);
+    background-color: rgba(223, 110, 61, 0.06);
 }
 .button-secondary-pill:active {
-    transform: scale(0.95);
+    transform: scale(0.965);
 }
 
 .button-dark-utility {
@@ -322,31 +342,14 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.15s ease, transform 0.1s ease;
+    transition: opacity 0.18s var(--ease-apple), transform 0.12s var(--ease-apple);
+    will-change: transform, opacity;
 }
 .button-dark-utility:hover {
-    opacity: 0.9;
+    opacity: 0.88;
 }
 .button-dark-utility:active {
-    transform: scale(0.95);
-}
-
-.button-pearl-capsule {
-    background-color: var(--color-surface-pearl);
-    color: var(--color-ink-muted-80);
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.43;
-    letter-spacing: -0.224px;
-    border: 1px solid var(--color-divider-soft);
-    border-radius: var(--radius-md);
-    padding: 8px 14px;
-    cursor: pointer;
-    transition: transform 0.1s ease;
-}
-.button-pearl-capsule:active {
-    transform: scale(0.95);
+    transform: scale(0.965);
 }
 
 .text-link {
@@ -361,26 +364,11 @@ body {
     align-items: center;
     gap: 4px;
     cursor: pointer;
+    transition: opacity 0.15s ease;
 }
 .text-link:hover {
     text-decoration: underline;
-}
-
-.text-link-on-dark {
-    color: var(--color-primary-on-dark);
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 1.47;
-    letter-spacing: -0.374px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-}
-.text-link-on-dark:hover {
-    text-decoration: underline;
+    opacity: 0.85;
 }
 
 /* ========================================================================= */
@@ -418,14 +406,6 @@ body {
     width: 100%;
 }
 
-.product-tile-dark-3 {
-    background-color: var(--color-surface-tile-3);
-    color: var(--color-on-dark);
-    border-radius: var(--radius-none);
-    padding: var(--spacing-section) var(--spacing-lg);
-    width: 100%;
-}
-
 .environment-quote-card {
     background-color: var(--color-surface-tile-1);
     color: var(--color-on-dark);
@@ -444,10 +424,12 @@ body {
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-hairline);
     padding: var(--spacing-lg);
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.22s var(--ease-apple), box-shadow 0.22s var(--ease-apple);
+    will-change: transform, box-shadow;
 }
 .store-utility-card:hover {
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0);
+    box-shadow: var(--shadow-subtle);
 }
 
 .configurator-option-chip {
@@ -465,14 +447,18 @@ body {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    transition: all 0.15s ease;
+    transition: all 0.18s var(--ease-apple);
+    will-change: transform, border-color, background-color;
 }
 .configurator-option-chip:hover {
     border-color: var(--color-ink-muted-48);
 }
+.configurator-option-chip:active {
+    transform: scale(0.96);
+}
 .configurator-option-chip.selected {
     border: 2px solid var(--color-primary);
-    background-color: rgba(42, 157, 143, 0.08);
+    background-color: rgba(223, 110, 61, 0.08);
     color: var(--color-primary);
     font-weight: 600;
 }
@@ -490,9 +476,11 @@ body {
     height: 42px;
     outline: none;
     width: 100%;
+    transition: border-color 0.18s var(--ease-apple), box-shadow 0.18s var(--ease-apple);
 }
 .search-input:focus {
     border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(223, 110, 61, 0.12);
 }
 
 /* ========================================================================= */
@@ -529,6 +517,7 @@ body {
     line-height: 2.3;
     letter-spacing: 0px;
     text-decoration: none;
+    transition: color 0.15s ease;
 }
 .footer-link-stack a:hover {
     color: var(--color-ink);
@@ -536,18 +525,30 @@ body {
 }
 
 /* ========================================================================= */
-/* SPA VIEW TRANSITIONS                                                      */
+/* ULTRA-SEAMLESS SPA VIEW TRANSITIONS                                      */
 /* ========================================================================= */
 .view-pane {
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translate3d(0, 10px, 0);
+    transition: opacity 0.24s var(--ease-apple), transform 0.24s var(--ease-apple);
     display: none;
+    will-change: opacity, transform;
 }
 .view-pane.active {
     display: block;
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* Smooth Modals */
+.modal-backdrop {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s var(--ease-apple);
+}
+.modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Custom Minimal Scrollbar */
