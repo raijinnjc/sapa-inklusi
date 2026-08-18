@@ -12,12 +12,13 @@
  */
 
 :root {
-    /* Colors (SAPA Inklusi Brand + Apple Hierarchy) */
-    --color-primary: #2A9D8F;           /* SAPA Inclusion Emerald */
-    --color-primary-focus: #21867a;     /* Focused Emerald */
-    --color-primary-on-dark: #48CAE4;   /* Sky Cyan for Dark Tiles */
-    --color-accent-terracotta: #E76F51; /* SAPA Warm Warmth */
-    --color-accent-blue: #0066cc;       /* Cupertino Action Blue */
+    /* Colors (Extracted from Official SAPA Inklusi Logo) */
+    --color-primary: #DF6E3D;           /* Authentic SAPA Terracotta Orange */
+    --color-primary-focus: #C8592A;     /* Deepened Terracotta */
+    --color-primary-on-dark: #F4A261;   /* Warm Peach for Dark Tiles */
+    --color-olive: #8E9F6A;             /* Authentic Inklusi Olive Green */
+    --color-olive-dark: #738350;        /* Deep Olive */
+    --color-accent-blue: #0066cc;       /* Accent */
     
     --color-ink: #1d1d1f;
     --color-body: #1d1d1f;

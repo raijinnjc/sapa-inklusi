@@ -26,10 +26,10 @@ function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.className = `store-utility-card py-2.5 px-5 flex items-center gap-2.5 shadow-lg typo-caption pointer-events-auto`;
     toast.style.borderRadius = '9999px';
-    toast.style.borderColor = type === 'error' ? '#FF453A' : '#2A9D8F';
+    toast.style.borderColor = type === 'error' ? '#FF453A' : '#DF6E3D';
     
     toast.innerHTML = `
-        <span class="material-symbols-outlined text-base ${type === 'error' ? 'text-[#FF453A]' : 'text-[#2A9D8F]'}">
+        <span class="material-symbols-outlined text-base ${type === 'error' ? 'text-[#FF453A]' : 'text-[#DF6E3D]'}">
             ${type === 'success' ? 'verified' : (type === 'error' ? 'error' : 'info')}
         </span>
         <span class="text-[#1d1d1f] font-medium">${message}</span>
@@ -597,7 +597,7 @@ function toggleVoice() {
 function stopVoice() {
     isRec = false;
     const btn = document.getElementById('micButton');
-    if (btn) btn.classList.remove('bg-[#2A9D8F]');
+    if (btn) btn.classList.remove('bg-[#DF6E3D]');
     const wave = document.getElementById('waveVisualizer');
     if (wave) wave.classList.add('hidden');
 }
@@ -620,7 +620,7 @@ function sendAiMessage(promptText) {
     const userDiv = document.createElement('div');
     userDiv.className = "flex items-start gap-3 max-w-[85%] ml-auto justify-end";
     userDiv.innerHTML = `
-        <div class="bg-[#2A9D8F] text-white p-4 rounded-2xl rounded-tr-sm text-xs leading-relaxed">
+        <div class="bg-[#DF6E3D] text-white p-4 rounded-2xl rounded-tr-sm text-xs leading-relaxed">
             <p>${escapeHtml(promptText)}</p>
         </div>
     `;
@@ -632,7 +632,7 @@ function sendAiMessage(promptText) {
     const aiDiv = document.createElement('div');
     aiDiv.className = "flex items-start gap-3 max-w-[85%]";
     aiDiv.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-[#2A9D8F] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
+        <div class="w-7 h-7 rounded-full bg-[#DF6E3D] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
         <div class="bg-[#272729] p-4 rounded-2xl rounded-tl-sm text-xs text-white leading-relaxed space-y-2">
             <div id="targetStream" class="whitespace-pre-line"></div>
             <div id="targetActions" class="pt-2 border-t border-white/10 flex gap-3 hidden">
@@ -696,12 +696,12 @@ function renderPIBDirectory() {
             <td class="py-3.5 px-4 typo-body-strong text-[#1d1d1f] text-xs">${p.name}</td>
             <td class="py-3.5 px-4 text-[#7a7a7a]">${p.region}</td>
             <td class="py-3.5 px-4">
-                <span class="inline-flex items-center gap-1 typo-fine-print font-semibold px-2 py-0.5 rounded-full ${isCert ? 'bg-[#2A9D8F]/10 text-[#2A9D8F]' : 'bg-[#e0e0e0] text-[#7a7a7a]'}">
+                <span class="inline-flex items-center gap-1 typo-fine-print font-semibold px-2 py-0.5 rounded-full ${isCert ? 'bg-[#DF6E3D]/10 text-[#DF6E3D]' : 'bg-[#e0e0e0] text-[#7a7a7a]'}">
                     ${isCert ? 'Bersertifikat' : 'Dalam Progres'}
                 </span>
             </td>
             <td class="py-3.5 px-4 text-[#1d1d1f]">${p.competencies[0]}</td>
-            <td class="py-3.5 px-4 typo-fine-print font-semibold ${p.availability === 'TERSEDIA' ? 'text-[#2A9D8F]' : 'text-[#7a7a7a]'}">
+            <td class="py-3.5 px-4 typo-fine-print font-semibold ${p.availability === 'TERSEDIA' ? 'text-[#DF6E3D]' : 'text-[#7a7a7a]'}">
                 ${p.availability === 'TERSEDIA' ? '● Tersedia' : '○ Bertugas'}
             </td>
         `;
@@ -781,13 +781,13 @@ function renderSchoolDirectory() {
                 <div class="flex items-center gap-2 mb-1">
                     <span class="typo-body-strong text-[#1d1d1f] text-sm">${s.name}</span>
                     <span class="typo-fine-print px-2 py-0.5 rounded bg-[#f5f5f7] text-[#7a7a7a] font-semibold">${s.level}</span>
-                    <span class="typo-fine-print px-2 py-0.5 rounded-full ${isNeed ? 'bg-[#FF453A]/10 text-[#FF453A]' : 'bg-[#2A9D8F]/10 text-[#2A9D8F]'} font-semibold">${isNeed ? 'Butuh PIB' : 'Terpenuhi'}</span>
+                    <span class="typo-fine-print px-2 py-0.5 rounded-full ${isNeed ? 'bg-[#FF453A]/10 text-[#FF453A]' : 'bg-[#DF6E3D]/10 text-[#DF6E3D]'} font-semibold">${isNeed ? 'Butuh PIB' : 'Terpenuhi'}</span>
                 </div>
                 <p class="typo-caption text-[#7a7a7a]">${s.region} • ${s.distanceKm} km • Siswa: ${s.studentsCount} anak</p>
             </div>
             <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
                 <div class="text-right">
-                    <span class="typo-caption-strong text-[#2A9D8F] block">${s.matchingScore}% Match</span>
+                    <span class="typo-caption-strong text-[#DF6E3D] block">${s.matchingScore}% Match</span>
                     <span class="typo-fine-print text-[#7a7a7a]">Tugas: ${s.assignedPIB}/${s.requiredPIB} PIB</span>
                 </div>
                 <button onclick="event.stopPropagation(); openAssignModal('${s.id}')" class="button-primary text-xs py-1 px-3">
@@ -864,13 +864,13 @@ function renderSessionsList() {
             <td class="py-3 px-4 text-[#7a7a7a]">${s.schoolName}<br><span class="typo-fine-print text-[#1d1d1f] font-medium">${s.studentName}</span></td>
             <td class="py-3 px-4 text-[#1d1d1f] truncate max-w-[200px]">${s.activity}</td>
             <td class="py-3 px-4">
-                <span class="typo-fine-print font-semibold px-2 py-0.5 rounded-full ${s.status === 'SELESAI' ? 'bg-[#2A9D8F]/10 text-[#2A9D8F]' : 'bg-[#e0e0e0] text-[#7a7a7a]'}">
+                <span class="typo-fine-print font-semibold px-2 py-0.5 rounded-full ${s.status === 'SELESAI' ? 'bg-[#DF6E3D]/10 text-[#DF6E3D]' : 'bg-[#e0e0e0] text-[#7a7a7a]'}">
                     ${s.status}
                 </span>
             </td>
             <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
                 ${isVerif ? `
-                    <span class="typo-fine-print font-bold text-[#2A9D8F]">✓ Terverifikasi</span>
+                    <span class="typo-fine-print font-bold text-[#DF6E3D]">✓ Terverifikasi</span>
                 ` : `
                     <button onclick="verifySessionAction('${s.id}')" class="button-primary text-xs py-1 px-3">
                         Setujui
@@ -984,7 +984,7 @@ function switchMobileTab(tabName) {
 
     document.querySelectorAll('.mob-nav-btn').forEach(btn => {
         if (btn.getAttribute('data-tab') === tabName) {
-            btn.className = "mob-nav-btn flex flex-col items-center text-[#2A9D8F] font-bold";
+            btn.className = "mob-nav-btn flex flex-col items-center text-[#DF6E3D] font-bold";
         } else {
             btn.className = "mob-nav-btn flex flex-col items-center text-[#7a7a7a]";
         }
