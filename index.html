@@ -105,7 +105,7 @@
         <!-- ========================================================================= -->
         <!-- 0. LOGIN GATEWAY (PORTAL AUTENTIKASI UTAMA)                               -->
         <!-- ========================================================================= -->
-        <section id="loginGate" class="product-tile-light min-h-[80vh] flex items-center justify-center">
+        <section id="loginGate" class="product-tile-light min-h-[80vh] flex items-center justify-center hidden">
             <div class="max-w-4xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-4">
                     <div class="flex items-center gap-2">
@@ -170,9 +170,9 @@
         </section>
 
         <!-- ========================================================================= -->
-        <!-- MAIN APP VIEWS (TERBUKA SETELAH LOGIN)                                    -->
+        <!-- MAIN APP VIEWS (TERBUKA LANGSUNG)                                         -->
         <!-- ========================================================================= -->
-        <div id="mainAppWrapper" class="hidden">
+        <div id="mainAppWrapper" class="w-full">
 
             <!-- 1. DASHBOARD VIEW (ALTERNATING TILES) -->
             <section id="view-dashboard" class="view-pane active">

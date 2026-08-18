@@ -4,7 +4,7 @@
  * Hybrid Support: Works both fully standalone offline (GitHub Pages) & with REST API Backend
  */
 
-const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V2';
+const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V3';
 const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? (window.location.port === '3000' ? '/api' : 'http://localhost:3000/api')
     : '/api';
@@ -53,8 +53,17 @@ const DEMO_ACCOUNTS = {
 };
 
 const INITIAL_STATE = {
-    isLoggedIn: false,
-    currentUser: null,
+    isLoggedIn: true,
+    currentUser: {
+        role: 'GPK_KOORDINATOR',
+        roleLabel: 'GPK Koordinator',
+        name: 'Dr. Sari Wulandari, M.Pd',
+        email: 'gpk@sapa.id',
+        nip: '19820415 200604 2 008',
+        avatarInitials: 'SW',
+        avatarColor: '#DF6E3D',
+        institution: 'Pusat Layanan Inklusif Wilayah'
+    },
     userRole: 'GPK_KOORDINATOR',
     userName: 'Dr. Sari Wulandari, M.Pd',
     userRoleLabel: 'GPK Koordinator',
