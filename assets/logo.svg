@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+    <defs>
+        <linearGradient id="sapaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2A9D8F"/>
+            <stop offset="50%" stop-color="#264653"/>
+            <stop offset="100%" stop-color="#E76F51"/>
+        </linearGradient>
+        <linearGradient id="sapaGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#34C759"/>
+            <stop offset="100%" stop-color="#2A9D8F"/>
+        </linearGradient>
+    </defs>
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="48" fill="url(#sapaGreen)"/>
+    <!-- Interlocking Inclusion Embracing Arms & Hands (SAPA 'S' Wave) -->
+    <path d="M50 16 C31.2 16 16 31.2 16 50 C16 58.8 19.4 66.8 25 72.8 C24.4 69.4 24 65.8 24 62 C24 45.4 37.4 32 54 32 C62.8 32 70.8 35.8 76.4 41.8 C73.4 26.8 63 16 50 16 Z" fill="#ffffff" opacity="0.95"/>
+    <path d="M50 84 C68.8 84 84 68.8 84 50 C84 41.2 80.6 33.2 75 27.2 C75.6 30.6 76 34.2 76 38 C76 54.6 62.6 68 46 68 C37.2 68 29.2 64.2 23.6 58.2 C26.6 73.2 37 84 50 84 Z" fill="#ffffff" opacity="0.8"/>
+    <!-- Center Inclusion Heart/Embrace Node -->
+    <circle cx="50" cy="50" r="10" fill="#ffffff"/>
+    <circle cx="50" cy="50" r="6" fill="#2A9D8F"/>
+</svg>

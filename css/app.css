@@ -1,9 +1,9 @@
 /**
  * =========================================================================
- * SAPA INKLUSI — PURE APPLE DESIGN SYSTEM (Strict Specification design.md)
+ * SAPA INKLUSI — APPLE DESIGN SYSTEM WITH SAPA BRAND IDENTITY
  * =========================================================================
- * - Action Blue (#0066cc) single accent on light canvas
- * - Sky Link Blue (#2997ff) on dark canvas
+ * - Brand Color Harmony: Inclusion Emerald (#2A9D8F / #00875A),
+ *   Warm Inklusi Terracotta (#E76F51), Sky Link (#2997FF), Action Blue (#0066CC)
  * - Alternating Edge-to-Edge Full-Bleed Tiles (White / Parchment / Near-Black)
  * - SF Pro Display & Text Typography Hierarchy (56px/40px/34px/28px/21px/17px/14px/12px)
  * - Single Product Shadow (3px 5px 30px rgba(0,0,0,0.22))
@@ -12,10 +12,12 @@
  */
 
 :root {
-    /* Colors (Tokens from design.md) */
-    --color-primary: #0066cc;
-    --color-primary-focus: #0071e3;
-    --color-primary-on-dark: #2997ff;
+    /* Colors (SAPA Inklusi Brand + Apple Hierarchy) */
+    --color-primary: #2A9D8F;           /* SAPA Inclusion Emerald */
+    --color-primary-focus: #21867a;     /* Focused Emerald */
+    --color-primary-on-dark: #48CAE4;   /* Sky Cyan for Dark Tiles */
+    --color-accent-terracotta: #E76F51; /* SAPA Warm Warmth */
+    --color-accent-blue: #0066cc;       /* Cupertino Action Blue */
     
     --color-ink: #1d1d1f;
     --color-body: #1d1d1f;
@@ -95,7 +97,7 @@ body {
 }
 
 /* ========================================================================= */
-/* TYPOGRAPHY SCALE (Strict Specification from design.md)                   */
+/* TYPOGRAPHY SCALE                                                          */
 /* ========================================================================= */
 .typo-hero-display {
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -185,22 +187,6 @@ body {
     letter-spacing: -0.224px;
 }
 
-.typo-button-large {
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: 0px;
-}
-
-.typo-button-utility {
-    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.29;
-    letter-spacing: -0.224px;
-}
-
 .typo-fine-print {
     font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 12px;
@@ -263,7 +249,7 @@ body {
 }
 
 /* ========================================================================= */
-/* BUTTON GRAMMAR (Strict design.md)                                         */
+/* BUTTON GRAMMAR                                                            */
 /* ========================================================================= */
 .button-primary {
     background-color: var(--color-primary);
@@ -314,7 +300,7 @@ body {
     transition: background-color 0.15s ease, transform 0.1s ease;
 }
 .button-secondary-pill:hover {
-    background-color: rgba(0, 102, 204, 0.04);
+    background-color: rgba(42, 157, 143, 0.06);
 }
 .button-secondary-pill:active {
     transform: scale(0.95);
@@ -397,7 +383,7 @@ body {
 }
 
 /* ========================================================================= */
-/* PRODUCT TILES (Edge-to-Edge 0px radius, 80px pad)                         */
+/* PRODUCT TILES                                                             */
 /* ========================================================================= */
 .product-tile-light {
     background-color: var(--color-canvas);
@@ -448,7 +434,7 @@ body {
 }
 
 /* ========================================================================= */
-/* STORE UTILITY CARDS & CONFIGURATOR (18px radius, 1px hairline border)     */
+/* STORE UTILITY CARDS & CONFIGURATOR                                        */
 /* ========================================================================= */
 .store-utility-card {
     background-color: var(--color-canvas);
@@ -483,8 +469,8 @@ body {
     border-color: var(--color-ink-muted-48);
 }
 .configurator-option-chip.selected {
-    border: 2px solid var(--color-primary-focus);
-    background-color: rgba(0, 102, 204, 0.05);
+    border: 2px solid var(--color-primary);
+    background-color: rgba(42, 157, 143, 0.08);
     color: var(--color-primary);
     font-weight: 600;
 }
