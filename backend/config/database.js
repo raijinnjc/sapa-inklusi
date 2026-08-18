@@ -1,0 +1,330 @@
+/**
+ * =========================================================================
+ * SAPA INKLUSI — Data Persistence & Store Layer
+ * =========================================================================
+ * PRD 1.0 Compliant Data Store with 8 Modules, PIB Directory,
+ * Schools with 6-variable matching matrix, Sessions log, and Outcomes.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+class Database {
+    constructor() {
+        this.dataFile = path.join(__dirname, 'data.json');
+        this.data = this.loadData();
+    }
+
+    getDefaultData() {
+        return {
+            users: [
+                { id: "USR-01", email: "gpk@sapa.id", name: "Dr. Sari Wulandari, M.Pd", role: "GPK_KOORDINATOR", schoolName: "Pusat Layanan Disabilitas & GPK Jabar", phone: "0812-3344-5566" },
+                { id: "USR-02", email: "sekolah@sapa.id", name: "Ibu Nurhayati, S.Pd", role: "SEKOLAH_MITRA", schoolName: "SDN Harapan 1", phone: "0813-8899-1122" },
+                { id: "USR-03", email: "dinas@sapa.id", name: "Drs. Hendra Kusuma", role: "DINAS_PENDIDIKAN", schoolName: "Dinas Pendidikan Wilayah I", phone: "0811-2233-4455" },
+                { id: "USR-04", email: "pib@sapa.id", name: "Rina Maharani, S.Pd", role: "PIB", schoolName: "SDN Harapan 1", phone: "0857-1122-3344" }
+            ],
+            modules: [
+                {
+                    id: "MOD-01",
+                    number: "01",
+                    category: "Fondasi Inklusi",
+                    title: "Filosofi & Kebijakan Pendidikan Inklusif",
+                    durationHours: 6,
+                    description: "Landasan filosofis, regulasi nasional (Permendikbud No. 70/2009 & UU Disabilitas No. 8/2016), dan etika pendampingan inklusif.",
+                    lessonContent: "<p>Pendidikan inklusif bukan sekadar menempatkan anak berkebutuhan khusus di kelas reguler, melainkan merestrukturisasi budaya, kebijakan, dan praktik sekolah agar dapat merespons keragaman peserta didik.</p><h4>3 Pilar Utama:</h4><ul><li><strong>Universal Access:</strong> Hak belajar tanpa diskriminasi.</li><li><strong>Meaningful Participation:</strong> Keterlibatan aktif dalam pembelajaran.</li><li><strong>Collaborative Support:</strong> Kolaborasi GPK, guru kelas, PIB, dan orang tua.</li></ul>",
+                    quizQuestions: [
+                        {
+                            q: "Apa prinsip fundamental dari pendidikan inklusif menurut regulasi nasional?",
+                            a: ["Pemisahan kurikulum khusus", "Penyesuaian sistem sekolah terhadap kebutuhan unik anak", "Pemberian nilai otomatis", "Mengurangi jam belajar"],
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-02",
+                    number: "02",
+                    category: "Ragam Disabilitas",
+                    title: "Karakteristik & Identifikasi Hambatan Belajar",
+                    durationHours: 8,
+                    description: "Mengenal profil spektrum autisme, ADHD, disleksia, disgrafia, diskalkulia, hambatan sensorik, dan hambatan intelektual.",
+                    lessonContent: "<p>Memahami karakteristik non-medis hambatan belajar untuk menyusun profil individual anak.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Ciri utama hambatan sensori pemrosesan pada anak spektrum autisme di kelas adalah?",
+                            a: ["Mudah bosan membaca", "Hipersensitivitas terhadap kebisingan suara keras", "Selalu ingin berlari", "Sulit melihat tulisan kecil"],
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-03",
+                    number: "03",
+                    category: "Komunikasi",
+                    title: "Komunikasi Adaptif & Manajemen Perilaku Positif",
+                    durationHours: 8,
+                    description: "Strategi visual support, AAC (Augmentative and Alternative Communication), de-eskalasi emosi, dan Functional Behavior Assessment.",
+                    lessonContent: "<p>Strategi dukungan visual menggunakan jadwal bergambar dan kartu komunikasi untuk mendukung kemandirian anak.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Alat bantu utama untuk mempermudah transisi aktivitas anak autisme adalah?",
+                            a: ["Visual Schedule (Jadwal Gambar)", "Instruksi lisan panjang", "Hukuman duduk tenang", "Alarm suara keras"],
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-04",
+                    number: "04",
+                    category: "Diferensiasi",
+                    title: "Modifikasi Kurikulum & Diferensiasi Instruksi",
+                    durationHours: 8,
+                    description: "Adaptasi konten, proses, produk belajar, Universal Design for Learning (UDL), dan penyusunan Program Pembelajaran Individual (PPI).",
+                    lessonContent: "<p>Penerapan Universal Design for Learning (UDL) dalam merancang kegiatan kelas yang inklusif.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Diferensiasi produk dalam UDL memberikan pilihan kepada peserta didik untuk?",
+                            a: ["Tidak mengerjakan tugas", "Menunjukkan pemahaman materi melalui cara yang sesuai potensinya", "Mendapat nilai sama tanpa evaluasi", "Mengerjakan tugas teman"],
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-05",
+                    number: "05",
+                    category: "AI & Asistif",
+                    title: "Penggunaan Asisten AI Kelas & Teknologi Asistif",
+                    durationHours: 6,
+                    description: "Pemanfaatan fitur AI SAPA Inklusi untuk chunking instruksi, text-to-speech, adaptasi materi bacaan cepat, dan voice journaling.",
+                    lessonContent: "<p>Asisten AI Kelas berfungsi sebagai copilot adaptasi bahan ajar secara instan.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Bagaimana Asisten AI Kelas membantu guru dan PIB dalam pembelajaran?",
+                            a: ["Memberikan diagnosis medis anak", "Menyederhanakan instruksi panjang menjadi langkah-langkah terstruktur", "Menggantikan peran guru di kelas", "Membuat soal ujian acak"],
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-06",
+                    number: "06",
+                    category: "Kolaborasi",
+                    title: "Kemitraan Guru Kelas, GPK, dan Orang Tua",
+                    durationHours: 6,
+                    description: "Teknik co-teaching, pertemuan berkala multidisiplin, pelaporan kemajuan berbasis data non-medis, dan penanganan konflik.",
+                    lessonContent: "<p>Membangun sinergi segitiga emas: Guru Kelas, PIB, dan Orang Tua.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Kunci keberhasilan co-teaching antara Guru Kelas dan PIB adalah?",
+                            a: ["Komunikasi berkala dan pembagian peran yang jelas", "Menyerahkan seluruh tugas ke PIB", "Guru fokus pada nilai ujian saja", "Tidak perlu koordinasi"],
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-07",
+                    number: "07",
+                    category: "Dokumentasi",
+                    title: "Pencatatan Sesi, Observasi, & Verifikasi Log",
+                    durationHours: 6,
+                    description: "Standar pencatatan SOAP (Subjective, Objective, Assessment, Plan), pelaporan insiden, dan akuntabilitas jam layanan.",
+                    lessonContent: "<p>Pencatatan sesi menggunakan format terstruktur untuk memantau kemandirian harian.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Komponen Objective dalam catatan pendampingan mencakup?",
+                            a: ["Opini pribadi pendamping", "Data perilaku yang dapat diamati dan diukur secara konkret", "Rencana tahun depan", "Curhat orang tua"],
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    id: "MOD-08",
+                    number: "08",
+                    category: "Asesmen Portofolio",
+                    title: "Studi Kasus Lapangan & Ujian Sertifikasi PIB",
+                    durationHours: 8,
+                    description: "Simulasi penanganan 3 skenario kelas nyata, penyusunan portofolio modifikasi materi, dan validasi kompetensi oleh GPK Koordinator.",
+                    lessonContent: "<p>Studi kasus komprehensif untuk memperoleh sertifikat resmi Pendamping Inklusi.</p>",
+                    quizQuestions: [
+                        {
+                            q: "Kriteria kelulusan sertifikasi PIB SAPA Inklusi adalah?",
+                            a: ["Menyelesaikan 8 modul, lulus asesmen, dan diverifikasi GPK Koordinator", "Cukup hadir tanpa tugas", "Membayar biaya sertifikat", "Mengikuti 1 modul saja"],
+                            correct: 0
+                        }
+                    ]
+                }
+            ],
+            pibs: [
+                {
+                    id: "PIB-001",
+                    name: "Rina Maharani, S.Pd",
+                    initials: "RM",
+                    region: "Sukamaju",
+                    phone: "0857-1122-3344",
+                    email: "rina.maharani@sapa.id",
+                    status: "BERSERTIFIKAT",
+                    rating: 4.9,
+                    sessionsCompleted: 48,
+                    competencies: ["Autism Spectrum", "Komunikasi Inklusif", "Modifikasi Bahan Ajar"],
+                    assignedSchool: "SDN Harapan 1",
+                    studentsCount: 2,
+                    availability: "BERTUGAS"
+                },
+                {
+                    id: "PIB-002",
+                    name: "Budi Santoso, S.Pd",
+                    initials: "BS",
+                    region: "Cendekia",
+                    phone: "0812-5566-7788",
+                    email: "budi.santoso@sapa.id",
+                    status: "BERSERTIFIKAT",
+                    rating: 4.8,
+                    sessionsCompleted: 36,
+                    competencies: ["ADHD Support", "Dukungan Sensori", "Manajemen Perilaku"],
+                    assignedSchool: "SMP Cendekia Mandiri",
+                    studentsCount: 1,
+                    availability: "BERTUGAS"
+                },
+                {
+                    id: "PIB-003",
+                    name: "Siti Nurhaliza, S.Psi",
+                    initials: "SN",
+                    region: "Harapan",
+                    phone: "0878-9900-1122",
+                    email: "siti.nurhaliza@sapa.id",
+                    status: "BERSERTIFIKAT",
+                    rating: 4.95,
+                    sessionsCompleted: 52,
+                    competencies: ["Disleksia", "Literasi Adaptif", "Scaffolding UDL"],
+                    assignedSchool: "Belum Ditugaskan",
+                    studentsCount: 0,
+                    availability: "TERSEDIA"
+                },
+                {
+                    id: "PIB-004",
+                    name: "Ahmad Fauzi, S.Pd",
+                    initials: "AF",
+                    region: "Sukamaju",
+                    phone: "0813-2233-4455",
+                    email: "ahmad.fauzi@sapa.id",
+                    status: "BERSERTIFIKAT",
+                    rating: 4.7,
+                    sessionsCompleted: 24,
+                    competencies: ["Hambatan Intelektual", "Kemandirian ADL", "Komunikasi Sederhana"],
+                    assignedSchool: "Belum Ditugaskan",
+                    studentsCount: 0,
+                    availability: "TERSEDIA"
+                }
+            ],
+            schools: [
+                {
+                    id: "SCH-001",
+                    name: "SDN Harapan 1",
+                    region: "Sukamaju",
+                    level: "SD",
+                    address: "Jl. Pendidikan No. 12, Sukamaju",
+                    distanceKm: 1.8,
+                    requiredPIB: 2,
+                    assignedPIB: 1,
+                    studentsCount: 4,
+                    status: "BUTUH_PENDAMPING",
+                    matchingScore: 92,
+                    requiredCompetencies: ["Autism Spectrum", "Komunikasi Inklusif"],
+                    coordinatorName: "Ibu Nurhayati, S.Pd",
+                    schedule: "Senin - Jumat (07.30 - 12.00)",
+                    matchingBreakdown: { jarak: 95, kompetensi: 92, jadwal: 90 }
+                },
+                {
+                    id: "SCH-002",
+                    name: "SMP Cendekia Mandiri",
+                    region: "Cendekia",
+                    level: "SMP",
+                    address: "Jl. Pemuda No. 45, Cendekia",
+                    distanceKm: 3.2,
+                    requiredPIB: 1,
+                    assignedPIB: 1,
+                    studentsCount: 2,
+                    status: "TERPENUHI",
+                    matchingScore: 88,
+                    requiredCompetencies: ["ADHD Support", "Dukungan Sensori"],
+                    coordinatorName: "Bpk. Bambang Wijaya, M.Pd",
+                    schedule: "Senin - Kamis (08.00 - 13.00)",
+                    matchingBreakdown: { jarak: 85, kompetensi: 90, jadwal: 88 }
+                },
+                {
+                    id: "SCH-003",
+                    name: "SD Sukamaju 2",
+                    region: "Sukamaju",
+                    level: "SD",
+                    address: "Jl. Melati No. 8, Sukamaju",
+                    distanceKm: 4.5,
+                    requiredPIB: 2,
+                    assignedPIB: 0,
+                    studentsCount: 3,
+                    status: "BUTUH_PENDAMPING",
+                    matchingScore: 85,
+                    requiredCompetencies: ["Disleksia", "Literasi Adaptif"],
+                    coordinatorName: "Ibu Dewi Sartika, S.Pd",
+                    schedule: "Senin - Jumat (07.30 - 11.30)",
+                    matchingBreakdown: { jarak: 78, kompetensi: 92, jadwal: 85 }
+                }
+            ],
+            sessions: [
+                {
+                    id: "SES-001",
+                    date: "18 Agu 2026",
+                    time: "08:00 - 10:00",
+                    pibName: "Rina Maharani, S.Pd",
+                    schoolName: "SDN Harapan 1",
+                    className: "Kelas 4A",
+                    studentName: "Ananda Fikri (Autism Spectrum)",
+                    activity: "Modifikasi lembar kerja membaca teks naratif dengan kartu visual dan chunking instruksi 3 langkah.",
+                    notes: "Fikri mampu menyelesaikan 80% latihan mandiri setelah instruksi dipecah menjadi 2 kalimat per instruksi.",
+                    status: "SELESAI",
+                    verificationStatus: "TERVERIFIKASI",
+                    verifiedBy: "Dr. Sari Wulandari (GPK)",
+                    verifiedAt: "18 Agu 2026 10:30"
+                },
+                {
+                    id: "SES-002",
+                    date: "18 Agu 2026",
+                    time: "10:15 - 11:45",
+                    pibName: "Budi Santoso, S.Pd",
+                    schoolName: "SMP Cendekia Mandiri",
+                    className: "Kelas 7B",
+                    studentName: "Ananda Rayhan (ADHD Support)",
+                    activity: "Pengaturan jeda sensori 2 menit setiap 15 menit belajar matematika bangun ruang.",
+                    notes: "Tingkat fokus meningkat signifikan, tidak ada perilaku tantrum sepanjang 45 menit pelajaran.",
+                    status: "SELESAI",
+                    verificationStatus: "TERTUNDA",
+                    verifiedBy: null,
+                    verifiedAt: null
+                }
+            ]
+        };
+    }
+
+    loadData() {
+        try {
+            if (fs.existsSync(this.dataFile)) {
+                const raw = fs.readFileSync(this.dataFile, 'utf8');
+                return JSON.parse(raw);
+            }
+        } catch (e) {
+            console.error('Error loading database JSON, using default:', e);
+        }
+        const def = this.getDefaultData();
+        this.saveData(def);
+        return def;
+    }
+
+    saveData(data = this.data) {
+        try {
+            fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2), 'utf8');
+            this.data = data;
+        } catch (e) {
+            console.error('Error writing database JSON:', e);
+        }
+    }
+}
+
+module.exports = new Database();

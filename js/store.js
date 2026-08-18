@@ -1,9 +1,13 @@
 /**
  * SAPA INKLUSI - Core State Store (PRD v1.0 Compliant)
  * Author: Antigravity AI Engine
+ * Hybrid Support: Works both fully standalone offline (GitHub Pages) & with REST API Backend
  */
 
 const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V2';
+const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? (window.location.port === '3000' ? '/api' : 'http://localhost:3000/api')
+    : '/api';
 
 const DEMO_ACCOUNTS = {
     'gpk@sapa.id': {
@@ -721,6 +725,31 @@ class SapaStore {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+    }
+
+    // Hybrid Backend API Sync
+    async syncWithBackend() {
+        try {
+            const res = await fetch(`${API_BASE_URL}/health`, { method: 'GET', signal: AbortSignal.timeout(1200) });
+            if (res.ok) {
+                console.log('⚡ SAPA Inklusi Backend API connected successfully!');
+                const [pibRes, schoolRes, sessionRes] = await Promise.all([
+                    fetch(`${API_BASE_URL}/pib`).then(r => r.json()).catch(() => null),
+                    fetch(`${API_BASE_URL}/schools`).then(r => r.json()).catch(() => null),
+                    fetch(`${API_BASE_URL}/sessions`).then(r => r.json()).catch(() => null)
+                ]);
+
+                if (pibRes && pibRes.data) this.state.pibs = pibRes.data;
+                if (schoolRes && schoolRes.data) this.state.schools = schoolRes.data;
+                if (sessionRes && sessionRes.data) this.state.sessions = sessionRes.data;
+                this.save();
+                return true;
+            }
+        } catch (e) {
+            // Silently fallback to offline localStorage mode
+            console.log('ℹ️ Running in standalone static client mode (Offline / GitHub Pages)');
+            return false;
+        }
     }
 }
 
