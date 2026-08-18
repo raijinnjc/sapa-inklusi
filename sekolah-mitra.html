@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SAPA Inklusi - Sekolah Mitra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#9a461b",
+                        "primary-container": "#e88252",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#5e2100",
+                        "secondary": "#546430",
+                        "secondary-container": "#d4e7a6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#586834",
+                        "tertiary": "#5f5e5b",
+                        "tertiary-container": "#9f9d99",
+                        "background": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#55433b",
+                        "outline": "#88726a",
+                        "outline-variant": "#dbc1b7",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+    </style>
+    <script src="js/dataStore.js"></script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden flex">
+    <!-- Sidebar Navigation -->
+    <aside class="h-screen w-64 flex flex-col fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant shadow-sm z-40">
+        <div class="p-4 flex items-center gap-3 mt-2">
+            <img alt="SAPA Inklusi Logo" class="w-10 h-10 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZF6dM-502COhHx4mnmY5SEJpY7K7ye3ira4vgN_q9EunBGvdRSGqE70bB0ADNW3bmcxOuA1zno8UECMVDDLmqR62dV2n7vVtsQVSR28_4qmvGKPVw15SBSiRYvMtZj94wVUMR-Iwc9htmBaOHxcIeWy_eJqJQywxVFHMAKoMV2HLKPFAEjMQJDHHNpFvzDpb8BkI7RdLOi5soKecIf1ZJ4yK_O3_aKX2l4T1ByC7ekXGr3awCZ_xfy3ECrvo7gZSG1A"/>
+            <div>
+                <h2 class="font-headline-md text-headline-md font-bold text-primary leading-tight">SAPA Inklusi</h2>
+                <p class="font-caption text-caption text-on-surface-variant">Inclusive Education</p>
+            </div>
+        </div>
+        <nav class="flex flex-col h-full p-4 space-y-1 mt-2 overflow-y-auto">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="index.html">
+                <span class="material-symbols-outlined">home</span>
+                <span class="font-label-md text-label-md">Beranda</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="microcredential.html">
+                <span class="material-symbols-outlined">school</span>
+                <span class="font-label-md text-label-md">Microcredential</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="asisten-ai.html">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <span class="font-label-md text-label-md">Asisten AI Kelas</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="pib.html">
+                <span class="material-symbols-outlined">diversity_3</span>
+                <span class="font-label-md text-label-md">PIB</span>
+            </a>
+            <!-- Active: Sekolah Mitra -->
+            <a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-bold rounded-lg" href="sekolah-mitra.html">
+                <span class="material-symbols-outlined icon-fill">location_city</span>
+                <span class="font-label-md text-label-md">Sekolah Mitra</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="pendampingan.html">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="font-label-md text-label-md">Pendampingan</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="index.html">
+                <span class="material-symbols-outlined">monitoring</span>
+                <span class="font-label-md text-label-md">Pemantauan</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="laporan.html">
+                <span class="material-symbols-outlined">assessment</span>
+                <span class="font-label-md text-label-md">Laporan & Outcome</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg mt-auto" href="pengaturan.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md text-label-md">Pengaturan</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="ml-64 flex-1 flex flex-col min-h-screen relative w-[calc(100%-16rem)]">
+        <!-- Top App Bar Header -->
+        <header class="h-16 w-full sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-gutter">
+            <div class="flex-1 max-w-md">
+                <div class="relative flex items-center bg-surface-container-low rounded-full px-4 py-1.5 border border-outline-variant focus-within:border-primary">
+                    <span class="material-symbols-outlined text-on-surface-variant mr-2 text-sm">search</span>
+                    <input id="schoolSearchInput" oninput="filterSchoolList()" class="bg-transparent border-none text-sm w-full placeholder:text-on-surface-variant outline-none" placeholder="Cari nama sekolah mitra..." type="text"/>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="mobile-simulator.html" class="bg-surface-container hover:bg-surface-container-high text-primary text-xs px-3.5 py-1.5 rounded-full border border-primary/30 font-bold flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm">phone_iphone</span>
+                    Simulasi Matching PIB
+                </a>
+                <div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+                    <img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkakn515rsewlQyL_bvIk0XQhISIP6wPmMkFocbQdcxsCbG6ovkuKXS8N_Uf613irouz3QLt5kj4Vv5dYKGA8VIvw6q5UyT_Z_LqMc-iTQJe3Gv6MSkxtVOa_XrUGMO3RIKlmlZhZeKAWqq-QxJXWQuDPqIalWltdwmRvvAeSv-x-F_gLd80zZ0G8xQzUAMH6FWu5xDw0hoxigbpSXyxyxJfqSKh8kT7oEfpX4q_C7u-Y527jImEl9"/>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Canvas -->
+        <main class="flex-1 p-gutter max-w-container-max mx-auto w-full flex flex-col gap-stack-lg">
+            <!-- Page Header -->
+            <section class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Sekolah Mitra & Matching</h1>
+                    <p class="text-on-surface-variant text-sm mt-0.5">Kelola jaringan sekolah inklusi, kebutuhan PIB, dan matching penugasan pendampingan.</p>
+                </div>
+                <button onclick="openAssignModal('SCH-001')" class="bg-primary text-on-primary font-label-md text-sm px-6 py-2.5 rounded-full hover:bg-primary-container transition-all shadow-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">person_add</span>
+                    Tugaskan PIB ke Sekolah
+                </button>
+            </section>
+
+            <!-- 4 KPI Cards -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant shadow-sm flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-on-surface-variant mb-2">
+                        <span class="material-symbols-outlined text-lg">account_balance</span>
+                        <span class="font-label-md text-xs">Total Sekolah</span>
+                    </div>
+                    <div class="font-headline-xl text-3xl font-bold text-on-surface">46</div>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl p-4 border-t-4 border-t-secondary border border-outline-variant shadow-sm flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-on-surface-variant mb-2">
+                        <span class="material-symbols-outlined text-lg text-secondary">check_circle</span>
+                        <span class="font-label-md text-xs">Kebutuhan Terpenuhi</span>
+                    </div>
+                    <div class="font-headline-xl text-3xl font-bold text-on-surface">34</div>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl p-4 border-t-4 border-t-primary border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-error-container text-primary px-2 py-0.5 rounded-bl-lg text-[10px] font-bold">
+                        Prioritas
+                    </div>
+                    <div class="flex items-center gap-2 text-on-surface-variant mb-2 mt-1">
+                        <span class="material-symbols-outlined text-lg text-primary">person_search</span>
+                        <span class="font-label-md text-xs">Butuh PIB</span>
+                    </div>
+                    <div class="font-headline-xl text-3xl font-bold text-primary">12</div>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant shadow-sm flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-on-surface-variant mb-2">
+                        <span class="material-symbols-outlined text-lg">diversity_3</span>
+                        <span class="font-label-md text-xs">PIB Bertugas</span>
+                    </div>
+                    <div class="font-headline-xl text-3xl font-bold text-on-surface">82</div>
+                </div>
+            </section>
+
+            <!-- Main Split Layout (Left: Map & Priority / Right: Directory Table & Detail) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-12">
+                <!-- Left Column (4 Cols): Map & Priority Needs -->
+                <div class="lg:col-span-4 flex flex-col gap-6">
+                    <!-- Map Card -->
+                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden h-72 relative">
+                        <div class="absolute inset-0 z-10 p-3 bg-gradient-to-b from-surface/90 to-transparent flex justify-between items-start pointer-events-none">
+                            <h3 class="font-bold text-xs text-on-surface">Peta Persebaran Sekolah Mitra</h3>
+                            <span class="bg-surface px-2 py-0.5 rounded text-[10px] shadow pointer-events-auto text-primary font-bold">5 Zona Aktif</span>
+                        </div>
+                        <div class="w-full h-full bg-surface-variant flex items-center justify-center relative" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKwyPbVUcNOIsm_vlv9hSBQZlmrxYFhx6SmVGxxAN-YEi0loLNo4cyjB3Snq10cSONbyYO7zCE3O7vD8nH2eS4Y-VQ7BCGhtSeGSC5hALD_BwVEzJBqiph8kTT-OzFeg6YL3HV2z5Zc-mZZlIXzQHi5GUUcWabJZ4TJ8WETztIRyo4cCE0CH7aagTuYctqOs8C9qh5k_nvQeCS0Boe8YxzDhqDOMeTOrbJAJsT527Z7h_Lxn24-nt1'); background-size: cover; background-position: center;">
+                            <!-- Pulsing location marker SDN Harapan 1 -->
+                            <div class="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer" onclick="selectSchoolPreview('SCH-001')">
+                                <span class="material-symbols-outlined text-primary text-2xl drop-shadow-md">location_on</span>
+                                <span class="bg-primary text-on-primary text-[9px] font-bold px-1.5 py-0.5 rounded shadow">SDN Harapan 1 (92%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Priority Needs List -->
+                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-4">
+                        <h3 class="font-bold text-xs text-on-surface mb-3 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-primary text-sm">priority_high</span>
+                            Prioritas Kebutuhan PIB Mendesak
+                        </h3>
+                        <ul class="space-y-2 text-xs">
+                            <li onclick="selectSchoolPreview('SCH-001')" class="p-3 bg-error-container/20 rounded-lg border border-error-container/40 flex justify-between items-center cursor-pointer hover:bg-error-container/40 transition-colors">
+                                <div>
+                                    <div class="font-bold text-on-surface">SDN Harapan 1</div>
+                                    <div class="text-[11px] text-on-surface-variant">Sukamaju • Butuh 2 PIB (Autisme)</div>
+                                </div>
+                                <span class="bg-primary text-on-primary font-bold text-[10px] px-2 py-0.5 rounded">Tinggi</span>
+                            </li>
+                            <li onclick="selectSchoolPreview('SCH-004')" class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/30 flex justify-between items-center cursor-pointer hover:bg-surface-container-high transition-colors">
+                                <div>
+                                    <div class="font-bold text-on-surface">SMPN 2 Karang Sari</div>
+                                    <div class="text-[11px] text-on-surface-variant">Karang Sari • Butuh 1 PIB (Disleksia)</div>
+                                </div>
+                                <span class="bg-surface-variant text-on-surface-variant font-bold text-[10px] px-2 py-0.5 rounded">Sedang</span>
+                            </li>
+                            <li onclick="selectSchoolPreview('SCH-005')" class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/30 flex justify-between items-center cursor-pointer hover:bg-surface-container-high transition-colors">
+                                <div>
+                                    <div class="font-bold text-on-surface">SMAN 1 Bakti</div>
+                                    <div class="text-[11px] text-on-surface-variant">Bakti Jaya • Butuh 1 PIB</div>
+                                </div>
+                                <span class="bg-surface-variant text-on-surface-variant font-bold text-[10px] px-2 py-0.5 rounded">Sedang</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column (8 Cols): Directory Grid & Detail Preview -->
+                <div class="lg:col-span-8 flex flex-col gap-6">
+                    <!-- Directory Table -->
+                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col">
+                        <div class="p-3.5 border-b border-outline-variant bg-surface-container-low rounded-t-xl grid grid-cols-12 gap-2 items-center text-xs font-bold text-on-surface-variant uppercase">
+                            <div class="col-span-4">Sekolah</div>
+                            <div class="col-span-2">Wilayah</div>
+                            <div class="col-span-1">Jenjang</div>
+                            <div class="col-span-2 text-center">PIB (Tugas/Butuh)</div>
+                            <div class="col-span-2">Status</div>
+                            <div class="col-span-1 text-center">Matching</div>
+                        </div>
+                        <div id="schoolListBody" class="divide-y divide-outline-variant/20 text-xs">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- School Detail Preview Card (SDN Harapan 1) -->
+                    <div id="schoolPreviewCard" class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-md p-5 flex flex-col md:flex-row gap-5 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                        <div class="w-full md:w-1/3 rounded-lg overflow-hidden h-36 bg-surface-variant">
+                            <img id="previewSchoolImg" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2C9EQ1-ZAo0fi2a1ndFlstd4cObRQa5Y1daFnvwdEQ_CW9A87d3kbQBkQE9rF5G1oDhlCwdHz_2yNs8vSB1tPulIJqmABo3wudnd6108fFh1Iekqw6iPY8gRvomGQS2RDBPpzdXs53e4ssSQLZwcucCLL0Yr_0PR7l6iJwBHjI7Nth3vp7RTyCjWO23LKod0MRL8NpNQwnPq6vXb920sRLAJRZts4L02ivCbljC0sfB0kwERrBYTM"/>
+                        </div>
+                        <div class="flex-1 flex flex-col text-xs">
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <h3 id="previewSchoolName" class="font-bold text-base text-on-surface">SDN Harapan 1</h3>
+                                    <p id="previewSchoolLoc" class="text-on-surface-variant flex items-center gap-1 mt-0.5">
+                                        <span class="material-symbols-outlined text-sm">location_on</span> Sukamaju, Jawa Barat (1.8 km)
+                                    </p>
+                                </div>
+                                <span id="previewSchoolMatch" class="bg-primary/10 text-primary font-bold px-2.5 py-1 rounded-full border border-primary/20">92% Match Score</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mt-3 mb-3">
+                                <div>
+                                    <span class="text-on-surface-variant block text-[10px]">Kebutuhan PIB</span>
+                                    <span id="previewSchoolReq" class="font-bold text-on-surface">Butuh 2, Ditugaskan 1</span>
+                                </div>
+                                <div>
+                                    <span class="text-on-surface-variant block text-[10px]">Kompetensi Dibutuhkan</span>
+                                    <span id="previewSchoolComps" class="font-bold text-secondary">Autisme, Komunikasi Inklusif</span>
+                                </div>
+                                <div>
+                                    <span class="text-on-surface-variant block text-[10px]">Koordinator Sekolah</span>
+                                    <span id="previewSchoolCoord" class="font-bold text-on-surface">Ibu Nurhayati, S.Pd</span>
+                                </div>
+                                <div>
+                                    <span class="text-on-surface-variant block text-[10px]">Jadwal Layanan</span>
+                                    <span class="font-bold text-on-surface">Senin - Jumat</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-end gap-2 mt-auto pt-2 border-t border-outline-variant/30">
+                                <button onclick="openAssignModal('SCH-001')" class="bg-primary text-on-primary font-bold px-4 py-1.5 rounded-lg hover:bg-primary-container transition-colors">
+                                    Tugaskan PIB Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Assignment (Tugaskan PIB ke Sekolah) -->
+    <div id="assignModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center hidden">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 w-full max-w-md shadow-xl border border-outline-variant/30">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-base text-on-surface">Penugasan PIB ke Sekolah Mitra</h3>
+                <button onclick="closeAssignModal()" class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form onsubmit="handleAssignSubmit(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="font-bold text-on-surface block mb-1">Sekolah Mitra Sasaran</label>
+                    <select id="assignSchoolSelect" class="w-full p-2.5 rounded-lg border border-outline-variant bg-surface text-on-surface">
+                        <!-- Options populated -->
+                    </select>
+                </div>
+                <div>
+                    <label class="font-bold text-on-surface block mb-1">Pilih PIB Tersedia (Tersertifikasi)</label>
+                    <select id="assignPIBSelect" class="w-full p-2.5 rounded-lg border border-outline-variant bg-surface text-on-surface">
+                        <!-- Options populated -->
+                    </select>
+                </div>
+                <div class="bg-secondary-container/20 p-3 rounded-lg border border-secondary/30 text-on-surface">
+                    <p class="font-bold text-secondary text-[11px]">Kalkulasi Matching Score:</p>
+                    <p class="text-[11px] mt-0.5">Kesesuaian kompetensi & lokasi terverifikasi memenuhi standar penempatan (Score &gt; 85%).</p>
+                </div>
+                <div class="flex gap-2 justify-end pt-2">
+                    <button type="button" onclick="closeAssignModal()" class="px-4 py-2 rounded-lg border border-outline-variant font-bold text-on-surface">Batal</button>
+                    <button type="submit" class="px-5 py-2 rounded-lg bg-primary text-on-primary font-bold hover:bg-primary-container">Konfirmasi Penugasan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function renderSchoolList() {
+            const schools = window.sapaStore ? window.sapaStore.getSchools() : [];
+            const container = document.getElementById('schoolListBody');
+            container.innerHTML = '';
+
+            schools.forEach(s => {
+                const isNeeds = s.status === 'BUTUH_PENDAMPING';
+                const row = `
+                    <div onclick="selectSchoolPreview('${s.id}')" class="grid grid-cols-12 gap-2 items-center p-3.5 hover:bg-surface-container/50 transition-colors cursor-pointer ${s.id === 'SCH-001' ? 'bg-secondary-container/10' : ''}">
+                        <div class="col-span-4 font-bold text-on-surface">${s.name}</div>
+                        <div class="col-span-2 text-on-surface-variant">${s.region}</div>
+                        <div class="col-span-1 text-on-surface-variant font-bold">${s.level}</div>
+                        <div class="col-span-2 text-center font-bold">
+                            <span class="${isNeeds ? 'text-primary' : 'text-secondary'}">${s.assignedPIB}</span> / <span class="text-on-surface-variant">${s.requiredPIB}</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${isNeeds ? 'bg-error-container text-primary' : 'bg-secondary-container text-secondary'}">
+                                ${isNeeds ? 'Butuh PIB' : 'Terpenuhi'}
+                            </span>
+                        </div>
+                        <div class="col-span-1 text-center font-bold text-primary">${s.matchingScore || 90}%</div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        function selectSchoolPreview(schoolId) {
+            const schools = window.sapaStore ? window.sapaStore.getSchools() : [];
+            const s = schools.find(item => item.id === schoolId);
+            if (!s) return;
+
+            document.getElementById('previewSchoolName').innerText = s.name;
+            document.getElementById('previewSchoolLoc').innerHTML = `<span class="material-symbols-outlined text-sm">location_on</span> ${s.region}, Jawa Barat (${s.distanceKm || 2} km)`;
+            document.getElementById('previewSchoolMatch').innerText = `${s.matchingScore || 90}% Match Score`;
+            document.getElementById('previewSchoolReq').innerText = `Butuh ${s.requiredPIB}, Ditugaskan ${s.assignedPIB}`;
+            document.getElementById('previewSchoolComps').innerText = (s.requiredCompetencies || []).join(', ');
+            document.getElementById('previewSchoolCoord').innerText = s.coordinatorName || 'Koordinator Sekolah';
+        }
+
+        function filterSchoolList() {
+            const q = document.getElementById('schoolSearchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#schoolListBody > div');
+            rows.forEach(r => {
+                r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none';
+            });
+        }
+
+        function openAssignModal(preselectedSchoolId) {
+            const schools = window.sapaStore ? window.sapaStore.getSchools() : [];
+            const pibs = window.sapaStore ? window.sapaStore.getPIBs() : [];
+
+            const schoolSelect = document.getElementById('assignSchoolSelect');
+            schoolSelect.innerHTML = schools.map(s => `<option value="${s.id}" ${s.id === preselectedSchoolId ? 'selected' : ''}>${s.name} (${s.status === 'BUTUH_PENDAMPING' ? 'Butuh PIB' : 'Terpenuhi'})</option>`).join('');
+
+            const pibSelect = document.getElementById('assignPIBSelect');
+            pibSelect.innerHTML = pibs.map(p => `<option value="${p.id}">${p.name} - ${p.region} (${p.availability === 'TERSEDIA' ? 'Tersedia' : 'Sedang Bertugas'})</option>`).join('');
+
+            document.getElementById('assignModal').classList.remove('hidden');
+        }
+
+        function closeAssignModal() {
+            document.getElementById('assignModal').classList.add('hidden');
+        }
+
+        function handleAssignSubmit(e) {
+            e.preventDefault();
+            const schoolId = document.getElementById('assignSchoolSelect').value;
+            const pibId = document.getElementById('assignPIBSelect').value;
+
+            if (window.sapaStore) {
+                window.sapaStore.assignPIBToSchool(pibId, schoolId);
+                alert("Penugasan PIB ke sekolah berhasil dicatat!");
+                closeAssignModal();
+                renderSchoolList();
+                selectSchoolPreview(schoolId);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSchoolList();
+        });
+    </script>
+</body>
+</html>

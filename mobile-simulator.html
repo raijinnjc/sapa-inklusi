@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SAPA Inklusi - Simulator Mobile PIB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#9a461b",
+                        "primary-container": "#e88252",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#5e2100",
+                        "secondary": "#546430",
+                        "secondary-container": "#d4e7a6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#586834",
+                        "background": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#55433b",
+                        "outline": "#88726a",
+                        "outline-variant": "#dbc1b7",
+                        "error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "sans": ["Plus Jakarta Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        /* Mobile phone viewport frame styling */
+        .phone-frame {
+            width: 390px;
+            height: 800px;
+            border-radius: 44px;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 12px #262626, 0 0 0 14px #404040;
+            overflow: hidden;
+            position: relative;
+            background: #fbf9f8;
+        }
+        .phone-notch {
+            width: 140px;
+            height: 26px;
+            background: #262626;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+        }
+        .screen-content {
+            height: calc(100% - 70px);
+            overflow-y: auto;
+            padding-top: 36px;
+        }
+        /* Hide scrollbar for mobile screen */
+        .screen-content::-webkit-scrollbar { display: none; }
+        .screen-content { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script src="js/dataStore.js"></script>
+</head>
+<body class="bg-surface-container-low min-h-screen flex flex-col items-center justify-center p-6 text-on-surface">
+    <!-- Header Controls -->
+    <div class="max-w-4xl w-full flex justify-between items-center mb-6">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="p-2 bg-surface-container-lowest rounded-full shadow-sm hover:bg-surface-container transition-colors border border-outline-variant/30">
+                <span class="material-symbols-outlined text-lg">arrow_back</span>
+            </a>
+            <div>
+                <h1 class="text-xl font-bold text-primary">Simulator Mobile Application — SAPA Inklusi</h1>
+                <p class="text-xs text-on-surface-variant">Pratinjau antarmuka kerja harian Pendamping Inklusi Bersertifikat (PIB)</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <a href="index.html" class="px-4 py-2 bg-primary text-on-primary text-xs font-bold rounded-full shadow-sm hover:bg-primary-container transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">desktop_windows</span>
+                Kembali ke Web Platform
+            </a>
+        </div>
+    </div>
+
+    <!-- Phone Device Simulator Container -->
+    <div class="phone-frame flex flex-col">
+        <!-- Notch / Dynamic Island -->
+        <div class="phone-notch flex items-center justify-center">
+            <div class="w-3 h-3 rounded-full bg-[#111] mr-3"></div>
+            <div class="w-2 h-2 rounded-full bg-[#111]"></div>
+        </div>
+
+        <!-- 1. Screen Content: TAB 1 (BERANDA PIB - Wireframe 01) -->
+        <div id="tabBeranda" class="screen-content p-4 space-y-4">
+            <!-- Header User Card -->
+            <div class="flex justify-between items-center pt-2">
+                <div class="flex items-center gap-2.5">
+                    <img class="w-10 h-10 rounded-full object-cover border-2 border-primary" alt="PIB Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5L3mOQy1j4sVWiKcN0ljUygLG4eXMWja-rVITlKxC2XxU5v2dD2uOTkv6dAgPy29yAdpWzWhzYmj18ZMYIDejrh6iiWmddfkC_2lLb9kyO2vMVa4GUqkuugOw0e__d6H6_IbYsCvCXE04Sww7GoNPPnGCKB3MPyQ7PoErT8aj9C8qRwsDAbx-MWpt8Ho8UiT-8bCt46uivcxN8Jqs5XrOFrf9_a-Vf5KIX4DoJD4BBNFI525EQSH9">
+                    <div>
+                        <p class="text-xs text-on-surface-variant">Selamat Pagi,</p>
+                        <h2 class="text-sm font-bold text-on-surface">Rina Maharani, S.Pd</h2>
+                    </div>
+                </div>
+                <div class="bg-secondary-container/30 text-secondary text-[11px] font-bold px-2.5 py-1 rounded-full border border-secondary/30 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-xs">verified</span> PIB Aktif
+                </div>
+            </div>
+
+            <!-- Today's Assignment Banner -->
+            <div class="bg-primary text-on-primary rounded-2xl p-4 shadow-md relative overflow-hidden">
+                <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-white/10 rounded-full"></div>
+                <span class="text-[10px] uppercase font-bold tracking-wider text-primary-fixed">Jadwal Pendampingan Hari Ini</span>
+                <h3 class="text-base font-bold mt-1">SDN Harapan 1 • Kelas 4A</h3>
+                <p class="text-xs text-white/80 mt-0.5">Siswa: Ananda Fikri (Autism Spectrum)</p>
+                <div class="mt-3 flex items-center justify-between">
+                    <span class="text-xs bg-white/20 px-2.5 py-1 rounded-lg">⏰ 08.00 - 10.00 WIB</span>
+                    <button onclick="switchTab('tabAsisten')" class="bg-white text-primary text-xs font-bold px-3 py-1.5 rounded-full hover:bg-white/90 shadow-sm flex items-center gap-1">
+                        <span class="material-symbols-outlined text-xs">smart_toy</span> Buka AI Kelas
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Stats Row -->
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-surface-container-lowest p-2.5 rounded-xl border border-outline-variant/30">
+                    <span class="text-xs text-on-surface-variant block">Sesi Selesai</span>
+                    <span class="text-base font-bold text-secondary">48</span>
+                </div>
+                <div class="bg-surface-container-lowest p-2.5 rounded-xl border border-outline-variant/30">
+                    <span class="text-xs text-on-surface-variant block">Modul Selesai</span>
+                    <span class="text-base font-bold text-primary">8/8</span>
+                </div>
+                <div class="bg-surface-container-lowest p-2.5 rounded-xl border border-outline-variant/30">
+                    <span class="text-xs text-on-surface-variant block">Sertifikat</span>
+                    <span class="text-base font-bold text-on-surface">Resmi</span>
+                </div>
+            </div>
+
+            <!-- Quick Action Cards -->
+            <div class="space-y-2">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Akses Cepat</h4>
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="switchTab('tabSekolah')" class="p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 text-left hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined text-primary text-xl block mb-1">location_city</span>
+                        <span class="text-xs font-bold text-on-surface block">Cari Sekolah Mitra</span>
+                        <span class="text-[10px] text-on-surface-variant">12 sekolah butuh PIB</span>
+                    </button>
+                    <button onclick="switchTab('tabMicro')" class="p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 text-left hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined text-secondary text-xl block mb-1">school</span>
+                        <span class="text-xs font-bold text-on-surface block">Microcredential</span>
+                        <span class="text-[10px] text-on-surface-variant">Pelatihan & sertifikat</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity Timeline -->
+            <div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/30">
+                <h4 class="text-xs font-bold text-on-surface mb-2">Aktivitas Terakhir</h4>
+                <div class="text-xs space-y-2">
+                    <div class="border-l-2 border-primary pl-2.5">
+                        <p class="font-semibold text-on-surface">Penyederhanaan Materi Pecahan</p>
+                        <p class="text-[10px] text-on-surface-variant">Hari ini • 08:30 WIB (SDN Harapan 1)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Screen Content: TAB 2 (MICROCREDENTIAL PIB - Wireframe 02) -->
+        <div id="tabMicro" class="screen-content p-4 space-y-3 hidden">
+            <div class="pt-2">
+                <h2 class="text-base font-bold text-on-surface">Microcredential PIB</h2>
+                <p class="text-xs text-on-surface-variant">8 Modul Peningkatan Kompetensi (40-60 Jam)</p>
+            </div>
+
+            <!-- Certificate Status Card -->
+            <div class="bg-secondary-container/20 border border-secondary/30 rounded-xl p-3.5 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] font-bold text-secondary uppercase">Status Kelulusan</span>
+                    <h3 class="text-sm font-bold text-on-surface">Sertifikasi Nasional PIB</h3>
+                    <p class="text-[11px] text-on-surface-variant">ID: CERT-PIB-2026-089</p>
+                </div>
+                <span class="material-symbols-outlined text-secondary text-3xl">workspace_premium</span>
+            </div>
+
+            <!-- Modules List (8 Modules) -->
+            <div class="space-y-2">
+                <h4 class="text-xs font-bold text-on-surface-variant uppercase">Daftar Modul Pembelajaran</h4>
+                <div class="space-y-2 text-xs">
+                    <div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-on-surface">Modul 1: Dasar Pendidikan Inklusif</p>
+                            <p class="text-[10px] text-on-surface-variant">Durasi: 6 Jam • Skor: 98/100</p>
+                        </div>
+                        <span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded">Selesai</span>
+                    </div>
+                    <div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-on-surface">Modul 2: Memahami Anak Berkebutuhan Khusus</p>
+                            <p class="text-[10px] text-on-surface-variant">Durasi: 8 Jam • Skor: 92/100</p>
+                        </div>
+                        <span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded">Selesai</span>
+                    </div>
+                    <div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-on-surface">Modul 3: Komunikasi Inklusif</p>
+                            <p class="text-[10px] text-on-surface-variant">Durasi: 6 Jam • Skor: 89/100</p>
+                        </div>
+                        <span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded">Selesai</span>
+                    </div>
+                    <div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-on-surface">Modul 6: Pembelajaran Adaptif & AI</p>
+                            <p class="text-[10px] text-on-surface-variant">Durasi: 8 Jam • Skor: 95/100</p>
+                        </div>
+                        <span class="bg-secondary/10 text-secondary text-[10px] font-bold px-2 py-0.5 rounded">Selesai</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Screen Content: TAB 3 (ASISTEN AI KELAS - Wireframe 03) -->
+        <div id="tabAsisten" class="screen-content p-4 space-y-3 hidden flex flex-col justify-between">
+            <div class="pt-2">
+                <h2 class="text-base font-bold text-on-surface flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-xl">smart_toy</span>
+                    Asisten AI Kelas
+                </h2>
+                <p class="text-xs text-on-surface-variant">Dukungan suara & penyederhanaan instruksi</p>
+            </div>
+
+            <!-- Mobile Live Transcript Box -->
+            <div class="flex-1 bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 space-y-2 overflow-y-auto text-xs">
+                <div class="bg-surface-container-low p-2.5 rounded-lg border border-outline-variant/20">
+                    <p class="text-on-surface"><strong>Instruksi Asli:</strong> "Buka buku matematika halaman 24, kerjakan nomor 1 sampai 5 tentang pecahan."</p>
+                </div>
+                <div class="bg-secondary-container/20 p-2.5 rounded-lg border border-secondary/30">
+                    <p class="font-bold text-secondary text-[11px] mb-1">⚡ Langkah Adaptif AI:</p>
+                    <p class="text-on-surface">1. 📘 Buka halaman 24.<br>2. ✏️ Kerjakan 2 nomor pertama.<br>3. 🌟 Berikan jeda stiker bintang.</p>
+                </div>
+            </div>
+
+            <!-- Voice Record CTA Button -->
+            <div class="pt-2 text-center">
+                <button onclick="alert('Merekam suara guru kelas... (Simulasi STT Aktif)')" class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center mx-auto hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl">mic</span>
+                </button>
+                <p class="text-[10px] text-on-surface-variant mt-1.5">Tekan untuk berbicara atau merekam instruksi</p>
+            </div>
+        </div>
+
+        <!-- 4. Screen Content: TAB 4 (SEKOLAH MITRA - Wireframe 04) -->
+        <div id="tabSekolah" class="screen-content p-4 space-y-3 hidden">
+            <div class="pt-2">
+                <h2 class="text-base font-bold text-on-surface">Sekolah Mitra</h2>
+                <p class="text-xs text-on-surface-variant">Pencocokan & Pengajuan Pendampingan</p>
+            </div>
+
+            <!-- Matching Card 1: SDN Harapan 1 (92% Cocok) -->
+            <div class="bg-surface-container-lowest p-3.5 rounded-xl border-2 border-primary shadow-sm space-y-2">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">92% Cocok</span>
+                        <h3 class="text-sm font-bold text-on-surface mt-1">SDN Harapan 1</h3>
+                        <p class="text-[11px] text-on-surface-variant">Sukamaju • 1.8 km</p>
+                    </div>
+                    <span class="bg-error-container text-primary font-bold text-[10px] px-2 py-1 rounded">Butuh 2 PIB</span>
+                </div>
+                <div class="text-[11px] text-on-surface-variant">
+                    <p>Kompetensi: Autisme, Komunikasi Inklusif</p>
+                </div>
+                <button onclick="alert('Permohonan pendampingan ke SDN Harapan 1 berhasil diajukan ke GPK Koordinator!')" class="w-full bg-primary text-on-primary font-bold text-xs py-2 rounded-lg hover:bg-primary-container transition-colors shadow-sm">
+                    Ajukan Minat Pendampingan
+                </button>
+            </div>
+
+            <!-- Matching Card 2: SMPN 2 Karang Sari (89% Cocok) -->
+            <div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/30 space-y-2">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-[10px] font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded">89% Cocok</span>
+                        <h3 class="text-sm font-bold text-on-surface mt-1">SMPN 2 Karang Sari</h3>
+                        <p class="text-[11px] text-on-surface-variant">Karang Sari • 2.7 km</p>
+                    </div>
+                    <span class="bg-surface-container-high text-on-surface-variant text-[10px] px-2 py-1 rounded">Butuh 1 PIB</span>
+                </div>
+                <button onclick="alert('Permohonan diajukan!')" class="w-full bg-surface-container hover:bg-surface-container-high text-on-surface font-bold text-xs py-2 rounded-lg transition-colors">
+                    Lihat Detail
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Bar (PRD Section 13) -->
+        <div class="h-[70px] bg-surface-container-lowest border-t border-outline-variant/30 grid grid-cols-4 items-center z-40 px-2">
+            <button onclick="switchTab('tabBeranda')" id="navBeranda" class="flex flex-col items-center text-primary font-bold">
+                <span class="material-symbols-outlined text-xl">home</span>
+                <span class="text-[10px]">Beranda</span>
+            </button>
+            <button onclick="switchTab('tabMicro')" id="navMicro" class="flex flex-col items-center text-on-surface-variant hover:text-primary">
+                <span class="material-symbols-outlined text-xl">school</span>
+                <span class="text-[10px]">Modul</span>
+            </button>
+            <button onclick="switchTab('tabAsisten')" id="navAsisten" class="flex flex-col items-center text-on-surface-variant hover:text-primary">
+                <span class="material-symbols-outlined text-xl">smart_toy</span>
+                <span class="text-[10px]">Asisten AI</span>
+            </button>
+            <button onclick="switchTab('tabSekolah')" id="navSekolah" class="flex flex-col items-center text-on-surface-variant hover:text-primary">
+                <span class="material-symbols-outlined text-xl">location_city</span>
+                <span class="text-[10px]">Sekolah</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const tabs = ['tabBeranda', 'tabMicro', 'tabAsisten', 'tabSekolah'];
+            tabs.forEach(t => {
+                const el = document.getElementById(t);
+                if (el) el.classList.add('hidden');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Reset navigation active state styling
+            const navMap = {
+                'tabBeranda': 'navBeranda',
+                'tabMicro': 'navMicro',
+                'tabAsisten': 'navAsisten',
+                'tabSekolah': 'navSekolah'
+            };
+            Object.keys(navMap).forEach(k => {
+                const btn = document.getElementById(navMap[k]);
+                if (k === tabId) {
+                    btn.className = "flex flex-col items-center text-primary font-bold";
+                } else {
+                    btn.className = "flex flex-col items-center text-on-surface-variant hover:text-primary";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

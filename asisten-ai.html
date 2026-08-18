@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Asisten AI Kelas - SAPA Inklusi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#9a461b",
+                        "primary-container": "#e88252",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#5e2100",
+                        "secondary": "#546430",
+                        "secondary-container": "#d4e7a6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#586834",
+                        "tertiary": "#5f5e5b",
+                        "tertiary-container": "#9f9d99",
+                        "background": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#55433b",
+                        "outline": "#88726a",
+                        "outline-variant": "#dbc1b7",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .mic-pulsing {
+            animation: pulse-ring 1.8s infinite ease-in-out;
+        }
+    </style>
+    <script src="js/dataStore.js"></script>
+</head>
+<body class="bg-background text-on-surface font-body-md w-full min-h-screen flex">
+    <!-- Sidebar Navigation -->
+    <nav class="fixed left-0 top-0 h-full w-64 flex flex-col bg-surface-container-low border-r border-outline-variant z-40">
+        <div class="flex items-center gap-3 p-6 mb-4">
+            <img alt="SAPA Inklusi Logo" class="w-10 h-10 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF0PKlIV2fHdm_yp0uHzLJGugnod_ErAYYVEPCeKBxSoimfR-tD_ouzh76PcQB8hjtcefU2pGoF783U99gO1LkHh3cDBPIrMu8oqOqA2xYSZxTbX4F3qF-knNXvUGMmKzAqDKBqHP1eW3cWiSakAIn3_sB-xji5HlXxwGspL709t4MJCqYe_25yRyvTBi7zeWvu_b_4cjrTutgmGhMx9awJRFnOKy4mogywP2tIvA7FMWAmqWm1-rnZaQH-WkT4j7j-g">
+            <div class="flex flex-col">
+                <span class="font-headline-md text-headline-md font-bold text-primary">SAPA Inklusi</span>
+                <span class="font-caption text-caption text-on-surface-variant">Inclusive Education</span>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1 px-4 h-full overflow-y-auto pb-6">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="index.html">
+                <span class="material-symbols-outlined">home</span>
+                <span class="font-label-md text-label-md">Beranda</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="microcredential.html">
+                <span class="material-symbols-outlined">school</span>
+                <span class="font-label-md text-label-md">Microcredential</span>
+            </a>
+            <!-- Active State: Asisten AI -->
+            <a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container/20 rounded-xl" href="asisten-ai.html">
+                <span class="material-symbols-outlined icon-fill">smart_toy</span>
+                <span class="font-label-md text-label-md">Asisten AI Kelas</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="pib.html">
+                <span class="material-symbols-outlined">diversity_3</span>
+                <span class="font-label-md text-label-md">PIB</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="sekolah-mitra.html">
+                <span class="material-symbols-outlined">location_city</span>
+                <span class="font-label-md text-label-md">Sekolah Mitra</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="pendampingan.html">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="font-label-md text-label-md">Pendampingan</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="index.html">
+                <span class="material-symbols-outlined">monitoring</span>
+                <span class="font-label-md text-label-md">Pemantauan</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="laporan.html">
+                <span class="material-symbols-outlined">assessment</span>
+                <span class="font-label-md text-label-md">Laporan & Outcome</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl mt-auto" href="pengaturan.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md text-label-md">Pengaturan</span>
+            </a>
+        </div>
+        <div class="p-4 border-t border-outline-variant">
+            <div class="flex items-center gap-3 px-2 py-2">
+                <img class="w-10 h-10 rounded-full object-cover shadow-sm" alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFN_p-AXWMbq3kPQAyCtCiOC0WXzIbE21q6fGqEGjIYSGH9EMMHHsvhHZ5W-CxiIla1hsHEX5fMIA1B1xP8w12mhjc1VJzxeRcQAJ3YckWsEdqx-VfmIuLMHikWf4Oi3eVwEls1jNWwN_15ZpeGUZSwkmUWKVqgNvkRiSErqtRdib0gvLgHOsJR9zXn3gVfRRAjB8syPi9jK7P5dcI5JE2zbFN9FEoZJgDFnqoMnj96YD0BaR8zZxq">
+                <div class="flex-1 overflow-hidden">
+                    <p class="font-label-md text-label-md text-on-surface truncate">Dr. Sari Wulandari</p>
+                    <p class="font-caption text-caption text-on-surface-variant truncate">GPK Koordinator</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top App Bar -->
+    <header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-30 h-16 bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 flex justify-between items-center px-margin-desktop">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-2xl">auto_awesome</span>
+            <div>
+                <h2 class="font-headline-md text-lg font-bold text-on-surface">Asisten AI Kelas</h2>
+                <p class="font-caption text-xs text-on-surface-variant">Dukungan Pembelajaran Adaptif & Voice Interaction</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="mobile-simulator.html" class="bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-xs px-3.5 py-2 rounded-full border border-primary/30 flex items-center gap-1.5 transition-colors">
+                <span class="material-symbols-outlined text-sm">phone_iphone</span>
+                Buka Tampilan Mobile PIB
+            </a>
+            <div class="flex items-center gap-1 bg-secondary-container/20 text-secondary px-3 py-1.5 rounded-full font-label-md text-xs font-bold border border-secondary/20">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span>AI Siap Digunakan</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Chat & Voice Interface -->
+    <main class="ml-64 pt-20 px-margin-desktop w-full max-w-container-max mx-auto pb-12 flex flex-col gap-6">
+        <!-- Constraint Banner (PRD Section 9) -->
+        <div class="bg-secondary-container/15 border border-secondary/30 rounded-xl p-4 flex items-start gap-3 mt-2">
+            <span class="material-symbols-outlined text-secondary text-xl mt-0.5">verified_user</span>
+            <div>
+                <h4 class="font-label-md font-bold text-on-surface text-sm">Batasan Etis & Operasional Asisten AI</h4>
+                <p class="font-body-md text-xs text-on-surface-variant mt-0.5">AI hanya berfungsi sebagai alat bantu pendamping. AI tidak menggantikan keputusan profesional guru, GPK Koordinator, atau PIB dalam merancang layanan pendidikan inklusif.</p>
+            </div>
+        </div>
+
+        <!-- Chat & Voice Studio Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- Left: Chat Feed (8 Cols) -->
+            <div class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.03)] border border-outline-variant/30 flex flex-col h-[580px]">
+                <!-- Chat Header -->
+                <div class="p-4 border-b border-outline-variant/20 bg-surface/50 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-sm">smart_toy</span>
+                        </div>
+                        <div>
+                            <h3 class="font-label-md font-bold text-on-surface text-sm">Sesi Bantuan Pembelajaran</h3>
+                            <p class="text-[11px] text-on-surface-variant">Speech-to-Text & Text-to-Speech Aktif</p>
+                        </div>
+                    </div>
+                    <button onclick="clearChat()" class="text-on-surface-variant hover:text-error text-xs font-label-md flex items-center gap-1 transition-colors">
+                        <span class="material-symbols-outlined text-sm">delete</span> Bersihkan
+                    </button>
+                </div>
+
+                <!-- Messages List -->
+                <div id="chatFeed" class="flex-1 overflow-y-auto p-4 space-y-4 font-body-md text-sm">
+                    <!-- Default AI Greeting -->
+                    <div class="flex items-start gap-3 max-w-[85%]">
+                        <div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">AI</div>
+                        <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 text-on-surface">
+                            <p>Halo! Saya <strong>Asisten AI Kelas SAPA Inklusi</strong>. Anda dapat berbicara melalui mikrofon atau mengetik instruksi yang ingin disederhanakan, meminta alternatif aktivitas kelas, atau menyusun langkah belajar adaptif.</p>
+                            <div class="mt-2 flex gap-2">
+                                <button onclick="speakText(this.parentElement.previousElementSibling.innerText)" class="text-primary hover:text-primary-container text-xs font-bold flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">volume_up</span> Bacakan (TTS)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area & Voice Bar -->
+                <div class="p-4 border-t border-outline-variant/20 bg-surface/30">
+                    <!-- Quick Prompt Chips (PRD Section 9) -->
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <button onclick="sendQuickPrompt('Sederhanakan instruksi ini agar lebih mudah dipahami siswa: Baca teks halaman 30 lalu jawab pertanyaan 1 sampai 5.')" class="bg-surface border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary text-xs px-3 py-1 rounded-full transition-colors">
+                            ⚡ Sederhanakan Instruksi
+                        </button>
+                        <button onclick="sendQuickPrompt('Berikan alternatif aktivitas pembelajaran matematika bagi siswa dengan ADHD yang kesulitan duduk diam.')" class="bg-surface border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary text-xs px-3 py-1 rounded-full transition-colors">
+                            💡 Alternatif Aktivitas ADHD
+                        </button>
+                        <button onclick="sendQuickPrompt('Buat langkah pembelajaran adaptif untuk mengenalkan konsep perkalian pada anak autisme.')" class="bg-surface border border-outline-variant/40 hover:border-primary text-on-surface-variant hover:text-primary text-xs px-3 py-1 rounded-full transition-colors">
+                            🧩 Langkah Adaptif Autisme
+                        </button>
+                    </div>
+
+                    <!-- Input Box -->
+                    <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+                        <button type="button" id="micBtn" onclick="toggleVoiceRecording()" title="Bicara melalui Mikrofon (Speech-to-Text)" class="p-3 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-xl" id="micIcon">mic</span>
+                        </button>
+                        <input id="chatInput" type="text" placeholder="Ketik atau ucapkan instruksi pembelajaran..." class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-2.5 text-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                        <button type="submit" class="bg-primary hover:bg-primary-container text-on-primary font-bold px-5 py-2.5 rounded-full text-sm flex items-center gap-1.5 transition-all shadow-sm">
+                            <span>Kirim</span>
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </form>
+                    <p id="voiceStatus" class="text-[11px] text-on-surface-variant mt-1.5 ml-3 hidden text-primary font-medium flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span> Sedang mendengarkan suara Anda... Silakan berbicara.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Prompt Reference & Quick Guide (4 Cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- User Flow Guide Box -->
+                <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/30 shadow-[0px_4px_20px_rgba(51,51,51,0.03)]">
+                    <h3 class="font-label-md font-bold text-on-surface text-sm mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-lg">timeline</span>
+                        Alur Penggunaan Asisten AI
+                    </h3>
+                    <div class="space-y-3 text-xs text-on-surface-variant">
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[10px] shrink-0">1</span>
+                            <p><strong>Input Suara/Teks:</strong> Tekan ikon mikrofon saat guru kelas memberikan instruksi.</p>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[10px] shrink-0">2</span>
+                            <p><strong>Speech-to-Text:</strong> Sistem otomatis mengubah ucapan menjadi teks di layar.</p>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[10px] shrink-0">3</span>
+                            <p><strong>Penyederhanaan:</strong> AI menyusun langkah terstruktur dalam 2-4 poin konkret.</p>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[10px] shrink-0">4</span>
+                            <p><strong>Text-to-Speech:</strong> Putar suara pembacaan untuk memandu siswa secara langsung.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Templates Card -->
+                <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/30 shadow-[0px_4px_20px_rgba(51,51,51,0.03)]">
+                    <h3 class="font-label-md font-bold text-on-surface text-sm mb-3">Contoh Perintah Efektif</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                            <p class="font-semibold text-on-surface">"Sederhanakan instruksi ini..."</p>
+                            <p class="text-on-surface-variant mt-0.5">Memecah instruksi panjang menjadi kalimat pendek bergambar.</p>
+                        </div>
+                        <div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                            <p class="font-semibold text-on-surface">"Berikan alternatif aktivitas..."</p>
+                            <p class="text-on-surface-variant mt-0.5">Mendapatkan opsi tugas sensori jika siswa mengalami sensory overload.</p>
+                        </div>
+                        <div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                            <p class="font-semibold text-on-surface">"Buat langkah adaptif..."</p>
+                            <p class="text-on-surface-variant mt-0.5">Menyusun scaffolding belajar bertahap untuk mata pelajaran eksakta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let isRecording = false;
+        let recognition = null;
+
+        // Check Web Speech Recognition API support
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'id-ID';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('chatInput').value = transcript;
+                stopRecordingUI();
+                sendChatMessage(transcript);
+            };
+
+            recognition.onerror = function(event) {
+                console.warn('Speech Recognition Error:', event.error);
+                stopRecordingUI();
+            };
+
+            recognition.onend = function() {
+                stopRecordingUI();
+            };
+        }
+
+        function toggleVoiceRecording() {
+            if (!recognition) {
+                // Fallback simulation for unsupported browsers
+                const simText = prompt("Browser Anda belum mengizinkan Web Speech API langsung. Ketik simulasi suara Anda:", "Sederhanakan instruksi tugas menulis hari ini.");
+                if (simText) {
+                    sendChatMessage(simText);
+                }
+                return;
+            }
+
+            if (!isRecording) {
+                try {
+                    recognition.start();
+                    isRecording = true;
+                    document.getElementById('micBtn').classList.add('bg-primary', 'text-on-primary', 'mic-pulsing');
+                    document.getElementById('voiceStatus').classList.remove('hidden');
+                } catch(e) {
+                    console.error(e);
+                }
+            } else {
+                recognition.stop();
+                stopRecordingUI();
+            }
+        }
+
+        function stopRecordingUI() {
+            isRecording = false;
+            document.getElementById('micBtn').classList.remove('bg-primary', 'text-on-primary', 'mic-pulsing');
+            document.getElementById('voiceStatus').classList.add('hidden');
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Text-to-Speech tidak didukung pada browser ini.");
+            }
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            input.value = '';
+            sendChatMessage(message);
+        }
+
+        function sendQuickPrompt(promptText) {
+            sendChatMessage(promptText);
+        }
+
+        function sendChatMessage(text) {
+            const feed = document.getElementById('chatFeed');
+
+            // Append User Message
+            const userMsgHtml = `
+                <div class="flex items-start gap-3 max-w-[85%] ml-auto justify-end">
+                    <div class="bg-primary text-on-primary p-4 rounded-2xl rounded-tr-sm shadow-sm">
+                        <p>${escapeHtml(text)}</p>
+                    </div>
+                    <div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">PIB</div>
+                </div>
+            `;
+            feed.insertAdjacentHTML('beforeend', userMsgHtml);
+            feed.scrollTop = feed.scrollHeight;
+
+            // Generate AI Response from DataStore
+            setTimeout(() => {
+                const aiResponse = window.sapaStore ? window.sapaStore.generateAIResponse(text) : "Respon adaptif disiapkan untuk panduan inklusif.";
+                const aiMsgHtml = `
+                    <div class="flex items-start gap-3 max-w-[85%]">
+                        <div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">AI</div>
+                        <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 text-on-surface">
+                            <p class="whitespace-pre-line">${escapeHtml(aiResponse)}</p>
+                            <div class="mt-3 flex gap-3 pt-2 border-t border-outline-variant/20">
+                                <button onclick="speakText(\`${escapeJsString(aiResponse)}\`)" class="text-primary hover:text-primary-container text-xs font-bold flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">volume_up</span> Putar Suara (TTS)
+                                </button>
+                                <button onclick="copyToClip(\`${escapeJsString(aiResponse)}\`)" class="text-on-surface-variant hover:text-on-surface text-xs flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Salin
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                feed.insertAdjacentHTML('beforeend', aiMsgHtml);
+                feed.scrollTop = feed.scrollHeight;
+            }, 600);
+        }
+
+        function clearChat() {
+            const feed = document.getElementById('chatFeed');
+            feed.innerHTML = `
+                <div class="flex items-start gap-3 max-w-[85%]">
+                    <div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">AI</div>
+                    <div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-sm border border-outline-variant/20 text-on-surface">
+                        <p>Obrolan telah dibersihkan. Silakan ajukan pertanyaan atau instruksi baru untuk didampingi.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function copyToClip(text) {
+            navigator.clipboard.writeText(text);
+            alert("Teks berhasil disalin ke clipboard!");
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function escapeJsString(str) {
+            return str.replace(/`/g, '\\`').replace(/\\/g, '\\\\').replace(/\$/g, '\\$');
+        }
+    </script>
+</body>
+</html>

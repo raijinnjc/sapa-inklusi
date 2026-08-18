@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Dashboard Pemantauan - SAPA Inklusi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#9a461b",
+                        "primary-container": "#e88252",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#5e2100",
+                        "secondary": "#546430",
+                        "secondary-container": "#d4e7a6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#586834",
+                        "tertiary": "#5f5e5b",
+                        "tertiary-container": "#9f9d99",
+                        "background": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#55433b",
+                        "outline": "#88726a",
+                        "outline-variant": "#dbc1b7",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+    </style>
+    <script src="js/dataStore.js"></script>
+</head>
+<body class="bg-surface text-on-surface font-body-md w-full min-h-screen flex">
+    <!-- Sidebar Navigation -->
+    <nav class="fixed left-0 top-0 h-full w-64 flex flex-col bg-surface-container-low border-r border-outline-variant z-40">
+        <div class="flex items-center gap-3 p-6 mb-4">
+            <img alt="SAPA Inklusi Logo" class="w-10 h-10 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs-u0gAwWSGZ04W43YDKXlxcOEUMC5_hvqutuUE91GNMWyGADp4uGlweyx0po5RwfgYT87EFB5a_fW533Hg9L089s-J950QTMJuZuinmMwYq7AuzuThhrL_Gn7MdZRKMQ8Ol-ywHd4n5M9hMaU3B9nOmu0Q-IvVNgQSGoUNwQ4Sdhe6__pkcn6trcbDLc4hrrs4WFI7cGBuBhcUnsTAib0FyzGCfnwPs4jlSMSeQHeFV-rqGLTZUH02EuzBY6ZuvJuzw">
+            <div class="flex flex-col">
+                <span class="font-headline-md text-headline-md font-bold text-primary">SAPA Inklusi</span>
+                <span class="font-caption text-caption text-on-surface-variant">Inclusive Education</span>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1 px-4 h-full overflow-y-auto pb-6">
+            <!-- Active: Beranda / Pemantauan -->
+            <a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container/20 rounded-xl" href="index.html">
+                <span class="material-symbols-outlined icon-fill">monitoring</span>
+                <span class="font-label-md text-label-md">Dashboard Pemantauan</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="microcredential.html">
+                <span class="material-symbols-outlined">school</span>
+                <span class="font-label-md text-label-md">Microcredential</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="asisten-ai.html">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <span class="font-label-md text-label-md">Asisten AI Kelas</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="pib.html">
+                <span class="material-symbols-outlined">diversity_3</span>
+                <span class="font-label-md text-label-md">PIB</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="sekolah-mitra.html">
+                <span class="material-symbols-outlined">location_city</span>
+                <span class="font-label-md text-label-md">Sekolah Mitra</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="pendampingan.html">
+                <span class="material-symbols-outlined">groups</span>
+                <span class="font-label-md text-label-md">Pendampingan</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl" href="laporan.html">
+                <span class="material-symbols-outlined">assessment</span>
+                <span class="font-label-md text-label-md">Laporan & Outcome</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high rounded-xl mt-auto" href="pengaturan.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-md text-label-md">Pengaturan</span>
+            </a>
+        </div>
+        <div class="p-4 border-t border-outline-variant">
+            <div class="flex items-center gap-3 px-2 py-2">
+                <img class="w-10 h-10 rounded-full object-cover shadow-sm" alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFN_p-AXWMbq3kPQAyCtCiOC0WXzIbE21q6fGqEGjIYSGH9EMMHHsvhHZ5W-CxiIla1hsHEX5fMIA1B1xP8w12mhjc1VJzxeRcQAJ3YckWsEdqx-VfmIuLMHikWf4Oi3eVwEls1jNWwN_15ZpeGUZSwkmUWKVqgNvkRiSErqtRdib0gvLgHOsJR9zXn3gVfRRAjB8syPi9jK7P5dcI5JE2zbFN9FEoZJgDFnqoMnj96YD0BaR8zZxq">
+                <div class="flex-1 overflow-hidden">
+                    <p class="font-label-md text-label-md text-on-surface truncate">Dr. Sari Wulandari</p>
+                    <p class="font-caption text-caption text-on-surface-variant truncate">GPK Koordinator</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top App Bar Header -->
+    <header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-30 h-16 bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 flex justify-between items-center px-margin-desktop">
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-on-surface-variant">search</span>
+            <input type="text" placeholder="Cari PIB, sekolah, atau sesi..." class="bg-transparent border-none text-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none w-64">
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="mobile-simulator.html" class="bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-xs px-3.5 py-2 rounded-full border border-primary/30 flex items-center gap-1.5 transition-colors">
+                <span class="material-symbols-outlined text-sm">phone_iphone</span>
+                Buka Simulator Mobile PIB
+            </a>
+            <div class="flex items-center gap-2 text-primary">
+                <span class="material-symbols-outlined hover:opacity-75 cursor-pointer">notifications</span>
+                <span class="material-symbols-outlined hover:opacity-75 cursor-pointer">help_outline</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="ml-64 pt-24 px-margin-desktop w-full max-w-container-max mx-auto pb-16 flex flex-col gap-stack-lg">
+        <!-- Title & Subtitle -->
+        <section class="flex flex-col gap-unit">
+            <h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Dashboard Pemantauan</h1>
+            <p class="font-body-md text-body-md text-on-surface-variant">Pantau layanan pendampingan inklusif, penempatan PIB, dan distribusi kebutuhan sekolah secara real time.</p>
+        </section>
+
+        <!-- Horizontal Filter Strip -->
+        <section class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/30 flex flex-wrap gap-4 items-end">
+            <div class="flex flex-col gap-1 w-48">
+                <label class="font-label-md text-label-md text-on-surface-variant">Wilayah</label>
+                <select id="filterWilayah" onchange="applyFilters()" class="bg-surface border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md text-sm focus:ring-primary focus:border-primary w-full outline-none">
+                    <option value="ALL">Semua Wilayah</option>
+                    <option value="Sukamaju">Sukamaju</option>
+                    <option value="Cendekia">Cendekia</option>
+                    <option value="Harapan">Harapan</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-1 w-48">
+                <label class="font-label-md text-label-md text-on-surface-variant">Kecamatan</label>
+                <select class="bg-surface border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md text-sm focus:ring-primary focus:border-primary w-full outline-none">
+                    <option>Semua Kecamatan</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-1 w-48">
+                <label class="font-label-md text-label-md text-on-surface-variant">Sekolah</label>
+                <select class="bg-surface border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md text-sm focus:ring-primary focus:border-primary w-full outline-none">
+                    <option>Semua Sekolah</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-1 w-48">
+                <label class="font-label-md text-label-md text-on-surface-variant">Periode</label>
+                <select class="bg-surface border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md text-sm focus:ring-primary focus:border-primary w-full outline-none">
+                    <option>Agustus 2026</option>
+                    <option>Juli 2026</option>
+                </select>
+            </div>
+            <div class="flex gap-3 ml-auto">
+                <button onclick="resetFilters()" class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Reset</button>
+                <button onclick="applyFilters()" class="px-6 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-on-primary-container transition-colors shadow-sm">Terapkan Filter</button>
+            </div>
+        </section>
+
+        <!-- 4 Key Performance Indicator (KPI) Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+            <!-- KPI 1 -->
+            <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-primary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
+                <div class="flex justify-between items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                    </div>
+                    <span class="bg-secondary-container/30 text-secondary px-2 py-1 rounded-md font-caption text-caption flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-[14px]">arrow_upward</span> 12%
+                    </span>
+                </div>
+                <div>
+                    <h3 id="kpiPIB" class="font-headline-xl text-headline-xl text-on-surface font-bold">128</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">PIB Aktif</p>
+                </div>
+            </div>
+
+            <!-- KPI 2 -->
+            <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-secondary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
+                <div class="flex justify-between items-start">
+                    <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                        <span class="material-symbols-outlined">location_city</span>
+                    </div>
+                    <span class="bg-secondary-container/30 text-secondary px-2 py-1 rounded-md font-caption text-caption flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-[14px]">arrow_upward</span> 4
+                    </span>
+                </div>
+                <div>
+                    <h3 id="kpiSchools" class="font-headline-xl text-headline-xl text-on-surface font-bold">46</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Sekolah Mitra</p>
+                </div>
+            </div>
+
+            <!-- KPI 3 -->
+            <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-primary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
+                <div class="flex justify-between items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined">groups</span>
+                    </div>
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-md font-caption text-caption font-bold">Stabil</span>
+                </div>
+                <div>
+                    <h3 id="kpiAssistance" class="font-headline-xl text-headline-xl text-on-surface font-bold">92</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Pendampingan Aktif</p>
+                </div>
+            </div>
+
+            <!-- KPI 4 -->
+            <div class="bg-surface-container-lowest p-5 rounded-xl border-t-4 border-secondary shadow-[0px_4px_20px_rgba(51,51,51,0.03)] flex flex-col gap-3 hover:scale-[1.02] transition-transform">
+                <div class="flex justify-between items-start">
+                    <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                        <span class="material-symbols-outlined">face</span>
+                    </div>
+                    <span class="bg-secondary-container/30 text-secondary px-2 py-1 rounded-md font-caption text-caption flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-[14px]">arrow_upward</span> 18
+                    </span>
+                </div>
+                <div>
+                    <h3 id="kpiStudents" class="font-headline-xl text-headline-xl text-on-surface font-bold">214</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Anak Didampingi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Grid (2 Cols: Bar Chart + Donut Chart) -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+            <!-- Bar Chart: Monthly Growth -->
+            <div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/20 flex flex-col">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Pertumbuhan PIB Aktif</h2>
+                        <p class="font-caption text-caption text-on-surface-variant">Peningkatan jumlah pendamping bersertifikasi aktif per bulan.</p>
+                    </div>
+                    <span class="text-secondary font-label-md text-xs bg-secondary-container/20 px-3 py-1.5 rounded-full font-bold border border-secondary/30">+12.5% (Jan-Agu)</span>
+                </div>
+                <div class="w-full h-64 flex items-end justify-between gap-2 pt-10 pb-2 border-b border-l border-outline-variant/30 px-2 relative">
+                    <div class="absolute w-full border-t border-dashed border-outline-variant/20 top-10 left-0"></div>
+                    <div class="absolute w-full border-t border-dashed border-outline-variant/20 top-36 left-0"></div>
+                    <div class="w-full bg-primary/20 rounded-t-sm h-[30%] relative group cursor-pointer hover:bg-primary/40 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Jan</div></div>
+                    <div class="w-full bg-primary/20 rounded-t-sm h-[35%] relative group cursor-pointer hover:bg-primary/40 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Feb</div></div>
+                    <div class="w-full bg-primary/30 rounded-t-sm h-[40%] relative group cursor-pointer hover:bg-primary/50 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Mar</div></div>
+                    <div class="w-full bg-primary/40 rounded-t-sm h-[42%] relative group cursor-pointer hover:bg-primary/60 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Apr</div></div>
+                    <div class="w-full bg-primary/50 rounded-t-sm h-[60%] relative group cursor-pointer hover:bg-primary/70 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Mei</div></div>
+                    <div class="w-full bg-primary/60 rounded-t-sm h-[75%] relative group cursor-pointer hover:bg-primary/80 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Jun</div></div>
+                    <div class="w-full bg-primary/80 rounded-t-sm h-[85%] relative group cursor-pointer hover:bg-primary/90 transition-colors"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface-variant">Jul</div></div>
+                    <div class="w-full bg-primary rounded-t-sm h-[100%] relative group cursor-pointer hover:bg-on-primary-container transition-colors shadow-sm"><div class="absolute -bottom-6 w-full text-center font-caption text-caption text-on-surface font-bold">Agu</div></div>
+                </div>
+            </div>
+
+            <!-- Donut Chart: School Needs Ratio -->
+            <div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0px_4px_20px_rgba(51,51,51,0.02)] border border-outline-variant/20 flex flex-col justify-between">
+                <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface font-bold mb-1">Status Kebutuhan Sekolah</h2>
+                    <p class="font-caption text-caption text-on-surface-variant mb-4">Rasio pemenuhan pendamping di sekolah mitra.</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center justify-center my-4">
+                    <div class="w-44 h-44 rounded-full border-[14px] border-surface-container-highest relative flex items-center justify-center shadow-inner" style="border-top-color: #9a461b; border-right-color: #9a461b; border-bottom-color: #9a461b; border-left-color: #d7eaa8; transform: rotate(-45deg);">
+                        <div class="transform rotate-45 text-center flex flex-col">
+                            <span class="font-headline-lg text-headline-lg font-bold text-on-surface">46</span>
+                            <span class="font-caption text-caption text-on-surface-variant">Total Sekolah</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2.5 pt-2 border-t border-outline-variant/20">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-primary"></div>
+                            <span class="font-body-md text-sm text-on-surface-variant">Terpenuhi (74%)</span>
+                        </div>
+                        <span class="font-label-md text-sm font-bold text-on-surface">34 Sekolah</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-secondary-fixed"></div>
+                            <span class="font-body-md text-sm text-on-surface-variant">Butuh PIB (26%)</span>
+                        </div>
+                        <span class="font-label-md text-sm font-bold text-primary">12 Sekolah</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function applyFilters() {
+            const val = document.getElementById('filterWilayah').value;
+            if (val !== 'ALL') {
+                document.getElementById('kpiPIB').innerText = "42";
+                document.getElementById('kpiSchools').innerText = "14";
+                document.getElementById('kpiAssistance').innerText = "28";
+                document.getElementById('kpiStudents').innerText = "64";
+            } else {
+                resetFilters();
+            }
+        }
+
+        function resetFilters() {
+            document.getElementById('filterWilayah').value = 'ALL';
+            document.getElementById('kpiPIB').innerText = "128";
+            document.getElementById('kpiSchools').innerText = "46";
+            document.getElementById('kpiAssistance').innerText = "92";
+            document.getElementById('kpiStudents').innerText = "214";
+        }
+    </script>
+</body>
+</html>
