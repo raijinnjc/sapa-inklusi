@@ -78,12 +78,12 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--color-canvas);
+    background-color: var(--color-canvas-parchment);
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: var(--color-canvas);
+    background-color: var(--color-canvas-parchment);
     color: var(--color-body);
     font-size: 17px;
     font-weight: 400;
@@ -429,8 +429,9 @@ body {
     background-color: var(--color-surface-tile-1);
     color: var(--color-on-dark);
     border-radius: var(--radius-none);
-    padding: var(--spacing-section) var(--spacing-lg);
+    padding: 56px var(--spacing-lg) 48px;
     text-align: center;
+    margin-bottom: 0;
 }
 
 /* ========================================================================= */
