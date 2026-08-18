@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAPA Inklusi — Platform Digital Pendampingan & Ekosistem Inklusif</title>
+    <title>SAPA Inklusi — Apple-grade Inclusive Education Ecosystem</title>
     
-    <!-- Fonts & Icons -->
+    <!-- Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Outfit:wght@500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
     
-    <!-- Tailwind CSS CDN (with class dark mode) & Chart.js -->
+    <!-- Tailwind CSS CDN & Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -20,1324 +20,969 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Custom Apple & Vercel-grade Aesthetic CSS -->
+    <!-- Apple Design System Stylesheet -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body class="bg-[#FBF9F5] dark:bg-[#0A0B0D] text-[#1C2024] dark:text-[#F2F4F8] antialiased min-h-screen flex flex-col selection:bg-[#C85A32] selection:text-white">
+<body class="bg-[#000000] text-[#F5F5F7] antialiased min-h-screen flex flex-col selection:bg-[#0071E3] selection:text-white">
 
-    <!-- Toast Notification Container -->
+    <!-- Toast Notification Container (Apple Dynamic Pill) -->
     <div id="toastContainer"></div>
 
     <!-- ========================================================================= -->
-    <!-- 0. LOGIN GATEWAY (PORTAL AUTENTIKASI UTAMA)                               -->
+    <!-- 1. APPLE GLOBAL NAVIGATION BAR                                            -->
     <!-- ========================================================================= -->
-    <section id="loginGate" class="min-h-screen w-full flex items-center justify-center p-4 md:p-8 bg-[#FBF9F5] dark:bg-[#0A0B0D] relative overflow-hidden">
-        
-        <!-- Ambient Decorative Circles -->
-        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#C85A32]/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#5B6E43]/10 blur-3xl pointer-events-none"></div>
+    <header class="apple-nav fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 text-xs">
+        <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
+            <!-- Brand -->
+            <div class="flex items-center gap-6">
+                <a href="javascript:void(0)" onclick="navigateTo('dashboard')" class="flex items-center gap-2 text-white hover:opacity-80 transition-opacity">
+                    <!-- Apple-inspired Minimalist Heart/Inclusion Logo -->
+                    <svg class="w-4 h-4 text-[#F5F5F7]" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="font-semibold tracking-tight text-sm">SAPA Inklusi</span>
+                </a>
 
-        <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white dark:bg-[#121418] rounded-3xl border border-[#EAE4D9] dark:border-[#23272F] shadow-2xl overflow-hidden relative z-10">
-            
-            <!-- Left: Login Form & Demo Roles -->
-            <div class="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between space-y-6">
-                <div>
-                    <!-- Brand -->
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C85A32] to-[#E29547] flex items-center justify-center text-white shadow-md">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h1 class="font-heading font-extrabold text-lg text-[#C85A32] dark:text-[#E07A5F] tracking-tight leading-none">SAPA Inklusi</h1>
-                            <span class="text-[10px] text-[#8F95A0] font-semibold tracking-wider uppercase">Portal Layanan Pendidikan Inklusif</span>
-                        </div>
-                    </div>
-
-                    <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8]">Selamat Datang Kembali</h2>
-                    <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] mt-1">Masuk untuk mengelola pendampingan, kurikulum kompetensi, dan evaluasi hasil belajar.</p>
-                </div>
-
-                <!-- 1-Click Role Fill Selection -->
-                <div>
-                    <label class="text-[11px] font-bold text-[#8F95A0] uppercase tracking-wider block mb-2">Pilih Akun Demo Cepat (1-Klik):</label>
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <div onclick="autoFillDemo('gpk@sapa.id')" data-email="gpk@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#C85A32] bg-[#FDF3EE] dark:bg-[#241A16] cursor-pointer flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">GPK</span>
-                            <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Dr. Sari Wulandari</span>
-                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">GPK Koordinator</span>
-                            </div>
-                        </div>
-
-                        <div onclick="autoFillDemo('sekolah@sapa.id')" data-email="sekolah@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#121418] cursor-pointer flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-[#5B6E43] text-white flex items-center justify-center font-bold text-xs shrink-0">SCH</span>
-                            <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Ibu Nurhayati</span>
-                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">SDN Harapan 1</span>
-                            </div>
-                        </div>
-
-                        <div onclick="autoFillDemo('dinas@sapa.id')" data-email="dinas@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#121418] cursor-pointer flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-[#E29547] text-white flex items-center justify-center font-bold text-xs shrink-0">DIS</span>
-                            <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Drs. Hendra Kusuma</span>
-                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">Dinas Pendidikan</span>
-                            </div>
-                        </div>
-
-                        <div onclick="autoFillDemo('pib@sapa.id')" data-email="pib@sapa.id" class="demo-role-card spotlight-card p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#121418] cursor-pointer flex items-center gap-2">
-                            <span class="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0">PIB</span>
-                            <div class="overflow-hidden">
-                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block truncate">Rina Maharani</span>
-                                <span class="text-[10px] text-[#656A73] dark:text-[#9BA1AD] block truncate">Pendamping Inklusi</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Form Login -->
-                <form onsubmit="handleLoginSubmit(event)" class="space-y-3.5 text-xs">
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Email / NIP / ID SAPA</label>
-                        <div class="relative">
-                            <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#8F95A0] text-base">person</span>
-                            <input id="loginEmail" type="text" required value="gpk@sapa.id" placeholder="nama@sapa.id atau NIP..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kata Sandi</label>
-                        <div class="relative">
-                            <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-[#8F95A0] text-base">lock</span>
-                            <input id="loginPassword" type="password" required value="password123" placeholder="••••••••" class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] focus:border-[#C85A32] focus:bg-white text-xs outline-none transition-all">
-                            <button type="button" onclick="const p=document.getElementById('loginPassword'); p.type=p.type==='password'?'text':'password';" class="absolute right-3 top-2.5 text-[#8F95A0] hover:text-[#1C2024]">
-                                <span class="material-symbols-outlined text-base">visibility</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between text-xs pt-1">
-                        <label class="flex items-center gap-2 cursor-pointer text-[#656A73] dark:text-[#9BA1AD]">
-                            <input type="checkbox" checked class="rounded text-[#C85A32] focus:ring-[#C85A32]">
-                            <span>Ingat saya di perangkat ini</span>
-                        </label>
-                        <a href="javascript:void(0)" onclick="showToast('Fitur reset sandi telah dikirim ke email terdaftar.', 'info')" class="text-[#C85A32] dark:text-[#E07A5F] font-semibold hover:underline">Lupa sandi?</a>
-                    </div>
-
-                    <div class="space-y-2 pt-2">
-                        <button type="submit" id="loginSubmitBtn" class="w-full py-3 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2">
-                            <span>Masuk ke Platform</span>
-                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </button>
-
-                        <button type="button" onclick="autoFillDemo('gpk@sapa.id'); handleLoginSubmit(event);" class="w-full py-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20] text-[#1C2024] dark:text-[#F2F4F8] font-semibold text-xs transition-all flex items-center justify-center gap-2">
-                            <span class="material-symbols-outlined text-base text-[#5B6E43]">verified_user</span>
-                            <span>Masuk dengan Akun Belajar.id / SSO</span>
-                        </button>
-                    </div>
-                </form>
-
-                <p class="text-[11px] text-[#8F95A0] text-center">
-                    Dengan masuk, Anda menyetujui <span class="text-[#C85A32]">Prinsip Tata Kelola Privasi Data Anak</span> SAPA Inklusi.
-                </p>
-            </div>
-
-            <!-- Right: Value Proposition Showcase & Highlights -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-[#2D2A26] to-[#1C2024] p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-[#C85A32]/20 blur-2xl"></div>
-                <div class="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-[#5B6E43]/20 blur-2xl"></div>
-
-                <div>
-                    <span class="px-3 py-1 rounded-full bg-white/10 text-white/90 text-[10px] font-bold tracking-wider uppercase border border-white/10">
-                        Ekosistem Inklusif v1.0
-                    </span>
-                    <h3 class="font-heading font-extrabold text-2xl text-white mt-4 leading-tight">
-                        Menghubungkan Kompetensi, Pendampingan, & Outcome Anak
-                    </h3>
-                    <p class="text-xs text-white/70 mt-2 leading-relaxed">
-                        SAPA Inklusi mengintegrasikan alur kerja profesional bagi seluruh pemangku kepentingan pendidikan inklusif di Indonesia.
-                    </p>
-                </div>
-
-                <!-- 4 Core Pillars -->
-                <div class="space-y-3 my-6">
-                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
-                        <div class="w-8 h-8 rounded-xl bg-[#C85A32] flex items-center justify-center text-white shrink-0">
-                            <span class="material-symbols-outlined text-sm">school</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Microcredential PIB</h4>
-                            <p class="text-[10px] text-white/60">8 modul terstandar (40-60 Jam) bersertifikasi resmi.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
-                        <div class="w-8 h-8 rounded-xl bg-[#5B6E43] flex items-center justify-center text-white shrink-0">
-                            <span class="material-symbols-outlined text-sm">smart_toy</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Asisten AI Kelas Adaptif</h4>
-                            <p class="text-[10px] text-white/60">Speech-to-Text & penyederhanaan instruksi instan.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
-                        <div class="w-8 h-8 rounded-xl bg-[#E29547] flex items-center justify-center text-white shrink-0">
-                            <span class="material-symbols-outlined text-sm">location_city</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Matching Penugasan Sekolah</h4>
-                            <p class="text-[10px] text-white/60">Pencocokan lokasi, jadwal, & spesialisasi kebutuhan anak.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
-                        <div class="w-8 h-8 rounded-xl bg-[#5B6E43] flex items-center justify-center text-white shrink-0">
-                            <span class="material-symbols-outlined text-sm">insights</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xs text-white">Evaluasi Longitudinal Outcome</h4>
-                            <p class="text-[10px] text-white/60">Pemantauan 4 pilar kemandirian belajar non-medis.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer Quote -->
-                <div class="pt-4 border-t border-white/10 text-[11px] text-white/70 italic">
-                    "Setiap anak berhak mendapatkan dukungan belajar yang adaptif dan bermartabat."
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- MAIN PLATFORM WRAPPER (TERBUKA SETELAH LOGIN)                            -->
-    <!-- ========================================================================= -->
-    <div id="mainAppWrapper" class="flex flex-1 hidden">
-        
-        <!-- SIDEBAR NAVIGATION -->
-        <aside class="w-64 fixed left-0 top-0 h-screen bg-[#F6F3ED] dark:bg-[#121418] border-r border-[#EAE4D9] dark:border-[#23272F] flex flex-col justify-between py-6 px-4 z-40 transition-colors">
-            <div>
-                <!-- Brand Emblem -->
-                <div class="flex items-center gap-3 px-3 mb-8 cursor-pointer" onclick="navigateTo('dashboard')">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C85A32] to-[#E29547] flex items-center justify-center text-white shadow-md">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="font-heading font-extrabold text-base text-[#C85A32] dark:text-[#E07A5F] tracking-tight leading-none">SAPA Inklusi</h1>
-                        <span class="text-[10px] text-[#8F95A0] font-semibold tracking-wider uppercase">Inclusive Education</span>
-                    </div>
-                </div>
-
-                <!-- Navigation List -->
-                <nav class="space-y-1 text-xs">
-                    <a href="javascript:void(0)" onclick="navigateTo('dashboard')" data-view="dashboard" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold bg-[#C85A32]/10 text-[#C85A32] dark:text-[#E07A5F]">
-                        <span class="material-symbols-outlined text-lg fill">space_dashboard</span>
-                        <span>Dashboard Pemantauan</span>
+                <!-- Desktop Apple Nav Links -->
+                <nav class="hidden md:flex items-center gap-6 text-[#86868B]">
+                    <a href="javascript:void(0)" onclick="navigateTo('dashboard')" data-view="dashboard" class="nav-item hover:text-white transition-colors">Ringkasan</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('microcredential')" data-view="microcredential" class="nav-item hover:text-white transition-colors">Microcredential</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('asisten-ai')" data-view="asisten-ai" class="nav-item hover:text-white transition-colors flex items-center gap-1">
+                        <span>Asisten AI</span>
+                        <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-[#BF5AF2]/20 text-[#BF5AF2] font-semibold">Intelligence</span>
                     </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('microcredential')" data-view="microcredential" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-lg">school</span>
-                        <span>Microcredential (8 Modul)</span>
-                    </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('asisten-ai')" data-view="asisten-ai" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-lg">smart_toy</span>
-                        <span>Asisten AI Kelas</span>
-                    </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('pib')" data-view="pib" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-lg">diversity_3</span>
-                        <span>Direktori PIB</span>
-                    </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('sekolah')" data-view="sekolah" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-lg">location_city</span>
-                        <span>Sekolah Mitra & Matching</span>
-                    </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('pendampingan')" data-view="pendampingan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-lg">fact_check</span>
-                        <span>Monitoring Pendampingan</span>
-                    </a>
-                    <a href="javascript:void(0)" onclick="navigateTo('laporan')" data-view="laporan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-lg">insights</span>
-                        <span>Laporan & Outcome</span>
-                    </a>
+                    <a href="javascript:void(0)" onclick="navigateTo('pib')" data-view="pib" class="nav-item hover:text-white transition-colors">Direktori PIB</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('sekolah')" data-view="sekolah" class="nav-item hover:text-white transition-colors">Sekolah Mitra</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('pendampingan')" data-view="pendampingan" class="nav-item hover:text-white transition-colors">Monitoring</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('laporan')" data-view="laporan" class="nav-item hover:text-white transition-colors">Outcome</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('simulator')" data-view="simulator" class="nav-item hover:text-white transition-colors">iPhone App</a>
                 </nav>
             </div>
 
-            <!-- Bottom Navigation Items -->
-            <div class="space-y-1 pt-4 border-t border-[#EAE4D9] dark:border-[#23272F] text-xs">
-                <a href="javascript:void(0)" onclick="navigateTo('simulator')" data-view="simulator" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                    <span class="material-symbols-outlined text-lg">phone_iphone</span>
-                    <span>Simulator Mobile PIB</span>
-                </a>
-                <a href="javascript:void(0)" onclick="navigateTo('pengaturan')" data-view="pengaturan" class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20]">
-                    <span class="material-symbols-outlined text-lg">settings</span>
-                    <span>Pengaturan & Hak Akses</span>
-                </a>
+            <!-- Right Actions: Role Selector, Search ⌘K & Auth -->
+            <div class="flex items-center gap-3">
+                <button onclick="openCommandMenu()" title="Pencarian Cepat (⌘K)" class="text-[#86868B] hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/10 flex items-center gap-1.5 text-xs">
+                    <span class="material-symbols-outlined text-base">search</span>
+                    <kbd class="hidden sm:inline-block px-1.5 py-0.5 rounded bg-white/10 text-[9px] font-mono">⌘K</kbd>
+                </button>
 
-                <!-- User Profile Badge & Logout -->
-                <div class="pt-3 flex items-center justify-between px-2">
-                    <div class="flex items-center gap-2.5 overflow-hidden">
-                        <div id="sidebarUserAvatar" class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
-                            SW
-                        </div>
-                        <div class="overflow-hidden">
-                            <p id="sidebarUserName" class="font-bold text-xs text-[#1C2024] dark:text-[#F2F4F8] truncate">Dr. Sari Wulandari</p>
-                            <p id="sidebarUserRole" class="text-[10px] text-[#8F95A0] truncate">GPK Koordinator</p>
-                        </div>
-                    </div>
-                    <button onclick="handleLogout()" title="Keluar / Logout" class="text-[#8F95A0] hover:text-[#BA1A1A] transition-colors p-1.5 rounded-lg hover:bg-white dark:hover:bg-[#181B20]">
-                        <span class="material-symbols-outlined text-base">logout</span>
+                <!-- Role Selector -->
+                <div class="hidden lg:flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-full border border-white/10 text-[11px]">
+                    <span class="text-[#86868B]">Peran:</span>
+                    <select id="topRoleSelector" onchange="window.store.setRole(this.value); updateUserProfileUI(); showToast('Peran aktif: ' + this.value, 'info')" class="bg-transparent text-white font-medium outline-none cursor-pointer">
+                        <option value="GPK_KOORDINATOR" class="bg-[#1C1C1E] text-white">GPK Koordinator</option>
+                        <option value="SEKOLAH_MITRA" class="bg-[#1C1C1E] text-white">Sekolah Mitra</option>
+                        <option value="DINAS_PENDIDIKAN" class="bg-[#1C1C1E] text-white">Dinas Pendidikan</option>
+                        <option value="PIB" class="bg-[#1C1C1E] text-white">Pendamping PIB</option>
+                    </select>
+                </div>
+
+                <div id="authHeaderActions">
+                    <button onclick="handleLoginOpen()" id="btnHeaderAuth" class="apple-btn-primary text-xs py-1 px-3.5">
+                        Masuk
                     </button>
                 </div>
             </div>
-        </aside>
+        </div>
+    </header>
 
-        <!-- MAIN CONTENT AREA -->
-        <div class="ml-64 flex-1 flex flex-col min-h-screen">
+    <!-- ========================================================================= -->
+    <!-- 2. APPLE SUBNAV RIBBON                                                    -->
+    <!-- ========================================================================= -->
+    <div class="apple-subnav fixed top-12 left-0 right-0 z-40 h-12 flex items-center px-6 md:px-12">
+        <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="font-bold text-sm tracking-tight text-white">SAPA Inklusi</span>
+                <span class="text-xs text-[#86868B] hidden sm:inline-block">Edisi Ekosistem Digital Nasional</span>
+            </div>
             
-            <!-- Top Header with Command Palette Shortcut & Theme Switcher -->
-            <header class="sticky top-0 z-30 bg-[#FBF9F5]/85 dark:bg-[#0A0B0D]/85 backdrop-blur-md border-b border-[#EAE4D9] dark:border-[#23272F] h-16 flex items-center justify-between px-8 transition-colors">
-                
-                <!-- Command Palette Search Trigger (⌘K) -->
-                <button onclick="openCommandMenu()" class="flex items-center justify-between gap-3 bg-[#F6F3ED] dark:bg-[#181B20] hover:bg-white dark:hover:bg-[#20242B] px-4 py-2 rounded-2xl border border-[#EAE4D9] dark:border-[#23272F] w-80 text-left transition-all shadow-sm group">
-                    <div class="flex items-center gap-2 text-xs text-[#8F95A0]">
-                        <span class="material-symbols-outlined text-sm">search</span>
-                        <span>Cari atau ketik perintah...</span>
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <kbd class="px-1.5 py-0.5 rounded bg-white dark:bg-[#282E38] border border-[#EAE4D9] dark:border-[#383E4C] text-[10px] font-mono text-[#8F95A0]">⌘K</kbd>
-                    </div>
+            <div class="flex items-center gap-2">
+                <div class="apple-pill-tab hidden md:flex">
+                    <button onclick="navigateTo('dashboard')" data-tab="dashboard" class="apple-pill-btn active">Ringkasan</button>
+                    <button onclick="navigateTo('microcredential')" data-tab="microcredential" class="apple-pill-btn">8 Modul</button>
+                    <button onclick="navigateTo('asisten-ai')" data-tab="asisten-ai" class="apple-pill-btn">AI Kelas</button>
+                    <button onclick="navigateTo('sekolah')" data-tab="sekolah" class="apple-pill-btn">Matching</button>
+                    <button onclick="navigateTo('pendampingan')" data-tab="pendampingan" class="apple-pill-btn">Monitoring</button>
+                    <button onclick="navigateTo('laporan')" data-tab="laporan" class="apple-pill-btn">Outcome</button>
+                </div>
+                <button onclick="openModal('addSessionModal')" class="apple-btn-primary text-xs py-1 px-3">
+                    + Sesi Baru
                 </button>
+            </div>
+        </div>
+    </div>
 
-                <!-- Right Actions, Role Simulation & Dark Mode Toggle -->
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center gap-2 bg-[#F6F3ED] dark:bg-[#181B20] p-1 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
-                        <span class="text-[10px] font-bold text-[#8F95A0] px-2">Peran:</span>
-                        <select id="topRoleSelector" onchange="window.store.setRole(this.value); updateUserProfileUI(); showToast('Peran aktif dialihkan ke: ' + this.value, 'info')" class="bg-transparent text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] outline-none cursor-pointer pr-2">
-                            <option value="GPK_KOORDINATOR" class="dark:bg-[#181B20]">GPK Koordinator</option>
-                            <option value="SEKOLAH_MITRA" class="dark:bg-[#181B20]">Sekolah Mitra</option>
-                            <option value="DINAS_PENDIDIKAN" class="dark:bg-[#181B20]">Dinas Pendidikan</option>
-                            <option value="PIB" class="dark:bg-[#181B20]">Pendamping PIB</option>
+    <!-- MAIN BODY CONTAINER (PADDING TOP FOR DUAL APPLE NAV BARS) -->
+    <main class="flex-1 pt-28 pb-20 max-w-7xl w-full mx-auto px-6 md:px-12 space-y-16">
+
+        <!-- ========================================================================= -->
+        <!-- 0. LOGIN GATEWAY (APPLE ID STYLE PORTAL)                                  -->
+        <!-- ========================================================================= -->
+        <section id="loginGate" class="min-h-[75vh] flex items-center justify-center py-12">
+            <div class="apple-card max-w-4xl w-full p-8 md:p-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0071E3] to-[#BF5AF2] flex items-center justify-center mb-6 shadow-lg">
+                        <span class="material-symbols-outlined text-white text-2xl">lock</span>
+                    </div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3] block mb-1">Masuk dengan Akun SAPA Inklusi</span>
+                    <h2 class="apple-hero-headline text-2xl md:text-3xl font-bold text-white leading-tight">
+                        Akses Ekosistem Inklusif Terpadu.
+                    </h2>
+                    <p class="text-xs text-[#86868B] mt-2 leading-relaxed">
+                        Satu akun aman untuk mengakses kurikulum microcredential, asisten AI adaptif di kelas, serta monitoring longitudinal siswa.
+                    </p>
+
+                    <!-- 1-Click Role Fill Options -->
+                    <div class="mt-6 space-y-2">
+                        <span class="text-[11px] font-semibold text-[#86868B] block">Pilih Akun Demo Cepat (1-Klik):</span>
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <button onclick="autoFillDemo('gpk@sapa.id')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
+                                <span class="font-bold text-white block">Dr. Sari Wulandari</span>
+                                <span class="text-[10px] text-[#86868B]">GPK Koordinator</span>
+                            </button>
+                            <button onclick="autoFillDemo('sekolah@sapa.id')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
+                                <span class="font-bold text-white block">Ibu Nurhayati</span>
+                                <span class="text-[10px] text-[#86868B]">SDN Harapan 1</span>
+                            </button>
+                            <button onclick="autoFillDemo('dinas@sapa.id')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
+                                <span class="font-bold text-white block">Drs. Hendra Kusuma</span>
+                                <span class="text-[10px] text-[#86868B]">Dinas Pendidikan</span>
+                            </button>
+                            <button onclick="autoFillDemo('pib@sapa.id')" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
+                                <span class="font-bold text-white block">Rina Maharani</span>
+                                <span class="text-[10px] text-[#86868B]">Pendamping Inklusi</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form onsubmit="handleLoginSubmit(event)" class="space-y-4 text-xs bg-black/40 p-6 rounded-2xl border border-white/10">
+                    <div>
+                        <label class="font-medium text-white block mb-1">Email SAPA / Belajar.id</label>
+                        <input id="loginEmail" type="text" required value="gpk@sapa.id" placeholder="nama@sapa.id" class="w-full p-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#0071E3] text-white text-xs outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label class="font-medium text-white block mb-1">Kata Sandi</label>
+                        <input id="loginPassword" type="password" required value="password123" placeholder="••••••••" class="w-full p-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#0071E3] text-white text-xs outline-none transition-all">
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] text-[#86868B]">
+                        <label class="flex items-center gap-1.5 cursor-pointer">
+                            <input type="checkbox" checked class="rounded text-[#0071E3] focus:ring-0">
+                            <span>Ingat kredensial</span>
+                        </label>
+                        <a href="javascript:void(0)" onclick="showToast('Link pemulihan kata sandi telah dikirimkan.', 'info')" class="text-[#0071E3] hover:underline">Lupa sandi?</a>
+                    </div>
+
+                    <button type="submit" id="loginSubmitBtn" class="w-full py-3 rounded-xl bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-xs transition-all flex items-center justify-center gap-2 mt-2">
+                        <span>Masuk ke SAPA Inklusi</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- MAIN APP CONTENT (TERBUKA SETELAH LOGIN)                                  -->
+        <!-- ========================================================================= -->
+        <div id="mainAppWrapper" class="space-y-16 hidden">
+
+            <!-- 1. DASHBOARD VIEW PANE (APPLE HERO & BENTO STATS) -->
+            <section id="view-dashboard" class="view-pane active space-y-12">
+                
+                <!-- Apple Cinematic Hero Banner -->
+                <div class="text-center max-w-3xl mx-auto space-y-4 pt-4">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3] block">Ekosistem Pendidikan Inklusif Terpadu</span>
+                    <h1 class="apple-hero-headline apple-headline-gradient font-bold tracking-tight">
+                        Kekuatan Inklusi.<br>Kecerdasan Nyata.
+                    </h1>
+                    <p class="text-base text-[#86868B] max-w-xl mx-auto leading-relaxed">
+                        Menghubungkan peningkatan kompetensi PIB, adaptasi instruksi berbasis AI di ruang kelas, dan pemantauan hasil belajar anak berkebutuhan khusus.
+                    </p>
+                    <div class="flex justify-center items-center gap-4 pt-2">
+                        <button onclick="navigateTo('microcredential')" class="apple-btn-primary">
+                            Jelajahi 8 Modul
+                        </button>
+                        <a href="javascript:void(0)" onclick="navigateTo('asisten-ai')" class="apple-link-arrow text-sm">
+                            Buka Asisten AI Kelas &gt;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Apple Filter Strip -->
+                <div class="apple-card p-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="text-[#86868B]">Wilayah:</span>
+                        <select id="filterDashRegion" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-lg bg-white/5 border border-white/10 text-white font-medium outline-none">
+                            <option value="ALL" class="bg-[#1C1C1E]">Semua Wilayah Jawa Barat</option>
+                            <option value="Sukamaju" class="bg-[#1C1C1E]">Sukamaju</option>
+                            <option value="Cendekia" class="bg-[#1C1C1E]">Cendekia</option>
+                            <option value="Harapan" class="bg-[#1C1C1E]">Harapan</option>
+                            <option value="Merdeka" class="bg-[#1C1C1E]">Merdeka</option>
+                        </select>
+
+                        <span class="text-[#86868B] ml-2">Jenjang:</span>
+                        <select id="filterDashLevel" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-lg bg-white/5 border border-white/10 text-white font-medium outline-none">
+                            <option value="ALL" class="bg-[#1C1C1E]">Semua Jenjang (SD, SMP, SMA)</option>
+                            <option value="SD" class="bg-[#1C1C1E]">SD</option>
+                            <option value="SMP" class="bg-[#1C1C1E]">SMP</option>
+                            <option value="SMA" class="bg-[#1C1C1E]">SMA</option>
                         </select>
                     </div>
 
-                    <!-- Dark Mode Toggle Button -->
-                    <button onclick="toggleTheme()" title="Ganti Tema (Gelap/Terang)" class="w-9 h-9 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] hover:bg-[#EAE4D9] dark:hover:bg-[#282E38] border border-[#EAE4D9] dark:border-[#23272F] flex items-center justify-center text-[#656A73] dark:text-[#F2F4F8] transition-colors">
-                        <span id="themeToggleIcon" class="material-symbols-outlined text-lg">dark_mode</span>
-                    </button>
-
-                    <button onclick="navigateTo('simulator')" class="px-3.5 py-1.5 rounded-full bg-[#C85A32]/10 hover:bg-[#C85A32] hover:text-white text-[#C85A32] dark:text-[#E07A5F] text-xs font-bold transition-all flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-sm">phone_iphone</span>
-                        <span>Mode Mobile PIB</span>
-                    </button>
+                    <div class="flex gap-2">
+                        <button onclick="resetDashboardFilter()" class="apple-btn-secondary py-1 px-3 text-xs">Reset</button>
+                        <button onclick="applyDashboardFilter()" class="apple-btn-primary py-1 px-3 text-xs">Terapkan Filter</button>
+                    </div>
                 </div>
-            </header>
 
-            <!-- Main Dynamic Container -->
-            <main class="flex-1 p-8 max-w-7xl w-full mx-auto pb-24">
-
-                <!-- 1. DASHBOARD VIEW PANE -->
-                <section id="view-dashboard" class="view-pane active space-y-6">
-                    <!-- Heading -->
-                    <div class="flex justify-between items-end">
+                <!-- Apple 4-Column Bento Metric Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="apple-card p-6 flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Ringkasan Ekosistem Inklusif</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Dashboard Pemantauan Nasional</h2>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Pemantauan real-time ketersediaan PIB, penempatan sekolah, dan capaian outcome pembelajaran.</p>
+                            <span class="text-xs font-semibold text-[#86868B] uppercase tracking-wider block">PIB Terdaftar</span>
+                            <div id="kpiPIBVal" class="apple-hero-headline text-4xl font-bold text-white mt-2">128</div>
                         </div>
-                        <div class="flex gap-2">
-                            <button onclick="openModal('addSessionModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">add</span> Catat Sesi Baru
-                            </button>
+                        <span class="text-xs text-[#30D158] font-medium mt-4 block">↑ +12 lulusan baru bulan ini</span>
+                    </div>
+
+                    <div class="apple-card p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-[#86868B] uppercase tracking-wider block">Sekolah Mitra</span>
+                            <div id="kpiSchoolVal" class="apple-hero-headline text-4xl font-bold text-white mt-2">46</div>
+                        </div>
+                        <span class="text-xs text-[#86868B] mt-4 block">34 Terpenuhi • 12 Butuh PIB</span>
+                    </div>
+
+                    <div class="apple-card p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-[#86868B] uppercase tracking-wider block">Pendampingan Aktif</span>
+                            <div id="kpiAssistVal" class="apple-hero-headline text-4xl font-bold text-white mt-2">92</div>
+                        </div>
+                        <span class="text-xs text-[#FF9F0A] font-medium mt-4 block">18 sesi berlangsung hari ini</span>
+                    </div>
+
+                    <div class="apple-card p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-[#86868B] uppercase tracking-wider block">Anak Didampingi</span>
+                            <div id="kpiStudentVal" class="apple-hero-headline text-4xl font-bold text-white mt-2">214</div>
+                        </div>
+                        <span class="text-xs text-[#30D158] font-medium mt-4 block">78% Rata-rata Skor Kemandirian</span>
+                    </div>
+                </div>
+
+                <!-- Apple Bento Layout: Chart Growth & Donut Impact -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 apple-card p-8 flex flex-col justify-between">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="text-xs font-semibold text-[#0071E3] uppercase tracking-wider">Tren Skalabilitas Nasional</span>
+                                <h3 class="text-xl font-bold text-white mt-0.5">Pertumbuhan Kelulusan PIB Bersertifikat</h3>
+                                <p class="text-xs text-[#86868B]">Akumulasi pendamping terlatih 8 modul (Januari - Agustus 2026)</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-[#30D158]/15 text-[#30D158] text-xs font-semibold">+204% YTD</span>
+                        </div>
+                        <div class="h-64 w-full">
+                            <canvas id="chartGrowth"></canvas>
                         </div>
                     </div>
 
-                    <!-- Interactive Filter Strip -->
-                    <div class="spotlight-card p-4 flex flex-wrap items-center justify-between gap-3">
-                        <div class="flex flex-wrap items-center gap-3 relative z-10">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold text-[#8F95A0]">Wilayah:</span>
-                                <select id="filterDashRegion" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-semibold text-[#1C2024] dark:text-[#F2F4F8] outline-none">
-                                    <option value="ALL">Semua Wilayah</option>
-                                    <option value="Sukamaju">Sukamaju</option>
-                                    <option value="Cendekia">Cendekia</option>
-                                    <option value="Harapan">Harapan</option>
-                                    <option value="Merdeka">Merdeka</option>
-                                </select>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[11px] font-bold text-[#8F95A0]">Jenjang:</span>
-                                <select id="filterDashLevel" onchange="applyDashboardFilter()" class="py-1.5 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-semibold text-[#1C2024] dark:text-[#F2F4F8] outline-none">
-                                    <option value="ALL">Semua Jenjang (SD, SMP, SMA)</option>
-                                    <option value="SD">Sekolah Dasar (SD)</option>
-                                    <option value="SMP">Sekolah Menengah Pertama (SMP)</option>
-                                    <option value="SMA">Sekolah Menengah Atas (SMA)</option>
-                                </select>
+                    <div class="apple-card p-8 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-[#FF9F0A] uppercase tracking-wider">Kapasitas Sekolah Mitra</span>
+                            <h3 class="text-xl font-bold text-white mt-0.5">Status Pemenuhan Kuota</h3>
+                            <p class="text-xs text-[#86868B]">Cakupan pendamping di seluruh sekolah binaan</p>
+                        </div>
+                        <div class="h-44 my-4 relative flex items-center justify-center">
+                            <canvas id="chartNeeds"></canvas>
+                            <div class="absolute text-center pointer-events-none">
+                                <span class="text-2xl font-bold text-white">46</span>
+                                <span class="text-[10px] text-[#86868B] block">Sekolah</span>
                             </div>
                         </div>
-                        <div class="flex gap-2 relative z-10">
-                            <button onclick="resetDashboardFilter()" class="px-3.5 py-1.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#181B20] text-xs font-semibold text-[#656A73] dark:text-[#9BA1AD]">Reset</button>
-                            <button onclick="applyDashboardFilter()" class="px-4 py-1.5 rounded-xl bg-[#C85A32] text-white text-xs font-bold shadow-sm">Terapkan Filter</button>
+                        <div class="space-y-2 text-xs pt-3 border-t border-white/10">
+                            <div class="flex justify-between">
+                                <span class="text-[#86868B]">Terpenuhi (74%)</span>
+                                <span class="font-bold text-white">34 Sekolah</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-[#FF453A]">Butuh Tambahan PIB (26%)</span>
+                                <span class="font-bold text-[#FF453A]">12 Sekolah</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <!-- KPI Metric Cards with Spotlight Effect & Tabular Count-Up -->
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                        <div class="spotlight-card p-5 border-l-4 border-l-[#C85A32]">
-                            <div class="flex justify-between items-start mb-2 relative z-10">
-                                <span class="text-xs font-bold text-[#8F95A0]">PIB Terdaftar</span>
-                                <div class="w-8 h-8 rounded-lg bg-[#C85A32]/10 flex items-center justify-center text-[#C85A32]">
-                                    <span class="material-symbols-outlined text-base">diversity_3</span>
+            <!-- 2. MICROCREDENTIAL VIEW PANE (APPLE TECH SPECS STYLE) -->
+            <section id="view-microcredential" class="view-pane space-y-8">
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3]">Kurikulum Terstandarisasi PRD</span>
+                    <h2 class="apple-hero-headline text-3xl font-bold text-white">8 Modul Kompetensi PIB.</h2>
+                    <p class="text-xs text-[#86868B]">
+                        Total 40-60 Jam pelatihan terstruktur mencakup fondasi inklusi, bahasa adaptif, asisten AI, hingga praktik lapangan terbimbing.
+                    </p>
+                </div>
+
+                <!-- 8 Modules Apple Grid -->
+                <div id="modulesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- 3. ASISTEN AI KELAS (APPLE INTELLIGENCE STYLE) -->
+            <section id="view-asisten-ai" class="view-pane space-y-8">
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span class="text-xs font-semibold uppercase tracking-widest apple-intelligence-gradient">Apple Intelligence Inspired</span>
+                    <h2 class="apple-hero-headline text-3xl font-bold text-white">Asisten AI Kelas Adaptif.</h2>
+                    <p class="text-xs text-[#86868B]">
+                        Penyederhanaan instruksi instan, scaffolding diferensiasi materi, dan dukungan interaksi suara Speech-to-Text langsung di kelas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Apple AI Chat Container with Glowing Aurora Frame -->
+                    <div class="lg:col-span-2 apple-card apple-intelligence-glow flex flex-col h-[580px] overflow-hidden">
+                        <!-- Header -->
+                        <div class="p-4 border-b border-white/10 bg-white/5 flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#FF6B00] via-[#FF2D55] to-[#AF52DE] flex items-center justify-center shadow-md">
+                                    <span class="material-symbols-outlined text-white text-base">smart_toy</span>
                                 </div>
-                            </div>
-                            <div id="kpiPIBVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">128</div>
-                            <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block relative z-10">↑ +12 bulan ini</span>
-                        </div>
-
-                        <div class="spotlight-card p-5 border-l-4 border-l-[#5B6E43]">
-                            <div class="flex justify-between items-start mb-2 relative z-10">
-                                <span class="text-xs font-bold text-[#8F95A0]">Sekolah Mitra</span>
-                                <div class="w-8 h-8 rounded-lg bg-[#5B6E43]/10 flex items-center justify-center text-[#5B6E43]">
-                                    <span class="material-symbols-outlined text-base">location_city</span>
-                                </div>
-                            </div>
-                            <div id="kpiSchoolVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">46</div>
-                            <span class="text-[11px] text-[#656A73] dark:text-[#9BA1AD] font-medium mt-1 block relative z-10">34 Terpenuhi • 12 Butuh PIB</span>
-                        </div>
-
-                        <div class="spotlight-card p-5 border-l-4 border-l-[#E29547]">
-                            <div class="flex justify-between items-start mb-2 relative z-10">
-                                <span class="text-xs font-bold text-[#8F95A0]">Pendampingan Aktif</span>
-                                <div class="w-8 h-8 rounded-lg bg-[#E29547]/10 flex items-center justify-center text-[#E29547]">
-                                    <span class="material-symbols-outlined text-base">groups</span>
-                                </div>
-                            </div>
-                            <div id="kpiAssistVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">92</div>
-                            <span class="text-[11px] text-[#C85A32] font-semibold mt-1 block relative z-10">18 sedang berlangsung</span>
-                        </div>
-
-                        <div class="spotlight-card p-5 border-l-4 border-l-[#5B6E43]">
-                            <div class="flex justify-between items-start mb-2 relative z-10">
-                                <span class="text-xs font-bold text-[#8F95A0]">Anak Didampingi</span>
-                                <div class="w-8 h-8 rounded-lg bg-[#5B6E43]/10 flex items-center justify-center text-[#5B6E43]">
-                                    <span class="material-symbols-outlined text-base">child_care</span>
-                                </div>
-                            </div>
-                            <div id="kpiStudentVal" class="font-heading font-extrabold text-3xl text-[#1C2024] dark:text-[#F2F4F8] tabular-nums relative z-10">214</div>
-                            <span class="text-[11px] text-[#5B6E43] font-semibold mt-1 block relative z-10">Rata-rata outcome 78%</span>
-                        </div>
-                    </div>
-
-                    <!-- Charts Grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Longitudinal Growth -->
-                        <div class="lg:col-span-2 spotlight-card p-6 flex flex-col justify-between">
-                            <div class="flex justify-between items-center mb-4 relative z-10">
                                 <div>
-                                    <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Pertumbuhan PIB Bersertifikat</h3>
-                                    <p class="text-xs text-[#8F95A0]">Jumlah kumulatif lulusan Microcredential (Januari - Agustus 2026)</p>
-                                </div>
-                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">+204% YTD</span>
-                            </div>
-                            <div class="h-64 w-full relative z-10">
-                                <canvas id="chartGrowth"></canvas>
-                            </div>
-                        </div>
-
-                        <!-- School Needs Donut -->
-                        <div class="spotlight-card p-6 flex flex-col justify-between">
-                            <div class="relative z-10">
-                                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Status Kebutuhan Sekolah</h3>
-                                <p class="text-xs text-[#8F95A0]">Pemenuhan kuota PIB di sekolah mitra</p>
-                            </div>
-                            <div class="h-44 my-4 relative flex items-center justify-center relative z-10">
-                                <canvas id="chartNeeds"></canvas>
-                                <div class="absolute text-center pointer-events-none">
-                                    <span class="font-heading font-bold text-xl text-[#1C2024] dark:text-[#F2F4F8]">46</span>
-                                    <span class="text-[10px] text-[#8F95A0] block">Sekolah</span>
-                                </div>
-                            </div>
-                            <div class="space-y-2 text-xs pt-2 border-t border-[#F0ECE4] dark:border-[#23272F] relative z-10">
-                                <div class="flex justify-between">
-                                    <span class="flex items-center gap-1.5 text-[#656A73] dark:text-[#9BA1AD]">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#5B6E43]"></span> Terpenuhi
+                                    <h3 class="font-bold text-xs text-white">Sesi Asisten AI Kelas</h3>
+                                    <span class="text-[10px] text-[#30D158] font-medium flex items-center gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#30D158] animate-pulse"></span> Streaming Token Responsif
                                     </span>
-                                    <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">34 Sekolah (74%)</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="flex items-center gap-1.5 text-[#656A73] dark:text-[#9BA1AD]">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#C85A32]"></span> Butuh Tambahan PIB
-                                    </span>
-                                    <span class="font-bold text-[#C85A32]">12 Sekolah (26%)</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 2. MICROCREDENTIAL VIEW PANE -->
-                <section id="view-microcredential" class="view-pane space-y-6">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Kurikulum Terstandarisasi PRD</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Microcredential PIB (8 Modul)</h2>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Total durasi 40-60 Jam pelatihan terstruktur untuk sertifikasi kompetensi pendamping inklusi.</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="openCertModal('Rina Maharani, S.Pd')" class="px-4 py-2 rounded-xl bg-[#5B6E43] hover:bg-[#4C5D37] text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
-                                <span class="material-symbols-outlined text-sm">workspace_premium</span> Pratinjau Sertifikat Resmi
+                            <button onclick="document.getElementById('aiChatFeed').innerHTML = ''; showToast('Percakapan dibersihkan', 'info')" class="text-xs text-[#86868B] hover:text-white transition-colors">
+                                Bersihkan
                             </button>
                         </div>
-                    </div>
 
-                    <!-- 8 Modules Grid -->
-                    <div id="modulesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                        <!-- Dynamically populated by js/app.js -->
-                    </div>
-                </section>
-
-                <!-- 3. ASISTEN AI KELAS VIEW PANE -->
-                <section id="view-asisten-ai" class="view-pane space-y-6">
-                    <div>
-                        <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Dukungan Pembelajaran Adaptif</span>
-                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Asisten AI Kelas & Voice Interaction</h2>
-                        <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Speech-to-Text & Text-to-Speech untuk membantu PIB menyederhanakan instruksi dan menghasilkan scaffolding belajar.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Chat Feed & Interaction -->
-                        <div class="lg:col-span-2 spotlight-card flex flex-col h-[600px] overflow-hidden">
-                            <!-- Header -->
-                            <div class="p-4 border-b border-[#EAE4D9] dark:border-[#23272F] bg-[#F6F3ED] dark:bg-[#181B20] flex justify-between items-center relative z-10">
-                                <div class="flex items-center gap-2.5">
-                                    <div class="w-8 h-8 rounded-full bg-[#C85A32] text-white flex items-center justify-center shadow-sm">
-                                        <span class="material-symbols-outlined text-sm">smart_toy</span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-xs text-[#1C2024] dark:text-[#F2F4F8]">Sesi Asisten AI Kelas</h3>
-                                        <span class="text-[10px] text-[#5B6E43] font-semibold flex items-center gap-1">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-[#5B6E43] animate-pulse"></span> Streaming Token Aktif
-                                        </span>
-                                    </div>
+                        <!-- Messages Feed -->
+                        <div id="aiChatFeed" class="flex-1 p-5 overflow-y-auto space-y-4 text-xs">
+                            <div class="flex items-start gap-3 max-w-[85%]">
+                                <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#FF6B00] to-[#AF52DE] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
+                                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-xs text-white leading-relaxed">
+                                    <p>Halo! Saya <strong>Asisten AI Kelas SAPA Inklusi</strong>. Anda dapat berbicara melalui mikrofon atau mengetik instruksi yang ingin disederhanakan bagi peserta didik.</p>
                                 </div>
-                                <button onclick="document.getElementById('aiChatFeed').innerHTML = ''; showToast('Percakapan dibersihkan', 'info')" class="text-xs text-[#8F95A0] hover:text-[#BA1A1A] font-medium flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-sm">delete</span> Bersihkan
+                            </div>
+                        </div>
+
+                        <!-- Audio Wave Visualizer Bar -->
+                        <div id="waveVisualizer" class="h-10 bg-white/5 border-t border-white/10 flex items-center justify-center gap-1.5 hidden">
+                            <span class="text-[11px] font-semibold text-white mr-3">Mendengarkan suara guru...</span>
+                            <div class="apple-wave-bar"></div>
+                            <div class="apple-wave-bar"></div>
+                            <div class="apple-wave-bar"></div>
+                            <div class="apple-wave-bar"></div>
+                            <div class="apple-wave-bar"></div>
+                        </div>
+
+                        <!-- Input Controls -->
+                        <div class="p-4 bg-white/5 border-t border-white/10 space-y-3">
+                            <div class="flex flex-wrap gap-1.5">
+                                <button onclick="sendAiMessage('Sederhanakan instruksi membaca bab 3 halaman 45 untuk siswa autisme.')" class="apple-btn-secondary text-[11px] py-1 px-3">
+                                    ⚡ Sederhanakan Instruksi
+                                </button>
+                                <button onclick="sendAiMessage('Alternatif aktivitas sensori untuk siswa ADHD saat pembelajaran matematika.')" class="apple-btn-secondary text-[11px] py-1 px-3">
+                                    💡 Alternatif Sensori ADHD
+                                </button>
+                                <button onclick="sendAiMessage('Protokol de-eskalasi saat anak mengalami sensory overload.')" class="apple-btn-secondary text-[11px] py-1 px-3">
+                                    🧩 De-eskalasi Emosi
                                 </button>
                             </div>
 
-                            <!-- Messages Container -->
-                            <div id="aiChatFeed" class="flex-1 p-5 overflow-y-auto space-y-4 text-xs font-medium relative z-10">
-                                <div class="flex items-start gap-3 max-w-[85%]">
-                                    <div class="w-7 h-7 rounded-full bg-[#C85A32] text-white font-bold text-[10px] flex items-center justify-center shrink-0">AI</div>
-                                    <div class="bg-[#F6F3ED] dark:bg-[#181B20] p-4 rounded-2xl rounded-tl-sm border border-[#EAE4D9] dark:border-[#23272F] text-xs text-[#1C2024] dark:text-[#F2F4F8] leading-relaxed shadow-sm">
-                                        <p>Halo! Saya <strong>Asisten AI Kelas SAPA Inklusi</strong>. Anda dapat berbicara melalui mikrofon atau mengetik instruksi yang ingin disederhanakan bagi peserta didik.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <form onsubmit="handleAiSubmit(event)" class="flex items-center gap-2">
+                                <button type="button" id="micButton" onclick="toggleVoice()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+                                    <span class="material-symbols-outlined text-lg">mic</span>
+                                </button>
+                                <input id="aiInput" type="text" placeholder="Ketik atau ucapkan instruksi kelas..." class="flex-1 bg-white/5 border border-white/10 focus:border-[#0071E3] rounded-xl px-4 py-2.5 text-xs text-white outline-none">
+                                <button type="submit" class="apple-btn-primary py-2.5 px-5 text-xs font-semibold">
+                                    Kirim
+                                </button>
+                            </form>
+                        </div>
+                    </div>
 
-                            <!-- Audio Wave Visualizer Bar -->
-                            <div id="waveVisualizer" class="h-10 bg-[#FDF3EE] dark:bg-[#241A16] border-t border-[#EAE4D9] dark:border-[#23272F] flex items-center justify-center gap-1.5 hidden relative z-10">
-                                <span class="text-[11px] font-bold text-[#C85A32] dark:text-[#E07A5F] mr-3">Mendengarkan suara guru...</span>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                                <div class="wave-bar"></div>
-                            </div>
-
-                            <!-- Input Form & Quick Chips -->
-                            <div class="p-4 bg-[#F6F3ED] dark:bg-[#181B20] border-t border-[#EAE4D9] dark:border-[#23272F] space-y-3 relative z-10">
-                                <div class="flex flex-wrap gap-1.5">
-                                    <button onclick="sendAiMessage('Sederhanakan instruksi membaca bab 3 halaman 45 untuk siswa autisme.')" class="px-3 py-1 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[11px] text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] transition-colors">
-                                        ⚡ Sederhanakan Instruksi
-                                    </button>
-                                    <button onclick="sendAiMessage('Alternatif aktivitas sensori untuk siswa ADHD saat pembelajaran matematika.')" class="px-3 py-1 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[11px] text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] transition-colors">
-                                        💡 Alternatif Sensori ADHD
-                                    </button>
-                                    <button onclick="sendAiMessage('Protokol de-eskalasi saat anak mengalami sensory overload.')" class="px-3 py-1 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[11px] text-[#656A73] dark:text-[#9BA1AD] hover:text-[#C85A32] transition-colors">
-                                        🧩 De-eskalasi Emosi
-                                    </button>
-                                </div>
-
-                                <form onsubmit="handleAiSubmit(event)" class="flex items-center gap-2">
-                                    <button type="button" id="micButton" onclick="toggleVoice()" class="w-10 h-10 rounded-full bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] hover:border-[#C85A32] text-[#C85A32] flex items-center justify-center transition-all shadow-sm">
-                                        <span class="material-symbols-outlined text-lg">mic</span>
-                                    </button>
-                                    <input id="aiInput" type="text" placeholder="Ketik atau ucapkan instruksi kelas..." class="flex-1 bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] focus:border-[#C85A32] rounded-xl px-4 py-2.5 text-xs text-[#1C2024] dark:text-[#F2F4F8] outline-none">
-                                    <button type="submit" class="px-5 py-2.5 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl transition-all shadow-sm flex items-center gap-1">
-                                        <span>Kirim</span>
-                                        <span class="material-symbols-outlined text-sm">send</span>
-                                    </button>
-                                </form>
-                            </div>
+                    <!-- Apple AI Capability Cards -->
+                    <div class="space-y-6">
+                        <div class="apple-card p-6 space-y-2">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-[#30D158]">Prinsip Desain & Privasi</span>
+                            <h3 class="font-bold text-base text-white">Scaffolding, Bukan Diagnosis</h3>
+                            <p class="text-xs text-[#86868B] leading-relaxed">
+                                AI SAPA Inklusi dirancang eksklusif sebagai asisten pendamping kelas. Sistem tidak membuat keputusan klinis atau vonis medis mandiri.
+                            </p>
                         </div>
 
-                        <!-- AI Guidance Cards -->
-                        <div class="space-y-5">
-                            <div class="spotlight-card p-5">
-                                <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] mb-3 flex items-center gap-2 relative z-10">
-                                    <span class="material-symbols-outlined text-[#C85A32]">verified_user</span>
-                                    Batasan Etis & Operasional AI
-                                </h3>
-                                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] leading-relaxed relative z-10">
-                                    Asisten AI berfungsi sebagai <em>scaffolding copilot</em> untuk pendamping. AI tidak menegakkan diagnosis medis atau menggantikan keputusan profesional guru dan GPK Koordinator.
-                                </p>
-                            </div>
-
-                            <div class="spotlight-card p-5">
-                                <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] mb-3 relative z-10">Panduan Format Prompt</h3>
-                                <div class="space-y-3 text-xs relative z-10">
-                                    <div class="p-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block">1. Chunking Tugas</span>
-                                        <span class="text-[#656A73] dark:text-[#9BA1AD]">Memecah instruksi multi-step menjadi 2-3 langkah visual pendek.</span>
-                                    </div>
-                                    <div class="p-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block">2. Diferensiasi Konten</span>
-                                        <span class="text-[#656A73] dark:text-[#9BA1AD]">Menyesuaikan tingkat kesulitan teks tanpa mereduksi inti tujuan kurikulum.</span>
-                                    </div>
+                        <div class="apple-card p-6 space-y-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-[#BF5AF2]">Pola Prompt Teruji</span>
+                            <div class="space-y-2 text-xs">
+                                <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                                    <strong class="text-white block">Chunking Multi-Step</strong>
+                                    <span class="text-[#86868B]">Memecah paragraf tebal menjadi 3 aksi visual konkret.</span>
+                                </div>
+                                <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                                    <strong class="text-white block">Regulasi Waktu Visual</strong>
+                                    <span class="text-[#86868B]">Menghitung interval jeda sensori terencana (10/2).</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- 4. PIB DIRECTORY VIEW PANE -->
-                <section id="view-pib" class="view-pane space-y-6">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Sumber Daya Manusia Terlatih</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Direktori Pendamping Inklusi (PIB)</h2>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Database kompetensi, sertifikasi nasional, dan status ketersediaan pendamping.</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="window.store.exportToCSV('pib'); showToast('CSV Direktori PIB diunduh', 'success')" class="px-3.5 py-2 bg-white dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#20242B] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
-                                <span class="material-symbols-outlined text-sm">download</span> Ekspor CSV
-                            </button>
-                            <button onclick="openModal('addPibModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">person_add</span> Tambah PIB Baru
-                            </button>
-                        </div>
+            <!-- 4. PIB DIRECTORY VIEW PANE -->
+            <section id="view-pib" class="view-pane space-y-8">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3]">Talenta & Kompetensi</span>
+                        <h2 class="apple-hero-headline text-3xl font-bold text-white">Direktori Pendamping Inklusi.</h2>
                     </div>
-
-                    <!-- Filters Strip -->
-                    <div class="spotlight-card p-4 flex flex-wrap items-center justify-between gap-4">
-                        <div class="flex flex-wrap items-center gap-3 flex-1 relative z-10">
-                            <div class="relative w-72">
-                                <span class="material-symbols-outlined text-[#8F95A0] absolute left-3 top-2.5 text-sm">search</span>
-                                <input id="searchPib" oninput="filterPib()" type="text" placeholder="Cari nama, email, kompetensi..." class="w-full pl-9 pr-3 py-2 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs outline-none">
-                            </div>
-                            <select id="filterPibRegion" onchange="filterPib()" class="py-2 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-medium text-[#1C2024] dark:text-[#F2F4F8] outline-none">
-                                <option value="ALL">Semua Wilayah</option>
-                                <option value="Sukamaju">Sukamaju</option>
-                                <option value="Cendekia">Cendekia</option>
-                                <option value="Harapan">Harapan</option>
-                                <option value="Merdeka">Merdeka</option>
-                            </select>
-                            <select id="filterPibCert" onchange="filterPib()" class="py-2 px-3 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] text-xs font-medium text-[#1C2024] dark:text-[#F2F4F8] outline-none">
-                                <option value="ALL">Semua Sertifikasi</option>
-                                <option value="BERSERTIFIKAT">Bersertifikat</option>
-                                <option value="DALAM_PROGRES">Dalam Progres</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Table & Side Drawer Grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <div class="lg:col-span-8 spotlight-card overflow-hidden">
-                            <div class="overflow-x-auto relative z-10">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="bg-[#F6F3ED] dark:bg-[#181B20] border-b border-[#EAE4D9] dark:border-[#23272F] text-[11px] font-bold text-[#8F95A0] uppercase">
-                                            <th class="py-3 px-4">Nama PIB</th>
-                                            <th class="py-3 px-4">Wilayah</th>
-                                            <th class="py-3 px-4">Sertifikasi</th>
-                                            <th class="py-3 px-4">Kompetensi</th>
-                                            <th class="py-3 px-4">Penempatan</th>
-                                            <th class="py-3 px-4">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="pibTableBody" class="text-xs divide-y divide-[#F0ECE4] dark:divide-[#23272F]">
-                                        <!-- Dynamically populated -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <!-- Side Drawer -->
-                        <div class="lg:col-span-4 spotlight-card p-6 space-y-4">
-                            <div class="text-center pb-4 border-b border-[#F0ECE4] dark:border-[#23272F] relative z-10">
-                                <div id="drawerAvatar" class="w-16 h-16 rounded-full bg-[#C85A32] text-white font-bold text-xl flex items-center justify-center mx-auto mb-2 shadow-sm">
-                                    RM
-                                </div>
-                                <h3 id="drawerName" class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Rina Maharani, S.Pd</h3>
-                                <p id="drawerIdRegion" class="text-xs text-[#8F95A0]">Sukamaju • PIB-001</p>
-                                <div id="drawerRating" class="mt-2 text-xs font-bold text-[#E29547]">⭐ 4.9 (48 sesi)</div>
-                            </div>
-
-                            <div class="space-y-3 text-xs relative z-10">
-                                <div>
-                                    <span class="text-[#8F95A0] block text-[10px] uppercase font-bold">Sekolah Penugasan</span>
-                                    <span id="drawerSchool" class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">SDN Harapan 1</span>
-                                    <span id="drawerStudents" class="text-[#656A73] dark:text-[#9BA1AD] block">2 Siswa didampingi</span>
-                                </div>
-                                <div>
-                                    <span class="text-[#8F95A0] block text-[10px] uppercase font-bold mb-1">Keahlian & Kompetensi</span>
-                                    <div id="drawerComps" class="flex flex-wrap gap-1">
-                                        <span class="px-2 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#1C2027] text-xs font-medium">Autism Spectrum</span>
-                                        <span class="px-2 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#1C2027] text-xs font-medium">Komunikasi Inklusif</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 5. SEKOLAH MITRA & MATCHING VIEW PANE -->
-                <section id="view-sekolah" class="view-pane space-y-6">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Distribusi & Penempatan</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Sekolah Mitra & Matching Engine</h2>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Algoritma pencocokan 6 variabel (lokasi, kompetensi, jenjang, jadwal) untuk penempatan PIB optimal.</p>
-                        </div>
-                        <button onclick="openModal('addSchoolModal')" class="px-4 py-2 bg-[#5B6E43] hover:bg-[#4C5D37] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-sm">add_business</span> Daftarkan Sekolah Mitra
+                    <div class="flex gap-2">
+                        <button onclick="window.store.exportToCSV('pib'); showToast('CSV Direktori PIB diunduh', 'success')" class="apple-btn-secondary text-xs">
+                            Ekspor CSV
+                        </button>
+                        <button onclick="openModal('addPibModal')" class="apple-btn-primary text-xs">
+                            + Tambah PIB
                         </button>
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <!-- Schools List -->
-                        <div class="lg:col-span-7 space-y-3" id="schoolListContainer">
-                            <!-- Populated dynamically -->
-                        </div>
-
-                        <!-- Interactive School Detail & Matching Card -->
-                        <div class="lg:col-span-5 spotlight-card p-6 space-y-5">
-                            <div class="flex justify-between items-start relative z-10">
-                                <div>
-                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#C85A32]/10 text-[#C85A32] dark:text-[#E07A5F]">Target Penempatan</span>
-                                    <h3 id="prevSchoolName" class="font-heading font-bold text-lg text-[#1C2024] dark:text-[#F2F4F8] mt-1">SDN Harapan 1</h3>
-                                    <p id="prevSchoolLoc" class="text-xs text-[#8F95A0]">Sukamaju (1.8 km) • Jl. Pendidikan No. 12</p>
-                                </div>
-                                <span id="prevSchoolMatch" class="text-xs font-bold px-3 py-1 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">92% Match Score</span>
-                            </div>
-
-                            <!-- Matching Breakdown Inspector -->
-                            <div class="p-3.5 bg-[#F6F3ED] dark:bg-[#181B20] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] space-y-2 text-xs relative z-10">
-                                <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block">Kalkulasi Bobot Algoritma Matching (PRD Section 4):</span>
-                                <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
-                                    <div class="bg-white dark:bg-[#121418] p-2 rounded-lg border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="text-[#8F95A0] block text-[9px]">Jarak (30%)</span>
-                                        <strong id="breakdownJarak" class="text-[#C85A32] dark:text-[#E07A5F]">95%</strong>
-                                    </div>
-                                    <div class="bg-white dark:bg-[#121418] p-2 rounded-lg border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="text-[#8F95A0] block text-[9px]">Kompetensi (30%)</span>
-                                        <strong id="breakdownKompetensi" class="text-[#5B6E43]">92%</strong>
-                                    </div>
-                                    <div class="bg-white dark:bg-[#121418] p-2 rounded-lg border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="text-[#8F95A0] block text-[9px]">Jadwal (20%)</span>
-                                        <strong id="breakdownJadwal" class="text-[#E29547]">90%</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-3 text-xs pt-2 border-t border-[#F0ECE4] dark:border-[#23272F] relative z-10">
-                                <div>
-                                    <span class="text-[#8F95A0] text-[10px] block">Kebutuhan PIB</span>
-                                    <span id="prevSchoolNeed" class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Butuh 2 PIB (Ditugaskan: 1)</span>
-                                </div>
-                                <div>
-                                    <span class="text-[#8F95A0] text-[10px] block">Koordinator Sekolah</span>
-                                    <span id="prevSchoolCoord" class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Ibu Nurhayati, S.Pd</span>
-                                </div>
-                                <div class="col-span-2">
-                                    <span class="text-[#8F95A0] text-[10px] block">Kompetensi Utama Dibutuhkan</span>
-                                    <span id="prevSchoolComps" class="font-bold text-[#C85A32] dark:text-[#E07A5F]">Autism Spectrum, Komunikasi Inklusif</span>
-                                </div>
-                            </div>
-
-                            <!-- Assignment Button -->
-                            <button onclick="openAssignModal('SCH-001')" class="w-full py-2.5 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 relative z-10">
-                                <span class="material-symbols-outlined text-sm">person_add</span>
-                                Tugaskan PIB ke Sekolah Ini
-                            </button>
-                        </div>
+                <!-- Filters -->
+                <div class="apple-card p-4 flex flex-wrap items-center justify-between gap-4 text-xs">
+                    <div class="flex items-center gap-3 flex-1">
+                        <input id="searchPib" oninput="filterPib()" type="text" placeholder="Cari nama, wilayah, spesialisasi..." class="w-72 p-2 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                        <select id="filterPibRegion" onchange="filterPib()" class="p-2 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                            <option value="ALL" class="bg-[#1C1C1E]">Semua Wilayah</option>
+                            <option value="Sukamaju" class="bg-[#1C1C1E]">Sukamaju</option>
+                            <option value="Cendekia" class="bg-[#1C1C1E]">Cendekia</option>
+                            <option value="Harapan" class="bg-[#1C1C1E]">Harapan</option>
+                        </select>
                     </div>
-                </section>
+                </div>
 
-                <!-- 6. MONITORING PENDAMPINGAN VIEW PANE -->
-                <section id="view-pendampingan" class="view-pane space-y-6">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Log & Validasi Lapangan</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Monitoring Pendampingan Harian</h2>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Pencatatan sesi harian, modifikasi instruksi, dan verifikasi 1-klik oleh GPK Koordinator.</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="window.store.exportToCSV('sessions'); showToast('CSV Log Sesi diunduh', 'success')" class="px-3.5 py-2 bg-white dark:bg-[#181B20] border border-[#EAE4D9] dark:border-[#23272F] hover:bg-[#F6F3ED] dark:hover:bg-[#20242B] text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
-                                <span class="material-symbols-outlined text-sm">download</span> Ekspor CSV
-                            </button>
-                            <button onclick="verifyAllAction()" class="px-4 py-2 bg-white dark:bg-[#181B20] border border-[#5B6E43] text-[#5B6E43] hover:bg-[#5B6E43] hover:text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">done_all</span> Verifikasi Semua Tertunda
-                            </button>
-                            <button onclick="openModal('addSessionModal')" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">add</span> Catat Sesi
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="spotlight-card overflow-hidden">
-                        <div class="overflow-x-auto relative z-10">
-                            <table class="w-full text-left border-collapse">
+                <!-- Table & Drawer -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-8 apple-card overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs border-collapse">
                                 <thead>
-                                    <tr class="bg-[#F6F3ED] dark:bg-[#181B20] border-b border-[#EAE4D9] dark:border-[#23272F] text-[11px] font-bold text-[#8F95A0] uppercase">
-                                        <th class="py-3 px-4">Tanggal / Jam</th>
-                                        <th class="py-3 px-4">PIB Bertugas</th>
-                                        <th class="py-3 px-4">Sekolah & Siswa</th>
-                                        <th class="py-3 px-4">Aktivitas & Catatan</th>
-                                        <th class="py-3 px-4">Status Sesi</th>
-                                        <th class="py-3 px-4 text-center">Verifikasi GPK</th>
+                                    <tr class="bg-white/5 border-b border-white/10 text-[#86868B] uppercase text-[10px] font-bold">
+                                        <th class="py-3 px-4">Nama PIB</th>
+                                        <th class="py-3 px-4">Wilayah</th>
+                                        <th class="py-3 px-4">Sertifikasi</th>
+                                        <th class="py-3 px-4">Keahlian</th>
+                                        <th class="py-3 px-4">Status</th>
                                     </tr>
                                 </thead>
-                                <tbody id="sessionsTableBody" class="text-xs divide-y divide-[#F0ECE4] dark:divide-[#23272F]">
+                                <tbody id="pibTableBody" class="divide-y divide-white/5">
                                     <!-- Populated dynamically -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </section>
 
-                <!-- 7. LAPORAN & OUTCOME VIEW PANE -->
-                <section id="view-laporan" class="view-pane space-y-6">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Evaluasi Longitudinal</span>
-                            <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Laporan & Outcome Perkembangan</h2>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">4 Indikator Inti: Komunikasi, Partisipasi Kelas, Kemandirian, dan Interaksi Sosial.</p>
+                    <!-- Side Drawer -->
+                    <div class="lg:col-span-4 apple-card p-6 space-y-4 text-center">
+                        <div id="drawerAvatar" class="w-16 h-16 rounded-full bg-[#0071E3] text-white font-bold text-xl flex items-center justify-center mx-auto mb-2 shadow-lg">
+                            RM
                         </div>
-                        <button onclick="window.print()" class="px-4 py-2 bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-sm">print</span> Cetak Laporan Resmi PDF
+                        <h3 id="drawerName" class="font-bold text-base text-white">Rina Maharani, S.Pd</h3>
+                        <p id="drawerIdRegion" class="text-xs text-[#86868B]">Sukamaju • PIB-001</p>
+                        <div id="drawerRating" class="text-xs text-[#FF9F0A] font-semibold">⭐ 4.9 (48 sesi)</div>
+
+                        <div class="pt-4 border-t border-white/10 text-left space-y-3 text-xs">
+                            <div>
+                                <span class="text-[#86868B] block text-[10px] uppercase font-semibold">Penempatan Saat Ini</span>
+                                <strong id="drawerSchool" class="text-white block">SDN Harapan 1</strong>
+                                <span id="drawerStudents" class="text-[#86868B]">2 Siswa didampingi</span>
+                            </div>
+                            <div>
+                                <span class="text-[#86868B] block text-[10px] uppercase font-semibold mb-1">Kompetensi Inti</span>
+                                <div id="drawerComps" class="flex flex-wrap gap-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. SEKOLAH MITRA & MATCHING VIEW PANE -->
+            <section id="view-sekolah" class="view-pane space-y-8">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3]">Distribusi Wilayah</span>
+                        <h2 class="apple-hero-headline text-3xl font-bold text-white">Sekolah Mitra & Matching Engine.</h2>
+                    </div>
+                    <button onclick="openModal('addSchoolModal')" class="apple-btn-primary text-xs">
+                        + Daftarkan Sekolah
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-7 space-y-3" id="schoolListContainer"></div>
+
+                    <!-- Matching Inspector Card -->
+                    <div class="lg:col-span-5 apple-card p-6 space-y-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] font-semibold uppercase text-[#0071E3]">Target Penugasan</span>
+                                <h3 id="prevSchoolName" class="text-lg font-bold text-white mt-0.5">SDN Harapan 1</h3>
+                                <p id="prevSchoolLoc" class="text-xs text-[#86868B]">Sukamaju (1.8 km) • Jl. Pendidikan No. 12</p>
+                            </div>
+                            <span id="prevSchoolMatch" class="px-3 py-1 rounded-full bg-[#30D158]/15 text-[#30D158] text-xs font-bold">92% Match Score</span>
+                        </div>
+
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs space-y-2">
+                            <span class="font-semibold text-white block">Kalkulasi 6 Variabel Algoritma (PRD Section 4):</span>
+                            <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                                <div class="bg-black/40 p-2 rounded-lg border border-white/10">
+                                    <span class="text-[#86868B] block text-[9px]">Jarak (30%)</span>
+                                    <strong id="breakdownJarak" class="text-[#0071E3]">95%</strong>
+                                </div>
+                                <div class="bg-black/40 p-2 rounded-lg border border-white/10">
+                                    <span class="text-[#86868B] block text-[9px]">Keahlian (30%)</span>
+                                    <strong id="breakdownKompetensi" class="text-[#30D158]">92%</strong>
+                                </div>
+                                <div class="bg-black/40 p-2 rounded-lg border border-white/10">
+                                    <span class="text-[#86868B] block text-[9px]">Jadwal (20%)</span>
+                                    <strong id="breakdownJadwal" class="text-[#FF9F0A]">90%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-white/10 text-xs space-y-2">
+                            <div>
+                                <span class="text-[#86868B] text-[10px] block">Kebutuhan Kuota</span>
+                                <span id="prevSchoolNeed" class="font-semibold text-white">Butuh 2 PIB (Ditugaskan: 1)</span>
+                            </div>
+                            <div>
+                                <span class="text-[#86868B] text-[10px] block">Spesialisasi Dibutuhkan</span>
+                                <span id="prevSchoolComps" class="font-semibold text-[#0071E3]">Autism Spectrum, Komunikasi Inklusif</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openAssignModal('SCH-001')" class="apple-btn-primary w-full py-2.5 text-xs font-semibold">
+                            Tugaskan PIB ke Sekolah Ini
                         </button>
                     </div>
+                </div>
+            </section>
 
-                    <!-- 4 Indicators Overview -->
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                        <div class="spotlight-card p-5">
-                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Komunikasi Inklusif</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">78%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +16% vs baseline</span>
-                        </div>
-                        <div class="spotlight-card p-5">
-                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Partisipasi Kelas</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">82%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +19% vs baseline</span>
-                        </div>
-                        <div class="spotlight-card p-5">
-                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Kemandirian Belajar</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">75%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +14% vs baseline</span>
-                        </div>
-                        <div class="spotlight-card p-5">
-                            <span class="text-xs font-bold text-[#8F95A0] block relative z-10">Interaksi Sosial</span>
-                            <span class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-1 block relative z-10">80%</span>
-                            <span class="text-[11px] font-semibold text-[#5B6E43] relative z-10">↑ +18% vs baseline</span>
-                        </div>
-                    </div>
-
-                    <!-- Radar Chart & North Star Metric -->
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <div class="lg:col-span-7 spotlight-card p-6">
-                            <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8] mb-1 relative z-10">Radar Evaluasi 4 Dimensi Outcome</h3>
-                            <p class="text-xs text-[#8F95A0] mb-4 relative z-10">Perbandingan capaian agregat terhadap baseline awal</p>
-                            <div class="h-64 relative z-10">
-                                <canvas id="chartOutcomeRadar"></canvas>
-                            </div>
-                        </div>
-
-                        <div class="lg:col-span-5 spotlight-card p-6 flex flex-col justify-between">
-                            <div class="relative z-10">
-                                <div class="flex items-center gap-1.5 text-[#5B6E43] mb-2">
-                                    <span class="material-symbols-outlined text-sm fill">stars</span>
-                                    <span class="text-[11px] font-bold uppercase tracking-wider">North Star Metric</span>
-                                </div>
-                                <h3 class="font-heading font-bold text-lg text-[#1C2024] dark:text-[#F2F4F8] leading-snug">Sekolah Mitra Berpendamping Aktif Konsisten</h3>
-                                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] mt-1">Rasio sekolah mitra dengan pendamping tersertifikasi aktif dan log aktivitas terverifikasi minimal 4 sesi/bulan.</p>
-                            </div>
-
-                            <div class="my-6 pt-4 border-t border-[#F0ECE4] dark:border-[#23272F] relative z-10">
-                                <div class="flex justify-between items-baseline mb-2">
-                                    <span id="kpiNorthStarVal" class="font-heading font-extrabold text-4xl text-[#5B6E43] tabular-nums">73.9%</span>
-                                    <span class="text-xs text-[#8F95A0] font-semibold">34 / 46 Sekolah Mitra</span>
-                                </div>
-                                <div class="w-full h-3 rounded-full bg-[#F6F3ED] dark:bg-[#181B20] overflow-hidden">
-                                    <div class="h-full bg-[#5B6E43] rounded-full" style="width: 73.9%;"></div>
-                                </div>
-                            </div>
-
-                            <button onclick="showToast('Rekapitulasi data outcome dinas pendidikan berhasil diunduh.', 'success')" class="w-full py-2.5 rounded-xl bg-[#F6F3ED] dark:bg-[#181B20] hover:bg-[#C85A32] hover:text-white text-[#1C2024] dark:text-[#F2F4F8] text-xs font-bold transition-all flex items-center justify-center gap-2 relative z-10">
-                                <span class="material-symbols-outlined text-sm">download</span> Unduh Ringkasan Agregat Wilayah
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 8. MOBILE SIMULATOR VIEW PANE -->
-                <section id="view-simulator" class="view-pane flex flex-col items-center justify-center space-y-6">
-                    <div class="text-center max-w-lg">
-                        <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Antarmuka PIB Lapangan</span>
-                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Simulator Mobile Application</h2>
-                        <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Simulasi interaktif aplikasi mobile yang digunakan oleh Pendamping Inklusi Bersertifikat (PIB).</p>
-                    </div>
-
-                    <!-- Phone Frame -->
-                    <div class="phone-mockup">
-                        <!-- Dynamic Island Notch -->
-                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#1A1816] rounded-full z-50 flex items-center justify-between px-3">
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#262321]"></div>
-                            <div class="w-2 h-2 rounded-full bg-[#0D3820]"></div>
-                        </div>
-
-                        <!-- Screen Content -->
-                        <div class="phone-mockup-screen bg-[#FBF9F5] dark:bg-[#0A0B0D]">
-                            
-                            <!-- Tab 1: Beranda Mobile -->
-                            <div id="mTab-beranda" class="mobile-tab-pane p-5 space-y-4">
-                                <div class="flex justify-between items-center">
-                                    <div>
-                                        <p class="text-[11px] text-[#8F95A0]">Selamat Pagi,</p>
-                                        <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Rina Maharani, S.Pd</h4>
-                                    </div>
-                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">PIB Aktif</span>
-                                </div>
-
-                                <div class="p-4 rounded-2xl bg-[#C85A32] text-white shadow-md space-y-2">
-                                    <span class="text-[10px] font-bold text-white/80 uppercase">Jadwal Sesi Hari Ini</span>
-                                    <h5 class="font-bold text-sm">SDN Harapan 1 • Kelas 4A</h5>
-                                    <p class="text-xs text-white/90">Ananda Fikri (Autism Spectrum)</p>
-                                    <div class="pt-2 flex justify-between items-center text-xs">
-                                        <span class="bg-white/20 px-2 py-0.5 rounded text-[10px]">⏰ 08.00 - 10.00</span>
-                                        <button onclick="switchMobileTab('asisten')" class="px-3 py-1 rounded-full bg-white text-[#C85A32] font-bold text-[11px]">Buka AI</button>
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-3 gap-2 text-center text-xs">
-                                    <div class="bg-white dark:bg-[#121418] p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="text-[#8F95A0] text-[10px] block">Sesi Selesai</span>
-                                        <span class="font-bold text-[#5B6E43] text-sm tabular-nums">48</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-[#121418] p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="text-[#8F95A0] text-[10px] block">Modul Lulus</span>
-                                        <span class="font-bold text-[#C85A32] text-sm tabular-nums">8/8</span>
-                                    </div>
-                                    <div class="bg-white dark:bg-[#121418] p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F]">
-                                        <span class="text-[#8F95A0] text-[10px] block">Sertifikat</span>
-                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8] text-sm">Resmi</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab 2: Micro Mobile -->
-                            <div id="mTab-micro" class="mobile-tab-pane p-5 space-y-3 hidden">
-                                <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Microcredential PIB</h4>
-                                <div class="space-y-2 text-xs">
-                                    <div class="p-3 bg-white dark:bg-[#121418] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] flex justify-between items-center">
-                                        <div>
-                                            <p class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Modul 1: Dasar Inklusif</p>
-                                            <p class="text-[10px] text-[#8F95A0]">6 Jam • Lulus (100)</p>
-                                        </div>
-                                        <span class="text-[10px] font-bold text-[#5B6E43]">Selesai</span>
-                                    </div>
-                                    <div class="p-3 bg-white dark:bg-[#121418] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] flex justify-between items-center">
-                                        <div>
-                                            <p class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Modul 6: Asisten AI Kelas</p>
-                                            <p class="text-[10px] text-[#8F95A0]">8 Jam • Lulus (95)</p>
-                                        </div>
-                                        <span class="text-[10px] font-bold text-[#5B6E43]">Selesai</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab 3: Asisten AI Mobile -->
-                            <div id="mTab-asisten" class="mobile-tab-pane p-5 space-y-3 hidden">
-                                <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Asisten AI Kelas</h4>
-                                <div class="p-3 bg-white dark:bg-[#121418] rounded-xl border border-[#EAE4D9] dark:border-[#23272F] text-xs space-y-2">
-                                    <p class="text-[#656A73] dark:text-[#9BA1AD]"><strong>Instruksi Asli:</strong> "Kerjakan soal pecahan nomor 1-5 di halaman 24."</p>
-                                    <div class="p-2.5 rounded-lg bg-[#5B6E43]/10 text-[#5B6E43]">
-                                        <span class="font-bold block mb-1">⚡ Langkah Adaptif:</span>
-                                        <p>1. Buka hal 24.<br>2. Kerjakan 2 soal bergambar.<br>3. Beri stiker bintang.</p>
-                                    </div>
-                                </div>
-                                <div class="text-center pt-4">
-                                    <button onclick="showToast('Simulasi input suara guru diaktifkan', 'info')" class="w-14 h-14 rounded-full bg-[#C85A32] text-white flex items-center justify-center mx-auto shadow-md">
-                                        <span class="material-symbols-outlined text-2xl">mic</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Tab 4: Sekolah Mobile -->
-                            <div id="mTab-sekolah" class="mobile-tab-pane p-5 space-y-3 hidden">
-                                <h4 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8]">Sekolah Mitra Terdekat</h4>
-                                <div class="p-3.5 bg-white dark:bg-[#121418] rounded-xl border-2 border-[#C85A32] text-xs space-y-2">
-                                    <div class="flex justify-between">
-                                        <span class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">SDN Harapan 1</span>
-                                        <span class="text-[10px] font-bold text-[#C85A32] dark:text-[#E07A5F]">92% Cocok</span>
-                                    </div>
-                                    <p class="text-[11px] text-[#8F95A0]">Sukamaju (1.8 km) • Butuh 2 PIB</p>
-                                    <button onclick="showToast('Permohonan diajukan ke GPK Koordinator', 'success')" class="w-full py-1.5 rounded-lg bg-[#C85A32] text-white font-bold text-xs">
-                                        Ajukan Minat
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobile Bottom Navigation -->
-                        <div class="h-[68px] bg-white dark:bg-[#121418] border-t border-[#EAE4D9] dark:border-[#23272F] grid grid-cols-4 items-center px-2">
-                            <button onclick="switchMobileTab('beranda')" data-tab="beranda" class="mob-nav-btn flex flex-col items-center text-[#C85A32] font-bold">
-                                <span class="material-symbols-outlined text-lg">home</span>
-                                <span class="text-[9px]">Beranda</span>
-                            </button>
-                            <button onclick="switchMobileTab('micro')" data-tab="micro" class="mob-nav-btn flex flex-col items-center text-[#8F95A0] hover:text-[#1C2024]">
-                                <span class="material-symbols-outlined text-lg">school</span>
-                                <span class="text-[9px]">Modul</span>
-                            </button>
-                            <button onclick="switchMobileTab('asisten')" data-tab="asisten" class="mob-nav-btn flex flex-col items-center text-[#8F95A0] hover:text-[#1C2024]">
-                                <span class="material-symbols-outlined text-lg">smart_toy</span>
-                                <span class="text-[9px]">AI Kelas</span>
-                            </button>
-                            <button onclick="switchMobileTab('sekolah')" data-tab="sekolah" class="mob-nav-btn flex flex-col items-center text-[#8F95A0] hover:text-[#1C2024]">
-                                <span class="material-symbols-outlined text-lg">location_city</span>
-                                <span class="text-[9px]">Sekolah</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 9. PENGATURAN VIEW PANE -->
-                <section id="view-pengaturan" class="view-pane space-y-6">
+            <!-- 6. MONITORING PENDAMPINGAN VIEW PANE -->
+            <section id="view-pendampingan" class="view-pane space-y-8">
+                <div class="flex justify-between items-end">
                     <div>
-                        <span class="text-xs font-bold text-[#C85A32] dark:text-[#E07A5F] uppercase tracking-wider">Tata Kelola & Keamanan</span>
-                        <h2 class="font-heading font-extrabold text-2xl text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Pengaturan & Manajemen Akses</h2>
-                        <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Konfigurasi kontrol akses berbasis peran (RBAC) dan tata kelola data inklusif.</p>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3]">Validasi Lapangan</span>
+                        <h2 class="apple-hero-headline text-3xl font-bold text-white">Monitoring Pendampingan Harian.</h2>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="window.store.exportToCSV('sessions'); showToast('CSV Log Sesi diunduh', 'success')" class="apple-btn-secondary text-xs">
+                            Ekspor CSV
+                        </button>
+                        <button onclick="verifyAllAction()" class="apple-btn-secondary text-xs text-[#30D158]">
+                            Verifikasi Semua
+                        </button>
+                        <button onclick="openModal('addSessionModal')" class="apple-btn-primary text-xs">
+                            + Catat Sesi
+                        </button>
+                    </div>
+                </div>
+
+                <div class="apple-card overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-white/5 border-b border-white/10 text-[#86868B] uppercase text-[10px] font-bold">
+                                    <th class="py-3 px-4">Tanggal & Jam</th>
+                                    <th class="py-3 px-4">PIB Bertugas</th>
+                                    <th class="py-3 px-4">Sekolah & Siswa</th>
+                                    <th class="py-3 px-4">Aktivitas & Modifikasi</th>
+                                    <th class="py-3 px-4">Status Sesi</th>
+                                    <th class="py-3 px-4 text-center">Verifikasi GPK</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sessionsTableBody" class="divide-y divide-white/5">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. LAPORAN & OUTCOME VIEW PANE -->
+            <section id="view-laporan" class="view-pane space-y-8">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3]">Dampak Jangka Panjang</span>
+                        <h2 class="apple-hero-headline text-3xl font-bold text-white">Evaluasi Longitudinal Outcome.</h2>
+                    </div>
+                    <button onclick="window.print()" class="apple-btn-primary text-xs">
+                        Cetak Laporan PDF
+                    </button>
+                </div>
+
+                <!-- 4 Indicators Apple Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="apple-card p-6">
+                        <span class="text-xs text-[#86868B] uppercase font-semibold block">Komunikasi Inklusif</span>
+                        <div class="text-3xl font-bold text-white mt-1">78%</div>
+                        <span class="text-xs text-[#30D158] font-medium mt-2 block">↑ +16% vs Baseline</span>
+                    </div>
+                    <div class="apple-card p-6">
+                        <span class="text-xs text-[#86868B] uppercase font-semibold block">Partisipasi Kelas</span>
+                        <div class="text-3xl font-bold text-white mt-1">82%</div>
+                        <span class="text-xs text-[#30D158] font-medium mt-2 block">↑ +19% vs Baseline</span>
+                    </div>
+                    <div class="apple-card p-6">
+                        <span class="text-xs text-[#86868B] uppercase font-semibold block">Kemandirian Belajar</span>
+                        <div class="text-3xl font-bold text-white mt-1">75%</div>
+                        <span class="text-xs text-[#30D158] font-medium mt-2 block">↑ +14% vs Baseline</span>
+                    </div>
+                    <div class="apple-card p-6">
+                        <span class="text-xs text-[#86868B] uppercase font-semibold block">Interaksi Sosial</span>
+                        <div class="text-3xl font-bold text-white mt-1">80%</div>
+                        <span class="text-xs text-[#30D158] font-medium mt-2 block">↑ +18% vs Baseline</span>
+                    </div>
+                </div>
+
+                <!-- Radar & North Star -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-7 apple-card p-8">
+                        <h3 class="font-bold text-base text-white mb-1">Radar 4 Dimensi Outcome Non-Medis</h3>
+                        <p class="text-xs text-[#86868B] mb-4">Capaian agregat kemandirian peserta didik terhadap target semester</p>
+                        <div class="h-64">
+                            <canvas id="chartOutcomeRadar"></canvas>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <div class="spotlight-card p-5 space-y-2">
-                            <span class="material-symbols-outlined text-[#C85A32] text-2xl relative z-10">privacy_tip</span>
-                            <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] relative z-10">Minimisasi Data Anak</h3>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] relative z-10">Hanya mencatat kemajuan aktivitas pembelajaran. Tidak merekam data medis yang berisiko privasi.</p>
+                    <div class="lg:col-span-5 apple-card p-8 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-[#30D158]">North Star Metric</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Sekolah Mitra Berpendamping Aktif Konsisten</h3>
+                            <p class="text-xs text-[#86868B] mt-2 leading-relaxed">
+                                Rasio sekolah mitra dengan pendamping bersertifikasi aktif dan pencatatan log tervalidasi minimal 4 kali/bulan.
+                            </p>
                         </div>
-                        <div class="spotlight-card p-5 space-y-2">
-                            <span class="material-symbols-outlined text-[#5B6E43] text-2xl relative z-10">shield</span>
-                            <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] relative z-10">Agregasi Laporan Publik</h3>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] relative z-10">Laporan tingkat wilayah disajikan dalam format agregat untuk melindungi identitas anak berkebutuhan khusus.</p>
+
+                        <div class="my-6 pt-4 border-t border-white/10">
+                            <div class="flex justify-between items-baseline mb-2">
+                                <span id="kpiNorthStarVal" class="text-4xl font-bold text-[#30D158]">73.9%</span>
+                                <span class="text-xs text-[#86868B]">34 / 46 Sekolah</span>
+                            </div>
+                            <div class="w-full h-2.5 rounded-full bg-white/10 overflow-hidden">
+                                <div class="h-full bg-[#30D158] rounded-full" style="width: 73.9%;"></div>
+                            </div>
                         </div>
-                        <div class="spotlight-card p-5 space-y-2">
-                            <span class="material-symbols-outlined text-[#E29547] text-2xl relative z-10">restart_alt</span>
-                            <h3 class="font-bold text-sm text-[#1C2024] dark:text-[#F2F4F8] relative z-10">Reset Data State</h3>
-                            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] relative z-10">Kembalikan seluruh data ke konfigurasi default PRD.</p>
-                            <button onclick="if(confirm('Kembalikan data ke awal?')){window.store.reset(); location.reload();}" class="mt-2 px-3 py-1.5 rounded-lg bg-[#BA1A1A]/10 text-[#BA1A1A] hover:bg-[#BA1A1A] hover:text-white text-xs font-bold transition-colors relative z-10">
-                                Reset Database
-                            </button>
+
+                        <button onclick="showToast('Rekapitulasi data outcome dinas pendidikan berhasil diunduh.', 'success')" class="apple-btn-secondary w-full py-2.5 text-xs">
+                            Unduh Ringkasan Agregat Wilayah
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. IPHONE SIMULATOR VIEW PANE -->
+            <section id="view-simulator" class="view-pane flex flex-col items-center justify-center space-y-8">
+                <div class="text-center max-w-xl mx-auto space-y-2">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-[#0071E3]">Dirancang untuk iOS & iPadOS</span>
+                    <h2 class="apple-hero-headline text-3xl font-bold text-white">SAPA Inklusi Mobile Experience.</h2>
+                </div>
+
+                <!-- iPhone Frame -->
+                <div class="apple-iphone-frame">
+                    <!-- Dynamic Island -->
+                    <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#121212] rounded-full z-50 flex items-center justify-between px-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-[#1C1C1E]"></div>
+                        <div class="w-2 h-2 rounded-full bg-[#30D158]"></div>
+                    </div>
+
+                    <!-- Screen -->
+                    <div class="h-[calc(100%-64px)] pt-12 p-5 overflow-y-auto bg-[#000000] text-white">
+                        <div id="mTab-beranda" class="mobile-tab-pane space-y-4">
+                            <div>
+                                <span class="text-[11px] text-[#86868B]">Selamat Pagi,</span>
+                                <h4 class="font-bold text-base text-white">Rina Maharani, S.Pd</h4>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-gradient-to-tr from-[#0071E3] to-[#0077ED] text-white space-y-2 shadow-lg">
+                                <span class="text-[10px] uppercase font-bold text-white/80">Sesi Pendampingan Hari Ini</span>
+                                <h5 class="font-bold text-sm">SDN Harapan 1 • Kelas 4A</h5>
+                                <p class="text-xs text-white/90">Ananda Fikri (Autism Spectrum)</p>
+                                <div class="pt-2 flex justify-between items-center text-xs">
+                                    <span class="bg-black/20 px-2.5 py-0.5 rounded text-[10px]">⏰ 08.00 - 10.00</span>
+                                    <button onclick="switchMobileTab('asisten')" class="px-3 py-1 rounded-full bg-white text-[#0071E3] font-bold text-[11px]">Buka AI</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="mTab-micro" class="mobile-tab-pane space-y-3 hidden">
+                            <h4 class="font-bold text-sm text-white">Microcredential PIB</h4>
+                            <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs flex justify-between">
+                                <span>Modul 1: Fondasi Inklusif</span>
+                                <span class="text-[#30D158]">Lulus</span>
+                            </div>
+                        </div>
+
+                        <div id="mTab-asisten" class="mobile-tab-pane space-y-3 hidden">
+                            <h4 class="font-bold text-sm text-white">Asisten AI Kelas</h4>
+                            <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs space-y-1">
+                                <span class="text-[#86868B]">Instruksi Sederhana:</span>
+                                <p class="text-[#30D158]">1. Buka hal 24.<br>2. Kerjakan 2 soal bergambar.<br>3. Beri tanda bintang.</p>
+                            </div>
+                        </div>
+
+                        <div id="mTab-sekolah" class="mobile-tab-pane space-y-3 hidden">
+                            <h4 class="font-bold text-sm text-white">Sekolah Terdekat</h4>
+                            <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-xs">
+                                <strong>SDN Harapan 1</strong> (1.8 km)
+                            </div>
                         </div>
                     </div>
-                </section>
 
-            </main>
+                    <!-- Bottom Nav -->
+                    <div class="h-16 bg-[#161617] border-t border-white/10 grid grid-cols-4 items-center px-2">
+                        <button onclick="switchMobileTab('beranda')" data-tab="beranda" class="mob-nav-btn flex flex-col items-center text-[#0071E3] font-bold">
+                            <span class="material-symbols-outlined text-lg">home</span>
+                            <span class="text-[9px]">Beranda</span>
+                        </button>
+                        <button onclick="switchMobileTab('micro')" data-tab="micro" class="mob-nav-btn flex flex-col items-center text-[#86868B]">
+                            <span class="material-symbols-outlined text-lg">school</span>
+                            <span class="text-[9px]">Modul</span>
+                        </button>
+                        <button onclick="switchMobileTab('asisten')" data-tab="asisten" class="mob-nav-btn flex flex-col items-center text-[#86868B]">
+                            <span class="material-symbols-outlined text-lg">smart_toy</span>
+                            <span class="text-[9px]">AI Kelas</span>
+                        </button>
+                        <button onclick="switchMobileTab('sekolah')" data-tab="sekolah" class="mob-nav-btn flex flex-col items-center text-[#86868B]">
+                            <span class="material-symbols-outlined text-lg">location_city</span>
+                            <span class="text-[9px]">Sekolah</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
 
-    <!-- ================= UNIVERSAL COMMAND PALETTE (⌘K) ================= -->
-    <div id="commandMenuModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-start justify-center pt-24 p-4 hidden" onclick="if(event.target===this) closeCommandMenu()">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl w-full max-w-xl shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] overflow-hidden glass-panel">
-            <div class="p-4 border-b border-[#EAE4D9] dark:border-[#23272F] flex items-center gap-3">
-                <span class="material-symbols-outlined text-[#8F95A0]">search</span>
-                <input id="cmdInput" oninput="filterCommandItems()" type="text" placeholder="Ketik perintah atau cari..." class="bg-transparent border-none text-sm text-[#1C2024] dark:text-[#F2F4F8] outline-none w-full placeholder:text-[#8F95A0]">
-                <kbd class="px-1.5 py-0.5 rounded bg-[#F6F3ED] dark:bg-[#181B20] text-[10px] text-[#8F95A0] font-mono">ESC</kbd>
+    <!-- ========================================================================= -->
+    <!-- 3. APPLE FOOTER DIRECTORY                                                 -->
+    <!-- ========================================================================= -->
+    <footer class="bg-[#161617] text-[#86868B] text-xs py-12 px-6 md:px-12 border-t border-white/10 mt-auto">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="pb-6 border-b border-white/10 text-[11px] leading-relaxed">
+                * Data capaian outcome pendidikan inklusif disajikan secara agregat untuk melindungi privasi data siswa sesuai regulasi privasi perlindungan anak. SAPA Inklusi bukan pengganti konsultasi medis klinis.
             </div>
-            <div id="cmdItemsList" class="max-h-80 overflow-y-auto p-2 space-y-1">
-                <!-- Populated dynamically -->
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="text-white font-semibold mb-3">Ekosistem & Fitur</h5>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" onclick="navigateTo('dashboard')" class="hover:text-white">Dashboard Pemantauan</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigateTo('microcredential')" class="hover:text-white">Microcredential 8 Modul</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigateTo('asisten-ai')" class="hover:text-white">Asisten AI Kelas</a></li>
+                        <li><a href="javascript:void(0)" onclick="navigateTo('sekolah')" class="hover:text-white">Direktori Sekolah Mitra</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-semibold mb-3">Peran Pengguna</h5>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" onclick="window.store.setRole('GPK_KOORDINATOR'); updateUserProfileUI();" class="hover:text-white">GPK Koordinator</a></li>
+                        <li><a href="javascript:void(0)" onclick="window.store.setRole('SEKOLAH_MITRA'); updateUserProfileUI();" class="hover:text-white">Koordinator Sekolah Mitra</a></li>
+                        <li><a href="javascript:void(0)" onclick="window.store.setRole('DINAS_PENDIDIKAN'); updateUserProfileUI();" class="hover:text-white">Pengawas Dinas Pendidikan</a></li>
+                        <li><a href="javascript:void(0)" onclick="window.store.setRole('PIB'); updateUserProfileUI();" class="hover:text-white">Pendamping Inklusi (PIB)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-semibold mb-3">Sertifikasi & Nilai</h5>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" onclick="openCertModal('Rina Maharani, S.Pd')" class="hover:text-white">Standar Sertifikasi Resmi</a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Kurikulum terverifikasi kementerian.', 'info')" class="hover:text-white">Verifikasi Portofolio</a></li>
+                        <li><a href="javascript:void(0)" onclick="window.store.exportToCSV('sessions')" class="hover:text-white">Ekspor Data Agregat</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-semibold mb-3">Tata Kelola SAPA</h5>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="hover:text-white">Kebijakan Privasi Anak</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-white">Ketentuan Layanan</a></li>
+                        <li><a href="javascript:void(0)" onclick="if(confirm('Reset seluruh data?')){window.store.reset(); location.reload();}" class="text-[#FF453A] hover:underline">Reset Demo Data</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="p-3 bg-[#F6F3ED] dark:bg-[#181B20] border-t border-[#EAE4D9] dark:border-[#23272F] flex justify-between items-center text-[10px] text-[#8F95A0]">
-                <span>Gunakan panah untuk navigasi</span>
-                <span>Tekan <kbd class="font-mono font-bold">↵ ENTER</kbd> untuk memilih</span>
+
+            <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[11px] gap-4">
+                <p>Hak Cipta © 2026 SAPA Inklusi Inc. Seluruh hak cipta dilindungi undang-undang.</p>
+                <p class="text-white">Indonesia Inklusif • Ramah Anak</p>
             </div>
+        </div>
+    </footer>
+
+    <!-- ================= COMMAND PALETTE (⌘K) ================= -->
+    <div id="commandMenuModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-start justify-center pt-24 p-4 hidden" onclick="if(event.target===this) closeCommandMenu()">
+        <div class="apple-card w-full max-w-xl shadow-2xl border border-white/10 overflow-hidden">
+            <div class="p-4 border-b border-white/10 flex items-center gap-3">
+                <span class="material-symbols-outlined text-[#86868B]">search</span>
+                <input id="cmdInput" oninput="filterCommandItems()" type="text" placeholder="Ketik perintah atau navigasi..." class="bg-transparent border-none text-sm text-white outline-none w-full placeholder:text-[#86868B]">
+                <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] text-[#86868B] font-mono">ESC</kbd>
+            </div>
+            <div id="cmdItemsList" class="max-h-80 overflow-y-auto p-2 space-y-1"></div>
         </div>
     </div>
 
     <!-- ================= MODALS ================= -->
 
-    <!-- Modal: Lesson Player Materi Modul -->
-    <div id="lessonModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] max-h-[85vh] flex flex-col justify-between glass-panel">
-            <div class="flex justify-between items-start pb-3 border-b border-[#F0ECE4] dark:border-[#23272F]">
+    <!-- Lesson Modal -->
+    <div id="lessonModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-8 w-full max-w-2xl max-h-[85vh] flex flex-col justify-between border border-white/15">
+            <div class="flex justify-between items-start pb-4 border-b border-white/10">
                 <div>
-                    <span id="lessonModalCat" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#5B6E43]/15 text-[#5B6E43]">Fondasi</span>
-                    <h3 id="lessonModalTitle" class="font-heading font-extrabold text-lg text-[#1C2024] dark:text-[#F2F4F8] mt-1">Modul 1: Dasar Pendidikan Inklusif</h3>
+                    <span id="lessonModalCat" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#0071E3]/20 text-[#0071E3]">Fondasi</span>
+                    <h3 id="lessonModalTitle" class="text-lg font-bold text-white mt-1">Modul 1</h3>
                 </div>
-                <button onclick="closeModal('lessonModal')" class="text-[#8F95A0] hover:text-[#1C2024]">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
+                <button onclick="closeModal('lessonModal')" class="text-[#86868B] hover:text-white"><span class="material-symbols-outlined">close</span></button>
             </div>
-            
-            <div id="lessonModalContent" class="flex-1 overflow-y-auto py-4">
-                <!-- Injected content -->
-            </div>
-
-            <div class="pt-3 border-t border-[#F0ECE4] dark:border-[#23272F] flex justify-between items-center">
-                <button onclick="closeModal('lessonModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] text-xs font-bold text-[#656A73] dark:text-[#9BA1AD]">Tutup</button>
-                <button id="lessonModalQuizBtn" class="px-5 py-2 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                    <span>Lanjut ke Asesmen Uji Kompetensi</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </button>
+            <div id="lessonModalContent" class="flex-1 overflow-y-auto py-4 text-xs"></div>
+            <div class="pt-4 border-t border-white/10 flex justify-between items-center">
+                <button onclick="closeModal('lessonModal')" class="apple-btn-secondary text-xs">Tutup</button>
+                <button id="lessonModalQuizBtn" class="apple-btn-primary text-xs">Lanjut ke Asesmen</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Detail Log Sesi Pendampingan -->
-    <div id="sessionDetailModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
-            <div class="flex justify-between items-start mb-4 pb-3 border-b border-[#F0ECE4] dark:border-[#23272F]">
+    <!-- Session Detail Modal -->
+    <div id="sessionDetailModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-6 w-full max-w-lg border border-white/15">
+            <div class="flex justify-between items-start mb-4 pb-3 border-b border-white/10">
                 <div>
-                    <span id="sessDetailId" class="text-[11px] font-bold text-[#C85A32] dark:text-[#E07A5F]">Log Sesi #SES-01</span>
-                    <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8] mt-0.5">Detail Log Aktivitas Pendampingan</h3>
+                    <span id="sessDetailId" class="text-[11px] font-semibold text-[#0071E3]">Log Sesi #SES-01</span>
+                    <h3 class="font-bold text-base text-white mt-0.5">Detail Log Aktivitas Pendampingan</h3>
                 </div>
-                <button onclick="closeModal('sessionDetailModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
+                <button onclick="closeModal('sessionDetailModal')" class="text-[#86868B] hover:text-white"><span class="material-symbols-outlined">close</span></button>
             </div>
             <div class="space-y-3 text-xs">
-                <div class="grid grid-cols-2 gap-3 p-3 bg-[#F6F3ED] dark:bg-[#181B20] rounded-2xl">
-                    <div>
-                        <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">PIB Bertugas</span>
-                        <strong id="sessDetailPIB" class="text-[#1C2024] dark:text-[#F2F4F8]">Rina Maharani, S.Pd</strong>
-                    </div>
-                    <div>
-                        <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Sekolah & Kelas</span>
-                        <strong id="sessDetailSchool" class="text-[#1C2024] dark:text-[#F2F4F8]">SDN Harapan 1 — Kelas 4A</strong>
-                    </div>
+                <div class="p-3 bg-white/5 rounded-xl border border-white/10">
+                    <span class="text-[#86868B] text-[10px] block uppercase font-semibold">PIB Bertugas</span>
+                    <strong id="sessDetailPIB" class="text-white">Rina Maharani, S.Pd</strong>
                 </div>
                 <div>
-                    <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Siswa Didampingi</span>
-                    <p id="sessDetailStudent" class="text-xs font-bold text-[#1C2024] dark:text-[#F2F4F8]">Ananda Fikri (Autism Spectrum)</p>
+                    <span class="text-[#86868B] text-[10px] block uppercase font-semibold">Sekolah & Siswa</span>
+                    <p id="sessDetailSchool" class="text-white font-medium"></p>
+                    <p id="sessDetailStudent" class="text-[#30D158]"></p>
                 </div>
-                <div>
-                    <span class="text-[#8F95A0] text-[10px] block uppercase font-bold">Materi & Aktivitas</span>
-                    <p id="sessDetailActivity" class="text-xs text-[#1C2024] dark:text-[#F2F4F8]">Matematika Pecahan Adaptif</p>
-                </div>
-                <div class="p-3 bg-white dark:bg-[#121418] border border-[#EAE4D9] dark:border-[#23272F] rounded-xl">
-                    <span class="text-[#8F95A0] text-[10px] block uppercase font-bold mb-1">Catatan Modifikasi & Kemandirian Siswa</span>
-                    <p id="sessDetailNotes" class="text-xs text-[#656A73] dark:text-[#9BA1AD] leading-relaxed">Instruksi disederhanakan dengan kartu pecahan visual. Siswa mampu menyelesaikan 2 soal mandiri tanpa tantrum.</p>
+                <div class="p-3 bg-white/5 border border-white/10 rounded-xl">
+                    <span class="text-[#86868B] text-[10px] block uppercase font-semibold mb-1">Catatan Observasi</span>
+                    <p id="sessDetailNotes" class="text-[#86868B] leading-relaxed"></p>
                 </div>
             </div>
-            <div class="mt-5 pt-3 border-t border-[#F0ECE4] dark:border-[#23272F] flex justify-between items-center">
+            <div class="mt-5 pt-3 border-t border-white/10 flex justify-between items-center">
                 <div id="sessDetailVerifBadge"></div>
-                <button onclick="closeModal('sessionDetailModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold text-xs">Tutup</button>
+                <button onclick="closeModal('sessionDetailModal')" class="apple-btn-secondary text-xs">Tutup</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Asesmen Quiz -->
-    <div id="quizModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div id="quizModalContent" class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-lg shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
-            <!-- Injected by js/app.js -->
-        </div>
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div id="quizModalContent" class="apple-card p-6 w-full max-w-lg border border-white/15"></div>
     </div>
 
-    <!-- Modal: Sertifikat Digital Resmi -->
-    <div id="certModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-8 w-full max-w-xl shadow-2xl border-4 border-[#C85A32]/20 relative glass-panel">
-            <button onclick="closeModal('certModal')" class="absolute top-4 right-4 text-[#8F95A0] hover:text-[#1C2024]">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-            <div class="text-center space-y-3">
-                <div class="w-12 h-12 rounded-xl bg-[#C85A32] text-white flex items-center justify-center mx-auto font-bold text-xl shadow-md">
-                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
-                    </svg>
+    <!-- Certificate Modal -->
+    <div id="certModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-8 w-full max-w-xl border-2 border-[#0071E3]/30 text-center space-y-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#0071E3] block">Kementerian Pendidikan • Inklusi Nasional</span>
+            <h3 class="text-2xl font-bold text-white">SERTIFIKASI RESMI PENDAMPING INKLUSI</h3>
+            <p class="text-xs text-[#86868B]">Diberikan kepada:</p>
+            <h4 id="certRecipientName" class="text-xl font-bold text-[#0071E3]">Rina Maharani, S.Pd</h4>
+            <p class="text-xs text-[#86868B] max-w-md mx-auto leading-relaxed">
+                Telah menyelesaikan 8 Modul Kompetensi (60 Jam Pelatihan) dengan predikat <strong>Sangat Memuaskan</strong>.
+            </p>
+            <div class="pt-4 flex justify-between items-end border-t border-white/10 text-xs">
+                <div class="text-left">
+                    <p class="font-bold text-white">Dr. Sari Wulandari, M.Pd</p>
+                    <p class="text-[10px] text-[#86868B]">GPK Koordinator</p>
                 </div>
-                <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#C85A32] dark:text-[#E07A5F] block">Kementerian Pendidikan • Program Inklusi Nasional</span>
-                <h3 class="font-heading font-extrabold text-xl text-[#1C2024] dark:text-[#F2F4F8]">SERTIFIKASI RESMI PENDAMPING INKLUSI</h3>
-                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD]">Diberikan kepada:</p>
-                <h4 id="certRecipientName" class="font-heading font-extrabold text-lg text-[#C85A32] dark:text-[#E07A5F]">Rina Maharani, S.Pd</h4>
-                <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] max-w-md mx-auto leading-relaxed">
-                    Telah menyelesaikan program kompetensi <strong>Pendamping Inklusi Bersertifikat (PIB)</strong> 8 Modul (60 Jam Pelatihan) dengan predikat <strong>Sangat Memuaskan (Nilai: 96/100)</strong>.
-                </p>
-                <div class="pt-4 flex justify-between items-end border-t border-[#EAE4D9] dark:border-[#23272F] text-xs">
-                    <div class="text-left">
-                        <p class="font-bold text-[#1C2024] dark:text-[#F2F4F8]">Dr. Sari Wulandari, M.Pd</p>
-                        <p class="text-[10px] text-[#8F95A0]">GPK Koordinator Wilayah</p>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-[10px] font-bold text-[#5B6E43] block">ID: CERT-PIB-2026-089</span>
-                        <span class="text-[9px] text-[#8F95A0]">Tervalidasi Digital & Sah</span>
-                    </div>
-                </div>
+                <span class="text-[10px] font-bold text-[#30D158]">ID: CERT-PIB-2026-089</span>
             </div>
-            <div class="mt-6 flex justify-center gap-2">
-                <button onclick="window.print()" class="px-5 py-2 rounded-xl bg-[#C85A32] hover:bg-[#B04A25] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-sm">print</span> Cetak PDF
-                </button>
+            <div class="pt-4 flex justify-center gap-2">
+                <button onclick="window.print()" class="apple-btn-primary text-xs">Cetak PDF</button>
+                <button onclick="closeModal('certModal')" class="apple-btn-secondary text-xs">Tutup</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Tambah PIB -->
-    <div id="addPibModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Tambah Pendamping Inklusi (PIB)</h3>
-                <button onclick="closeModal('addPibModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <form onsubmit="event.preventDefault(); const p=window.store.addPIB({name:this.pName.value, region:this.pRegion.value, phone:this.pPhone.value, email:this.pEmail.value, competencies:[this.pComp.value]}); closeModal('addPibModal'); showToast('PIB ' + p.name + ' berhasil ditambahkan!', 'success'); renderPIBDirectory();" class="space-y-3 text-xs">
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Nama Lengkap & Gelar</label>
-                    <input name="pName" type="text" required placeholder="Contoh: Fatimah Zahra, S.Pd" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Wilayah</label>
-                        <input name="pRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">No. WhatsApp</label>
-                        <input name="pPhone" type="text" placeholder="+62 812-xxx" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Email</label>
-                    <input name="pEmail" type="email" placeholder="nama@pib.id" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kompetensi Spesialis</label>
-                    <input name="pComp" type="text" required placeholder="Autism Spectrum / Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
+    <!-- Add PIB Modal -->
+    <div id="addPibModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-6 w-full max-w-md border border-white/15">
+            <h3 class="font-bold text-base text-white mb-4">Tambah Pendamping Inklusi</h3>
+            <form onsubmit="event.preventDefault(); const p=window.store.addPIB({name:this.pName.value, region:this.pRegion.value, phone:this.pPhone.value, email:this.pEmail.value, competencies:[this.pComp.value]}); closeModal('addPibModal'); showToast('PIB ' + p.name + ' berhasil didaftarkan!', 'success'); renderPIBDirectory();" class="space-y-3 text-xs">
+                <input name="pName" type="text" required placeholder="Nama Lengkap" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="pRegion" type="text" required placeholder="Wilayah" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="pEmail" type="email" placeholder="nama@pib.id" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="pComp" type="text" required placeholder="Spesialisasi Keahlian" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
                 <div class="pt-3 flex justify-end gap-2">
-                    <button type="button" onclick="closeModal('addPibModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Simpan</button>
+                    <button type="button" onclick="closeModal('addPibModal')" class="apple-btn-secondary text-xs">Batal</button>
+                    <button type="submit" class="apple-btn-primary text-xs">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Modal: Daftarkan Sekolah Mitra Baru -->
-    <div id="addSchoolModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Daftarkan Sekolah Mitra Baru</h3>
-                <button onclick="closeModal('addSchoolModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <form onsubmit="event.preventDefault(); const s=window.store.addSchool({name:this.schName.value, region:this.schRegion.value, level:this.schLevel.value, requiredPIB:parseInt(this.schReqPIB.value), studentsCount:parseInt(this.schStudents.value), requiredCompetencies:[this.schComps.value], coordinatorName:this.schCoord.value, address:this.schAddr.value, schedule:'Senin - Jumat'}); closeModal('addSchoolModal'); showToast('Sekolah ' + s.name + ' berhasil didaftarkan!', 'success'); renderSchoolDirectory();" class="space-y-3 text-xs">
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Nama Satuan Pendidikan</label>
-                    <input name="schName" type="text" required placeholder="Contoh: SMAN 2 Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Wilayah</label>
-                        <input name="schRegion" type="text" required placeholder="Sukamaju" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Jenjang</label>
-                        <select name="schLevel" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                            <option value="SD">SD</option>
-                            <option value="SMP">SMP</option>
-                            <option value="SMA">SMA</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kebutuhan PIB</label>
-                        <input name="schReqPIB" type="number" value="2" min="1" max="10" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Jumlah Siswa Inklusi</label>
-                        <input name="schStudents" type="number" value="8" min="1" required class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Spesialisasi Dibutuhkan</label>
-                    <input name="schComps" type="text" required placeholder="Autism Spectrum, ADHD, Disleksia" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Koordinator Sekolah & Alamat</label>
-                    <input name="schCoord" type="text" required placeholder="Nama Koordinator" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none mb-1.5">
-                    <input name="schAddr" type="text" required placeholder="Alamat lengkap sekolah" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
+    <!-- Add School Modal -->
+    <div id="addSchoolModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-6 w-full max-w-md border border-white/15">
+            <h3 class="font-bold text-base text-white mb-4">Daftarkan Sekolah Mitra</h3>
+            <form onsubmit="event.preventDefault(); const s=window.store.addSchool({name:this.schName.value, region:this.schRegion.value, level:this.schLevel.value, requiredPIB:parseInt(this.schReqPIB.value), studentsCount:parseInt(this.schStudents.value), requiredCompetencies:[this.schComps.value], coordinatorName:this.schCoord.value, address:this.schAddr.value, schedule:'Senin - Jumat'}); closeModal('addSchoolModal'); showToast('Sekolah ' + s.name + ' didaftarkan!', 'success'); renderSchoolDirectory();" class="space-y-3 text-xs">
+                <input name="schName" type="text" required placeholder="Nama Sekolah" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="schRegion" type="text" required placeholder="Wilayah" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <select name="schLevel" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                    <option value="SD" class="bg-[#1C1C1E]">SD</option>
+                    <option value="SMP" class="bg-[#1C1C1E]">SMP</option>
+                    <option value="SMA" class="bg-[#1C1C1E]">SMA</option>
+                </select>
+                <input name="schComps" type="text" required placeholder="Kebutuhan Hambatan Siswa" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="schCoord" type="text" required placeholder="Koordinator Sekolah" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="schAddr" type="text" required placeholder="Alamat" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
                 <div class="pt-3 flex justify-end gap-2">
-                    <button type="button" onclick="closeModal('addSchoolModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl bg-[#5B6E43] text-white font-bold">Simpan Sekolah</button>
+                    <button type="button" onclick="closeModal('addSchoolModal')" class="apple-btn-secondary text-xs">Batal</button>
+                    <button type="submit" class="apple-btn-primary text-xs">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Modal: Penugasan PIB ke Sekolah -->
-    <div id="assignModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
-            <div class="flex justify-between items-center mb-3">
-                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Penugasan PIB ke Sekolah Mitra</h3>
-                <button onclick="closeModal('assignModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <p class="text-xs text-[#656A73] dark:text-[#9BA1AD] mb-3">Target Sekolah: <strong id="assignTargetSchoolName" class="text-[#1C2024] dark:text-[#F2F4F8]"></strong></p>
-            <div class="space-y-3 text-xs">
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Pilih PIB Tersedia</label>
-                    <select id="assignPibSelect" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                        <!-- Populated dynamically -->
-                    </select>
-                </div>
-                <div class="p-3 bg-[#5B6E43]/10 rounded-xl border border-[#5B6E43]/20 text-[#5B6E43]">
-                    <span class="font-bold block mb-0.5">Kesesuaian Matching Terverifikasi</span>
-                    <p class="text-[11px]">Jarak tempuh &lt; 3 km dan kompetensi pendamping sesuai kebutuhan kelas inklusi.</p>
-                </div>
-                <div class="pt-2 flex justify-end gap-2">
-                    <button onclick="closeModal('assignModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
-                    <button onclick="handleAssignConfirm()" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Konfirmasi Penugasan</button>
-                </div>
+    <!-- Assign Modal -->
+    <div id="assignModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-6 w-full max-w-md border border-white/15">
+            <h3 class="font-bold text-base text-white mb-2">Penugasan PIB ke Sekolah Mitra</h3>
+            <p class="text-xs text-[#86868B] mb-3">Target: <strong id="assignTargetSchoolName" class="text-white"></strong></p>
+            <select id="assignPibSelect" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs outline-none mb-4"></select>
+            <div class="flex justify-end gap-2">
+                <button onclick="closeModal('assignModal')" class="apple-btn-secondary text-xs">Batal</button>
+                <button onclick="handleAssignConfirm()" class="apple-btn-primary text-xs">Konfirmasi</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Catat Sesi Baru -->
-    <div id="addSessionModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-white dark:bg-[#121418] rounded-3xl p-6 w-full max-w-md shadow-2xl border border-[#EAE4D9] dark:border-[#23272F] glass-panel">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base text-[#1C2024] dark:text-[#F2F4F8]">Catat Sesi Pendampingan Baru</h3>
-                <button onclick="closeModal('addSessionModal')" class="text-[#8F95A0] hover:text-[#1C2024]"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <form onsubmit="event.preventDefault(); window.store.addSession({pibName:this.sPib.value, schoolName:this.sSchool.value, className:this.sClass.value, studentName:this.sStudent.value, activity:this.sActivity.value, notes:this.sNotes.value, time:'08:00 - 10:00'}); closeModal('addSessionModal'); showToast('Sesi pendampingan baru dicatat!', 'success'); renderSessionsList();" class="space-y-3 text-xs">
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">PIB Bertugas</label>
-                    <input name="sPib" type="text" required value="Rina Maharani, S.Pd" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Sekolah</label>
-                        <input name="sSchool" type="text" required value="SDN Harapan 1" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                    <div>
-                        <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Kelas</label>
-                        <input name="sClass" type="text" required value="Kelas 4A" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                    </div>
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Nama Siswa Didampingi</label>
-                    <input name="sStudent" type="text" required placeholder="Ananda Fikri (Autism Spectrum)" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Materi / Aktivitas Pokok</label>
-                    <input name="sActivity" type="text" required placeholder="Matematika Pecahan Adaptif" class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none">
-                </div>
-                <div>
-                    <label class="font-bold text-[#1C2024] dark:text-[#F2F4F8] block mb-1">Catatan Modifikasi & Observasi</label>
-                    <textarea name="sNotes" rows="2" placeholder="Siswa menggunakan kartu visual..." class="w-full p-2.5 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] bg-white dark:bg-[#181B20] text-xs outline-none"></textarea>
-                </div>
-                <div class="pt-2 flex justify-end gap-2">
-                    <button type="button" onclick="closeModal('addSessionModal')" class="px-4 py-2 rounded-xl border border-[#EAE4D9] dark:border-[#23272F] font-bold">Batal</button>
-                    <button type="submit" class="px-5 py-2 rounded-xl bg-[#C85A32] text-white font-bold">Simpan & Ajukan</button>
+    <!-- Add Session Modal -->
+    <div id="addSessionModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="apple-card p-6 w-full max-w-md border border-white/15">
+            <h3 class="font-bold text-base text-white mb-4">Catat Sesi Pendampingan</h3>
+            <form onsubmit="event.preventDefault(); window.store.addSession({pibName:this.sPib.value, schoolName:this.sSchool.value, className:this.sClass.value, studentName:this.sStudent.value, activity:this.sActivity.value, notes:this.sNotes.value, time:'08:00 - 10:00'}); closeModal('addSessionModal'); showToast('Sesi pendampingan dicatat!', 'success'); renderSessionsList();" class="space-y-3 text-xs">
+                <input name="sPib" type="text" required value="Rina Maharani, S.Pd" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="sSchool" type="text" required value="SDN Harapan 1" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="sClass" type="text" required value="Kelas 4A" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="sStudent" type="text" required placeholder="Nama Siswa (Hambatan Belajar)" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <input name="sActivity" type="text" required placeholder="Aktivitas Pokok" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none">
+                <textarea name="sNotes" rows="2" placeholder="Catatan Modifikasi Instruksi" class="w-full p-2.5 rounded-xl bg-white/5 border border-white/10 text-white outline-none"></textarea>
+                <div class="pt-3 flex justify-end gap-2">
+                    <button type="button" onclick="closeModal('addSessionModal')" class="apple-btn-secondary text-xs">Batal</button>
+                    <button type="submit" class="apple-btn-primary text-xs">Simpan & Ajukan</button>
                 </div>
             </form>
         </div>
