@@ -21,7 +21,7 @@
     <div id="toastContainer" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- ========================================================================= -->
-    <!-- 1. GLOBAL NAVIGATION BAR (44px, #000000)                                  -->
+    <!-- 1. GLOBAL NAVIGATION BAR (Height: exactly 44px, #000000)                  -->
     <!-- ========================================================================= -->
     <header class="component-global-nav fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12">
         <div class="max-w-6xl w-full mx-auto flex items-center justify-between">
@@ -33,7 +33,7 @@
                 <span class="typo-body-strong text-white tracking-tight text-sm">SAPA Inklusi</span>
             </a>
 
-            <!-- Nav Links -->
+            <!-- Nav Links (Desktop) -->
             <nav class="hidden md:flex items-center gap-8 typo-nav-link text-[#cccccc]">
                 <a href="javascript:void(0)" onclick="navigateTo('dashboard')" data-view="dashboard" class="nav-item hover:text-white transition-colors">Ringkasan</a>
                 <a href="javascript:void(0)" onclick="navigateTo('microcredential')" data-view="microcredential" class="nav-item hover:text-white transition-colors">Microcredential</a>
@@ -47,12 +47,12 @@
 
             <!-- Search & Actions -->
             <div class="flex items-center gap-3">
-                <button onclick="openCommandMenu()" title="Search (⌘K)" class="text-[#cccccc] hover:text-white transition-colors p-1.5 flex items-center gap-1">
+                <button onclick="openCommandMenu()" title="Cari atau Navigasi (⌘K)" class="text-[#cccccc] hover:text-white transition-colors p-1 flex items-center gap-1">
                     <span class="material-symbols-outlined text-base">search</span>
                     <kbd class="hidden sm:inline-block px-1.5 py-0.2 rounded bg-white/10 text-[10px] font-mono text-[#cccccc]">⌘K</kbd>
                 </button>
 
-                <div class="hidden lg:flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded-full text-xs text-white">
+                <div class="hidden lg:flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-full text-xs text-white">
                     <span class="text-[#7a7a7a]">Peran:</span>
                     <select id="topRoleSelector" onchange="window.store.setRole(this.value); updateUserProfileUI(); showToast('Peran aktif: ' + this.value, 'info')" class="bg-transparent text-white font-medium outline-none cursor-pointer text-xs">
                         <option value="GPK_KOORDINATOR" class="bg-[#1d1d1f] text-white">GPK Koordinator</option>
@@ -72,9 +72,9 @@
     </header>
 
     <!-- ========================================================================= -->
-    <!-- 2. SUB-NAV FROSTED BAR (52px, #f5f5f7 @ 80%)                              -->
+    <!-- 2. SUB-NAV FROSTED BAR (Height: exactly 52px, Top: 44px, #f5f5f7 @ 80%)    -->
     <!-- ========================================================================= -->
-    <div class="component-sub-nav-frosted fixed top-11 left-0 right-0 z-40 flex items-center px-6 md:px-12">
+    <div class="component-sub-nav-frosted fixed top-[44px] left-0 right-0 z-40 flex items-center px-6 md:px-12">
         <div class="max-w-6xl w-full mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <span class="typo-tagline text-[#1d1d1f]">SAPA Inklusi</span>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-                <div class="hidden md:flex items-center gap-1.5">
+                <div class="hidden md:flex items-center gap-1">
                     <button onclick="navigateTo('dashboard')" data-tab="dashboard" class="subnav-pill active">Ringkasan</button>
                     <button onclick="navigateTo('microcredential')" data-tab="microcredential" class="subnav-pill">8 Modul</button>
                     <button onclick="navigateTo('asisten-ai')" data-tab="asisten-ai" class="subnav-pill">AI Kelas</button>
@@ -97,8 +97,8 @@
         </div>
     </div>
 
-    <!-- MAIN BODY (TOP PADDING FOR DUAL NAV) -->
-    <main class="flex-1 pt-24 w-full">
+    <!-- MAIN BODY (Exact 96px top padding for 44px + 52px dual nav) -->
+    <main class="flex-1 pt-[96px] w-full">
 
         <!-- ========================================================================= -->
         <!-- 0. LOGIN GATEWAY (PORTAL AUTENTIKASI UTAMA)                               -->
@@ -116,19 +116,19 @@
                     <div class="pt-4 space-y-2">
                         <span class="typo-fine-print text-[#7a7a7a] font-semibold block">Pilih Akun Demo Cepat (1-Klik):</span>
                         <div class="grid grid-cols-2 gap-2 text-xs">
-                            <button onclick="autoFillDemo('gpk@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors">
+                            <button onclick="autoFillDemo('gpk@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors border border-[#e0e0e0]">
                                 <strong class="text-[#1d1d1f] block text-xs">Dr. Sari Wulandari</strong>
                                 <span class="text-[11px] text-[#7a7a7a]">GPK Koordinator</span>
                             </button>
-                            <button onclick="autoFillDemo('sekolah@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors">
+                            <button onclick="autoFillDemo('sekolah@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors border border-[#e0e0e0]">
                                 <strong class="text-[#1d1d1f] block text-xs">Ibu Nurhayati</strong>
                                 <span class="text-[11px] text-[#7a7a7a]">SDN Harapan 1</span>
                             </button>
-                            <button onclick="autoFillDemo('dinas@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors">
+                            <button onclick="autoFillDemo('dinas@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors border border-[#e0e0e0]">
                                 <strong class="text-[#1d1d1f] block text-xs">Drs. Hendra Kusuma</strong>
                                 <span class="text-[11px] text-[#7a7a7a]">Dinas Pendidikan</span>
                             </button>
-                            <button onclick="autoFillDemo('pib@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors">
+                            <button onclick="autoFillDemo('pib@sapa.id')" class="p-3 rounded-xl bg-[#f5f5f7] hover:bg-[#e0e0e0] text-left transition-colors border border-[#e0e0e0]">
                                 <strong class="text-[#1d1d1f] block text-xs">Rina Maharani</strong>
                                 <span class="text-[11px] text-[#7a7a7a]">Pendamping Inklusi</span>
                             </button>
@@ -172,7 +172,7 @@
             <!-- 1. DASHBOARD VIEW (ALTERNATING TILES) -->
             <section id="view-dashboard" class="view-pane active">
                 
-                <!-- Tile 1: Hero Tile Light (White) -->
+                <!-- Tile 1: Hero Tile Light (White Canvas) -->
                 <div class="product-tile-light text-center">
                     <div class="max-w-4xl mx-auto space-y-4">
                         <span class="typo-caption-strong text-[#0066cc] uppercase tracking-wider block">SAPA Inklusi</span>
@@ -452,11 +452,11 @@
                                 <table class="w-full text-left text-xs border-collapse">
                                     <thead>
                                         <tr class="bg-[#f5f5f7] border-b border-[#e0e0e0] text-[#7a7a7a] uppercase text-[10px] font-semibold">
-                                            <th class="py-3 px-4">Nama PIB</th>
-                                            <th class="py-3 px-4">Wilayah</th>
-                                            <th class="py-3 px-4">Sertifikasi</th>
-                                            <th class="py-3 px-4">Keahlian</th>
-                                            <th class="py-3 px-4">Status</th>
+                                            <th class="py-3.5 px-4">Nama PIB</th>
+                                            <th class="py-3.5 px-4">Wilayah</th>
+                                            <th class="py-3.5 px-4">Sertifikasi</th>
+                                            <th class="py-3.5 px-4">Keahlian</th>
+                                            <th class="py-3.5 px-4">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="pibTableBody" class="divide-y divide-[#e0e0e0]"></tbody>
@@ -489,7 +489,7 @@
                 </div>
             </section>
 
-            <!-- 5. SEKOLAH MITRA & MATCHING VIEW WITH CONFIGURATOR CHIPS (PARCHMENT TILE) -->
+            <!-- 5. SEKOLAH MITRA & MATCHING VIEW (PARCHMENT TILE) -->
             <section id="view-sekolah" class="view-pane product-tile-parchment">
                 <div class="max-w-6xl mx-auto space-y-8">
                     <div class="flex justify-between items-end">
@@ -592,12 +592,12 @@
                             <table class="w-full text-left text-xs border-collapse">
                                 <thead>
                                     <tr class="bg-[#f5f5f7] border-b border-[#e0e0e0] text-[#7a7a7a] uppercase text-[10px] font-semibold">
-                                        <th class="py-3 px-4">Tanggal & Jam</th>
-                                        <th class="py-3 px-4">PIB Bertugas</th>
-                                        <th class="py-3 px-4">Sekolah & Siswa</th>
-                                        <th class="py-3 px-4">Aktivitas & Catatan</th>
-                                        <th class="py-3 px-4">Status</th>
-                                        <th class="py-3 px-4 text-center">Verifikasi GPK</th>
+                                        <th class="py-3.5 px-4">Tanggal & Jam</th>
+                                        <th class="py-3.5 px-4">PIB Bertugas</th>
+                                        <th class="py-3.5 px-4">Sekolah & Siswa</th>
+                                        <th class="py-3.5 px-4">Aktivitas & Catatan</th>
+                                        <th class="py-3.5 px-4">Status</th>
+                                        <th class="py-3.5 px-4 text-center">Verifikasi GPK</th>
                                     </tr>
                                 </thead>
                                 <tbody id="sessionsTableBody" class="divide-y divide-[#e0e0e0]"></tbody>
@@ -907,7 +907,7 @@
     <div id="addPibModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="store-utility-card p-6 w-full max-w-md">
             <h3 class="typo-body-strong text-[#1d1d1f] mb-4">Tambah Pendamping Inklusi</h3>
-            <form onsubmit="event.preventDefault(); const p=window.store.addPIB({name:this.pName.value, region:this.pRegion.value, phone:this.pPhone.value, email:this.pEmail.value, competencies:[this.pComp.value]}); closeModal('addPibModal'); showToast('PIB ' + p.name + ' berhasil didaftarkan!', 'success'); renderPIBDirectory();" class="space-y-3 text-xs">
+            <form onsubmit="event.preventDefault(); const p=window.store.addPIB({name:this.pName.value, region:this.pRegion.value, phone:this.pPhone.value, email:this.pEmail.value, competencies:[this.pComp.value]}); this.reset(); closeModal('addPibModal'); showToast('PIB ' + p.name + ' berhasil didaftarkan!', 'success'); renderPIBDirectory();" class="space-y-3 text-xs">
                 <input name="pName" type="text" required placeholder="Nama Lengkap" class="search-input w-full">
                 <input name="pRegion" type="text" required placeholder="Wilayah" class="search-input w-full">
                 <input name="pEmail" type="email" placeholder="nama@pib.id" class="search-input w-full">
@@ -924,7 +924,7 @@
     <div id="addSchoolModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="store-utility-card p-6 w-full max-w-md">
             <h3 class="typo-body-strong text-[#1d1d1f] mb-4">Daftarkan Sekolah Mitra</h3>
-            <form onsubmit="event.preventDefault(); const s=window.store.addSchool({name:this.schName.value, region:this.schRegion.value, level:this.schLevel.value, requiredPIB:parseInt(this.schReqPIB.value), studentsCount:parseInt(this.schStudents.value), requiredCompetencies:[this.schComps.value], coordinatorName:this.schCoord.value, address:this.schAddr.value, schedule:'Senin - Jumat'}); closeModal('addSchoolModal'); showToast('Sekolah ' + s.name + ' didaftarkan!', 'success'); renderSchoolDirectory();" class="space-y-3 text-xs">
+            <form onsubmit="event.preventDefault(); const s=window.store.addSchool({name:this.schName.value, region:this.schRegion.value, level:this.schLevel.value, requiredPIB:parseInt(this.schReqPIB ? this.schReqPIB.value : 2) || 2, studentsCount:parseInt(this.schStudents ? this.schStudents.value : 3) || 3, requiredCompetencies:[this.schComps.value], coordinatorName:this.schCoord.value, address:this.schAddr.value, schedule:'Senin - Jumat'}); this.reset(); closeModal('addSchoolModal'); showToast('Sekolah ' + s.name + ' didaftarkan!', 'success'); renderSchoolDirectory();" class="space-y-3 text-xs">
                 <input name="schName" type="text" required placeholder="Nama Sekolah" class="search-input w-full">
                 <input name="schRegion" type="text" required placeholder="Wilayah" class="search-input w-full">
                 <select name="schLevel" class="search-input w-full">
@@ -960,7 +960,7 @@
     <div id="addSessionModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="store-utility-card p-6 w-full max-w-md">
             <h3 class="typo-body-strong text-[#1d1d1f] mb-4">Catat Sesi Pendampingan</h3>
-            <form onsubmit="event.preventDefault(); window.store.addSession({pibName:this.sPib.value, schoolName:this.sSchool.value, className:this.sClass.value, studentName:this.sStudent.value, activity:this.sActivity.value, notes:this.sNotes.value, time:'08:00 - 10:00'}); closeModal('addSessionModal'); showToast('Sesi pendampingan dicatat!', 'success'); renderSessionsList();" class="space-y-3 text-xs">
+            <form onsubmit="event.preventDefault(); window.store.addSession({pibName:this.sPib.value, schoolName:this.sSchool.value, className:this.sClass.value, studentName:this.sStudent.value, activity:this.sActivity.value, notes:this.sNotes.value, time:'08:00 - 10:00'}); this.reset(); closeModal('addSessionModal'); showToast('Sesi pendampingan dicatat!', 'success'); renderSessionsList();" class="space-y-3 text-xs">
                 <input name="sPib" type="text" required value="Rina Maharani, S.Pd" class="search-input w-full">
                 <input name="sSchool" type="text" required value="SDN Harapan 1" class="search-input w-full">
                 <input name="sClass" type="text" required value="Kelas 4A" class="search-input w-full">

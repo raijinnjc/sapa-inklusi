@@ -3,7 +3,7 @@
  * SAPA INKLUSI — Master Controller (Strict design.md Specification)
  * =========================================================================
  * Apple SF Pro Typography, Action Blue (#0066cc), Token Streaming AI,
- * Tabular Interpolation, Command Menu (⌘K).
+ * Tabular Interpolation, Command Menu (⌘K), Hybrid Backend Sync.
  */
 
 // Global State
@@ -13,6 +13,8 @@ let donutChartInstance = null;
 let radarChartInstance = null;
 let speechRec = null;
 let isRec = false;
+let currentSchoolFilter = 'ALL';
+let searchDebounceTimer = null;
 
 // ==========================================
 // TOAST NOTIFICATIONS (Apple Capsule)
@@ -108,8 +110,13 @@ function initCommandPalette() {
         }
         if (e.key === 'Escape') {
             closeCommandMenu();
+            closeAllModals();
         }
     });
+}
+
+function closeAllModals() {
+    document.querySelectorAll('[id$="Modal"]').forEach(m => m.classList.add('hidden'));
 }
 
 function toggleCommandMenu() {
@@ -241,7 +248,7 @@ function handleLoginSubmit(e) {
 
         checkAuthState();
         showToast(`Selamat datang, ${user.name}!`, "success");
-    }, 380);
+    }, 350);
 }
 
 function handleLogout() {
@@ -254,7 +261,7 @@ function handleLogout() {
 
 function updateUserProfileUI() {
     const roleSelector = document.getElementById('topRoleSelector');
-    if (roleSelector) {
+    if (roleSelector && window.store) {
         roleSelector.value = window.store.state.userRole;
     }
 }
@@ -334,14 +341,6 @@ function applyDashboardFilter() {
     animateCounter('kpiStudentVal', studentCount, 400);
 
     showToast(`Filter: ${region} • ${level}`, 'info');
-    renderDashboardCharts();
-}
-
-function resetDashboardFilter() {
-    document.getElementById('filterDashRegion').value = 'ALL';
-    document.getElementById('filterDashLevel').value = 'ALL';
-    triggerAllCounters();
-    showToast('Filter di-reset ke seluruh wilayah.', 'info');
     renderDashboardCharts();
 }
 
@@ -584,8 +583,10 @@ function toggleVoice() {
         try {
             speechRec.start();
             isRec = true;
-            document.getElementById('micButton').classList.add('bg-[#0066cc]');
-            document.getElementById('waveVisualizer').classList.remove('hidden');
+            const btn = document.getElementById('micButton');
+            if (btn) btn.classList.add('bg-[#0066cc]');
+            const wave = document.getElementById('waveVisualizer');
+            if (wave) wave.classList.remove('hidden');
         } catch(e) {}
     } else {
         speechRec.stop();
@@ -724,23 +725,24 @@ function selectPibDrawer(id) {
 }
 
 function filterPib() {
-    const q = document.getElementById('searchPib').value.toLowerCase();
-    const region = document.getElementById('filterPibRegion').value;
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+        const q = document.getElementById('searchPib').value.toLowerCase();
+        const region = document.getElementById('filterPibRegion').value;
 
-    const rows = document.querySelectorAll('#pibTableBody tr');
-    rows.forEach(r => {
-        const text = r.innerText.toLowerCase();
-        const mQ = !q || text.includes(q);
-        const mR = region === 'ALL' || text.includes(region.toLowerCase());
-        r.style.display = (mQ && mR) ? '' : 'none';
-    });
+        const rows = document.querySelectorAll('#pibTableBody tr');
+        rows.forEach(r => {
+            const text = r.innerText.toLowerCase();
+            const mQ = !q || text.includes(q);
+            const mR = region === 'ALL' || text.includes(region.toLowerCase());
+            r.style.display = (mQ && mR) ? '' : 'none';
+        });
+    }, 150);
 }
 
 // ==========================================
 // 5. SEKOLAH MITRA & MATCHING VIEW
 // ==========================================
-let currentSchoolFilter = 'ALL';
-
 function toggleConfigChip(buttonEl, filterValue) {
     document.querySelectorAll('.configurator-option-chip').forEach(el => el.classList.remove('selected'));
     buttonEl.classList.add('selected');
@@ -1024,8 +1026,11 @@ function copyText(txt) {
 }
 
 // Global Initialization
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
     initCommandPalette();
     initVoiceAI();
     checkAuthState();
+    if (window.store && typeof window.store.syncWithBackend === 'function') {
+        await window.store.syncWithBackend();
+    }
 });
