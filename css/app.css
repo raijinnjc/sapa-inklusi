@@ -1,14 +1,14 @@
 /**
  * =========================================================================
- * SAPA INKLUSI — APPLE DESIGN SYSTEM (Strict Specification from design.md)
+ * SAPA INKLUSI — APPLE DESIGN SYSTEM (Full design.md Implementation)
  * =========================================================================
- * Photography-first, edge-to-edge alternating light & dark tiles,
- * SF Pro Display / Text typography, Action Blue (#0066cc) single accent,
- * 17px body copy, single product shadow, 44px/52px dual navigation.
+ * Pure Cupertino: Action Blue (#0066cc), SF Pro Typography, Full-Bleed Alternating Tiles,
+ * Single Product Shadow, 17px Body, 56px/40px Negative Letter-Spacing Display,
+ * Configurator Option Chips, Floating Sticky Bar, Environment Quote Card.
  */
 
 :root {
-    /* Colors */
+    /* Colors from design.md */
     --color-primary: #0066cc;
     --color-primary-focus: #0071e3;
     --color-primary-on-dark: #2997ff;
@@ -37,7 +37,7 @@
     --color-on-primary: #ffffff;
     --color-on-dark: #ffffff;
 
-    /* Spacing */
+    /* Spacing from design.md */
     --spacing-xxs: 4px;
     --spacing-xs: 8px;
     --spacing-sm: 12px;
@@ -47,7 +47,7 @@
     --spacing-xxl: 48px;
     --spacing-section: 80px;
 
-    /* Radius */
+    /* Radius from design.md */
     --radius-none: 0px;
     --radius-xs: 5px;
     --radius-sm: 8px;
@@ -55,7 +55,7 @@
     --radius-lg: 18px;
     --radius-pill: 9999px;
 
-    /* Single Product Shadow Token */
+    /* Single System Product Shadow */
     --shadow-product: 3px 5px 30px 0 rgba(0, 0, 0, 0.22);
 }
 
@@ -81,7 +81,7 @@ body {
 }
 
 /* ========================================================================= */
-/* TYPOGRAPHY TOKENS                                                         */
+/* TYPOGRAPHY TOKENS (Strict Match from design.md)                           */
 /* ========================================================================= */
 .typo-hero-display {
     font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -212,10 +212,10 @@ body {
 }
 
 /* ========================================================================= */
-/* COMPONENT STYLES                                                          */
+/* COMPONENT SPECIFICATIONS (Strict design.md)                               */
 /* ========================================================================= */
 
-/* 1. Navigation */
+/* 1. Global Navigation (44px) & Subnav (52px) */
 .component-global-nav {
     background-color: var(--color-surface-black);
     color: var(--color-on-dark);
@@ -398,7 +398,7 @@ body {
     text-decoration: underline;
 }
 
-/* 3. Product Tiles (Edge-to-Edge 0px radius, 80px pad) */
+/* 3. Product Tiles (Full-bleed 0px radius, 80px pad) */
 .product-tile-light {
     background-color: var(--color-canvas);
     color: var(--color-ink);
@@ -439,7 +439,7 @@ body {
     width: 100%;
 }
 
-/* 4. Store Utility Cards & Inputs */
+/* 4. Store Utility Cards & Configurator Chips */
 .store-utility-card {
     background-color: var(--color-canvas);
     color: var(--color-ink);
@@ -461,15 +461,22 @@ body {
     letter-spacing: -0.224px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--color-hairline);
-    padding: 12px 16px;
+    padding: 12px 18px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.15s ease;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+.configurator-option-chip:hover {
+    border-color: var(--color-ink-muted-48);
 }
 .configurator-option-chip.selected {
     border: 2px solid var(--color-primary-focus);
+    background-color: rgba(0, 102, 204, 0.04);
+    color: var(--color-primary);
+    font-weight: 600;
 }
 
 .search-input {
@@ -490,21 +497,33 @@ body {
     border-color: var(--color-primary);
 }
 
+/* 5. Floating Sticky Bar Component */
 .floating-sticky-bar {
-    background-color: rgba(245, 245, 247, 0.80);
+    background-color: rgba(245, 245, 247, 0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     color: var(--color-ink);
     height: 64px;
     padding: 12px 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* 5. Product Image Shadow (Only shadow in system) */
+/* 6. Environment Quote Card Component */
+.environment-quote-card {
+    background-color: var(--color-surface-tile-1);
+    color: var(--color-on-dark);
+    border-radius: var(--radius-none);
+    padding: var(--spacing-section) var(--spacing-lg);
+    text-align: center;
+}
+
+/* 7. Product Image Shadow (Only shadow in system) */
 .product-shadow {
     box-shadow: var(--shadow-product);
 }
 
-/* 6. Apple Device Frame */
+/* 8. Apple Device Frame */
 .apple-device-frame {
     width: 360px;
     height: 720px;
@@ -515,7 +534,7 @@ body {
     background: var(--color-canvas);
 }
 
-/* 7. Footer Styles */
+/* 9. Footer Component */
 .footer-component {
     background-color: var(--color-canvas-parchment);
     color: var(--color-ink-muted-80);
@@ -536,7 +555,7 @@ body {
     text-decoration: underline;
 }
 
-/* 8. Subnav Pill Switcher */
+/* 10. Subnav Pill Switcher */
 .subnav-pill {
     padding: 6px 16px;
     border-radius: var(--radius-pill);
@@ -552,7 +571,7 @@ body {
     font-weight: 600;
 }
 
-/* 9. SPA Transitions */
+/* 11. SPA Transitions */
 .view-pane {
     opacity: 0;
     transform: translateY(8px);

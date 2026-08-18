@@ -739,11 +739,35 @@ function filterPib() {
 // ==========================================
 // 5. SEKOLAH MITRA & MATCHING VIEW
 // ==========================================
+let currentSchoolFilter = 'ALL';
+
+function toggleConfigChip(buttonEl, filterValue) {
+    document.querySelectorAll('.configurator-option-chip').forEach(el => el.classList.remove('selected'));
+    buttonEl.classList.add('selected');
+    currentSchoolFilter = filterValue;
+    renderSchoolDirectory();
+    showToast(`Filter aktif: ${filterValue}`, 'info');
+}
+
 function renderSchoolDirectory() {
-    const list = window.store ? window.store.state.schools : [];
+    let list = window.store ? window.store.state.schools : [];
     const container = document.getElementById('schoolListContainer');
     if (!container) return;
     container.innerHTML = '';
+
+    if (currentSchoolFilter !== 'ALL') {
+        list = list.filter(s => {
+            if (currentSchoolFilter === 'SD' || currentSchoolFilter === 'SMP' || currentSchoolFilter === 'SMA') {
+                return s.level === currentSchoolFilter;
+            }
+            return s.requiredCompetencies.some(c => c.toLowerCase().includes(currentSchoolFilter.toLowerCase()));
+        });
+    }
+
+    if (list.length === 0) {
+        container.innerHTML = `<div class="store-utility-card text-center p-8 typo-caption text-[#7a7a7a]">Tidak ada sekolah mitra yang cocok dengan filter saat ini.</div>`;
+        return;
+    }
 
     list.forEach(s => {
         const isNeed = s.status === 'BUTUH_PENDAMPING';
