@@ -203,34 +203,34 @@
                 <div class="product-tile-dark">
                     <div class="max-w-6xl mx-auto space-y-12">
                         <div class="text-center space-y-2">
-                            <span class="typo-caption-strong text-[#48CAE4] uppercase tracking-wider block">Metrik Dampak Nasional</span>
+                            <span class="typo-caption-strong text-[#F4A261] uppercase tracking-wider block">Metrik Dampak Nasional</span>
                             <h2 class="typo-display-lg text-white">Pertumbuhan Ekosistem Inklusif.</h2>
                         </div>
 
                         <!-- 4 Metric Cards in Dark Tile -->
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                            <div class="p-6 rounded-2xl bg-[#2a2a2c]">
+                            <div class="p-6 rounded-2xl bg-[#2a2a2c] store-utility-card border-none hover:bg-[#333336]">
                                 <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">PIB Terdaftar</span>
                                 <div id="kpiPIBVal" class="typo-hero-display text-white mt-1">128</div>
-                                <span class="typo-fine-print text-[#48CAE4] mt-2 block">+12 lulusan baru bulan ini</span>
+                                <span class="typo-fine-print text-[#8E9F6A] mt-2 block">+12 lulusan baru bulan ini</span>
                             </div>
 
-                            <div class="p-6 rounded-2xl bg-[#2a2a2c]">
+                            <div class="p-6 rounded-2xl bg-[#2a2a2c] store-utility-card border-none hover:bg-[#333336]">
                                 <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Sekolah Mitra</span>
                                 <div id="kpiSchoolVal" class="typo-hero-display text-white mt-1">46</div>
                                 <span class="typo-fine-print text-[#cccccc] mt-2 block">34 Terpenuhi • 12 Butuh PIB</span>
                             </div>
 
-                            <div class="p-6 rounded-2xl bg-[#2a2a2c]">
+                            <div class="p-6 rounded-2xl bg-[#2a2a2c] store-utility-card border-none hover:bg-[#333336]">
                                 <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Pendampingan Aktif</span>
                                 <div id="kpiAssistVal" class="typo-hero-display text-white mt-1">92</div>
                                 <span class="typo-fine-print text-[#cccccc] mt-2 block">18 sesi berlangsung hari ini</span>
                             </div>
 
-                            <div class="p-6 rounded-2xl bg-[#2a2a2c]">
+                            <div class="p-6 rounded-2xl bg-[#2a2a2c] store-utility-card border-none hover:bg-[#333336]">
                                 <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Anak Didampingi</span>
                                 <div id="kpiStudentVal" class="typo-hero-display text-white mt-1">214</div>
-                                <span class="typo-fine-print text-[#48CAE4] mt-2 block">78% Rata-rata Kemandirian</span>
+                                <span class="typo-fine-print text-[#8E9F6A] mt-2 block">78% Rata-rata Kemandirian</span>
                             </div>
                         </div>
 
@@ -316,13 +316,38 @@
 
             <!-- 2. MICROCREDENTIAL VIEW (PARCHMENT TILE) -->
             <section id="view-microcredential" class="view-pane product-tile-parchment">
-                <div class="max-w-6xl mx-auto space-y-12">
-                    <div class="text-center max-w-2xl mx-auto space-y-2">
-                        <span class="typo-caption-strong text-[#DF6E3D] uppercase tracking-wider">Kurikulum Terstandarisasi PRD</span>
-                        <h2 class="typo-display-lg text-[#1d1d1f]">8 Modul Kompetensi PIB.</h2>
-                        <p class="typo-body text-[#7a7a7a]">
-                            Total durasi 40-60 Jam pelatihan terstruktur mencakup fondasi inklusi, bahasa adaptif, asisten AI, hingga asesmen portofolio akhir.
-                        </p>
+                <div class="max-w-6xl mx-auto space-y-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                        <div>
+                            <span class="typo-caption-strong text-[#DF6E3D] uppercase tracking-wider">Kurikulum Terstandarisasi PRD</span>
+                            <h2 class="typo-display-lg text-[#1d1d1f]">8 Modul Kompetensi PIB.</h2>
+                            <p class="typo-body text-[#7a7a7a] max-w-xl">
+                                Total durasi 40-60 Jam pelatihan terstruktur mencakup fondasi inklusi, bahasa adaptif, asisten AI, hingga asesmen portofolio akhir.
+                            </p>
+                        </div>
+                        
+                        <!-- Overall Progress Badge -->
+                        <div class="p-4 rounded-2xl bg-white border border-[#e0e0e0] flex items-center gap-4 shadow-sm">
+                            <div>
+                                <span class="typo-fine-print text-[#7a7a7a] block">Tingkat Kelulusan Angkatan</span>
+                                <strong class="typo-tagline text-[#DF6E3D]">68 / 128 PIB (53.1%)</strong>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-[#DF6E3D]/10 flex items-center justify-center text-[#DF6E3D]">
+                                <span class="material-symbols-outlined">verified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category Filter Chips -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <button onclick="filterModulesCategory('ALL')" class="configurator-option-chip selected mod-filter-chip">Semua Modul (8)</button>
+                        <button onclick="filterModulesCategory('Fondasi')" class="configurator-option-chip mod-filter-chip">Fondasi</button>
+                        <button onclick="filterModulesCategory('Identifikasi')" class="configurator-option-chip mod-filter-chip">Identifikasi</button>
+                        <button onclick="filterModulesCategory('Komunikasi')" class="configurator-option-chip mod-filter-chip">Komunikasi</button>
+                        <button onclick="filterModulesCategory('Praktik Kelas')" class="configurator-option-chip mod-filter-chip">Praktik Kelas</button>
+                        <button onclick="filterModulesCategory('Psikososial')" class="configurator-option-chip mod-filter-chip">Psikososial</button>
+                        <button onclick="filterModulesCategory('Teknologi')" class="configurator-option-chip mod-filter-chip">Teknologi</button>
+                        <button onclick="filterModulesCategory('Kelulusan')" class="configurator-option-chip mod-filter-chip">Kelulusan</button>
                     </div>
 
                     <!-- 8 Modules Grid -->
@@ -332,13 +357,35 @@
 
             <!-- 3. ASISTEN AI KELAS VIEW (DARK TILE 1) -->
             <section id="view-asisten-ai" class="view-pane product-tile-dark">
-                <div class="max-w-6xl mx-auto space-y-12">
+                <div class="max-w-6xl mx-auto space-y-8">
                     <div class="text-center max-w-2xl mx-auto space-y-2">
-                        <span class="typo-caption-strong text-[#48CAE4] uppercase tracking-wider">Asisten Pembelajaran Adaptif</span>
+                        <span class="typo-caption-strong text-[#F4A261] uppercase tracking-wider">Asisten Pembelajaran Adaptif</span>
                         <h2 class="typo-display-lg text-white">Asisten AI Kelas.</h2>
                         <p class="typo-body text-[#cccccc]">
                             Penyederhanaan instruksi instan, scaffolding diferensiasi tugas, dan perekaman suara guru secara langsung di ruang kelas.
                         </p>
+                    </div>
+
+                    <!-- Quick Prompt Chips -->
+                    <div class="flex flex-wrap justify-center gap-2 text-xs">
+                        <button onclick="sendAiMessage('Sederhanakan instruksi membaca bab 3 halaman 45 untuk siswa autisme.')" class="button-dark-utility text-xs py-1.5 px-3.5">
+                            ⚡ Sederhanakan Tugas
+                        </button>
+                        <button onclick="sendAiMessage('Alternatif aktivitas sensori untuk siswa ADHD saat pembelajaran matematika.')" class="button-dark-utility text-xs py-1.5 px-3.5">
+                            💡 Sensori ADHD
+                        </button>
+                        <button onclick="sendAiMessage('Protokol de-eskalasi emosional saat anak mengalami sensory overload.')" class="button-dark-utility text-xs py-1.5 px-3.5">
+                            🧩 Protokol Sensori
+                        </button>
+                        <button onclick="sendAiMessage('Dukungan font dan reading guide strip untuk siswa dengan hambatan Disleksia.')" class="button-dark-utility text-xs py-1.5 px-3.5">
+                            🔤 Disleksia Font
+                        </button>
+                        <button onclick="sendAiMessage('Penerapan papan pilihan gambar PECS untuk anak dengan hambatan wicara.')" class="button-dark-utility text-xs py-1.5 px-3.5">
+                            🗣️ Komunikasi PECS
+                        </button>
+                        <button onclick="sendAiMessage('Akomodasi motorik halus menulis untuk siswa Down Syndrome.')" class="button-dark-utility text-xs py-1.5 px-3.5">
+                            🌟 Down Syndrome
+                        </button>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -347,8 +394,8 @@
                             <!-- Header -->
                             <div class="p-4 border-b border-white/10 bg-[#272729] flex justify-between items-center">
                                 <div class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-[#48CAE4]">smart_toy</span>
-                                    <span class="typo-body-strong text-white text-xs">Sesi Asisten AI Kelas</span>
+                                    <span class="material-symbols-outlined text-[#F4A261]">smart_toy</span>
+                                    <span class="typo-body-strong text-white text-xs">Sesi Asisten AI Kelas (Aktif)</span>
                                 </div>
                                 <button onclick="document.getElementById('aiChatFeed').innerHTML = ''; showToast('Percakapan dibersihkan', 'info')" class="typo-fine-print text-[#7a7a7a] hover:text-white">
                                     Bersihkan
@@ -374,21 +421,12 @@
                             </div>
 
                             <!-- Input Form -->
-                            <div class="p-4 bg-[#272729] border-t border-white/10 space-y-3">
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="sendAiMessage('Sederhanakan instruksi membaca bab 3 halaman 45 untuk siswa autisme.')" class="button-dark-utility text-xs py-1 px-3">
-                                        ⚡ Sederhanakan Instruksi
-                                    </button>
-                                    <button onclick="sendAiMessage('Alternatif aktivitas sensori untuk siswa ADHD saat pembelajaran matematika.')" class="button-dark-utility text-xs py-1 px-3">
-                                        💡 Sensori ADHD
-                                    </button>
-                                </div>
-
+                            <div class="p-4 bg-[#272729] border-t border-white/10">
                                 <form onsubmit="handleAiSubmit(event)" class="flex items-center gap-2">
                                     <button type="button" id="micButton" onclick="toggleVoice()" class="w-10 h-10 rounded-full bg-[#2a2a2c] hover:bg-[#333333] text-white flex items-center justify-center transition-all">
                                         <span class="material-symbols-outlined text-lg">mic</span>
                                     </button>
-                                    <input id="aiInput" type="text" placeholder="Ketik instruksi kelas..." class="search-input bg-[#2a2a2c] text-white border-white/10 focus:border-[#DF6E3D] text-xs">
+                                    <input id="aiInput" type="text" placeholder="Ketik instruksi atau kebutuhan adaptasi siswa..." class="search-input bg-[#2a2a2c] text-white border-white/10 focus:border-[#DF6E3D] text-xs">
                                     <button type="submit" class="button-primary text-xs py-2 px-5">
                                         Kirim
                                     </button>
@@ -399,7 +437,7 @@
                         <!-- Scaffolding Guide Cards -->
                         <div class="space-y-6">
                             <div class="p-6 rounded-2xl bg-[#2a2a2c] space-y-2">
-                                <span class="typo-caption-strong text-[#48CAE4] uppercase tracking-wider block">Batasan Operasional</span>
+                                <span class="typo-caption-strong text-[#F4A261] uppercase tracking-wider block">Batasan Operasional</span>
                                 <h3 class="typo-tagline text-white">Scaffolding, Bukan Diagnosis</h3>
                                 <p class="typo-caption text-[#cccccc] leading-relaxed">
                                     AI dirancang sebagai copilot pendamping kelas untuk adaptasi materi dan tidak menggantikan keputusan medis atau klinis.
@@ -620,7 +658,7 @@
                 <div class="max-w-6xl mx-auto space-y-12">
                     <div class="flex justify-between items-end">
                         <div>
-                            <span class="typo-caption-strong text-[#48CAE4] uppercase tracking-wider">Evaluasi Longitudinal</span>
+                            <span class="typo-caption-strong text-[#F4A261] uppercase tracking-wider">Evaluasi Longitudinal</span>
                             <h2 class="typo-display-lg text-white">Laporan & Outcome Perkembangan.</h2>
                         </div>
                         <button onclick="window.print()" class="button-primary text-xs py-2 px-5">
@@ -630,25 +668,25 @@
 
                     <!-- 4 Dimensions -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                        <div class="p-6 rounded-2xl bg-[#252527]">
+                        <div class="p-6 rounded-2xl bg-[#252527] store-utility-card border-none hover:bg-[#2e2e31] cursor-pointer" onclick="drilldownOutcome('Komunikasi')">
                             <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Komunikasi Inklusif</span>
                             <div class="typo-hero-display text-white mt-1">78%</div>
-                            <span class="typo-fine-print text-[#48CAE4] mt-2 block">+16% vs Baseline</span>
+                            <span class="typo-fine-print text-[#8E9F6A] mt-2 block">+16% vs Baseline</span>
                         </div>
-                        <div class="p-6 rounded-2xl bg-[#252527]">
+                        <div class="p-6 rounded-2xl bg-[#252527] store-utility-card border-none hover:bg-[#2e2e31] cursor-pointer" onclick="drilldownOutcome('Partisipasi')">
                             <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Partisipasi Kelas</span>
                             <div class="typo-hero-display text-white mt-1">82%</div>
-                            <span class="typo-fine-print text-[#48CAE4] mt-2 block">+19% vs Baseline</span>
+                            <span class="typo-fine-print text-[#8E9F6A] mt-2 block">+19% vs Baseline</span>
                         </div>
-                        <div class="p-6 rounded-2xl bg-[#252527]">
+                        <div class="p-6 rounded-2xl bg-[#252527] store-utility-card border-none hover:bg-[#2e2e31] cursor-pointer" onclick="drilldownOutcome('Kemandirian')">
                             <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Kemandirian Belajar</span>
                             <div class="typo-hero-display text-white mt-1">75%</div>
-                            <span class="typo-fine-print text-[#48CAE4] mt-2 block">+14% vs Baseline</span>
+                            <span class="typo-fine-print text-[#8E9F6A] mt-2 block">+14% vs Baseline</span>
                         </div>
-                        <div class="p-6 rounded-2xl bg-[#252527]">
+                        <div class="p-6 rounded-2xl bg-[#252527] store-utility-card border-none hover:bg-[#2e2e31] cursor-pointer" onclick="drilldownOutcome('Sosial')">
                             <span class="typo-fine-print text-[#cccccc] uppercase font-semibold block">Interaksi Sosial</span>
                             <div class="typo-hero-display text-white mt-1">80%</div>
-                            <span class="typo-fine-print text-[#48CAE4] mt-2 block">+18% vs Baseline</span>
+                            <span class="typo-fine-print text-[#8E9F6A] mt-2 block">+18% vs Baseline</span>
                         </div>
                     </div>
 
@@ -664,7 +702,7 @@
 
                         <div class="lg:col-span-5 p-8 rounded-2xl bg-[#252527] flex flex-col justify-between">
                             <div>
-                                <span class="typo-caption-strong text-[#48CAE4] uppercase tracking-wider block mb-1">North Star Metric</span>
+                                <span class="typo-caption-strong text-[#F4A261] uppercase tracking-wider block mb-1">North Star Metric</span>
                                 <h3 class="typo-tagline text-white">Sekolah Mitra Berpendamping Aktif Konsisten</h3>
                                 <p class="typo-caption text-[#cccccc] mt-2 leading-relaxed">
                                     Rasio sekolah mitra dengan pendamping bersertifikasi aktif dan log aktivitas terverifikasi minimal 4 sesi/bulan.
@@ -673,11 +711,11 @@
 
                             <div class="my-6 pt-4 border-t border-white/10">
                                 <div class="flex justify-between items-baseline mb-2">
-                                    <span id="kpiNorthStarVal" class="typo-hero-display text-[#48CAE4]">73.9%</span>
+                                    <span id="kpiNorthStarVal" class="typo-hero-display text-[#DF6E3D]">73.9%</span>
                                     <span class="typo-caption text-[#cccccc]">34 / 46 Sekolah</span>
                                 </div>
                                 <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
-                                    <div class="h-full bg-[#48CAE4] rounded-full" style="width: 73.9%;"></div>
+                                    <div class="h-full bg-[#DF6E3D] rounded-full" style="width: 73.9%;"></div>
                                 </div>
                             </div>
 
@@ -711,7 +749,7 @@
                                 <span class="typo-fine-print text-[#7a7a7a]">Selamat Pagi,</span>
                                 <h4 class="typo-body-strong text-[#1d1d1f]">Rina Maharani, S.Pd</h4>
                             </div>
-                            <div class="p-4 rounded-2xl bg-[#DF6E3D] text-white space-y-2">
+                            <div class="p-4 rounded-2xl bg-[#DF6E3D] text-white space-y-2 shadow-md">
                                 <span class="text-[10px] uppercase font-bold text-white/80">Sesi Hari Ini</span>
                                 <h5 class="font-bold text-sm">SDN Harapan 1 • Kelas 4A</h5>
                                 <p class="text-xs text-white/90">Ananda Fikri (Autism Spectrum)</p>
@@ -724,15 +762,15 @@
 
                         <div id="mTab-micro" class="mobile-tab-pane space-y-3 hidden">
                             <h4 class="typo-body-strong text-[#1d1d1f]">Microcredential PIB</h4>
-                            <div class="p-3 bg-[#f5f5f7] rounded-xl text-xs flex justify-between">
+                            <div class="p-3 bg-[#f5f5f7] rounded-xl text-xs flex justify-between items-center border border-[#e0e0e0]">
                                 <span>Modul 1: Fondasi Inklusif</span>
-                                <span class="text-[#DF6E3D] font-bold">Lulus</span>
+                                <span class="text-[#8E9F6A] font-bold">Lulus</span>
                             </div>
                         </div>
 
                         <div id="mTab-asisten" class="mobile-tab-pane space-y-3 hidden">
                             <h4 class="typo-body-strong text-[#1d1d1f]">Asisten AI Kelas</h4>
-                            <div class="p-3 bg-[#f5f5f7] rounded-xl text-xs space-y-1">
+                            <div class="p-3 bg-[#f5f5f7] rounded-xl text-xs space-y-1 border border-[#e0e0e0]">
                                 <span class="text-[#7a7a7a]">Langkah Sederhana:</span>
                                 <p class="text-[#DF6E3D] font-medium">1. Buka hal 24.<br>2. Kerjakan 2 soal bergambar.<br>3. Beri stiker bintang.</p>
                             </div>
@@ -740,7 +778,7 @@
 
                         <div id="mTab-sekolah" class="mobile-tab-pane space-y-3 hidden">
                             <h4 class="typo-body-strong text-[#1d1d1f]">Sekolah Terdekat</h4>
-                            <div class="p-3 bg-[#f5f5f7] rounded-xl text-xs">
+                            <div class="p-3 bg-[#f5f5f7] rounded-xl text-xs border border-[#e0e0e0]">
                                 <strong>SDN Harapan 1</strong> (1.8 km)
                             </div>
                         </div>

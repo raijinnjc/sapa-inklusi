@@ -462,11 +462,30 @@ function renderDashboardCharts() {
 // ==========================================
 // 2. MICROCREDENTIAL VIEW & LESSON PLAYER
 // ==========================================
+let currentModuleCategory = 'ALL';
+
+function filterModulesCategory(cat) {
+    currentModuleCategory = cat;
+    document.querySelectorAll('.mod-filter-chip').forEach(el => el.classList.remove('selected'));
+    const btn = Array.from(document.querySelectorAll('.mod-filter-chip')).find(b => b.innerText.includes(cat) || (cat==='ALL' && b.innerText.includes('Semua')));
+    if (btn) btn.classList.add('selected');
+    renderModulesList();
+    showToast(`Filter modul: ${cat}`, 'info');
+}
+
 function renderModulesList() {
-    const list = window.store ? window.store.state.modules : [];
+    let list = window.store ? window.store.state.modules : [];
+    if (currentModuleCategory !== 'ALL') {
+        list = list.filter(m => m.category.toLowerCase().includes(currentModuleCategory.toLowerCase()));
+    }
     const container = document.getElementById('modulesGrid');
     if (!container) return;
     container.innerHTML = '';
+
+    if (list.length === 0) {
+        container.innerHTML = `<div class="store-utility-card col-span-full text-center p-8 typo-caption text-[#7a7a7a]">Tidak ada modul dalam kategori ini.</div>`;
+        return;
+    }
 
     list.forEach(m => {
         const card = document.createElement('div');
@@ -1018,6 +1037,17 @@ function renderOutcomeCharts() {
             }
         });
     }
+}
+
+function drilldownOutcome(dim) {
+    const details = {
+        'Komunikasi': 'Dimensi Komunikasi (78%): Capaian AAC +18%, respon chunking verbal +14%.',
+        'Partisipasi': 'Dimensi Partisipasi (82%): Ketuntasan tugas tematik +20%, fokus 10/2 +18%.',
+        'Kemandirian': 'Dimensi Kemandirian (75%): Pengelolaan alat tulis mandiri +12%, quiet corner +15%.',
+        'Sosial': 'Dimensi Sosial (80%): Kolaborasi bermain sebaya +22%, berbagi media +14%.'
+    };
+    const msg = details[dim] || 'Evaluasi outcome 4 dimensi terpadu.';
+    showToast(msg, 'info');
 }
 
 // ==========================================

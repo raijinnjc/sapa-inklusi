@@ -1,10 +1,12 @@
 /**
- * SAPA INKLUSI - Core State Store (PRD v1.0 Compliant)
- * Author: Antigravity AI Engine
- * Hybrid Support: Works both fully standalone offline (GitHub Pages) & with REST API Backend
+ * =========================================================================
+ * SAPA INKLUSI - Core State Store (PRD v1.0 Compliant Architecture)
+ * =========================================================================
+ * Deep Models: 8 Microcredential Modules, 6-Variable Matching Engine,
+ * Adaptive Classroom AI Copilot, Longitudinal Outcome Evaluator.
  */
 
-const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V3';
+const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V4';
 const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? (window.location.port === '3000' ? '/api' : 'http://localhost:3000/api')
     : '/api';
@@ -17,7 +19,7 @@ const DEMO_ACCOUNTS = {
         email: 'gpk@sapa.id',
         nip: '19820415 200604 2 008',
         avatarInitials: 'SW',
-        avatarColor: '#C85A32',
+        avatarColor: '#DF6E3D',
         institution: 'Pusat Layanan Inklusif Wilayah'
     },
     'sekolah@sapa.id': {
@@ -27,7 +29,7 @@ const DEMO_ACCOUNTS = {
         email: 'sekolah@sapa.id',
         nip: '19880112 201101 2 004',
         avatarInitials: 'NH',
-        avatarColor: '#5B6E43',
+        avatarColor: '#8E9F6A',
         institution: 'SDN Harapan 1 Sukamaju'
     },
     'dinas@sapa.id': {
@@ -37,7 +39,7 @@ const DEMO_ACCOUNTS = {
         email: 'dinas@sapa.id',
         nip: '19750918 199903 1 002',
         avatarInitials: 'HK',
-        avatarColor: '#E29547',
+        avatarColor: '#DF6E3D',
         institution: 'Dinas Pendidikan Jawa Barat'
     },
     'pib@sapa.id': {
@@ -47,7 +49,7 @@ const DEMO_ACCOUNTS = {
         email: 'pib@sapa.id',
         nip: 'PIB-2026-089',
         avatarInitials: 'RM',
-        avatarColor: '#C85A32',
+        avatarColor: '#DF6E3D',
         institution: 'Ikatan Pendamping Inklusi'
     }
 };
@@ -68,13 +70,6 @@ const INITIAL_STATE = {
     userName: 'Dr. Sari Wulandari, M.Pd',
     userRoleLabel: 'GPK Koordinator',
     
-    // Filters State
-    filters: {
-        wilayah: 'ALL',
-        jenjang: 'ALL',
-        periode: '2026-S1'
-    },
-
     // Core KPIs
     stats: {
         pibAktif: 128,
@@ -84,7 +79,7 @@ const INITIAL_STATE = {
         northStarMetric: 73.9 // % Sekolah Mitra dengan PIB aktif & pencatatan konsisten
     },
     
-    // 8 Standard PRD Modules with Deep Learning Lessons
+    // 8 Standard PRD Modules with Rich Lesson Content
     modules: [
         {
             id: "MOD-01",
@@ -95,15 +90,15 @@ const INITIAL_STATE = {
             description: "Filosofi hak pendidikan anak, regulasi UU No 8/2016, Permendikbud No 70/2009, dan paradigma sekolah ramah anak.",
             lessonContent: `
                 <h4>1. Paradigma Pendidikan Inklusif di Indonesia</h4>
-                <p>Pendidikan inklusif adalah sistem penyelenggaraan pendidikan yang memberikan kesempatan kepada semua peserta didik yang memiliki kelainan dan memiliki potensi kecerdasan dan/atau bakat istimewa untuk mengikuti pendidikan atau pembelajaran dalam satu lingkungan pendidikan secara bersama-sama dengan peserta didik pada umumnya.</p>
-                <h4>2. Prinsip Non-Diskriminasi</h4>
-                <p>Sekolah reguler wajib melakukan akomodasi yang layak (*reasonable accommodation*) mencakup modifikasi kurikulum, sarana prasarana, dan pendampingan individu.</p>
+                <p>Pendidikan inklusif adalah sistem penyelenggaraan pendidikan yang memberikan kesempatan kepada semua peserta didik yang memiliki kebutuhan khusus dan potensi kecerdasan istimewa untuk belajar bersama di kelas reguler.</p>
+                <h4>2. Prinsip Non-Diskriminasi & Akomodasi yang Layak</h4>
+                <p>Sekolah reguler wajib memberikan akomodasi yang layak (*reasonable accommodation*) mencakup modifikasi kurikulum, sarana fisik, dan pendampingan personal tanpa diskriminasi.</p>
             `,
             enrolled: 128,
             completed: 128,
             passRate: 98,
             quizQuestions: [
-                { q: "Apa prinsip utama akomodasi yang layak dalam pendidikan inklusif?", a: ["Menyesuaikan lingkungan dan instruksi agar ramah bagi semua ragam peserta didik", "Memisahkan kelas berdasarkan IQ", "Mengharuskan anak mengikuti standar tunggal tanpa bantuan"], correct: 0 }
+                { q: "Apa prinsip utama akomodasi yang layak dalam pendidikan inklusif?", a: ["Menyesuaikan lingkungan dan instruksi agar ramah bagi semua ragam peserta didik", "Memisahkan kelas berdasarkan tingkat IQ", "Mengharuskan anak mengikuti standar tunggal tanpa bantuan"], correct: 0 }
             ]
         },
         {
@@ -250,242 +245,180 @@ const INITIAL_STATE = {
             assignedSchool: "SDN Harapan 1",
             assignedSchoolId: "SCH-001",
             studentsCount: 2,
+            competencies: ["Autism Spectrum", "Komunikasi Inklusif", "Scaffolding Visual"],
+            phone: "0812-3456-7890",
+            email: "rina.m@pib.id",
             rating: 4.9,
             sessionsCompleted: 48,
-            competencies: ["Autism Spectrum", "Komunikasi Inklusif", "Manajemen Perilaku"],
-            phone: "+62 812-3456-7890",
-            email: "rina.maharani@pib.id",
             initials: "RM",
-            bgColor: "#C85A32"
+            bgColor: "#DF6E3D"
         },
         {
             id: "PIB-002",
-            name: "Andi Pratama, S.Psi",
+            name: "Ahmad Fauzi, S.Psi",
             region: "Cendekia",
             status: "BERSERTIFIKAT",
             certId: "CERT-PIB-2026-092",
-            availability: "SEDANG_BERTUGAS",
-            assignedSchool: "SDN Mekarjaya 2",
+            availability: "TERSEDIA",
+            assignedSchool: "SMP Cendekia Inklusi",
             assignedSchoolId: "SCH-002",
-            studentsCount: 1,
+            studentsCount: 3,
+            competencies: ["ADHD Support", "Regulasi Emosional", "De-eskalasi"],
+            phone: "0813-9876-5432",
+            email: "ahmad.f@pib.id",
             rating: 4.8,
             sessionsCompleted: 36,
-            competencies: ["ADHD Support", "Pendampingan Akademik", "Regulasi Emosi"],
-            phone: "+62 813-9876-5432",
-            email: "andi.pratama@pib.id",
-            initials: "AP",
-            bgColor: "#5B6E43"
+            initials: "AF",
+            bgColor: "#8E9F6A"
         },
         {
             id: "PIB-003",
-            name: "Budi Santoso, S.Pd",
+            name: "Dewi Lestari, S.Pd",
             region: "Harapan",
             status: "BERSERTIFIKAT",
             certId: "CERT-PIB-2026-104",
-            availability: "TERSEDIA",
-            assignedSchool: "SMPN 4 Cendekia",
+            availability: "SEDANG_BERTUGAS",
+            assignedSchool: "SD Harapan Bangsa",
             assignedSchoolId: "SCH-003",
-            studentsCount: 2,
-            rating: 5.0,
-            sessionsCompleted: 62,
-            competencies: ["Disleksia", "Keterampilan Sosial", "Bahasa Isyarat"],
-            phone: "+62 821-4455-6677",
-            email: "budi.santoso@pib.id",
-            initials: "BS",
-            bgColor: "#E29547"
+            studentsCount: 1,
+            competencies: ["Disleksia", "Bahasa Isyarat", "Literasi Adaptif"],
+            phone: "0811-2233-4455",
+            email: "dewi.l@pib.id",
+            rating: 4.95,
+            sessionsCompleted: 52,
+            initials: "DL",
+            bgColor: "#DF6E3D"
         },
         {
             id: "PIB-004",
-            name: "Siti Aisyah, S.Pd.I",
-            region: "Merdeka",
+            name: "Budi Santoso, S.Pd",
+            region: "Sukamaju",
             status: "DALAM_PROGRES",
             certId: null,
             availability: "TERSEDIA",
             assignedSchool: "Menunggu Penempatan",
             assignedSchoolId: null,
             studentsCount: 0,
+            competencies: ["Dasar Inklusif", "Sensori Motorik"],
+            phone: "0815-6677-8899",
+            email: "budi.s@pib.id",
             rating: 4.7,
-            sessionsCompleted: 14,
-            competencies: ["Sensory Integration", "Komunikasi Visual"],
-            phone: "+62 857-1122-3344",
-            email: "siti.aisyah@pib.id",
-            initials: "SA",
-            bgColor: "#656A73"
-        },
-        {
-            id: "PIB-005",
-            name: "Fajar Nugraha, S.Pd",
-            region: "Sukamaju",
-            status: "BERSERTIFIKAT",
-            certId: "CERT-PIB-2026-118",
-            availability: "TERSEDIA",
-            assignedSchool: "Menunggu Penempatan",
-            assignedSchoolId: null,
-            studentsCount: 0,
-            rating: 4.9,
-            sessionsCompleted: 28,
-            competencies: ["Autism Spectrum", "Alat Bantu Visual", "Sensory Integration"],
-            phone: "+62 812-7788-9900",
-            email: "fajar.nugraha@pib.id",
-            initials: "FN",
-            bgColor: "#2E6F40"
+            sessionsCompleted: 12,
+            initials: "BS",
+            bgColor: "#8E9F6A"
         }
     ],
 
-    // School Partners & Matching Matrix
+    // Partner Schools & Matching Matrix
     schools: [
         {
             id: "SCH-001",
             name: "SDN Harapan 1",
-            region: "Sukamaju",
             level: "SD",
+            region: "Sukamaju",
+            address: "Jl. Pendidikan No. 12, Sukamaju",
+            distanceKm: 1.8,
             requiredPIB: 2,
             assignedPIB: 1,
             status: "BUTUH_PENDAMPING",
-            priority: "TINGGI",
-            studentsCount: 14,
-            distanceKm: 1.8,
-            matchingScore: 92,
-            matchingBreakdown: { jarak: 95, kompetensi: 92, jadwal: 90, pengalaman: 90 },
+            studentsCount: 4,
             requiredCompetencies: ["Autism Spectrum", "Komunikasi Inklusif"],
             coordinatorName: "Ibu Nurhayati, S.Pd",
-            address: "Jl. Pendidikan No. 12, Sukamaju",
-            schedule: "Senin - Jumat (07.30 - 12.00)"
+            matchingScore: 92,
+            matchingBreakdown: { jarak: 95, kompetensi: 92, jadwal: 90, pengalaman: 91 }
         },
         {
             id: "SCH-002",
-            name: "SDN Mekarjaya 2",
-            region: "Harapan",
-            level: "SD",
-            requiredPIB: 1,
-            assignedPIB: 1,
-            status: "TERPENUHI",
-            priority: "SEDANG",
-            studentsCount: 8,
-            distanceKm: 3.4,
-            matchingScore: 88,
-            matchingBreakdown: { jarak: 85, kompetensi: 90, jadwal: 90, pengalaman: 86 },
-            requiredCompetencies: ["ADHD Support", "Pendampingan Akademik"],
-            coordinatorName: "Bapak Hendra, M.Pd",
-            address: "Jl. Melati No. 45, Harapan",
-            schedule: "Senin - Kamis (08.00 - 12.30)"
-        },
-        {
-            id: "SCH-003",
-            name: "SMPN 4 Cendekia",
-            region: "Cendekia",
+            name: "SMP Cendekia Inklusi",
             level: "SMP",
+            region: "Cendekia",
+            address: "Jl. Merdeka No. 45, Cendekia",
+            distanceKm: 3.4,
             requiredPIB: 2,
             assignedPIB: 2,
             status: "TERPENUHI",
-            priority: "RENDAH",
-            studentsCount: 18,
-            distanceKm: 4.1,
-            matchingScore: 85,
-            matchingBreakdown: { jarak: 80, kompetensi: 88, jadwal: 85, pengalaman: 88 },
-            requiredCompetencies: ["Keterampilan Sosial", "Manajemen Perilaku"],
-            coordinatorName: "Ibu Rahmawati, S.Pd",
-            address: "Jl. Cendekia Raya No. 88",
-            schedule: "Senin - Jumat (07.00 - 13.30)"
+            studentsCount: 3,
+            requiredCompetencies: ["ADHD Support", "Regulasi Emosional"],
+            coordinatorName: "Bpk. Bambang Sutrisno, M.Pd",
+            matchingScore: 88,
+            matchingBreakdown: { jarak: 84, kompetensi: 90, jadwal: 92, pengalaman: 86 }
+        },
+        {
+            id: "SCH-003",
+            name: "SD Harapan Bangsa",
+            level: "SD",
+            region: "Harapan",
+            address: "Jl. Pemuda No. 8, Harapan",
+            distanceKm: 2.1,
+            requiredPIB: 1,
+            assignedPIB: 1,
+            status: "TERPENUHI",
+            studentsCount: 2,
+            requiredCompetencies: ["Disleksia", "Literasi Adaptif"],
+            coordinatorName: "Ibu Ratna Juwita, S.Pd",
+            matchingScore: 95,
+            matchingBreakdown: { jarak: 96, kompetensi: 95, jadwal: 94, pengalaman: 95 }
         },
         {
             id: "SCH-004",
-            name: "SMPN 2 Karang Sari",
-            region: "Karang Sari",
-            level: "SMP",
-            requiredPIB: 1,
+            name: "SMAN 1 Inklusi Sukamaju",
+            level: "SMA",
+            region: "Sukamaju",
+            address: "Jl. Raya Timur No. 102, Sukamaju",
+            distanceKm: 4.2,
+            requiredPIB: 2,
             assignedPIB: 0,
             status: "BUTUH_PENDAMPING",
-            priority: "SEDANG",
-            studentsCount: 6,
-            distanceKm: 2.7,
-            matchingScore: 89,
-            matchingBreakdown: { jarak: 90, kompetensi: 90, jadwal: 88, pengalaman: 86 },
-            requiredCompetencies: ["Disleksia", "Pembelajaran Adaptif"],
-            coordinatorName: "Bapak Agus, S.Pd",
-            address: "Jl. Beringin No. 19, Karang Sari",
-            schedule: "Senin - Jumat (07.30 - 13.00)"
-        },
-        {
-            id: "SCH-005",
-            name: "SMAN 1 Bakti",
-            region: "Merdeka",
-            level: "SMA",
-            requiredPIB: 2,
-            assignedPIB: 1,
-            status: "BUTUH_PENDAMPING",
-            priority: "SEDANG",
-            studentsCount: 10,
-            distanceKm: 3.1,
-            matchingScore: 87,
-            matchingBreakdown: { jarak: 88, kompetensi: 86, jadwal: 85, pengalaman: 89 },
-            requiredCompetencies: ["Manajemen Perilaku", "Dukungan Sosial"],
-            coordinatorName: "Dra. Farida, M.Pd",
-            address: "Jl. Pemuda No. 7, Merdeka",
-            schedule: "Senin - Jumat (07.00 - 14.00)"
+            studentsCount: 5,
+            requiredCompetencies: ["Autism Spectrum", "ADHD Support", "Scaffolding Visual"],
+            coordinatorName: "Drs. Eko Prasetyo",
+            matchingScore: 86,
+            matchingBreakdown: { jarak: 78, kompetensi: 92, jadwal: 88, pengalaman: 86 }
         }
     ],
 
-    // Assistance Sessions & Logs
+    // Daily Assistance Monitoring Sessions
     sessions: [
         {
-            id: "SES-01",
-            date: "2026-08-18",
+            id: "SES-001",
+            date: "18 Agu 2026",
             time: "08:00 - 10:00",
             pibName: "Rina Maharani, S.Pd",
-            pibId: "PIB-001",
             schoolName: "SDN Harapan 1",
-            schoolId: "SCH-001",
             className: "Kelas 4A",
             studentName: "Ananda Fikri (Autism Spectrum)",
-            activity: "Matematika Pecahan Adaptif",
-            notes: "Instruksi disederhanakan dengan kartu pecahan visual. Fokus meningkat 20 menit tanpa tantrum.",
-            status: "BERLANGSUNG",
+            activity: "Adaptasi tugas membaca tematik & scaffolding 4 langkah bergambar.",
+            notes: "Siswa mampu menyelesaikan 2 dari 3 tugas mandiri dengan bantuan visual schedule.",
+            status: "SELESAI",
+            verificationStatus: "TERVERIFIKASI"
+        },
+        {
+            id: "SES-002",
+            date: "18 Agu 2026",
+            time: "10:15 - 12:00",
+            pibName: "Ahmad Fauzi, S.Psi",
+            schoolName: "SMP Cendekia Inklusi",
+            className: "Kelas 7B",
+            studentName: "Ananda Bagas (ADHD)",
+            activity: "Fasilitasi fokus matematika dengan metode interval 10/2 & sensory timer.",
+            notes: "Rentang atensi meningkat menjadi 18 menit tanpa distraksi motorik berlebih.",
+            status: "SELESAI",
             verificationStatus: "MENUNGGU_VERIFIKASI"
         },
         {
-            id: "SES-02",
-            date: "2026-08-18",
-            time: "07:30 - 09:30",
-            pibName: "Budi Santoso, S.Pd",
-            pibId: "PIB-003",
-            schoolName: "SMPN 4 Cendekia",
-            schoolId: "SCH-003",
-            className: "Kelas 7B",
-            studentName: "Ananda Dimas (ADHD)",
-            activity: "Keterampilan Sosial Dinamika Kelompok",
-            notes: "Latihan kerja kelompok IPA. Menggunakan teknik jeda sensorik 2 menit secara efektif.",
-            status: "SELESAI",
-            verificationStatus: "TERVERIFIKASI"
-        },
-        {
-            id: "SES-03",
-            date: "2026-08-17",
-            time: "09:00 - 11:00",
-            pibName: "Andi Pratama, S.Psi",
-            pibId: "PIB-002",
-            schoolName: "SDN Mekarjaya 2",
-            schoolId: "SCH-002",
-            className: "Kelas 5B",
-            studentName: "Ananda Rehan (Disleksia)",
-            activity: "Literasi Membaca Bersuara Adaptif",
-            notes: "Menggunakan kartu fonem warna-warni dan bantuan text-to-speech.",
+            id: "SES-003",
+            date: "17 Agu 2026",
+            time: "08:30 - 11:00",
+            pibName: "Dewi Lestari, S.Pd",
+            schoolName: "SD Harapan Bangsa",
+            className: "Kelas 3C",
+            studentName: "Ananda Tiara (Disleksia)",
+            activity: "Latihan membaca berpasangan dengan reading guide strip & text-to-speech.",
+            notes: "Siswa mengenali pola fonem lebih cepat dan merasa percaya diri di depan kelas.",
             status: "SELESAI",
             verificationStatus: "TERVERIFIKASI"
         }
-    ],
-
-    // Longitudinal Outcome Records (Semester 1)
-    outcome: {
-        months: ["Januari", "Februari", "Maret", "April", "Mei", "Juni"],
-        overallScores: [62, 65, 69, 72, 76, 79],
-        indicators: {
-            komunikasi: 78,
-            partisipasi: 82,
-            kemandirian: 75,
-            interaksiSosial: 80
-        }
-    }
+    ]
 };
 
 class SapaStore {
@@ -531,7 +464,7 @@ class SapaStore {
             email: email,
             nip: '19850101 201001 1 001',
             avatarInitials: email.slice(0, 2).toUpperCase(),
-            avatarColor: '#C85A32',
+            avatarColor: '#DF6E3D',
             institution: 'SAPA Inklusi Mitra'
         };
 
@@ -596,7 +529,7 @@ class SapaStore {
     addPIB(pibData) {
         const id = "PIB-" + String(this.state.pibs.length + 1).padStart(3, '0');
         const initials = pibData.name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
-        const colors = ['#C85A32', '#5B6E43', '#E29547', '#3B6082', '#6D5B8E', '#2E6F40'];
+        const colors = ['#DF6E3D', '#8E9F6A', '#C8592A', '#738350', '#272729'];
         const bgColor = colors[this.state.pibs.length % colors.length];
 
         const newPIB = {
@@ -658,26 +591,25 @@ class SapaStore {
 
     // Session Recording & Verification
     addSession(sessData) {
-        const id = "SES-" + String(this.state.sessions.length + 1).padStart(2, '0');
-        const newSess = {
+        const id = "SES-" + String(this.state.sessions.length + 1).padStart(3, '0');
+        const newSession = {
             id,
-            date: new Date().toISOString().slice(0, 10),
-            status: "BERLANGSUNG",
+            date: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }),
             verificationStatus: "MENUNGGU_VERIFIKASI",
+            status: "SELESAI",
             ...sessData
         };
-        this.state.sessions.unshift(newSess);
+        this.state.sessions.unshift(newSession);
+        this.state.stats.pendampinganAktif = this.state.sessions.length;
         this.save();
-        return newSess;
+        return newSession;
     }
 
-    verifySession(sessionId, isApproved = true) {
+    verifySession(sessionId, approved = true) {
         const sess = this.state.sessions.find(s => s.id === sessionId);
         if (sess) {
-            sess.verificationStatus = isApproved ? "TERVERIFIKASI" : "DITOLAK";
-            if (isApproved && sess.status === 'BERLANGSUNG') {
-                sess.status = 'SELESAI';
-            }
+            sess.verificationStatus = approved ? "TERVERIFIKASI" : "DITOLAK";
+            if (sess.status === "BERLANGSUNG") sess.status = "SELESAI";
             this.save();
             return true;
         }
@@ -697,7 +629,7 @@ class SapaStore {
         return count;
     }
 
-    // AI Responses Logic
+    // AI Adaptive Responses Logic
     generateAI(prompt) {
         const q = prompt.toLowerCase();
         if (q.includes("sederhanakan") || q.includes("instruksi") || q.includes("tugas")) {
@@ -708,8 +640,12 @@ class SapaStore {
             return "🧩 **Protokol De-eskalasi & Regulasi Sensori (Autism Spectrum):**\n\n• Segera bimbing siswa ke sudut tenang (*quiet corner*).\n• Berikan penutup telinga (*noise-cancelling headphones*) jika bising.\n• Gunakan kartu komunikasi visual 'Saya Butuh Istirahat' tanpa memaksa kontak mata.";
         } else if (q.includes("disleksia") || q.includes("baca") || q.includes("huruf")) {
             return "🔤 **Dukungan Pembelajaran Disleksia:**\n\n• Gunakan font berjarak longgar (seperti OpenDyslexic / sans-serif).\n• Beri penggaris warna (*reading guide strip*) untuk memandu baris teks.\n• Izinkan perekaman suara atau Text-to-Speech untuk pemahaman materi panjang.";
+        } else if (q.includes("wicara") || q.includes("bicara") || q.includes("komunikasi") || q.includes("pecs")) {
+            return "🗣️ **Protokol Komunikasi PECS & Bahasa Visual:**\n\n• Sediakan papan pilihan gambar (*choice board*) dengan 4 simbol kata kerja dasar.\n• Berikan jeda 5 detik (*wait time*) setelah bertanya sebelum mengulang pertanyaan.\n• Gunakan gestur tangan penjelas bersamaan dengan kata kunci verbal.";
+        } else if (q.includes("down syndrome") || q.includes("motorik") || q.includes("tulis")) {
+            return "🌟 **Akomodasi Pembelajaran Siswa Down Syndrome:**\n\n• Gunakan pegangan pensil segitiga (*pencil grip*) untuk mempermudah motorik halus.\n• Sajikan konsep matematika dengan benda konkret (kancing warna / balok hitung).\n• Berikan penguatan verbal positif (*positive praise*) setiap menyelesaikan satu sub-langkah.";
         } else {
-            return "✨ **Rekomendasi Pembelajaran Inklusif:**\n\nInstruksi dapat dipecah menjadi unit-unit kecil (*chunking*). Berikan penguatan positif instan (token bintang) dan pastikan materi disajikan dalam format multisensori (audio + visual + kinestetik).";
+            return "✨ **Rekomendasi Pembelajaran Inklusif Terpadu:**\n\nInstruksi dapat dipecah menjadi unit-unit kecil (*chunking*). Berikan penguatan positif instan (token bintang) dan pastikan materi disajikan dalam format multisensori (audio + visual + kinestetik).";
         }
     }
 
@@ -756,7 +692,7 @@ class SapaStore {
             }
         } catch (e) {
             // Silently fallback to offline localStorage mode
-            console.log('ℹ️ Running in standalone static client mode (Offline / GitHub Pages)');
+            console.log('ℹ️ Running in standalone static client mode (Offline / GitHub Pages / Vercel)');
             return false;
         }
     }
