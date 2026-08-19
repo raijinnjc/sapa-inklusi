@@ -1106,7 +1106,20 @@ window.addEventListener('DOMContentLoaded', async () => {
     initCommandPalette();
     initVoiceAI();
     checkAuthState();
+    renderModulesList();
+    renderPIBDirectory();
+    renderSchoolDirectory();
+    renderSessionsList();
+    renderOutcomeCharts();
+    renderDashboardCharts();
+    triggerAllCounters();
+
     if (window.store && typeof window.store.syncWithBackend === 'function') {
         await window.store.syncWithBackend();
+        renderModulesList();
+        renderPIBDirectory();
+        renderSchoolDirectory();
+        renderSessionsList();
+        renderDashboardCharts();
     }
 });
