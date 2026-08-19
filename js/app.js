@@ -81,11 +81,12 @@ function animateCounter(id, target, duration = 650, isDecimal = false) {
 }
 
 function triggerAllCounters() {
-    animateCounter('kpiPIBVal', 128, 550);
-    animateCounter('kpiSchoolVal', 46, 550);
-    animateCounter('kpiAssistVal', 92, 600);
-    animateCounter('kpiStudentVal', 214, 650);
-    animateCounter('kpiNorthStarVal', 73.9, 700, true);
+    const s = window.store ? window.store.state.stats : { pibAktif: 128, sekolahMitra: 46, pendampinganAktif: 92, anakDidampingi: 214, northStarMetric: 73.9 };
+    animateCounter('kpiPIBVal', s.pibAktif, 550);
+    animateCounter('kpiSchoolVal', s.sekolahMitra, 550);
+    animateCounter('kpiAssistVal', s.pendampinganAktif, 600);
+    animateCounter('kpiStudentVal', s.anakDidampingi, 650);
+    animateCounter('kpiNorthStarVal', s.northStarMetric, 700, true);
 }
 
 // ==========================================

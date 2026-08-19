@@ -51,7 +51,7 @@
             <div class="flex items-center gap-3">
                 <button onclick="openCommandMenu()" title="Cari atau Navigasi (⌘K)" class="text-[#cccccc] hover:text-white transition-colors p-1 flex items-center gap-1">
                     <span class="material-symbols-outlined text-base">search</span>
-                    <kbd class="hidden sm:inline-block px-1.5 py-0.2 rounded bg-white/10 text-[10px] font-mono text-[#cccccc]">⌘K</kbd>
+                    <kbd class="hidden sm:inline-block px-1.5 py-0.5 rounded bg-white/10 text-[10px] font-mono text-[#cccccc]">⌘K</kbd>
                 </button>
 
                 <div class="hidden lg:flex items-center gap-1 bg-white/10 px-2.5 py-1 rounded-full text-xs text-white">
@@ -785,7 +785,7 @@
                     </div>
 
                     <!-- Bottom Nav -->
-                    <div class="h-15 bg-[#f5f5f7] border-t border-[#e0e0e0] grid grid-cols-4 items-center px-2 py-2">
+                    <div class="h-[60px] bg-[#f5f5f7] border-t border-[#e0e0e0] grid grid-cols-4 items-center px-2 py-2">
                         <button onclick="switchMobileTab('beranda')" data-tab="beranda" class="mob-nav-btn flex flex-col items-center text-[#DF6E3D] font-bold">
                             <span class="material-symbols-outlined text-lg">home</span>
                             <span class="text-[9px]">Beranda</span>
@@ -959,6 +959,7 @@
             <form onsubmit="event.preventDefault(); const p=window.store.addPIB({name:this.pName.value, region:this.pRegion.value, phone:this.pPhone.value, email:this.pEmail.value, competencies:[this.pComp.value]}); this.reset(); closeModal('addPibModal'); showToast('PIB ' + p.name + ' berhasil didaftarkan!', 'success'); renderPIBDirectory();" class="space-y-3 text-xs">
                 <input name="pName" type="text" required placeholder="Nama Lengkap" class="search-input w-full">
                 <input name="pRegion" type="text" required placeholder="Wilayah" class="search-input w-full">
+                <input name="pPhone" type="tel" placeholder="Nomor Telepon / WhatsApp" class="search-input w-full">
                 <input name="pEmail" type="email" placeholder="nama@pib.id" class="search-input w-full">
                 <input name="pComp" type="text" required placeholder="Spesialisasi Keahlian" class="search-input w-full">
                 <div class="pt-3 flex justify-end gap-2">

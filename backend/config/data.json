@@ -357,6 +357,21 @@
   ],
   "sessions": [
     {
+      "id": "SES-005",
+      "date": "19 Agu 2026",
+      "time": "08:00 - 10:00",
+      "pibName": "Rina Maharani, S.Pd",
+      "schoolName": "SDN Harapan 1",
+      "className": "Kelas 4A",
+      "studentName": "Ananda Fikri",
+      "activity": "Modifikasi materi visual",
+      "notes": "Pendampingan terlaksana dengan baik.",
+      "status": "SELESAI",
+      "verificationStatus": "TERVERIFIKASI",
+      "verifiedBy": "Dr. Sari Wulandari (GPK Koordinator)",
+      "verifiedAt": "19 Agu 2026, 12.03"
+    },
+    {
       "id": "SES-004",
       "date": "19 Agu 2026",
       "time": "08:00 - 10:00",

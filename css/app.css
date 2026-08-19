@@ -293,7 +293,7 @@ body {
     box-shadow: 0 4px 14px rgba(223, 110, 61, 0.28);
 }
 .button-primary:active {
-    transform: scale(0.965);
+    transform: scale(0.95);
     box-shadow: none;
 }
 .button-primary:focus-visible {
@@ -324,7 +324,7 @@ body {
     background-color: rgba(223, 110, 61, 0.06);
 }
 .button-secondary-pill:active {
-    transform: scale(0.965);
+    transform: scale(0.95);
 }
 
 .button-dark-utility {
@@ -349,7 +349,7 @@ body {
     opacity: 0.88;
 }
 .button-dark-utility:active {
-    transform: scale(0.965);
+    transform: scale(0.95);
 }
 
 .text-link {
@@ -540,15 +540,31 @@ body {
     transform: translate3d(0, 0, 0);
 }
 
-/* Smooth Modals */
-.modal-backdrop {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.22s var(--ease-apple);
+/* ========================================================================= */
+/* BUTTON-LARGE TYPOGRAPHY TOKEN (PRD Spec: 18px Weight 300)                 */
+/* ========================================================================= */
+.typo-button-large {
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: 0px;
 }
-.modal-backdrop.active {
-    opacity: 1;
-    pointer-events: auto;
+
+/* ========================================================================= */
+/* GLOBAL FOCUS-VISIBLE ACCESSIBILITY RING (PRD: #0071e3)                    */
+/* ========================================================================= */
+:focus-visible {
+    outline: 2px solid #0071e3;
+    outline-offset: 2px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #0071e3;
+    outline-offset: 2px;
 }
 
 /* Custom Minimal Scrollbar */
@@ -563,3 +579,4 @@ body {
     background: var(--color-hairline);
     border-radius: 9999px;
 }
+

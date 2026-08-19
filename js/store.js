@@ -547,7 +547,7 @@ class SapaStore {
             ...pibData
         };
         this.state.pibs.unshift(newPIB);
-        this.state.stats.pibAktif = this.state.pibs.length;
+        this.state.stats.pibAktif += 1;
         this.save();
         return newPIB;
     }
@@ -566,7 +566,7 @@ class SapaStore {
             ...schoolData
         };
         this.state.schools.unshift(newSchool);
-        this.state.stats.sekolahMitra = this.state.schools.length;
+        this.state.stats.sekolahMitra += 1;
         this.save();
         return newSchool;
     }
@@ -600,7 +600,7 @@ class SapaStore {
             ...sessData
         };
         this.state.sessions.unshift(newSession);
-        this.state.stats.pendampinganAktif = this.state.sessions.length;
+        this.state.stats.pendampinganAktif += 1;
         this.save();
         return newSession;
     }
