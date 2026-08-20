@@ -528,16 +528,22 @@ body {
 /* ULTRA-SEAMLESS SPA VIEW TRANSITIONS                                      */
 /* ========================================================================= */
 .view-pane {
-    opacity: 0;
-    transform: translate3d(0, 10px, 0);
-    transition: opacity 0.24s var(--ease-apple), transform 0.24s var(--ease-apple);
     display: none;
-    will-change: opacity, transform;
 }
 .view-pane.active {
     display: block;
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+    animation: viewFadeIn 0.28s var(--ease-apple) both;
+}
+
+@keyframes viewFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ========================================================================= */

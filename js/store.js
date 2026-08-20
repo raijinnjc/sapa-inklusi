@@ -6,7 +6,7 @@
  * Adaptive Classroom AI Copilot, Longitudinal Outcome Evaluator.
  */
 
-const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V4';
+const STORAGE_KEY = 'SAPA_INKLUSI_MASTER_V5';
 const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? (window.location.port === '3000' ? '/api' : 'http://localhost:3000/api')
     : '/api';
